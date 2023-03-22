@@ -2,7 +2,9 @@ services:
 
   app:
     container_name: growmate
-    build: .
+    build:
+        context: ./backend/Growmate_API
+        dockerfile: Dockerfile
     ports:
       - '8080:8080'
     depends_on:
@@ -26,16 +28,18 @@ services:
     networks:
       - net
 
-
   rabbitmq3:
     container_name: rabbitmq
-    image: rabbitmq:3.8-management-alpine
+    build:
+        context: ./backend/rabbitmq_config
+        dockerfile: Dockerfile
     environment:
-      - RABBITMQ_DEFAULT_USER=guest
-      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_DEFAULT_USER=growmate
+      - RABBITMQ_DEFAULT_PASS=growmate
     ports:
       - '5672:5672'
       - '15672:15672'
+      - '1883:1883'
     networks:
       - net
 
