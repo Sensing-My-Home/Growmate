@@ -22,3 +22,14 @@ expo start --web
 The first two require some sort of emulator, whereas the third one 
 can be ran in any browser.
 
+## Log of "npm install" dependencies
+For better management and tracking of all manually installed dependencies, 
+we have registered a log of all the react native modules installed.
+
+- react-native-web@~0.18.11
+- react-dom
+- react-native-paper
+- react-native-safe-area-context
+- react-native-vector-icons
+- react-native-community/blur 
+- depcheck -g
