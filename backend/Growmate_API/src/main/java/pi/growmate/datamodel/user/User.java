@@ -1,0 +1,105 @@
+package pi.growmate.datamodel.user;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import pi.growmate.datamodel.division.Division;
+import pi.growmate.datamodel.division.DivisionSensor;
+import pi.growmate.datamodel.plant.PlantSensor;
+import pi.growmate.datamodel.forum.Comment;
+import pi.growmate.datamodel.forum.JournalEntry;
+import pi.growmate.datamodel.plant.Plant;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(name = "profile_photo")
+    private String profilePhoto;
+
+    @Column(name = "DOB")
+    @Temporal(TemporalType.DATE)
+    private Date dateOfBirth;
+
+    @Column
+    private String address;
+
+    @Column(columnDefinition = "integer default 3.0")
+    private Double rating;
+
+    @Convert(converter = UserTypeConverter.class)
+    private UserType userType;
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    private List<Plant> plants = new ArrayList<>();
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    private List<Division> divisions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Comment> commentsByUser = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<JournalEntry> journalEntries = new ArrayList<>();
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    private List<PlantSensor> plantSensors = new ArrayList<>();
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    private List<DivisionSensor> divisionSensors = new ArrayList<>();
+
+    // Getter methods that need to be ignored on JSON replies
+    @JsonIgnore
+    public List<Plant> getPlants() {
+        return plants;
+    }
+
+    @JsonIgnore
+    public List<Division> getDivisions() {
+        return divisions;
+    }
+
+    @JsonIgnore
+    public List<Comment> getCommentsByUser() {
+        return commentsByUser;
+    }
+
+    @JsonIgnore
+    public List<JournalEntry> getJournalEntries() {
+        return journalEntries;
+    }
+
+    @JsonIgnore
+    public List<PlantSensor> getPlantSensors() {
+        return plantSensors;
+    }
+
+    @JsonIgnore
+    public List<DivisionSensor> getDivisionSensors() {
+        return divisionSensors;
+    }
+}
+
