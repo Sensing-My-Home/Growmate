@@ -27,6 +27,8 @@ For better management and tracking of all manually installed dependencies,
 we have registered a log of all the react native modules installed.
 
 - react-native-web@~0.18.11
+- @react-navigation/native
+- @react-navigation/native-stack
 - react-dom
 - react-native-paper
 - react-native-safe-area-context
