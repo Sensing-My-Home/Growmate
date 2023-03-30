@@ -1,7 +1,9 @@
 package pi.growmate.datamodel.species;
 
 import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 
+@Converter(autoApply = true)
 public class HumidityConverter implements AttributeConverter<OptimalHumidity, Integer> {
     @Override
     public Integer convertToDatabaseColumn(OptimalHumidity optimalHumidity) {

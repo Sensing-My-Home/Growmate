@@ -1,6 +1,7 @@
 package pi.growmate.datamodel.species;
 
 import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.criteria.CriteriaBuilder;
 
 public class LuminosityConverter implements AttributeConverter<OptimalLuminosity, Integer> {
     @Override
@@ -24,5 +25,4 @@ public class LuminosityConverter implements AttributeConverter<OptimalLuminosity
             default -> throw new IllegalArgumentException("Invalid luminosity converter integer: " + optimalLuminosityInt);
         };
     }
-
 }

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pi.growmate.datamodel.plant.Plant;
+import pi.growmate.datamodel.species.LuminosityConverter;
 import pi.growmate.datamodel.species.OptimalLuminosity;
 import pi.growmate.datamodel.user.User;
 
@@ -32,7 +33,7 @@ public class Division {
     @Column(nullable = false)
     private String name;
 
-    @Convert(converter = OptimalLuminosity.class)
+    @Convert(converter = LuminosityConverter.class)
     private OptimalLuminosity luminosity;
 
     @OneToMany(mappedBy = "division", cascade = CascadeType.ALL)

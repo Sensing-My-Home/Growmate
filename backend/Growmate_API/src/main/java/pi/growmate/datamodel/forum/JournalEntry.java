@@ -41,6 +41,6 @@ public class JournalEntry {
     @Column
     private String photo;
 
-    @Column(name = "task_date", columnDefinition = "DATETIME")
+    @Column(name = "task_date", columnDefinition = "TIMESTAMP")
     private LocalDateTime postDate;
 }

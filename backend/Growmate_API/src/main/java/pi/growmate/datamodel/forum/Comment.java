@@ -38,6 +38,6 @@ public class Comment {
     @JoinColumn(name ="plant_id", nullable = false)
     private Plant plant;
 
-    @Column(columnDefinition = "DATETIME")
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime postDate;
 }

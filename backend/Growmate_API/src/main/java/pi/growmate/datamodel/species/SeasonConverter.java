@@ -1,7 +1,9 @@
 package pi.growmate.datamodel.species;
 
 import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 
+@Converter(autoApply = true)
 public class SeasonConverter implements AttributeConverter<Season, Integer> {
     @Override
     public Integer convertToDatabaseColumn(Season season) {

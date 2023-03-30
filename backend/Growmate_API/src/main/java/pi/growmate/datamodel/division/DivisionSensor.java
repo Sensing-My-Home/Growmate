@@ -32,6 +32,6 @@ public class DivisionSensor {
     private String sensorCode;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "plant_id", referencedColumnName = "plant_id")
+    @JoinColumn(name = "division_id", referencedColumnName = "id")
     private Division division;
 }

@@ -36,16 +36,16 @@ public class PlantSpecies {
     @JoinColumn(name ="family_id", nullable = false)
     private SpeciesFamily family;
 
-    @Convert(converter = OptimalTemperature.class)
+    @Convert(converter = TemperatureConverter.class)
     private OptimalTemperature optimalTemperature;
 
-    @Convert(converter = OptimalLuminosity.class)
+    @Enumerated(EnumType.ORDINAL)
     private OptimalLuminosity optimalLuminosity;
 
-    @Convert(converter = OptimalHumidity.class)
+    @Convert(converter = HumidityConverter.class)
     private OptimalHumidity optimalHumidity;
 
-    @Convert(converter = WateringFrequency.class)
+    @Convert(converter = WateringFrequencyConverter.class)
     private WateringFrequency wateringFrequency;
 
     @Max(5)
@@ -62,7 +62,7 @@ public class PlantSpecies {
     @Column
     private Boolean flowering;
 
-    @Convert(converter = Season.class)
+    @Convert(converter = SeasonConverter.class)
     private WateringFrequency season;
 
     @Column

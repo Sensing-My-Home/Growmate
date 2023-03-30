@@ -32,6 +32,6 @@ public class PlantSensor {
     private String sensorCode;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "plant_id", referencedColumnName = "plant_id")
+    @JoinColumn(name = "plant_id", referencedColumnName = "id")
     private Plant plant;
 }

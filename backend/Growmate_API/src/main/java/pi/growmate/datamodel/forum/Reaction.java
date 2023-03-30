@@ -27,7 +27,7 @@ public class Reaction {
     @MapsId("commentID")
     private Comment comment;
 
-    @Column(columnDefinition = "DATETIME")
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime reactionDate;
 
     @Column

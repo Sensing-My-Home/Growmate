@@ -33,6 +33,6 @@ public class Task {
     @Column(nullable = false)
     private String description;
 
-    @Column(name = "task_date", columnDefinition = "DATETIME")
+    @Column(name = "task_date", columnDefinition = "TIMESTAMP")
     private LocalDateTime taskDate;
 }
