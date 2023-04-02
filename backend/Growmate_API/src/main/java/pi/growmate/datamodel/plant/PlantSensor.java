@@ -6,8 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pi.growmate.datamodel.plant.Plant;
+import pi.growmate.datamodel.measurements.SoilQualityMeasurement;
 import pi.growmate.datamodel.user.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table
@@ -34,4 +37,13 @@ public class PlantSensor {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "plant_id", referencedColumnName = "id")
     private Plant plant;
+
+    @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL)
+    private List<SoilQualityMeasurement> soilQualityMeasurements = new ArrayList<>();
+
+    // Getter methods that need to be ignored on JSON replies
+    @JsonIgnore
+    public void setSoilQualityMeasurements(List<SoilQualityMeasurement> soilQualityMeasurements) {
+        this.soilQualityMeasurements = soilQualityMeasurements;
+    }
 }

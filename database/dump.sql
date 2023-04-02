@@ -16,6 +16,62 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: air_quality_measurement; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.air_quality_measurement (
+    id bigint NOT NULL,
+    measurement double precision,
+    post_date timestamp without time zone,
+    sensor_id bigint NOT NULL
+);
+
+
+ALTER TABLE public.air_quality_measurement OWNER TO postgres;
+
+--
+-- Name: air_quality_measurement_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.air_quality_measurement_seq
+    START WITH 1
+    INCREMENT BY 50
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.air_quality_measurement_seq OWNER TO postgres;
+
+--
+-- Name: air_temperature_measurement; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.air_temperature_measurement (
+    id bigint NOT NULL,
+    measurement double precision,
+    post_date timestamp without time zone,
+    sensor_id bigint NOT NULL
+);
+
+
+ALTER TABLE public.air_temperature_measurement OWNER TO postgres;
+
+--
+-- Name: air_temperature_measurement_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.air_temperature_measurement_seq
+    START WITH 1
+    INCREMENT BY 50
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.air_temperature_measurement_seq OWNER TO postgres;
+
+--
 -- Name: comment; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -290,6 +346,34 @@ CREATE TABLE public.reaction (
 ALTER TABLE public.reaction OWNER TO postgres;
 
 --
+-- Name: soil_quality_measurement; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.soil_quality_measurement (
+    id bigint NOT NULL,
+    measurement double precision,
+    post_date timestamp without time zone,
+    sensor_id bigint NOT NULL
+);
+
+
+ALTER TABLE public.soil_quality_measurement OWNER TO postgres;
+
+--
+-- Name: soil_quality_measurement_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.soil_quality_measurement_seq
+    START WITH 1
+    INCREMENT BY 50
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.soil_quality_measurement_seq OWNER TO postgres;
+
+--
 -- Name: species_family; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -379,6 +463,248 @@ CREATE SEQUENCE public.utilizador_seq
 ALTER TABLE public.utilizador_seq OWNER TO postgres;
 
 --
+-- Data for Name: air_quality_measurement; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.air_quality_measurement (id, measurement, post_date, sensor_id) FROM stdin;
+\.
+COPY public.air_quality_measurement (id, measurement, post_date, sensor_id) FROM '$$PATH$$/3132.dat';
+
+--
+-- Data for Name: air_temperature_measurement; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.air_temperature_measurement (id, measurement, post_date, sensor_id) FROM stdin;
+\.
+COPY public.air_temperature_measurement (id, measurement, post_date, sensor_id) FROM '$$PATH$$/3133.dat';
+
+--
+-- Data for Name: comment; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.comment (id, post_date, text, title, plant_id, user_id) FROM stdin;
+\.
+COPY public.comment (id, post_date, text, title, plant_id, user_id) FROM '$$PATH$$/3134.dat';
+
+--
+-- Data for Name: disease; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.disease (id, common_name, description, scientific_name, solution) FROM stdin;
+\.
+COPY public.disease (id, common_name, description, scientific_name, solution) FROM '$$PATH$$/3135.dat';
+
+--
+-- Data for Name: disease_species; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.disease_species (species_id, disease_id) FROM stdin;
+\.
+COPY public.disease_species (species_id, disease_id) FROM '$$PATH$$/3136.dat';
+
+--
+-- Data for Name: division; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.division (id, luminosity, name, user_id) FROM stdin;
+\.
+COPY public.division (id, luminosity, name, user_id) FROM '$$PATH$$/3137.dat';
+
+--
+-- Data for Name: division_sensor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.division_sensor (id, name, sensor_code, division_id, user_id) FROM stdin;
+\.
+COPY public.division_sensor (id, name, sensor_code, division_id, user_id) FROM '$$PATH$$/3138.dat';
+
+--
+-- Data for Name: journal_entry; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.journal_entry (id, photo, task_date, text, title, plant_id, user_id) FROM stdin;
+\.
+COPY public.journal_entry (id, photo, task_date, text, title, plant_id, user_id) FROM '$$PATH$$/3139.dat';
+
+--
+-- Data for Name: plant; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id) FROM stdin;
+\.
+COPY public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id) FROM '$$PATH$$/3140.dat';
+
+--
+-- Data for Name: plant_sensor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.plant_sensor (id, name, sensor_code, user_id, plant_id) FROM stdin;
+\.
+COPY public.plant_sensor (id, name, sensor_code, user_id, plant_id) FROM '$$PATH$$/3141.dat';
+
+--
+-- Data for Name: plant_species; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.plant_species (id, common_name, cycle, difficulty, flowering, leaf_color, optimal_humidity, optimal_luminosity, optimal_temperature, scientific_name, season, photo, usual_size, watering_frequency, family_id) FROM stdin;
+\.
+COPY public.plant_species (id, common_name, cycle, difficulty, flowering, leaf_color, optimal_humidity, optimal_luminosity, optimal_temperature, scientific_name, season, photo, usual_size, watering_frequency, family_id) FROM '$$PATH$$/3142.dat';
+
+--
+-- Data for Name: reaction; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.reaction (reaction_date, type, comment_id, user_id) FROM stdin;
+\.
+COPY public.reaction (reaction_date, type, comment_id, user_id) FROM '$$PATH$$/3143.dat';
+
+--
+-- Data for Name: soil_quality_measurement; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.soil_quality_measurement (id, measurement, post_date, sensor_id) FROM stdin;
+\.
+COPY public.soil_quality_measurement (id, measurement, post_date, sensor_id) FROM '$$PATH$$/3144.dat';
+
+--
+-- Data for Name: species_family; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.species_family (id, name, opt_soil_mix) FROM stdin;
+\.
+COPY public.species_family (id, name, opt_soil_mix) FROM '$$PATH$$/3145.dat';
+
+--
+-- Data for Name: task; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.task (id, description, name, task_date, plant_id) FROM stdin;
+\.
+COPY public.task (id, description, name, task_date, plant_id) FROM '$$PATH$$/3146.dat';
+
+--
+-- Data for Name: utilizador; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.utilizador (id, address, dob, email, name, password, profile_photo, rating, user_type) FROM stdin;
+\.
+COPY public.utilizador (id, address, dob, email, name, password, profile_photo, rating, user_type) FROM '$$PATH$$/3147.dat';
+
+--
+-- Name: air_quality_measurement_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.air_quality_measurement_seq', 1, false);
+
+
+--
+-- Name: air_temperature_measurement_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.air_temperature_measurement_seq', 1, false);
+
+
+--
+-- Name: comment_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.comment_seq', 1, false);
+
+
+--
+-- Name: disease_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.disease_seq', 1, false);
+
+
+--
+-- Name: division_sensor_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.division_sensor_seq', 1, false);
+
+
+--
+-- Name: division_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.division_seq', 1, false);
+
+
+--
+-- Name: journal_entry_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.journal_entry_seq', 1, false);
+
+
+--
+-- Name: plant_sensor_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.plant_sensor_seq', 1, false);
+
+
+--
+-- Name: plant_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.plant_seq', 1, false);
+
+
+--
+-- Name: plant_species_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.plant_species_seq', 1, false);
+
+
+--
+-- Name: soil_quality_measurement_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.soil_quality_measurement_seq', 1, false);
+
+
+--
+-- Name: species_family_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.species_family_seq', 1, false);
+
+
+--
+-- Name: task_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.task_seq', 1, false);
+
+
+--
+-- Name: utilizador_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.utilizador_seq', 1, false);
+
+
+--
+-- Name: air_quality_measurement air_quality_measurement_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.air_quality_measurement
+    ADD CONSTRAINT air_quality_measurement_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: air_temperature_measurement air_temperature_measurement_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.air_temperature_measurement
+    ADD CONSTRAINT air_temperature_measurement_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: comment comment_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -459,6 +785,14 @@ ALTER TABLE ONLY public.reaction
 
 
 --
+-- Name: soil_quality_measurement soil_quality_measurement_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.soil_quality_measurement
+    ADD CONSTRAINT soil_quality_measurement_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: species_family species_family_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -491,6 +825,22 @@ ALTER TABLE ONLY public.utilizador
 
 
 --
+-- Name: air_temperature_measurement fk41u4nsy89voy1e9vs72l0ctii; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.air_temperature_measurement
+    ADD CONSTRAINT fk41u4nsy89voy1e9vs72l0ctii FOREIGN KEY (sensor_id) REFERENCES public.division_sensor(id);
+
+
+--
+-- Name: air_quality_measurement fk57swwrmull8tmmgwhw2w0s7ny; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.air_quality_measurement
+    ADD CONSTRAINT fk57swwrmull8tmmgwhw2w0s7ny FOREIGN KEY (sensor_id) REFERENCES public.division_sensor(id);
+
+
+--
 -- Name: plant fk5jd6laslwrgxjwa3l5otl9jkr; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -520,6 +870,14 @@ ALTER TABLE ONLY public.plant_species
 
 ALTER TABLE ONLY public.division
     ADD CONSTRAINT fk6ppwaynkyagxqq91smwnsqidd FOREIGN KEY (user_id) REFERENCES public.utilizador(id);
+
+
+--
+-- Name: soil_quality_measurement fk7bdgp1b6gbn8yn7guiw8iq3cb; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.soil_quality_measurement
+    ADD CONSTRAINT fk7bdgp1b6gbn8yn7guiw8iq3cb FOREIGN KEY (sensor_id) REFERENCES public.plant_sensor(id);
 
 
 --
@@ -638,4 +996,4 @@ ALTER TABLE ONLY public.reaction
 -- PostgreSQL database dump complete
 --
 
-\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00
+\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00
