@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/measurements/AirQualityMeasurement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/measurements/AirTemperatureMeasurement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/measurements/SoilQualityMeasurement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/division/DivisionSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/division/DivisionSensor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/PlantSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/PlantSensor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

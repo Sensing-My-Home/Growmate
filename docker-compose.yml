@@ -28,6 +28,8 @@ services:
     volumes:
       # copy the sql script to create tables
       - ./database/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+      # copy the sql script to fill tables
+      - ./database/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
     networks:
       - net
 
