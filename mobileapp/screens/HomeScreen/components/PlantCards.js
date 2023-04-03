@@ -1,7 +1,7 @@
-import {ScrollView} from "react-native";
+import { ScrollView } from "react-native";
 import PlantCardRow from "./PlantCardRow";
 
-export default function PlantCards({plants}){
+export default function PlantCards({ plants }) {
     const cardsPerRow = 2;
     const numRows = Math.ceil(plants.length / cardsPerRow);
     const rows = [];
@@ -12,7 +12,7 @@ export default function PlantCards({plants}){
     }
 
     return (
-        <ScrollView style={{maxHeight: 475}}>
+        <ScrollView style={{ maxHeight: 475 }}>
             {rows.map((row, index) => (
                 <PlantCardRow key={index} plantCards={row} />
             ))}
