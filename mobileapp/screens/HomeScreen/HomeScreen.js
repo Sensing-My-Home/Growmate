@@ -6,9 +6,11 @@ import WelcomeHeader from "./components/WelcomeHeader"
 import GreenBar from "../../components/GreenBar";
 import ThinDivider from "../../components/ThinDivider";
 import PlantCards from "./components/PlantCards";
+import { useTheme } from "react-native-paper";
 
 export default function HomeScreen() {
     const screenHeight = Dimensions.get('screen').height;
+    const theme = useTheme();
     const plants = [
         { name: 'Wendy', image: require('../../assets/plant.jpeg') },
         { name: 'Beth', image: require('../../assets/plant2.webp') },
@@ -17,7 +19,7 @@ export default function HomeScreen() {
         { name: 'John', image: require('../../assets/plant5.jpeg') }
     ];
     return (
-        <View style={{ height: screenHeight }}>
+        <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <GreenBar />
             <WelcomeHeader />
             <ThinDivider />

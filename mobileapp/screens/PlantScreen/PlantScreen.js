@@ -7,11 +7,14 @@ import PlantAvatar from "./components/PlantAvatar";
 import DeletePlant from "./components/DeletePlant";
 import CheckSpeciesButton from "./components/CheckSpeciesButton";
 import PlantSensorFlatList from "./components/PlantSensorsFlatList";
-import PlantSegmentedButtons from "./components/PlantSegmentedButtons";
+import PlantInformation from "./components/PlantInformation";
+import { Tabs, TabScreen } from 'react-native-paper-tabs';
+import { useTheme } from "react-native-paper";
 
 
 export default function PlantScreen({ route }) {
     const screenHeight = Dimensions.get('screen').height;
+    const theme = useTheme();
 
     const { name, image } = route.params;
 
@@ -38,28 +41,47 @@ export default function PlantScreen({ route }) {
     ];
 
     return (
-        <View style={{ height: screenHeight }}>
+        <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <GreenBar />
             <PlantHeader name={name} />
-            <PlantSegmentedButtons />
-            <ScrollView>
-                <View style={{paddingBottom: 100}}>
-                    <CheckSpeciesButton />
+            <Tabs
+                style={{backgroundColor: theme.colors.background}}
+                disableSwipe={true}
+            >
+                <TabScreen label="Info" icon="information">
+                    <ScrollView>
+                        <View style={{ paddingBottom: 100, paddingTop: 30 }}>
+                            <CheckSpeciesButton />
+                            <PlantAvatar
+                                image={image}
+                                species="Aloe Vera"
+                            />
+                            <DeletePlant
+                                name={name}
+                                visible={visible}
+                                showDialog={showDialog}
+                                hideDialog={hideDialog}
+                            />
+                            <PlantSensorFlatList
+                                sensors={sensors}
+                            />
+                            <PlantInformation />
+                        </View>
+                    </ScrollView>
+                </TabScreen>
+                <TabScreen label="Statistics " icon="compass">
                     <PlantAvatar
                         image={image}
                         species="Aloe Vera"
                     />
-                    <DeletePlant
-                        name={name}
-                        visible={visible}
-                        showDialog={showDialog}
-                        hideDialog={hideDialog}
+                </TabScreen>
+                <TabScreen label="Tasks " icon="compass">
+                    <PlantAvatar
+                        image={image}
+                        species="Aloe Vera"
                     />
-                    <PlantSensorFlatList
-                        sensors={sensors}
-                    />
-                </View>
-            </ScrollView>
+                </TabScreen>
+            </Tabs>
             <BottomMenu screenHeight={screenHeight} />
         </View>
     )
