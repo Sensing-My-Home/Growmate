@@ -38,7 +38,7 @@ export default function PlantSensorCard({ type, value }) {
                             style={{ backgroundColor: theme.colors.primary }}
                             color={theme.colors.background}
                         />
-                        <View style={{ marginHorizontal: 10 }}>
+                        <View style={{ marginHorizontal: 15 }}>
                             <Text variant="bodyLarge">{value}{type == 'temperature' ? "ºC" : "%"}</Text>
                             <Text variant="bodyMedium">{selectLabel(type)}</Text>
                         </View>

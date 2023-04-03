@@ -7,7 +7,7 @@ export default function CheckSpeciesButton() {
     const navigation = useNavigation();
 
     return (
-        <View style={{ alignItems: 'center', marginVertical: 25 }}>
+        <View style={{ alignItems: 'center', marginBottom: 30 }}>
             <Button
                 textColor={theme.colors.background}
                 buttonColor={theme.colors.primary}

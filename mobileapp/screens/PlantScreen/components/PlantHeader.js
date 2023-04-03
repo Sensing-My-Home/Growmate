@@ -8,7 +8,7 @@ export default function PlantHeader({ name }) {
     const theme = useTheme();
 
     return (
-        <View style={{ marginTop: 25, marginBottom: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
+        <View style={{ paddingVertical: 25, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
             <View style={{ flex: 1 }}>
                 <IconButton
                     icon='chevron-left'
