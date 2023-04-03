@@ -1,8 +1,11 @@
-import {View} from "react-native";
+import { View } from "react-native";
+import { useTheme } from "react-native-paper";
 import React from "react";
 
-export default function ThinDivider(){
+export default function ThinDivider() {
+    const theme = useTheme();
+
     return (
-        <View style={{marginHorizontal: 30,height:2, backgroundColor:'#7cb342'}}></View>
+        <View style={{ marginHorizontal: 30, height: 2, backgroundColor: theme.colors.primary }}></View>
     )
 }

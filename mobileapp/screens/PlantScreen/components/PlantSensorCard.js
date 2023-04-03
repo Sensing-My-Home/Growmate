@@ -1,8 +1,9 @@
 import { View, Dimensions } from "react-native";
-import { Button, Card, Text, Avatar } from 'react-native-paper';
+import { Card, Text, Avatar, useTheme } from 'react-native-paper';
 
 export default function PlantSensorCard({ type, value }) {
-    const cardSize = Dimensions.get('screen').width/2;
+    const cardSize = Dimensions.get('screen').width / 2;
+    const theme = useTheme();
 
     const selectIcon = (type) => {
         switch (type) {
@@ -27,17 +28,17 @@ export default function PlantSensorCard({ type, value }) {
     }
 
     return (
-        <View style={{width: cardSize}}>
+        <View style={{ width: cardSize }}>
             <Card>
                 <Card.Content>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Avatar.Icon
                             size={40}
                             icon={selectIcon(type)}
-                            style={{backgroundColor: "#689f38"}}
-                            color="white"
+                            style={{ backgroundColor: theme.colors.primary }}
+                            color={theme.colors.background}
                         />
-                        <View style={{marginHorizontal: 10}}>
+                        <View style={{ marginHorizontal: 10 }}>
                             <Text variant="bodyLarge">{value}{type == 'temperature' ? "ºC" : "%"}</Text>
                             <Text variant="bodyMedium">{selectLabel(type)}</Text>
                         </View>
