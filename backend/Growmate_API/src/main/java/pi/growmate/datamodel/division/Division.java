@@ -1,11 +1,9 @@
 package pi.growmate.datamodel.division;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import pi.growmate.datamodel.plant.Plant;
 import pi.growmate.datamodel.species.LuminosityConverter;
 import pi.growmate.datamodel.species.OptimalLuminosity;
@@ -20,13 +18,16 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class Division {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @JsonIgnore
-    @ManyToOne
+    @JsonIgnoreProperties("division")
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User owner;
 
@@ -46,5 +47,9 @@ public class Division {
     @JsonIgnore
     public List<Plant> getPlantsOnDivision() {
         return plantsOnDivision;
+    }
+    @JsonIgnore
+    public DivisionSensor getSensor() {
+        return sensor;
     }
 }

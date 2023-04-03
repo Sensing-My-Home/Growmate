@@ -82,4 +82,9 @@ public class Plant {
     public List<Task> getPlantTasks() {
         return plantTasks;
     }
+
+    @JsonIgnore
+    public PlantSensor getSensor() {
+        return sensor;
+    }
 }

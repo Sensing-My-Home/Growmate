@@ -32,10 +32,10 @@ VALUES (1, 'Living Room Temperature Sensor', 'TMP123', 1, 1),
        (4, 'Bedroom Humidity Sensor', 'HMD789', 2, 1);
 
 INSERT INTO public.plant (id, name, plant_condition, plantation_date, division_id, user_id, species_id)
-VALUES (1, 'Anthony', 4, '2022-01-01', 1, 1, 1),
-       (2, 'Wendy', 3, '2022-03-15', 1, 1, 7),
+VALUES (1, 'Anthony', 2, '2022-01-01', 1, 1, 1),
+       (2, 'Wendy', 2, '2022-03-15', 1, 1, 7),
        (3, 'Beth', 2, '2022-04-20', 2, 1, 4),
-       (4, 'Juliana', 5, '2022-02-10', 2, 1, 5);
+       (4, 'Juliana', 2, '2022-02-10', 2, 1, 5);
 
 
 INSERT INTO public.plant_sensor (id, name, sensor_code, user_id, plant_id)
