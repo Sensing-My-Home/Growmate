@@ -55,8 +55,8 @@ public class Plant {
     @JoinColumn(name ="division_id", nullable = false)
     private Division division;
 
-    @OneToOne(mappedBy = "plant")
-    private PlantSensor sensor;
+    @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PlantSensor> sensors;
 
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
     private List<Comment> commentsOnPlant = new ArrayList<>();
@@ -84,7 +84,7 @@ public class Plant {
     }
 
     @JsonIgnore
-    public PlantSensor getSensor() {
-        return sensor;
+    public List<PlantSensor> getSensors() {
+        return sensors;
     }
 }

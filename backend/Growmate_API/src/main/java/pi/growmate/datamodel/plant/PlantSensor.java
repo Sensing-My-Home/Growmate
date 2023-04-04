@@ -34,8 +34,9 @@ public class PlantSensor {
     @Column(name = "sensor_code", nullable = false)
     private String sensorCode;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "plant_id", referencedColumnName = "id")
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "plant_id")
     private Plant plant;
 
     @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL)

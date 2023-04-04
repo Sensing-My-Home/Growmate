@@ -26,8 +26,7 @@ public class Division {
     private Long id;
 
     @JsonIgnore
-    @JsonIgnoreProperties("division")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User owner;
 
@@ -37,11 +36,11 @@ public class Division {
     @Convert(converter = LuminosityConverter.class)
     private OptimalLuminosity luminosity;
 
-    @OneToMany(mappedBy = "division", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "division", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Plant> plantsOnDivision = new ArrayList<>();
 
-    @OneToOne(mappedBy = "division")
-    private DivisionSensor sensor;
+    @OneToMany(mappedBy = "division", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DivisionSensor> sensors;
 
     // Getter methods that need to be ignored on JSON replies
     @JsonIgnore
@@ -49,7 +48,7 @@ public class Division {
         return plantsOnDivision;
     }
     @JsonIgnore
-    public DivisionSensor getSensor() {
-        return sensor;
+    public List<DivisionSensor> getSensors() {
+        return sensors;
     }
 }

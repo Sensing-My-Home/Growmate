@@ -5,14 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.plant.Plant;
+import pi.growmate.datamodel.species.OptimalLuminosity;
 import pi.growmate.datamodel.user.User;
 import pi.growmate.exceptions.ResourceNotFoundException;
 import pi.growmate.repositories.division.DivisionRepository;
 import pi.growmate.repositories.plant.PlantRepository;
 import pi.growmate.repositories.user.UserRepository;
+import pi.growmate.utils.SuccessfulRequest;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 @Slf4j
@@ -26,6 +27,7 @@ public class DivisionService {
     private PlantRepository plantRepository;
 
     public List<Division> getUserDivisions(Long userID) throws ResourceNotFoundException {
+        log.info(String.valueOf(userID));
         User user = userRepository.findById(userID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
 
         for (Division d : user.getDivisions()) {
@@ -79,10 +81,14 @@ public class DivisionService {
     public Division deleteDivision(Long userID, Long divisionID) throws ResourceNotFoundException {
         User user = userRepository.findById(userID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
 
+        /*
         Division div = user.getDivisions().stream()
                 .filter(d -> d.getId().equals(divisionID))
                 .findFirst()
                 .orElseThrow(() -> new ResourceNotFoundException("Division with ID: " + divisionID + " not found."));
+        */
+
+        Division div = divisionRepository.findById(divisionID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
 
         List<Division> userDivisions = user.getDivisions();
         userDivisions.remove(div);
@@ -92,5 +98,25 @@ public class DivisionService {
 
         divisionRepository.delete(div);
         return div;
+    }
+
+    public SuccessfulRequest addNewDivision(Long userID, String name, int luminosityType) throws ResourceNotFoundException {
+        User user = userRepository.findById(userID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
+        Division div = new Division();
+
+        switch (luminosityType) {
+            case 0 -> div.setLuminosity(OptimalLuminosity.LOW);
+            case 1 -> div.setLuminosity(OptimalLuminosity.MEDIUM);
+            case 2 -> div.setLuminosity(OptimalLuminosity.HIGH);
+            case 3 -> div.setLuminosity(OptimalLuminosity.SUNNY);
+            default -> throw new IllegalArgumentException("Invalid luminosity converter integer: " + luminosityType);
+        };
+
+        div.setName(name);
+        div.setOwner(user);
+
+        divisionRepository.save(div);
+
+        return new SuccessfulRequest("Division added successfully!");
     }
 }
