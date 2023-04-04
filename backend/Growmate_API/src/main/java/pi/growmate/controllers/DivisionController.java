@@ -14,6 +14,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("growmate/user")
+@CrossOrigin
 public class DivisionController {
 
     @Autowired

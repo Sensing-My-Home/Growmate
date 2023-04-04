@@ -27,48 +27,32 @@ public class DivisionService {
     private PlantRepository plantRepository;
 
     public List<Division> getUserDivisions(Long userID) throws ResourceNotFoundException {
-        log.info(String.valueOf(userID));
-        User user = userRepository.findById(userID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
-
-        for (Division d : user.getDivisions()) {
-            log.info("Element: {}", d.toString());
-        }
+        User user = this.checkIfUserExists(userID);
 
         return user.getDivisions();
     }
 
     public List<Plant> getPlantsOnDivision(Long userID, Long divisionID) throws ResourceNotFoundException {
-        User user = userRepository.findById(userID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
-
-        Division div = user.getDivisions().stream()
-                .filter(d -> d.getId().equals(divisionID))
-                .findFirst()
-                .orElseThrow(() -> new ResourceNotFoundException("Division with ID: " + divisionID + " not found."));
+        User user = this.checkIfUserExists(userID);
+        Division div = this.getDivision(user, divisionID);
 
         return div.getPlantsOnDivision();
     }
 
     public Plant updatePlantDivisionStatus(Long userID, Long divisionID, Long plantID, Long newDivisionID) throws ResourceNotFoundException {
-        User user = userRepository.findById(userID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
+        User user = this.checkIfUserExists(userID);
+        Division oldDiv = this.getDivision(user, divisionID);
 
-        Division div = user.getDivisions().stream()
-                .filter(d -> d.getId().equals(divisionID))
-                .findFirst()
-                .orElseThrow(() -> new ResourceNotFoundException("Division with ID: " + divisionID + " not found."));
-
-        Plant plant = div.getPlantsOnDivision().stream()
+        Plant plant = oldDiv.getPlantsOnDivision().stream()
                 .filter(p -> p.getId().equals(plantID))
                 .findFirst()
                 .orElseThrow(() -> new ResourceNotFoundException("Plant with ID: " + plantID + " not found."));
 
         if(newDivisionID != null){
-            Division newDiv = user.getDivisions().stream()
-                    .filter(d -> d.getId().equals(newDivisionID))
-                    .findFirst()
-                    .orElseThrow(() -> new ResourceNotFoundException("Division with ID: " + newDivisionID + " not found."));
+            Division newDiv = this.getDivision(user, newDivisionID);
 
             plant.setDivision(newDiv);
-            div.getPlantsOnDivision().remove(plant);
+            oldDiv.getPlantsOnDivision().remove(plant);
             newDiv.getPlantsOnDivision().add(plant);
         }else{
             plant.setDivision(null);
@@ -79,29 +63,20 @@ public class DivisionService {
     }
 
     public Division deleteDivision(Long userID, Long divisionID) throws ResourceNotFoundException {
-        User user = userRepository.findById(userID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
-
-        /*
-        Division div = user.getDivisions().stream()
-                .filter(d -> d.getId().equals(divisionID))
-                .findFirst()
-                .orElseThrow(() -> new ResourceNotFoundException("Division with ID: " + divisionID + " not found."));
-        */
-
-        Division div = divisionRepository.findById(divisionID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
+        User user = this.checkIfUserExists(userID);
+        Division div = this.getDivision(user, divisionID);
 
         List<Division> userDivisions = user.getDivisions();
         userDivisions.remove(div);
         user.setDivisions(userDivisions);
         userRepository.save(user);
 
-
         divisionRepository.delete(div);
         return div;
     }
 
     public SuccessfulRequest addNewDivision(Long userID, String name, int luminosityType) throws ResourceNotFoundException {
-        User user = userRepository.findById(userID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
+        User user = this.checkIfUserExists(userID);
         Division div = new Division();
 
         switch (luminosityType) {
@@ -118,5 +93,18 @@ public class DivisionService {
         divisionRepository.save(div);
 
         return new SuccessfulRequest("Division added successfully!");
+    }
+
+
+    // Auxilliary functions
+    private User checkIfUserExists(long userID) throws ResourceNotFoundException {
+         return userRepository.findById(userID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
+    }
+
+    private Division getDivision(User user, long divisionID) throws ResourceNotFoundException {
+        return user.getDivisions().stream()
+                .filter(d -> d.getId().equals(divisionID))
+                .findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException("Division with ID: " + divisionID + " not found."));
     }
 }
