@@ -12,7 +12,7 @@ export default function PlantCards({ plants }) {
     }
 
     return (
-        <ScrollView style={{ maxHeight: 475 }}>
+        <ScrollView style={{ maxHeight: 435 }}>
             {rows.map((row, index) => (
                 <PlantCardRow key={index} plantCards={row} />
             ))}

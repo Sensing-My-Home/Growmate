@@ -7,8 +7,8 @@ export default function BottomMenu({ screenHeight }) {
 
     return (
         <View style={{
-            width: "100%", backgroundColor: theme.colors.primaryContainer, height: 65, position: 'absolute',
-            top: screenHeight - 110, flexDirection: "row"
+            width: "100%", backgroundColor: theme.colors.primaryContainer, height: screenHeight / 13, position: 'absolute',
+            bottom: screenHeight/17 , flexDirection: "row"
         }}>
             <View style={{ position: 'relative', flex: 1, paddingLeft: 20 }}>
                 <IconButton icon={"leaf"} iconColor={theme.colors.background} size={35} />
