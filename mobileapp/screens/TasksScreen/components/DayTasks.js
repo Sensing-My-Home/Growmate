@@ -11,10 +11,12 @@ export default function DayTasks({weekday, day, tasks}){
                     <Text variant={"headlineSmall"} style={{ color: theme.colors.primary, fontWeight: '700'}}>
                         {weekday}
                     </Text>
-                    <Text variant={"bodyMedium"}
-                          style={{ color: theme.colors.secondary, fontWeight: '500'}}>
-                        {day}
-                    </Text>
+                    {day === "none" ? null :
+                        <Text variant={"bodyMedium"}
+                              style={{ color: theme.colors.secondary, fontWeight: '500'}}>
+                            {day}
+                        </Text>
+                    }
                 </View>
                 <Card style={{backgroundColor: theme.colors.background, width: 230}}>
                     <Card.Content>
