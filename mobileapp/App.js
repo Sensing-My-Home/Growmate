@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import myColors from "./colors"
 import TasksScreen from "./screens/TasksScreen/TasksScreen";
+import SpeciesProfileScreen from "./screens/SpeciesProfileScreen/SpeciesProfileScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,10 @@ export default function App() {
           <Stack.Screen
               name="Tasks"
               component={TasksScreen}
+          />
+          <Stack.Screen
+              name="SpeciesProfile"
+              component={SpeciesProfileScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
