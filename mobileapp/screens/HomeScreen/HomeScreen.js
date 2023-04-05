@@ -89,7 +89,7 @@ export default function HomeScreen() {
                 </View>
             }
             <PlusButton/>
-            <BottomMenu screenHeight={screenHeight} />
+            <BottomMenu screenHeight={screenHeight} active={"leaf"} />
         </View>
     )
 }
