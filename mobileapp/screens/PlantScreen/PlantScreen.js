@@ -40,7 +40,7 @@ export default function PlantScreen({ route }) {
         <View style={{ height: screenHeight }}>
             <GreenBar />
             <PlantHeader name={name} />
-            <CheckSpeciesButton />
+            <CheckSpeciesButton species={"Aloe Vera"} />
             <PlantAvatar
                 image={image}
                 species="Aloe Vera"
