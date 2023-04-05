@@ -12,6 +12,8 @@ import CheckSpeciesButton from "./components/CheckSpeciesButton";
 import PlantInformation from "./components/PlantInformation";
 import SensorsCarousel from "./components/SensorsCarousel";
 import PlantStatus from "./components/PlantStatus";
+import SensorGraph from "./components/SensorGraph";
+import SensorGraphStack from "./components/SensorGraphStack";
 
 export default function PlantScreen({ route }) {
     const screenHeight = Dimensions.get('screen').height;
@@ -23,23 +25,7 @@ export default function PlantScreen({ route }) {
     const showDialog = () => setVisible(true);
     const hideDialog = () => setVisible(false);
 
-    const sensors = [
-        {
-            id: 0,
-            type: 'soil',
-            value: '56'
-        },
-        {
-            id: 1,
-            type: 'temperature',
-            value: '18'
-        },
-        {
-            id: 2,
-            type: 'air',
-            value: '78'
-        },
-    ];
+    
 
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
@@ -62,17 +48,16 @@ export default function PlantScreen({ route }) {
                                 showDialog={showDialog}
                                 hideDialog={hideDialog}
                             />
-                            <SensorsCarousel sensors={sensors}/>
+                            <SensorsCarousel />
                             <PlantStatus name={name}/>
                             <PlantInformation name={name} />
                         </View>
                     </ScrollView>
                 </TabScreen>
                 <TabScreen label="Statistics " icon="chart-line">
-                    <PlantAvatar
-                        image={image}
-                        species="Aloe Vera"
-                    />
+                    <ScrollView> 
+                        <SensorGraphStack />
+                    </ScrollView>
                 </TabScreen>
                 <TabScreen label="Tasks " icon="pencil">
                     <PlantAvatar

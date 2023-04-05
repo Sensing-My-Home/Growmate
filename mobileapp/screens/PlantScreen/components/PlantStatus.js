@@ -43,7 +43,7 @@ export default function PlantStatus({ name }) {
     return (
         <View style={{ paddingBottom: 30, flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 30 }}>
             <View style={{ flex: 1 }}>
-                <Avatar.Icon size={100} icon={getEmote(status)} style={{ backgroundColor: getColor(status) }} />
+                <Avatar.Icon size={90} icon={getEmote(status)} style={{ backgroundColor: getColor(status) }} />
             </View>
             <View style={{ flex: 2 }}>
                 <Text variant="headlineSmall" >{name} is feeling {status}</Text>

@@ -1,11 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import Carousel from 'react-native-snap-carousel';
+import Carousel from "react-native-reanimated-carousel";
 import PlantSensorCard from './PlantSensorCard';
 import { View, Dimensions } from 'react-native';
 
 const { width: screenWidth } = Dimensions.get('window');
+const { height: screenHeight } = Dimensions.get('window');
 
-export default function SensorsCarousel({ sensors }) {
+export default function SensorsCarousel() {
+
+    const sensors = [
+        {
+            id: 0,
+            type: 'soil',
+            value: '56'
+        },
+        {
+            id: 1,
+            type: 'temperature',
+            value: '18'
+        },
+        {
+            id: 2,
+            type: 'air',
+            value: '78'
+        },
+    ];
 
     const [entries, setEntries] = useState([]);
 
@@ -15,25 +34,25 @@ export default function SensorsCarousel({ sensors }) {
 
     const renderItem = ({ item, index }) => {
         return (
-            <View style={{ paddingBottom: 30 }}>
-                <PlantSensorCard
-                    key={index}
-                    type={item.type}
-                    value={item.value}
-                />
-            </View>
+            <PlantSensorCard
+                key={index}
+                type={item.type}
+                value={item.value}
+            />
         );
     };
 
     return (
-        <View>
+        <View style={{ height: screenHeight / 6 }}>
             <Carousel
-                sliderWidth={screenWidth}
-                itemWidth={screenWidth / 2}
+                width={screenWidth}
                 data={entries}
                 renderItem={renderItem}
-                inactiveSlideOpacity={1}
-                inactiveSlideScale={0.7}
+                mode="parallax"
+                modeConfig={{
+                    parallaxScrollingScale: 0.9,
+                    parallaxScrollingOffset: 200,
+                }}
             />
         </View>
     );
