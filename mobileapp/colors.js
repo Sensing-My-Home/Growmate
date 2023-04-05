@@ -1,7 +1,7 @@
 export default colors = {
     "primary": "rgb(56, 107, 1)",
     "onPrimary": "rgb(255, 255, 255)",
-    "primaryContainer": "rgb(183, 244, 129)",
+    "primaryContainer": "rgb(156, 204, 101)",
     "onPrimaryContainer": "rgb(13, 32, 0)",
     "secondary": "rgb(87, 98, 74)",
     "onSecondary": "rgb(255, 255, 255)",
@@ -15,7 +15,7 @@ export default colors = {
     "onError": "rgb(255, 255, 255)",
     "errorContainer": "rgb(255, 218, 214)",
     "onErrorContainer": "rgb(65, 0, 2)",
-    "background": "rgb(253, 253, 245)",
+    "background": "rgb(255, 255, 255)",
     "onBackground": "rgb(26, 28, 24)",
     "surface": "rgb(253, 253, 245)",
     "onSurface": "rgb(26, 28, 24)",
@@ -38,5 +38,8 @@ export default colors = {
     },
     "surfaceDisabled": "rgba(26, 28, 24, 0.12)",
     "onSurfaceDisabled": "rgba(26, 28, 24, 0.38)",
-    "backdrop": "rgba(45, 50, 40, 0.4)"
+    "backdrop": "rgba(45, 50, 40, 0.4)",
+    "golden": "rgb(240, 203, 57)",
+    "darkRed": "rgb(139, 0, 0)",
+    "opaqueGrey": "rgba(235,235,235,0.8)"
 }
