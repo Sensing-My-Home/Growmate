@@ -6,7 +6,7 @@ export default function DeletePlant({ name, hideDialog, visible, showDialog }) {
 
     return (
         <>
-            <View style={{ alignItems: 'center', marginVertical: 10 }}>
+            <View style={{ alignItems: 'center', paddingBottom: 30}}>
                 <Button
                     textColor={theme.colors.background}
                     buttonColor={theme.colors.error}
