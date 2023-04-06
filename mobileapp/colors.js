@@ -41,5 +41,6 @@ export default colors = {
     "backdrop": "rgba(45, 50, 40, 0.4)",
     "golden": "rgb(240, 203, 57)",
     "darkRed": "rgb(139, 0, 0)",
-    "opaqueGrey": "rgba(235,235,235,0.8)"
+    "opaqueGrey": "rgba(235,235,235,0.8)",
+    "placeholderImageBackground": "rgba(174, 208, 174, 0.6)"
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { View, Dimensions } from "react-native";
 import BottomMenu from "../../components/BottomMenu";
 import SearchBar from "../../components/SearchBar";
@@ -14,6 +14,7 @@ import SensorRow from "./components/SensorRow";
 export default function HomeScreen() {
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
+    const [selectedTab, setSelectedTab] = useState(0)
     const premium = true;
     const plants = [
         { name: 'Wendy', image: require('../../assets/plant.jpeg'), state: "good"},
@@ -63,6 +64,7 @@ export default function HomeScreen() {
                     defaultIndex={0} // default = 0
                     style={{ backgroundColor:'#fff' }} // works the same as AppBar in react-native-paper
                     disableSwipe={true} // (default=false) disable swipe to left/right gestures
+                    onChangeIndex={(newIndex) => {setSelectedTab(newIndex)}}
                 >
                     <TabScreen label="Inventory">
                         <View>
@@ -84,11 +86,11 @@ export default function HomeScreen() {
                 </Tabs>
                 :
                 <View>
-                    <SearchBar />
+                    <SearchBar text={"Search a plant or species!"} />
                     <PlantCards plants={plants} />
                 </View>
             }
-            <PlusButton/>
+            <PlusButton index={selectedTab} />
             <BottomMenu screenHeight={screenHeight} active={"leaf"} />
         </View>
     )

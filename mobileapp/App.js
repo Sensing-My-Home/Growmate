@@ -6,8 +6,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import myColors from "./colors"
 import TasksScreen from "./screens/TasksScreen/TasksScreen";
 import SpeciesProfileScreen from "./screens/SpeciesProfileScreen/SpeciesProfileScreen";
+
+import AddPlantScreen from "./screens/AddPlantScreen/AddPlantScreen";
+import AssociatePlantScreen from "./screens/AssociatePlantScreen/AssociatePlantScreen";
+
 import 'react-native-gesture-handler';
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +45,14 @@ export default function App() {
           <Stack.Screen
               name="SpeciesProfile"
               component={gestureHandlerRootHOC(SpeciesProfileScreen)}
+          />
+          <Stack.Screen
+              name="AddPlant"
+              component={AddPlantScreen}
+          />
+          <Stack.Screen
+              name="AssociatePlant"
+              component={AssociatePlantScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
