@@ -19,7 +19,7 @@ export default function PlantSensorFlatList({sensors}) {
         <FlatList
             horizontal
             pagingEnabled
-            contentContainerStyle={{ paddingVertical: 50 }}
+            contentContainerStyle={{ paddingBottom: 25 }}
             data={sensors}
             renderItem={({ item, index }) => {
                 return (renderSensor(item))

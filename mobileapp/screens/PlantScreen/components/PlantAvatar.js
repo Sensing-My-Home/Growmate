@@ -5,7 +5,7 @@ export default function PlantAvatar({ image, species }) {
     const theme = useTheme();
 
     return (
-        <View style={{ alignItems: 'center', marginVertical: 25 }}>
+        <View style={{ alignItems: 'center', paddingBottom: 25 }}>
             <Avatar.Image
                 size={150}
                 source={image}
