@@ -10,6 +10,7 @@ export default function PlantCardRow({ plantCards }) {
                     key={index}
                     name={plantCard.name}
                     image={plantCard.image}
+                    state={plantCard.state}
                 />
             ))}
         </View>

@@ -6,6 +6,6 @@ export default function ThinDivider() {
     const theme = useTheme();
 
     return (
-        <View style={{ marginHorizontal: 30, height: 2, backgroundColor: theme.colors.primary }}></View>
+        <View style={{ marginHorizontal: 30, marginTop: 5 ,height: 1, backgroundColor: theme.colors.primary }}></View>
     )
 }

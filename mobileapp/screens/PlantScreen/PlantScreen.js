@@ -37,7 +37,7 @@ export default function PlantScreen({ route }) {
                 <TabScreen label="Info" icon="information">
                     <ScrollView>
                         <View style={{ paddingBottom: 100, paddingTop: 30 }}>
-                            <CheckSpeciesButton />
+                            <CheckSpeciesButton species={"Aloe Vera"}/>
                             <PlantAvatar
                                 image={image}
                                 species="Aloe Vera"

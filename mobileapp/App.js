@@ -3,6 +3,9 @@ import HomeScreen from "./screens/HomeScreen/HomeScreen"
 import PlantScreen from "./screens/PlantScreen/PlantScreen";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import myColors from "./colors"
+import TasksScreen from "./screens/TasksScreen/TasksScreen";
+import SpeciesProfileScreen from "./screens/SpeciesProfileScreen/SpeciesProfileScreen";
 import myColors from "./colors";
 import 'react-native-gesture-handler';
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
@@ -16,23 +19,31 @@ export default function App() {
   }
 
   return (
-      <PaperProvider theme={theme}>
-        <NavigationContainer>
-          <Stack.Navigator
-            screenOptions={{
-              headerShown: false
-            }}
-          >
-            <Stack.Screen
-              name="Home"
-              component={gestureHandlerRootHOC(HomeScreen)}
-            />
-            <Stack.Screen
-              name="Plant"
-              component={gestureHandlerRootHOC(PlantScreen)}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </PaperProvider>
+    <PaperProvider theme={theme}>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false
+          }}
+        >
+          <Stack.Screen
+            name="Home"
+            component={gestureHandlerRootHOC(HomeScreen)}
+          />
+          <Stack.Screen
+            name="Plant"
+            component={gestureHandlerRootHOC(PlantScreen)}
+          />
+          <Stack.Screen
+              name="Tasks"
+              component={gestureHandlerRootHOC(TasksScreen)}
+          />
+          <Stack.Screen
+              name="SpeciesProfile"
+              component={gestureHandlerRootHOC(SpeciesProfileScreen)}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
   );
 }
