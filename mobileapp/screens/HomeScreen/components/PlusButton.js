@@ -1,12 +1,25 @@
 import React from 'react';
 import {Dimensions, View} from 'react-native';
 import {IconButton, useTheme} from 'react-native-paper';
+import {useNavigation} from "@react-navigation/native";
 
-export default function PlusButton({ onPress }) {
+export default function PlusButton({ index }) {
     const screenHeight = Dimensions.get('screen').height;
     const screenWidth = Dimensions.get('screen').width;
+    const navigation = useNavigation();
     const theme = useTheme();
-
+    let page;
+    switch (index) {
+        case 0:
+            page = "AddPlant"
+            break
+        case 1:
+            page = "AddDivision"
+            break
+        case 2:
+            page = "AddSensor"
+            break
+    }
     return (
         <View
             style={{
@@ -22,7 +35,11 @@ export default function PlusButton({ onPress }) {
                 elevation: 5, // to add shadow
             }}
         >
-            <IconButton icon="plus" iconColor={theme.colors.background} size={24} onPress={onPress}/>
+            <IconButton icon="plus" iconColor={theme.colors.background} size={24} onPress={
+                () => {
+                    navigation.navigate("AddPlant");
+                }
+            }/>
         </View>
     );
 };
