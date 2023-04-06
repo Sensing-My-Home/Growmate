@@ -6,7 +6,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import myColors from "./colors"
 import TasksScreen from "./screens/TasksScreen/TasksScreen";
 import SpeciesProfileScreen from "./screens/SpeciesProfileScreen/SpeciesProfileScreen";
-import myColors from "./colors";
 import 'react-native-gesture-handler';
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 
