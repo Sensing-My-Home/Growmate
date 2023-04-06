@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/division/DivisionSensorRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/plant/PlantSensorRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/TaskType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/TaskTypeConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/DivisionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/DivisionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/MeasurementsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/SensorsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/DivisionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/DivisionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/MeasurementsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/SensorsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/forum/JournalEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/forum/JournalEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +22,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -111,6 +113,7 @@
       <workItem from="1680620248128" duration="1892000" />
       <workItem from="1680628713900" duration="599000" />
       <workItem from="1680643712910" duration="2823000" />
+      <workItem from="1680791016299" duration="4218000" />
     </task>
     <servers />
   </component>

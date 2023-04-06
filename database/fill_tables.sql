@@ -43,3 +43,14 @@ VALUES (1, 'Anthony Sensor', 'ANT123', 1, 1),
        (2, 'Wendy Sensor', 'WEN123', 1, 2),
        (3, 'Beth Sensor', 'BTH123', 1, 3),
        (4, 'Juliana Sensor', 'JUL123', 1, 4);
+       
+INSERT INTO public.task VALUES (1,'Check if Anthony is ready for watering by verifying the first 2cm of the soil mixture for dryness', 'Water Anthony',
+                         '2023-04-13', 0, 1),
+                        (2, 'Change Wendy soil mix. Remember she is a Orchid, so use their soil mix.', 'Change Wendy soil mix',
+                         '2023-04-13', 1, 2),
+                     (3, 'Beth is a little too warm. Consider changing her location.', 'Move Beth',
+                         '2023-04-14', 2, 3),
+                     (4, 'Check the leafs of Juliana. Annotate her condition on her journal', 'Check Juliana''s condition ',
+                         '2023-04-15', 3, 4),
+                     (5, 'Time to give Anthony some new fertilizer!', 'Fertilize Anthony',
+                         '2023-04-16', 4, 1);

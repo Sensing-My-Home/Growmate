@@ -10,6 +10,7 @@ import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.forum.Comment;
 import pi.growmate.datamodel.forum.JournalEntry;
 import pi.growmate.datamodel.species.PlantSpecies;
+import pi.growmate.datamodel.task.Task;
 import pi.growmate.datamodel.user.User;
 
 import java.sql.Date;

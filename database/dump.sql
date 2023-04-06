@@ -206,7 +206,7 @@ ALTER TABLE public.division_seq OWNER TO postgres;
 CREATE TABLE public.journal_entry (
     id bigint NOT NULL,
     photo character varying(255),
-    task_date timestamp without time zone,
+    post_date timestamp without time zone,
     text character varying(255) NOT NULL,
     title character varying(255) NOT NULL,
     plant_id bigint NOT NULL,
@@ -408,7 +408,8 @@ CREATE TABLE public.task (
     id bigint NOT NULL,
     description character varying(255) NOT NULL,
     name character varying(255) NOT NULL,
-    task_date timestamp without time zone,
+    task_date date,
+    task_type integer,
     plant_id bigint
 );
 
@@ -862,7 +863,8 @@ ALTER TABLE ONLY public.division_sensor
 
 ALTER TABLE ONLY public.reaction
     ADD CONSTRAINT fkskbqddo2ffvogxr3f22awp2wa FOREIGN KEY (comment_id) REFERENCES public.comment(id);
-       
+
+
 --
 -- PostgreSQL database dump complete
 --
