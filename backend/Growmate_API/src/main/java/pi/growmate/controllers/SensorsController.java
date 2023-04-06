@@ -5,12 +5,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.division.DivisionSensor;
+import pi.growmate.datamodel.measurements.Measurement;
 import pi.growmate.datamodel.plant.PlantSensor;
 import pi.growmate.exceptions.ResourceNotFoundException;
 import pi.growmate.services.SensorsService;
 import pi.growmate.utils.SuccessfulRequest;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("growmate/user")
@@ -45,6 +47,12 @@ public class SensorsController {
                                                           @RequestParam(name = "sensorCode") String code,
                                                           @RequestParam(name = "ownerID") long ownerID) throws ResourceNotFoundException {
         return ResponseEntity.ok().body(sensorsService.addNewSensor(userID, type, name, code, ownerID));
+    }
+
+    // Getting the last measurements from all sensors related to a user
+    @PostMapping("/{userID}/sensors/last")
+    public ResponseEntity<Map<String, Measurement>> returnLatestMeasurements(@PathVariable(value = "userID") Long userID) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(sensorsService.getLatestMeasurements(userID));
     }
 
 }

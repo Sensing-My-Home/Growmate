@@ -16,19 +16,9 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SoilQualityMeasurement {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+public class SoilQualityMeasurement extends Measurement {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="sensor_id", nullable = false)
     private PlantSensor sensor;
-
-    @Column
-    private Double measurement;
-
-    @Column(columnDefinition = "TIMESTAMP")
-    private LocalDateTime postDate;
 }
