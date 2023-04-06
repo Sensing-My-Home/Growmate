@@ -12,8 +12,8 @@ import CheckSpeciesButton from "./components/CheckSpeciesButton";
 import PlantInformation from "./components/PlantInformation";
 import SensorsCarousel from "./components/SensorsCarousel";
 import PlantStatus from "./components/PlantStatus";
-import SensorGraph from "./components/SensorGraph";
 import SensorGraphStack from "./components/SensorGraphStack";
+import PlantTaskDndBoard from "./components/PlantTaskDndBoard";
 
 export default function PlantScreen({ route }) {
     const screenHeight = Dimensions.get('screen').height;
@@ -55,15 +55,10 @@ export default function PlantScreen({ route }) {
                     </ScrollView>
                 </TabScreen>
                 <TabScreen label="Statistics " icon="chart-line">
-                    <ScrollView> 
-                        <SensorGraphStack />
-                    </ScrollView>
+                    <SensorGraphStack />
                 </TabScreen>
                 <TabScreen label="Tasks " icon="pencil">
-                    <PlantAvatar
-                        image={image}
-                        species="Aloe Vera"
-                    />
+                    <PlantTaskDndBoard />
                 </TabScreen>
             </Tabs>
             <BottomMenu screenHeight={screenHeight} />
