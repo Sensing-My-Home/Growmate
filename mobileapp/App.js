@@ -7,6 +7,7 @@ import myColors from "./colors"
 import TasksScreen from "./screens/TasksScreen/TasksScreen";
 import SpeciesProfileScreen from "./screens/SpeciesProfileScreen/SpeciesProfileScreen";
 import AddPlantScreen from "./screens/AddPlantScreen/AddPlantScreen";
+import AssociatePlantScreen from "./screens/AssociatePlantScreen/AssociatePlantScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,10 @@ export default function App() {
           <Stack.Screen
               name="AddPlant"
               component={AddPlantScreen}
+          />
+          <Stack.Screen
+              name="AssociatePlant"
+              component={AssociatePlantScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>

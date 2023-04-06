@@ -16,11 +16,11 @@ export default function AddPlantScreen() {
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <GreenBar />
-            <AddPlantHeader/>
+            <AddPlantHeader text={"Let us know the plant's details"}/>
             <SearchBarSpecies/>
             <AddPhoto/>
             <PlantName/>
-            <NextButton/>
+            <NextButton text={"Next"} page={"AssociatePlant"} reverse={false}/>
             <BottomMenu screenHeight={screenHeight} active={"leaf"} />
         </View>
     )

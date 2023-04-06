@@ -3,7 +3,7 @@ import { Text, IconButton, useTheme } from "react-native-paper";
 import React from "react";
 import { useNavigation } from '@react-navigation/native';
 
-export default function AddPlantHeader() {
+export default function AddPlantHeader({text}) {
     const navigation = useNavigation();
     const theme = useTheme();
 
@@ -20,7 +20,7 @@ export default function AddPlantHeader() {
                 />
             </View>
             <View style={{ flex: 5 }}>
-                <Text variant={"headlineSmall"} style={{ color: theme.colors.primary, fontWeight: '700', textAlign: 'center' }}>Let us know the plant's details</Text>
+                <Text variant={"headlineSmall"} style={{ color: theme.colors.primary, fontWeight: '700', textAlign: 'center' }}>{text}</Text>
             </View>
             <View style={{ flex: 1 }} />
         </View>
