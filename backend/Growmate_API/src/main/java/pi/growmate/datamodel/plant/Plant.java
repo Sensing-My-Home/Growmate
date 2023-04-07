@@ -53,11 +53,11 @@ public class Plant {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="division_id", nullable = false)
+    @JoinColumn(name ="division_id")
     private Division division;
 
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<PlantSensor> sensors;
+    private List<PlantSensor> sensors = new ArrayList<>();
 
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
     private List<Comment> commentsOnPlant = new ArrayList<>();
@@ -87,5 +87,10 @@ public class Plant {
     @JsonIgnore
     public List<PlantSensor> getSensors() {
         return sensors;
+    }
+
+    @JsonIgnore
+    public void addSensor(PlantSensor sensor){
+        this.sensors.add(sensor);
     }
 }

@@ -240,7 +240,7 @@ CREATE TABLE public.plant (
     plant_condition integer,
     photo character varying(255),
     plantation_date date,
-    division_id bigint NOT NULL,
+    division_id bigint,
     user_id bigint NOT NULL,
     species_id bigint NOT NULL
 );

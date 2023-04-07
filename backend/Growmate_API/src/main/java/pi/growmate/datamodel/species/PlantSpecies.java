@@ -63,7 +63,7 @@ public class PlantSpecies {
     private Boolean flowering;
 
     @Convert(converter = SeasonConverter.class)
-    private WateringFrequency season;
+    private Season season;
 
     @Column
     private String leafColor;
