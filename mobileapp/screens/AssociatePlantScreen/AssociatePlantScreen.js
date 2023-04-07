@@ -18,6 +18,8 @@ export default function AssociatePlantScreen() {
     const [humiditySensorTarget, setHumiditySensorTarget] = useState("None");
     const [showDivisionDropDown, setShowDivisionDropDown] = useState(false);
     const [divisionTarget, setDivisionTarget] = useState("None");
+
+    // API call that onPress it adds a Plant;
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <GreenBar />
