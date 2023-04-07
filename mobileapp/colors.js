@@ -1,3 +1,4 @@
+let colors;
 export default colors = {
     "primary": "rgb(56, 107, 1)",
     "onPrimary": "rgb(255, 255, 255)",
