@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions, View} from 'react-native';
+import {Dimensions, TouchableOpacity, View} from 'react-native';
 import {IconButton, useTheme} from 'react-native-paper';
 import {useNavigation} from "@react-navigation/native";
 
@@ -21,6 +21,9 @@ export default function PlusButton({ index }) {
             break
     }
     return (
+        <TouchableOpacity onPress={() => {
+            navigation.navigate("AddPlant");
+        }}>
         <View
             style={{
                 position: 'absolute',
@@ -35,11 +38,8 @@ export default function PlusButton({ index }) {
                 elevation: 5, // to add shadow
             }}
         >
-            <IconButton icon="plus" iconColor={theme.colors.background} size={24} onPress={
-                () => {
-                    navigation.navigate("AddPlant");
-                }
-            }/>
+            <IconButton icon="plus" iconColor={theme.colors.background} size={24}/>
         </View>
+        </TouchableOpacity>
     );
 };

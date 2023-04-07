@@ -13,6 +13,7 @@ import AssociatePlantScreen from "./screens/AssociatePlantScreen/AssociatePlantS
 import 'react-native-gesture-handler';
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import DiscoverPlantsScreen from "./screens/DiscoverPlantsScreen/DiscoverPlantsScreen";
+import CategoryScreen from "./screens/CategoryScreen/CategoryScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -58,6 +59,10 @@ export default function App() {
           <Stack.Screen
               name="DiscoverPlants"
               component={DiscoverPlantsScreen}
+          />
+          <Stack.Screen
+              name="Category"
+              component={CategoryScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
