@@ -4,6 +4,9 @@ import {IconButton, Text, useTheme} from "react-native-paper";
 
 export default function DivisionRow({ plantCards, divisionName }) {
     const theme = useTheme();
+    // API call to add Plant to Division
+
+    // API call to remove Plant from Division
 
     return (
         <View>

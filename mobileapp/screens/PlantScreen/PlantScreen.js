@@ -25,6 +25,10 @@ export default function PlantScreen({ route }) {
     const showDialog = () => setVisible(true);
     const hideDialog = () => setVisible(false);
 
+    // API call to delete plant;
+    // API call to retrieve plant's information;
+    // API call to retrieve sensors associated with the plant;
+
     
 
     return (

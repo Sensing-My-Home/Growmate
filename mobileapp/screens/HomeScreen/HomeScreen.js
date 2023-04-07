@@ -16,6 +16,7 @@ export default function HomeScreen() {
     const theme = useTheme()
     const [selectedTab, setSelectedTab] = useState(0)
     const premium = true;
+    // API call to retrieve plants (which includes their division id);
     const plants = [
         { name: 'Wendy', image: require('../../assets/plant.jpeg'), state: "good"},
         { name: 'Beth', image: require('../../assets/plant2.webp'), state: "okay" },
@@ -23,6 +24,8 @@ export default function HomeScreen() {
         { name: 'Frederick', image: require('../../assets/plant4.jpeg'), state: "okay" },
         { name: 'John', image: require('../../assets/plant5.jpeg'), state: "good" }
     ];
+
+    // API call to retrieve divisions
     const divisions = [
         {name: "Kitchen", plants: [
                 { name: 'Wendy', image: require('../../assets/plant.jpeg'), state: "good"},
@@ -34,6 +37,8 @@ export default function HomeScreen() {
                 { name: 'John', image: require('../../assets/plant5.jpeg'), state: "good" }
             ]}
     ]
+
+    // one API call to retrieve all sensors values;
 
     const sensors = [
         {

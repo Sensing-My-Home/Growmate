@@ -41,7 +41,10 @@ export default function BottomMenu({ screenHeight, active }) {
                             }}/>
             </View>
             <View style={{ position: 'relative', flex: 1 }}>
-                <IconButton icon={"magnify"} iconColor={magnifyColor} size={35} />
+                <IconButton icon={"magnify"} iconColor={magnifyColor} size={35}
+                            onPress={() => {
+                                navigation.navigate("DiscoverPlants");
+                            }}/>
             </View>
             <View style={{ position: 'relative', flex: 1 }}>
                 <IconButton icon={"calendar-month-outline"} iconColor={calendarColor} size={35}
