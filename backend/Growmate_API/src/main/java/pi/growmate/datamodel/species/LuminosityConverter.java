@@ -6,10 +6,10 @@ public class LuminosityConverter implements AttributeConverter<OptimalLuminosity
     @Override
     public Integer convertToDatabaseColumn(OptimalLuminosity optimalLuminosity) {
         return switch (optimalLuminosity) {
-            case SUNNY -> 3;
-            case HIGH -> 2;
-            case MEDIUM -> 1;
-            case LOW -> 0;
+            case SUNNY -> 4;
+            case HIGH -> 3;
+            case MEDIUM -> 2;
+            case LOW -> 1;
             default -> throw new IllegalArgumentException("Invalid luminosity converter: " + optimalLuminosity);
         };
     }
@@ -17,10 +17,10 @@ public class LuminosityConverter implements AttributeConverter<OptimalLuminosity
     @Override
     public OptimalLuminosity convertToEntityAttribute(Integer optimalLuminosityInt) {
         return switch (optimalLuminosityInt) {
-            case 0 -> OptimalLuminosity.LOW;
-            case 1 -> OptimalLuminosity.MEDIUM;
-            case 2 -> OptimalLuminosity.HIGH;
-            case 3 -> OptimalLuminosity.SUNNY;
+            case 1 -> OptimalLuminosity.LOW;
+            case 2 -> OptimalLuminosity.MEDIUM;
+            case 3 -> OptimalLuminosity.HIGH;
+            case 4 -> OptimalLuminosity.SUNNY;
             default -> throw new IllegalArgumentException("Invalid luminosity converter integer: " + optimalLuminosityInt);
         };
     }

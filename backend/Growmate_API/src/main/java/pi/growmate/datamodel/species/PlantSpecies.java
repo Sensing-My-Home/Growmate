@@ -1,6 +1,8 @@
 package pi.growmate.datamodel.species;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -68,6 +70,7 @@ public class PlantSpecies {
     @Column
     private String leafColor;
 
+    @JsonIgnoreProperties("diseases")
     @ManyToMany
     @JoinTable(
             name = "disease_species",

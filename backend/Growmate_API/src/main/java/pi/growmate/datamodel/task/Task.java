@@ -40,15 +40,15 @@ public class Task {
     @Convert(converter = TaskTypeConverter.class)
     private TaskType taskType;
 
-    @JsonIgnore
-    private boolean taskDone = false;
+    @Column(name = "task_done", nullable = false)
+    private boolean task_done;
 
     public void setTaskDone(boolean bol){
-        this.taskDone = bol;
+        this.task_done = bol;
     }
 
     public boolean isDone(){
-        return taskDone;
+        return task_done;
     }
 
 

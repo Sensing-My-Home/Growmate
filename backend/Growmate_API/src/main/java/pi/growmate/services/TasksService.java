@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import pi.growmate.datamodel.plant.Plant;
 import pi.growmate.datamodel.task.Task;
 import pi.growmate.datamodel.user.User;
@@ -16,6 +17,7 @@ import pi.growmate.repositories.user.UserRepository;
 import pi.growmate.utils.SuccessfulRequest;
 
 @Service
+@Slf4j
 public class TasksService {
 
     @Autowired
@@ -27,9 +29,11 @@ public class TasksService {
     public List<Task> getTasksForToday(Long userID) throws ResourceNotFoundException{
         User user = getUser(userID);
         Date today = new Date(System.currentTimeMillis()); //data de hoje
+        log.info(today.toString());
         List<Task> tasks = user.getPlants().stream()
                             .flatMap(plant -> plant.getPlantTasks().stream())
-                            .filter(task -> task.getTaskDate().equals(today)).collect(Collectors.toList()); 
+                            .filter(task -> task.getTaskDate().toString().equals(today.toString()))
+                            .collect(Collectors.toList()); 
         return tasks;
         
     }
@@ -57,7 +61,7 @@ public class TasksService {
         Plant planta = getPlant(user, plantaID);
         Date today = new Date(System.currentTimeMillis()); //data de hoje
         List<Task> tasks = planta.getPlantTasks().stream()
-                            .filter(task -> task.getTaskDate().equals(today)).collect(Collectors.toList()); 
+                            .filter(task -> task.getTaskDate().toString().equals(today.toString())).collect(Collectors.toList()); 
         return tasks;
         
     }

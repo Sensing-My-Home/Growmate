@@ -410,8 +410,11 @@ CREATE TABLE public.task (
     name character varying(255) NOT NULL,
     task_date date,
     task_type integer,
-    plant_id bigint
+    plant_id bigint,
+    task_done BOOLEAN
 );
+
+ALTER TABLE public.task ALTER COLUMN task_done SET DEFAULT FALSE;
 
 
 ALTER TABLE public.task OWNER TO postgres;

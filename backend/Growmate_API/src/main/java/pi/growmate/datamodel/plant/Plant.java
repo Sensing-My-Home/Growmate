@@ -56,15 +56,19 @@ public class Plant {
     @JoinColumn(name ="division_id")
     private Division division;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PlantSensor> sensors = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
     private List<Comment> commentsOnPlant = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
     private List<JournalEntry> journalEntries = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
     private List<Task> plantTasks = new ArrayList<>();
 

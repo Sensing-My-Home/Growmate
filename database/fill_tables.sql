@@ -19,7 +19,7 @@ VALUES (1, 'African Violet', 'Perennial', 2, true, 'Lavender', 2, 2, 2, 'Saintpa
        (4, 'Pineapple', 'Perennial', 2, true, 'Green', 2, 1, 2, 'Ananas comosus', 1, 120, 1, 3),
        (5, 'Little Tree Cactus', 'Perennial', 1, false, 'Green', 3, 1, 2, 'Opuntia vilis', 4, 120, 3, 5),
        (6, 'Button Fern', 'Perennial', 1, true, 'Green', 2, 2, 2, 'Pellaea rotundifolia', 2, 24, 1, 6),
-       (7, 'Spice Orchid', 'Perennial', 3, true, 'Green', 1, 2, 2, 'Epidendrum atropurpureum', 1, 120, 4, 4);
+       (7, 'Spice Orchid', 'Perennial', 3, true, 'Green', 1, 2, 2, 'Epidendrum atropurpureum', 1, 120, 2, 4);
 
 INSERT INTO public.division (id, luminosity, name, user_id)
 VALUES (1, 2, 'Living Room', 1),
@@ -45,12 +45,12 @@ VALUES (1, 'Anthony Sensor', 'ANT123', 1, 1),
        (4, 'Juliana Sensor', 'JUL123', 1, 4);
        
 INSERT INTO public.task VALUES (1,'Check if Anthony is ready for watering by verifying the first 2cm of the soil mixture for dryness', 'Water Anthony',
-                         '2023-04-13', 0, 1),
+                         '2023-04-13', 0, 1, FALSE),
                         (2, 'Change Wendy soil mix. Remember she is a Orchid, so use their soil mix.', 'Change Wendy soil mix',
-                         '2023-04-13', 1, 2),
+                         '2023-04-13', 1, 2, TRUE),
                      (3, 'Beth is a little too warm. Consider changing her location.', 'Move Beth',
-                         '2023-04-14', 2, 3),
+                         '2023-04-8', 2, 3, FALSE),
                      (4, 'Check the leafs of Juliana. Annotate her condition on her journal', 'Check Juliana''s condition ',
-                         '2023-04-15', 3, 4),
+                         '2023-04-15', 3, 4, FALSE),
                      (5, 'Time to give Anthony some new fertilizer!', 'Fertilize Anthony',
-                         '2023-04-16', 4, 1);
+                         '2023-04-8', 4, 1, TRUE);

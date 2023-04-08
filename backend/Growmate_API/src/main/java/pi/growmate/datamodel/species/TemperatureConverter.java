@@ -8,9 +8,9 @@ public class TemperatureConverter implements AttributeConverter<OptimalTemperatu
     @Override
     public Integer convertToDatabaseColumn(OptimalTemperature optimalTemperature) {
         return switch (optimalTemperature) {
-            case COOL -> 0;
-            case AVERAGE -> 1;
-            case WARM -> 2;
+            case COOL -> 1;
+            case AVERAGE -> 2;
+            case WARM -> 3;
             default -> throw new IllegalArgumentException("Invalid temperature converter: " + optimalTemperature);
         };
     }
@@ -18,9 +18,9 @@ public class TemperatureConverter implements AttributeConverter<OptimalTemperatu
     @Override
     public OptimalTemperature convertToEntityAttribute(Integer optimalTemperatureInt) {
         return switch (optimalTemperatureInt) {
-            case 0 -> OptimalTemperature.COOL;
-            case 1 -> OptimalTemperature.AVERAGE;
-            case 2 -> OptimalTemperature.WARM;
+            case 1 -> OptimalTemperature.COOL;
+            case 2 -> OptimalTemperature.AVERAGE;
+            case 3 -> OptimalTemperature.WARM;
             default -> throw new IllegalArgumentException("Invalid temperature converter integer: " + optimalTemperatureInt);
         };
     }

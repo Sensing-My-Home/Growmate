@@ -33,6 +33,7 @@ public class PlantInventoryController {
         return ResponseEntity.ok().body(plantService.getPlantInfo(idUser, idPlanta));
     }
 
+    //TODO some errors
     @GetMapping("{idUser}/inventory/{idPlanta}/speciesinfo")
     public ResponseEntity<PlantSpecies> getPlantSpeciesInfo(@PathVariable(value = "idUser") Long idUser,   
                                                             @PathVariable(value = "idPlanta") Long idPlanta) throws ResourceNotFoundException{
@@ -41,6 +42,7 @@ public class PlantInventoryController {
                  
     }
 
+    //errors
     @DeleteMapping("{idUser}/inventory/{idPlanta}")
     public ResponseEntity<SuccessfulRequest> removePlant(@PathVariable(value = "idUser") Long idUser,
                                                         @PathVariable(value = "idPlanta") Long idPlanta) throws ResourceNotFoundException{
@@ -48,7 +50,7 @@ public class PlantInventoryController {
     }
 
     //String nome, String photo, Long division_id, Long sensor_id, Date plantation_date
-    @PutMapping("/{idPlanta}")
+    @PutMapping("{idUser}/inventory/{idPlanta}")
     public ResponseEntity<Plant> updatePlantInfo(@PathVariable(value = "idUser") Long idUser,
                                                 @PathVariable(value = "idPlanta") Long idPlanta,
                                                 @RequestParam(value = "nomePlanta", required = false) String nomePlanta,

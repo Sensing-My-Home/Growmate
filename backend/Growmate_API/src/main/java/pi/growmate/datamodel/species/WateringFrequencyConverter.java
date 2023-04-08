@@ -8,9 +8,9 @@ public class WateringFrequencyConverter implements AttributeConverter<WateringFr
     @Override
     public Integer convertToDatabaseColumn(WateringFrequency wateringFrequency) {
         return switch (wateringFrequency) {
-            case INFREQUENT -> 0;
-            case AVERAGE -> 1;
-            case FREQUENT -> 2;
+            case INFREQUENT -> 1;
+            case AVERAGE -> 2;
+            case FREQUENT -> 3;
             default -> throw new IllegalArgumentException("Invalid watering frequency: " + wateringFrequency);
         };
     }
@@ -18,9 +18,9 @@ public class WateringFrequencyConverter implements AttributeConverter<WateringFr
     @Override
     public WateringFrequency convertToEntityAttribute(Integer wateringFrequencyInt) {
         return switch (wateringFrequencyInt) {
-            case 0 -> WateringFrequency.INFREQUENT;
-            case 1 -> WateringFrequency.AVERAGE;
-            case 2 -> WateringFrequency.FREQUENT;
+            case 1 -> WateringFrequency.INFREQUENT;
+            case 2 -> WateringFrequency.AVERAGE;
+            case 3 -> WateringFrequency.FREQUENT;
             default -> throw new IllegalArgumentException("Invalid watering frequency integer: " + wateringFrequencyInt);
         };
     }

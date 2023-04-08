@@ -5,6 +5,7 @@ import java.sql.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.plant.Plant;
 import pi.growmate.datamodel.plant.PlantSensor;
@@ -14,10 +15,12 @@ import pi.growmate.exceptions.ResourceNotFoundException;
 import pi.growmate.repositories.division.DivisionRepository;
 import pi.growmate.repositories.plant.PlantRepository;
 import pi.growmate.repositories.plant.PlantSensorRepository;
+import pi.growmate.repositories.species.PlantSpeciesRepository;
 import pi.growmate.repositories.user.UserRepository;
 import pi.growmate.utils.SuccessfulRequest;
 
 @Service
+@Slf4j
 public class PlantService {
 
     @Autowired 
@@ -32,6 +35,9 @@ public class PlantService {
     @Autowired 
     private PlantSensorRepository plantSensorRepository;
 
+    @Autowired 
+    PlantSpeciesRepository plantSpeciesRepository;
+
 
     public Plant getPlantInfo(long userID, long plantID) throws ResourceNotFoundException{
         return getPlant(checkIfUserExists(userID), plantID);
@@ -39,13 +45,14 @@ public class PlantService {
 
     public PlantSpecies getPlantSpeciesInfo(long userID,long plantID) throws ResourceNotFoundException{
         Plant planta = getPlant(checkIfUserExists(userID), plantID);
-        return planta.getSpecies();
+        return plantSpeciesRepository.findById(planta.getSpecies().getId()).orElseThrow(() -> new ResourceNotFoundException("PlantSpecies with id " + planta.getSpecies().getId() + " not found"));
         
     }
 
     public SuccessfulRequest removePlant(long userID, long plantID) throws ResourceNotFoundException{
         Plant planta = getPlant(checkIfUserExists(userID), plantID);
-        plantRepository.delete(planta);
+        log.info(planta.toString());
+        plantRepository.deleteById(planta.getId());
         return new SuccessfulRequest("Plant deleted with success.");
     }
 
@@ -69,7 +76,8 @@ public class PlantService {
         if (plantation_date!=null){
             planta.setPlantationDate(plantation_date);
         }
-        return planta;
+        plantRepository.save(planta);
+        return plantRepository.findById(planta.getId()).orElseThrow(() -> new ResourceNotFoundException("can't find by id "+ plantID));
     }
 
     //auxiliary functions
