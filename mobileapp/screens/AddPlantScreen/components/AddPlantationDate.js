@@ -13,7 +13,7 @@ export default function AddPlantationDate({inputDate, setInputDate}){
             </Text>
             <View>
                 <DatePickerInput
-                    locale="en"
+                    locale="en-GB"
                     label="Plantation Date"
                     value={inputDate}
                     onChange={(d) => setInputDate(d)}
