@@ -24,7 +24,7 @@ public class TasksController {
 
     @Autowired
     TasksService tasksService;
-    
+ 
     @GetMapping("{idUser}/today")
     public ResponseEntity<List<Task>> getTasksForToday(@PathVariable(value = "idUser") Long idUser) throws ResourceNotFoundException{
         return ResponseEntity.ok().body(tasksService.getTasksForToday(idUser));
