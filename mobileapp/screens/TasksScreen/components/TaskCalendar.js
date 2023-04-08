@@ -2,7 +2,7 @@ import {View} from "react-native";
 import {Calendar} from "react-native-calendars"
 import {useTheme} from "react-native-paper";
 
-export default function TaskCalendar({taskDates, onDaySelect, onDayLongPress}){
+export default function TaskCalendar({taskDates, onDaySelect}){
     const theme = useTheme();
     return(
         <View>
@@ -17,7 +17,6 @@ export default function TaskCalendar({taskDates, onDaySelect, onDayLongPress}){
                 // Handler which gets executed on day press. Default = undefined
                 onDayPress={day => onDaySelect(day)}
                 // Handler which gets executed on day long press. Default = undefined
-                onDayLongPress={() => onDayLongPress()}
                 // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
                 monthFormat={'MMMM yyyy'}
                 // Handler which gets executed when visible month changes in calendar. Default = undefined

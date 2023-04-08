@@ -7,7 +7,7 @@ export default function NextButton({text, reverse, page}){
     const theme = useTheme();
     const navigation = useNavigation();
     return (
-        <View style={{marginTop: 140, alignItems: "flex-end", marginRight: 60}}>
+        <View style={{alignItems: "flex-end", marginRight: 60}}>
             <TouchableOpacity onPress={() => {
                 navigation.navigate(page)}
             }>

@@ -1,11 +1,10 @@
 import {TouchableOpacity, View} from "react-native";
 import {useTheme, Text, Avatar} from "react-native-paper";
-import React, {useState} from "react";
+import React from "react";
 import * as ImagePicker from "expo-image-picker";
-export default function AddPhoto() {
+export default function AddPhoto({image, setImage}) {
     const theme = useTheme();
     const placeHolderAvatar = require("../../../assets/placeholder_avatar.png")
-    const [image, setImage] = useState(null);
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -25,7 +24,7 @@ export default function AddPhoto() {
     }
 
     return (
-        <View style={{ marginTop: 20, marginHorizontal: 35, marginBottom: 10}}>
+        <View style={{ marginTop: 10, marginHorizontal: 35, marginBottom: 10}}>
             <View>
                 <Text variant={"titleMedium"} style={{color: theme.colors.primary, fontWeight: "600", marginLeft: 30}}>
                     Add a photo:

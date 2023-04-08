@@ -6,6 +6,7 @@ import {useTheme} from "react-native-paper";
 import TasksHeader from "./components/TasksHeader";
 import Tasks from "./components/Tasks";
 import TaskCalendar from "./components/TaskCalendar";
+import GoBackButton from "./components/GoBackButton";
 
 export default function TasksScreen() {
     const screenHeight = Dimensions.get('screen').height;
@@ -36,7 +37,7 @@ export default function TasksScreen() {
     ]
 
     const [selectedTasks, setSelectedTasks] = useState(tasks)
-
+    const [selected, setSelected] = useState(false);
     const taskDates = {
         '2023-04-12': {marked: true, dotColor: theme.colors.primary},
         '2023-04-16': {marked: true, dotColor: theme.colors.primary},
@@ -63,10 +64,12 @@ export default function TasksScreen() {
         }
 
         setSelectedTasks(tempSelectedTasks);
+        setSelected(true);
     }
 
-    const onDayLongPress = () => {
+    const goBack = () => {
         setSelectedTasks(tasks);
+        setSelected(false);
     }
 
 
@@ -76,8 +79,11 @@ export default function TasksScreen() {
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <GreenBar />
             <TasksHeader/>
-            <TaskCalendar taskDates={taskDates} onDaySelect={onDaySelect} onDayLongPress={onDayLongPress}/>
-            <Tasks tasks={selectedTasks}/>
+            <TaskCalendar taskDates={taskDates} onDaySelect={onDaySelect}/>
+            <Tasks tasks={selectedTasks} selected={selected}/>
+            {selected &&
+                <GoBackButton onPress={goBack}/>
+            }
             <BottomMenu screenHeight={screenHeight} active={"calendar"} />
         </View>
     )

@@ -7,6 +7,8 @@ import AddPlantHeader from "../AddPlantScreen/components/AddPlantHeader";
 import NextButton from "../AddPlantScreen/components/NextButton";
 import AssociateSensor from "./components/AssociateSensor";
 import AssociateDivision from "./components/AssociateDivision";
+import AddSensorButton from "./components/AddSensorButton";
+import AddDivisionButton from "./components/AddDivisionButton";
 
 
 export default function AssociatePlantScreen() {
@@ -25,7 +27,9 @@ export default function AssociatePlantScreen() {
             <GreenBar />
             <AddPlantHeader text={"Just a few more steps!"}/>
             <AssociateSensor humiditySensors={humiditySensors} humidityProps={[showHumidityDropDown, setShowHumidityDropDown, humiditySensorTarget, setHumiditySensorTarget]}/>
+            <AddSensorButton/>
             <AssociateDivision divisions={divisions} divisionsProps={[showDivisionDropDown, setShowDivisionDropDown, divisionTarget, setDivisionTarget ]}/>
+            <AddDivisionButton/>
             <NextButton text={"CREATE"} reverse={true} page={"Home"}/>
             <BottomMenu screenHeight={screenHeight} active={"leaf"} />
         </View>

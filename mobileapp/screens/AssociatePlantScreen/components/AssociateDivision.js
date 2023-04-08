@@ -6,7 +6,7 @@ export default function AssociateDivision({divisions, divisionsProps}){
     const theme = useTheme();
     const [showDivisionDropDown, setShowDivisionDropDown, divisionTarget, setDivisionTarget] = divisionsProps;
     return (
-        <View style={{marginLeft: 50, marginTop: 60, marginBottom: 70}}>
+        <View style={{marginLeft: 50, marginTop: 60}}>
             <Text variant={"bodyLarge"} style={{color: theme.colors.primary, marginBottom: 30}}>
                 Want to associate a division?
             </Text>
