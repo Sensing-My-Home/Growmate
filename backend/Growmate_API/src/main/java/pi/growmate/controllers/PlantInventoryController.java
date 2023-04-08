@@ -4,13 +4,7 @@ import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import pi.growmate.datamodel.plant.Plant;
 import pi.growmate.datamodel.species.PlantSpecies;
@@ -20,6 +14,7 @@ import pi.growmate.utils.SuccessfulRequest;
 
 @RestController
 @RequestMapping("growmate/user")
+@CrossOrigin
 public class PlantInventoryController {
 
     @Autowired
@@ -33,7 +28,6 @@ public class PlantInventoryController {
         return ResponseEntity.ok().body(plantService.getPlantInfo(idUser, idPlanta));
     }
 
-    //TODO some errors
     @GetMapping("{idUser}/inventory/{idPlanta}/speciesinfo")
     public ResponseEntity<PlantSpecies> getPlantSpeciesInfo(@PathVariable(value = "idUser") Long idUser,   
                                                             @PathVariable(value = "idPlanta") Long idPlanta) throws ResourceNotFoundException{
@@ -42,7 +36,6 @@ public class PlantInventoryController {
                  
     }
 
-    //errors
     @DeleteMapping("{idUser}/inventory/{idPlanta}")
     public ResponseEntity<SuccessfulRequest> removePlant(@PathVariable(value = "idUser") Long idUser,
                                                         @PathVariable(value = "idPlanta") Long idPlanta) throws ResourceNotFoundException{

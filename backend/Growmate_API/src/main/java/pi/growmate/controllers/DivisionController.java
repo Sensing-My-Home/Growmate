@@ -50,6 +50,14 @@ public class DivisionController {
         return ResponseEntity.ok().body(divisionService.updatePlantDivisionStatus(userID, divisionID, plantID, newDivisionID));
     }
 
+    // Add a Plant to a Division. Use this method only if the Plant wasn't previously assigned to a Division, otherwise use the previous method!
+    @PostMapping("/{userID}/division/{divisionID}/plants/{plantID}")
+    public ResponseEntity<SuccessfulRequest> addPlantToDivision(@PathVariable(value = "userID") Long userID,
+                                                       @PathVariable(value = "divisionID") Long divisionID,
+                                                       @PathVariable(value = "plantID") Long plantID) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(divisionService.addPlantToDivision(userID, divisionID, plantID));
+    }
+
     // Deletes a Division from the database
     @DeleteMapping("/{userID}/division/{divisionID}")
     public ResponseEntity<Division> deleteDivision(@PathVariable(value = "userID") Long userID,

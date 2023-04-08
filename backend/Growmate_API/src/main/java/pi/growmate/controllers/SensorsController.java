@@ -50,9 +50,17 @@ public class SensorsController {
     }
 
     // Getting the last measurements from all sensors related to a user
+    //TODO: Not Tested
     @PostMapping("/{userID}/sensors/last")
     public ResponseEntity<Map<String, Measurement>> returnLatestMeasurements(@PathVariable(value = "userID") Long userID) throws ResourceNotFoundException {
         return ResponseEntity.ok().body(sensorsService.getLatestMeasurements(userID));
     }
 
+    // Get the measurements of a plant in the past 3 days
+    //TODO: Not Tested
+    @PostMapping("/{userID}/sensors/last/plant/{plantID}")
+    public ResponseEntity<Map<String, List<Measurement>>> returnMeasurementsPlant(@PathVariable(value = "userID") Long userID,
+                                                                            @PathVariable(value = "plantID") Long plantID) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(sensorsService.getThreeDaysMeasurements(userID, plantID));
+    }
 }

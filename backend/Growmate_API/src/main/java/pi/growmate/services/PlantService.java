@@ -1,6 +1,7 @@
 package pi.growmate.services;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,14 +46,21 @@ public class PlantService {
 
     public PlantSpecies getPlantSpeciesInfo(long userID,long plantID) throws ResourceNotFoundException{
         Plant planta = getPlant(checkIfUserExists(userID), plantID);
-        return plantSpeciesRepository.findById(planta.getSpecies().getId()).orElseThrow(() -> new ResourceNotFoundException("PlantSpecies with id " + planta.getSpecies().getId() + " not found"));
-        
+
+        return planta.getSpecies();
     }
 
     public SuccessfulRequest removePlant(long userID, long plantID) throws ResourceNotFoundException{
-        Plant planta = getPlant(checkIfUserExists(userID), plantID);
-        log.info(planta.toString());
-        plantRepository.deleteById(planta.getId());
+        User user = checkIfUserExists(userID);
+        Plant planta = getPlant(user, plantID);
+
+        List<Plant> userPlants = user.getPlants();
+        userPlants.remove(planta);
+        user.setPlants(userPlants);
+        userRepository.save(user);
+
+        plantRepository.delete(planta);
+
         return new SuccessfulRequest("Plant deleted with success.");
     }
 

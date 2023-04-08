@@ -20,9 +20,8 @@ import pi.growmate.repositories.plant.PlantSensorRepository;
 import pi.growmate.repositories.user.UserRepository;
 import pi.growmate.utils.SuccessfulRequest;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDateTime;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -122,7 +121,7 @@ public class SensorsService {
                         Function.identity()
                 ));
 
-        // Add the measurements to the return list
+        // Add the measurements to the return map
 
         return Stream.of(soilQualityMeasurements.entrySet(), airQualityMeasurements.entrySet(), airTemperatureMeasurements.entrySet())
                 .flatMap(Collection::stream)
@@ -131,6 +130,47 @@ public class SensorsService {
                         Map.Entry::getValue
                 ));
 
+    }
+
+    public Map<String, List<Measurement>> getThreeDaysMeasurements(long userID, long plantID) throws ResourceNotFoundException{
+        User user = this.checkIfUserExists(userID);
+        Map<String, List<Measurement>> returnMap = new HashMap<>();
+
+        // Check if the Plant is in the User inventory
+        Plant plant = user.getPlants().stream()
+                .filter(p -> p.getId().equals(plantID))
+                .findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException("Plant with ID: " + plantID + " not found."));
+
+        // Get the sensors related with the plant. For each one, get the last measurements
+        for(PlantSensor sensor: plant.getSensors()){
+            List<Measurement> measurements = soilQualityRepository.findAllByPostDateAfterAndSensorOrderByPostDateDesc(LocalDateTime.now().minusDays(3), sensor).stream()
+                    .map(measurement -> (Measurement) measurement)
+                    .toList();
+
+            returnMap.put(sensor.getName() + "_soilq", measurements);
+        }
+
+        // Check if the plant is associated with a Division, and if so, if the Division has sensors. Add their mesaurements to the return map
+        Division div = plant.getDivision();
+
+        if(div != null){
+            for(DivisionSensor sensor: div.getSensors()){
+                List<Measurement> measurements = airQualityRepository.findAllByPostDateAfterAndSensorOrderByPostDateDesc(LocalDateTime.now().minusDays(3), sensor).stream()
+                        .map(measurement -> (Measurement) measurement)
+                        .toList();
+
+                returnMap.put(sensor.getName() + "_airq", measurements);
+
+                List<Measurement> measurementsTemp = airTemperatureRepository.findAllByPostDateAfterAndSensorOrderByPostDateDesc(LocalDateTime.now().minusDays(3), sensor).stream()
+                        .map(measurement -> (Measurement) measurement)
+                        .toList();
+
+                returnMap.put(sensor.getName() + "_airtemp", measurementsTemp);
+            }
+        }
+
+        return returnMap;
     }
 
     // Auxilliary functions

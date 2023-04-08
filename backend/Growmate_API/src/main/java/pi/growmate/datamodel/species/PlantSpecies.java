@@ -19,6 +19,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 public class PlantSpecies {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

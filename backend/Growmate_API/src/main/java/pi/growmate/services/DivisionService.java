@@ -62,6 +62,23 @@ public class DivisionService {
         return plant;
     }
 
+    public SuccessfulRequest addPlantToDivision(Long userID, Long divisionID, Long plantID) throws ResourceNotFoundException {
+        User user = this.checkIfUserExists(userID);
+        Division newDiv = this.getDivision(user, divisionID);
+
+        // Check if the Plant is in the User inventory
+        Plant plant = user.getPlants().stream()
+                .filter(p -> p.getId().equals(plantID))
+                .findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException("Plant with ID: " + plantID + " not found."));
+
+        // Set the new Division
+        plant.setDivision(newDiv);
+        plantRepository.save(plant);
+
+        return new SuccessfulRequest("Plant added to Division successfully!");
+    }
+
     public Division deleteDivision(Long userID, Long divisionID) throws ResourceNotFoundException {
         User user = this.checkIfUserExists(userID);
         Division div = this.getDivision(user, divisionID);

@@ -2,10 +2,7 @@ package pi.growmate.datamodel.plant;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.forum.Comment;
 import pi.growmate.datamodel.forum.JournalEntry;
@@ -23,6 +20,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Plant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -57,7 +55,7 @@ public class Plant {
     private Division division;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
     private List<PlantSensor> sensors = new ArrayList<>();
 
     @JsonIgnore
