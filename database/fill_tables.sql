@@ -54,3 +54,4 @@ INSERT INTO public.task VALUES (1,'Check if Anthony is ready for watering by ver
                          '2023-04-15', 3, 4, FALSE),
                      (5, 'Time to give Anthony some new fertilizer!', 'Fertilize Anthony',
                          '2023-04-8', 4, 1, TRUE);
+                 
