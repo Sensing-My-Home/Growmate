@@ -1,11 +1,9 @@
 package pi.growmate.datamodel.division;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import pi.growmate.datamodel.plant.Plant;
 import pi.growmate.datamodel.species.LuminosityConverter;
 import pi.growmate.datamodel.species.OptimalLuminosity;
@@ -20,6 +18,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class Division {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,15 +36,19 @@ public class Division {
     @Convert(converter = LuminosityConverter.class)
     private OptimalLuminosity luminosity;
 
-    @OneToMany(mappedBy = "division", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "division", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Plant> plantsOnDivision = new ArrayList<>();
 
-    @OneToOne(mappedBy = "division")
-    private DivisionSensor sensor;
+    @OneToMany(mappedBy = "division", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DivisionSensor> sensors;
 
     // Getter methods that need to be ignored on JSON replies
     @JsonIgnore
     public List<Plant> getPlantsOnDivision() {
         return plantsOnDivision;
+    }
+    @JsonIgnore
+    public List<DivisionSensor> getSensors() {
+        return sensors;
     }
 }

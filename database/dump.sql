@@ -206,7 +206,7 @@ ALTER TABLE public.division_seq OWNER TO postgres;
 CREATE TABLE public.journal_entry (
     id bigint NOT NULL,
     photo character varying(255),
-    task_date timestamp without time zone,
+    post_date timestamp without time zone,
     text character varying(255) NOT NULL,
     title character varying(255) NOT NULL,
     plant_id bigint NOT NULL,
@@ -240,7 +240,7 @@ CREATE TABLE public.plant (
     plant_condition integer,
     photo character varying(255),
     plantation_date date,
-    division_id bigint NOT NULL,
+    division_id bigint,
     user_id bigint NOT NULL,
     species_id bigint NOT NULL
 );
@@ -408,9 +408,13 @@ CREATE TABLE public.task (
     id bigint NOT NULL,
     description character varying(255) NOT NULL,
     name character varying(255) NOT NULL,
-    task_date timestamp without time zone,
-    plant_id bigint
+    task_date date,
+    task_type integer,
+    plant_id bigint,
+    task_done BOOLEAN
 );
+
+ALTER TABLE public.task ALTER COLUMN task_done SET DEFAULT FALSE;
 
 
 ALTER TABLE public.task OWNER TO postgres;
@@ -461,134 +465,6 @@ CREATE SEQUENCE public.utilizador_seq
 
 
 ALTER TABLE public.utilizador_seq OWNER TO postgres;
-
---
--- Data for Name: air_quality_measurement; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.air_quality_measurement (id, measurement, post_date, sensor_id) FROM stdin;
-\.
-COPY public.air_quality_measurement (id, measurement, post_date, sensor_id) FROM '$$PATH$$/3132.dat';
-
---
--- Data for Name: air_temperature_measurement; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.air_temperature_measurement (id, measurement, post_date, sensor_id) FROM stdin;
-\.
-COPY public.air_temperature_measurement (id, measurement, post_date, sensor_id) FROM '$$PATH$$/3133.dat';
-
---
--- Data for Name: comment; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.comment (id, post_date, text, title, plant_id, user_id) FROM stdin;
-\.
-COPY public.comment (id, post_date, text, title, plant_id, user_id) FROM '$$PATH$$/3134.dat';
-
---
--- Data for Name: disease; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.disease (id, common_name, description, scientific_name, solution) FROM stdin;
-\.
-COPY public.disease (id, common_name, description, scientific_name, solution) FROM '$$PATH$$/3135.dat';
-
---
--- Data for Name: disease_species; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.disease_species (species_id, disease_id) FROM stdin;
-\.
-COPY public.disease_species (species_id, disease_id) FROM '$$PATH$$/3136.dat';
-
---
--- Data for Name: division; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.division (id, luminosity, name, user_id) FROM stdin;
-\.
-COPY public.division (id, luminosity, name, user_id) FROM '$$PATH$$/3137.dat';
-
---
--- Data for Name: division_sensor; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.division_sensor (id, name, sensor_code, division_id, user_id) FROM stdin;
-\.
-COPY public.division_sensor (id, name, sensor_code, division_id, user_id) FROM '$$PATH$$/3138.dat';
-
---
--- Data for Name: journal_entry; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.journal_entry (id, photo, task_date, text, title, plant_id, user_id) FROM stdin;
-\.
-COPY public.journal_entry (id, photo, task_date, text, title, plant_id, user_id) FROM '$$PATH$$/3139.dat';
-
---
--- Data for Name: plant; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id) FROM stdin;
-\.
-COPY public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id) FROM '$$PATH$$/3140.dat';
-
---
--- Data for Name: plant_sensor; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.plant_sensor (id, name, sensor_code, user_id, plant_id) FROM stdin;
-\.
-COPY public.plant_sensor (id, name, sensor_code, user_id, plant_id) FROM '$$PATH$$/3141.dat';
-
---
--- Data for Name: plant_species; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.plant_species (id, common_name, cycle, difficulty, flowering, leaf_color, optimal_humidity, optimal_luminosity, optimal_temperature, scientific_name, season, photo, usual_size, watering_frequency, family_id) FROM stdin;
-\.
-COPY public.plant_species (id, common_name, cycle, difficulty, flowering, leaf_color, optimal_humidity, optimal_luminosity, optimal_temperature, scientific_name, season, photo, usual_size, watering_frequency, family_id) FROM '$$PATH$$/3142.dat';
-
---
--- Data for Name: reaction; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.reaction (reaction_date, type, comment_id, user_id) FROM stdin;
-\.
-COPY public.reaction (reaction_date, type, comment_id, user_id) FROM '$$PATH$$/3143.dat';
-
---
--- Data for Name: soil_quality_measurement; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.soil_quality_measurement (id, measurement, post_date, sensor_id) FROM stdin;
-\.
-COPY public.soil_quality_measurement (id, measurement, post_date, sensor_id) FROM '$$PATH$$/3144.dat';
-
---
--- Data for Name: species_family; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.species_family (id, name, opt_soil_mix) FROM stdin;
-\.
-COPY public.species_family (id, name, opt_soil_mix) FROM '$$PATH$$/3145.dat';
-
---
--- Data for Name: task; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.task (id, description, name, task_date, plant_id) FROM stdin;
-\.
-COPY public.task (id, description, name, task_date, plant_id) FROM '$$PATH$$/3146.dat';
-
---
--- Data for Name: utilizador; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.utilizador (id, address, dob, email, name, password, profile_photo, rating, user_type) FROM stdin;
-\.
-COPY public.utilizador (id, address, dob, email, name, password, profile_photo, rating, user_type) FROM '$$PATH$$/3147.dat';
 
 --
 -- Name: air_quality_measurement_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
@@ -995,5 +871,3 @@ ALTER TABLE ONLY public.reaction
 --
 -- PostgreSQL database dump complete
 --
-
-\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00

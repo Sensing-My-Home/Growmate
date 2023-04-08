@@ -8,10 +8,10 @@ public class SeasonConverter implements AttributeConverter<Season, Integer> {
     @Override
     public Integer convertToDatabaseColumn(Season season) {
         return switch (season) {
-            case FALL -> 3;
-            case SUMMER -> 2;
-            case SPRING -> 1;
-            case WINTER -> 0;
+            case FALL -> 4;
+            case SUMMER -> 3;
+            case SPRING -> 2;
+            case WINTER -> 1;
             default -> throw new IllegalArgumentException("Invalid season converter: " + season);
         };
     }
@@ -19,10 +19,10 @@ public class SeasonConverter implements AttributeConverter<Season, Integer> {
     @Override
     public Season convertToEntityAttribute(Integer seasonInt) {
         return switch (seasonInt) {
-            case 0 -> Season.WINTER;
-            case 1 -> Season.SPRING;
-            case 2 -> Season.SUMMER;
-            case 3 -> Season.FALL;
+            case 1 -> Season.WINTER;
+            case 2 -> Season.SPRING;
+            case 3 -> Season.SUMMER;
+            case 4 -> Season.FALL;
             default -> throw new IllegalArgumentException("Invalid season integer: " + seasonInt);
         };
     }

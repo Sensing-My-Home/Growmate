@@ -2,14 +2,12 @@ package pi.growmate.datamodel.plant;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.forum.Comment;
 import pi.growmate.datamodel.forum.JournalEntry;
 import pi.growmate.datamodel.species.PlantSpecies;
+import pi.growmate.datamodel.task.Task;
 import pi.growmate.datamodel.user.User;
 
 import java.sql.Date;
@@ -22,6 +20,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Plant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,18 +51,22 @@ public class Plant {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="division_id", nullable = false)
+    @JoinColumn(name ="division_id")
     private Division division;
 
-    @OneToOne(mappedBy = "plant")
-    private PlantSensor sensor;
+    @JsonIgnore
+    @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
+    private List<PlantSensor> sensors = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
     private List<Comment> commentsOnPlant = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
     private List<JournalEntry> journalEntries = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
     private List<Task> plantTasks = new ArrayList<>();
 
@@ -81,5 +84,25 @@ public class Plant {
     @JsonIgnore
     public List<Task> getPlantTasks() {
         return plantTasks;
+    }
+
+    @JsonIgnore
+    public List<PlantSensor> getSensors() {
+        return sensors;
+    }
+
+    @JsonIgnore
+    public void addSensor(PlantSensor sensor){
+        this.sensors.add(sensor);
+    }
+
+    @JsonIgnore
+    public void removeSensor(PlantSensor sensor){
+        this.sensors.removeIf(psensor -> psensor.getId().equals(sensor.getId()));
+    }
+
+    @JsonIgnore
+    public void removeAllSensors(){
+        this.sensors.clear();
     }
 }

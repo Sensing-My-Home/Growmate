@@ -1,4 +1,4 @@
-package pi.growmate.datamodel.plant;
+package pi.growmate.datamodel.task;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pi.growmate.datamodel.plant.Plant;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 
 @Entity
@@ -33,6 +33,23 @@ public class Task {
     @Column(nullable = false)
     private String description;
 
-    @Column(name = "task_date", columnDefinition = "TIMESTAMP")
-    private LocalDateTime taskDate;
+    @Column(name = "task_date")
+    @Temporal(TemporalType.DATE)
+    private Date taskDate;
+
+    @Convert(converter = TaskTypeConverter.class)
+    private TaskType taskType;
+
+    @Column(name = "task_done", nullable = false)
+    private boolean task_done;
+
+    public void setTaskDone(boolean bol){
+        this.task_done = bol;
+    }
+
+    public boolean isDone(){
+        return task_done;
+    }
+
+
 }

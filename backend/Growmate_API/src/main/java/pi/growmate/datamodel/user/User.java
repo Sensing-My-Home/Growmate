@@ -1,11 +1,9 @@
 package pi.growmate.datamodel.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.division.DivisionSensor;
 import pi.growmate.datamodel.plant.PlantSensor;
@@ -23,6 +21,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -53,16 +52,18 @@ public class User {
     @Convert(converter = UserTypeConverter.class)
     private UserType userType;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("owner")
     private List<Plant> plants = new ArrayList<>();
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
-    private List<Division> divisions = new ArrayList<>();
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("owner")
+    private List<Division> divisions;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> commentsByUser = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<JournalEntry> journalEntries = new ArrayList<>();
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)

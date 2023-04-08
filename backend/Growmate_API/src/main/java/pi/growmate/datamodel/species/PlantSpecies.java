@@ -1,6 +1,8 @@
 package pi.growmate.datamodel.species;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -17,6 +19,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 public class PlantSpecies {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -63,11 +66,12 @@ public class PlantSpecies {
     private Boolean flowering;
 
     @Convert(converter = SeasonConverter.class)
-    private WateringFrequency season;
+    private Season season;
 
     @Column
     private String leafColor;
 
+    @JsonIgnoreProperties("diseases")
     @ManyToMany
     @JoinTable(
             name = "disease_species",

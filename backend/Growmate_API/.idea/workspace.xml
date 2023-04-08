@@ -5,11 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/measurements/AirQualityMeasurement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/measurements/AirTemperatureMeasurement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/measurements/SoilQualityMeasurement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/division/DivisionSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/division/DivisionSensor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/PlantSensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/PlantSensor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
     </list>
@@ -21,7 +16,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -101,6 +98,20 @@
       <workItem from="1680280437172" duration="620000" />
       <workItem from="1680288633877" duration="18000" />
       <workItem from="1680288655976" duration="2519000" />
+      <workItem from="1680545025377" duration="5601000" />
+      <workItem from="1680557182358" duration="4862000" />
+      <workItem from="1680562347460" duration="163000" />
+      <workItem from="1680562679803" duration="68000" />
+      <workItem from="1680563498246" duration="115000" />
+      <workItem from="1680618742434" duration="1395000" />
+      <workItem from="1680620248128" duration="1892000" />
+      <workItem from="1680628713900" duration="599000" />
+      <workItem from="1680643712910" duration="2823000" />
+      <workItem from="1680791016299" duration="8238000" />
+      <workItem from="1680888734731" duration="334000" />
+      <workItem from="1680893127366" duration="195000" />
+      <workItem from="1680904806729" duration="20000" />
+      <workItem from="1680974961667" duration="9584000" />
     </task>
     <servers />
   </component>

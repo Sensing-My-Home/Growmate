@@ -1,6 +1,7 @@
 package pi.growmate.datamodel.species;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class SpeciesFamily {
     @Column
     private Integer optSoilMix;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "family", cascade = CascadeType.ALL)
     private List<PlantSpecies> species = new ArrayList<>();
 

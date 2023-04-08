@@ -37,8 +37,9 @@ public class DivisionSensor {
     @Column(name = "sensor_code", nullable = false)
     private String sensorCode;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "division_id", referencedColumnName = "id")
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "division_id")
     private Division division;
 
     @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL)

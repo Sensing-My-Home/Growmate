@@ -8,27 +8,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pi.growmate.datamodel.division.DivisionSensor;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AirQualityMeasurement {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+public class AirQualityMeasurement extends Measurement{
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="sensor_id", nullable = false)
     private DivisionSensor sensor;
-
-    @Column
-    private Double measurement;
-
-    @Column(columnDefinition = "TIMESTAMP")
-    private LocalDateTime postDate;
 }
