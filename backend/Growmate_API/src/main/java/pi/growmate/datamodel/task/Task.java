@@ -7,12 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pi.growmate.datamodel.plant.Plant;
-import pi.growmate.datamodel.species.OptimalTemperature;
-import pi.growmate.datamodel.species.TemperatureConverter;
 
 import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 
 @Entity
@@ -43,4 +39,17 @@ public class Task {
 
     @Convert(converter = TaskTypeConverter.class)
     private TaskType taskType;
+
+    @JsonIgnore
+    private boolean taskDone = false;
+
+    public void setTaskDone(boolean bol){
+        this.taskDone = bol;
+    }
+
+    public boolean isDone(){
+        return taskDone;
+    }
+
+
 }

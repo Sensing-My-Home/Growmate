@@ -1,5 +1,6 @@
 package pi.growmate.controllers;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +44,9 @@ public class UserController {
                                                         @RequestParam(value = "photoURL", required = false) String URL,
                                                         @RequestParam(value = "species-id") Long speciesID, 
                                                         @RequestParam(value = "division-id", required = false) Long divisionID,
-                                                        @RequestParam(value = "sensor-id", required = false) Long sensorID ) throws ResourceNotFoundException{
+                                                        @RequestParam(value = "sensor-id", required = false) Long sensorID,
+                                                        @RequestParam(value = "plantation-date", required = false) Date date) throws ResourceNotFoundException{
         
-        return ResponseEntity.ok().body(userService.addNewPlantToUserInventary(idUser, plantName, URL, speciesID, divisionID, sensorID));
+        return ResponseEntity.ok().body(userService.addNewPlantToUserInventary(idUser, plantName, URL, speciesID, divisionID, sensorID, date));
     }
 }

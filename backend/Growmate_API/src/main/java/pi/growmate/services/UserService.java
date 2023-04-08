@@ -1,9 +1,9 @@
 package pi.growmate.services;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -56,7 +56,8 @@ public class UserService {
                                                         String photo,
                                                         Long species_id,  
                                                         Long division_id, 
-                                                        Long sensor_id) throws ResourceNotFoundException{
+                                                        Long sensor_id, 
+                                                        Date date) throws ResourceNotFoundException{
 
         Plant plant = new Plant();
 
@@ -67,6 +68,10 @@ public class UserService {
         plant.setPlantPhoto(photo);
         plant.setPlantCondition(PlantCondition.NORMAL);
         plant.setSpecies(getPlantSpecies(species_id));
+
+        if(date != null){
+            plant.setPlantationDate(date);
+        }
 
         if (division_id != null) {
             Division division = getDivision(user, division_id);

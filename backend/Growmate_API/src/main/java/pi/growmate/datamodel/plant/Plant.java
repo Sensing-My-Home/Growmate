@@ -93,4 +93,14 @@ public class Plant {
     public void addSensor(PlantSensor sensor){
         this.sensors.add(sensor);
     }
+
+    @JsonIgnore
+    public void removeSensor(PlantSensor sensor){
+        this.sensors.removeIf(psensor -> psensor.getId().equals(sensor.getId()));
+    }
+
+    @JsonIgnore
+    public void removeAllSensors(){
+        this.sensors.clear();
+    }
 }
