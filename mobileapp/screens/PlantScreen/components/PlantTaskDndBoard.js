@@ -63,6 +63,7 @@ export default function PlantTaskDndBoard() {
                     {tasks.filter((task) => task.status === "todo").map((task, index) => {
                         return (
                             <DraxView
+                                key={index}
                                 payload={task.id}
                             >
                                 <TaskCard name={task.name} key={index} />
@@ -86,6 +87,7 @@ export default function PlantTaskDndBoard() {
                     {tasks.filter((task) => task.status === "done").map((task, index) => {
                         return (
                             <DraxView
+                                key={index}
                                 style={styles.cardStack}
                                 payload={task.id}
                             >

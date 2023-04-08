@@ -98,7 +98,7 @@ export default function PlantInformation({name}) {
                 checkboxColor={theme.colors.primary}
             />
             <DatePickerInput
-                locale="en"
+                locale="en-GB"
                 label="Plantation Date"
                 value={inputDate}
                 onChange={(d) => setInputDate(d)}

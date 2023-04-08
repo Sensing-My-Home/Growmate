@@ -15,6 +15,9 @@ import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import DiscoverPlantsScreen from "./screens/DiscoverPlantsScreen/DiscoverPlantsScreen";
 import CategoryScreen from "./screens/CategoryScreen/CategoryScreen";
 
+import { enGB, registerTranslation } from 'react-native-paper-dates'
+registerTranslation('en-GB', enGB)
+
 
 const Stack = createNativeStackNavigator();
 
