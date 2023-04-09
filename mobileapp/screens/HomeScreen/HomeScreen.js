@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { View, Dimensions } from "react-native";
 import BottomMenu from "../../components/BottomMenu";
 import SearchBar from "../../components/SearchBar";
@@ -10,8 +10,24 @@ import PlusButton from "./components/PlusButton";
 import {Tabs, TabScreen} from 'react-native-paper-tabs';
 import Divisions from "./components/Divisions";
 import SensorRow from "./components/SensorRow";
+import {getPlants, getDivisionsAndAssociatedPlants} from "../../service/HomeScreenService";
 
 export default function HomeScreen() {
+    const [userPlants, setUserPlants] = useState([]);
+    const [userDivisions, setUserDivisions] = useState([]);
+
+    useEffect( () => {
+        getPlants(1).then((plants) => {setUserPlants(plants)})
+    }, [] );
+
+
+    useEffect( () => {
+        getDivisionsAndAssociatedPlants(1).then(
+            (divisions) => {
+                setUserDivisions(divisions)
+            }
+        );
+    }, []);
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
     const [selectedTab, setSelectedTab] = useState(0)
@@ -74,11 +90,11 @@ export default function HomeScreen() {
                     <TabScreen label="Inventory">
                         <View>
                             <SearchBar />
-                            <PlantCards plants={plants} />
+                            <PlantCards plants={userPlants} />
                         </View>
                     </TabScreen>
                     <TabScreen label="Divisions">
-                        <Divisions divisions={divisions}/>
+                        <Divisions divisions={userDivisions}/>
                     </TabScreen>
                     <TabScreen
                         label="Sensors"

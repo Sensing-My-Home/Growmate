@@ -4,6 +4,7 @@ import {IconButton, Text, useTheme} from "react-native-paper";
 
 export default function DivisionRow({ plantCards, divisionName }) {
     const theme = useTheme();
+    const image = require('../../../assets/plant.jpeg')
     // API call to add Plant to Division
 
     // API call to remove Plant from Division
@@ -14,9 +15,10 @@ export default function DivisionRow({ plantCards, divisionName }) {
                 {plantCards.map((plantCard, index) => (
                     <PlantCard
                         key={index}
+                        id={plantCard.id}
                         name={plantCard.name}
-                        image={plantCard.image}
-                        state={plantCard.state}
+                        image={image}
+                        state={plantCard.plantCondition}
                     />
                 ))}
             </ScrollView>

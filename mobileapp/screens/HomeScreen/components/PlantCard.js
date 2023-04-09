@@ -3,20 +3,20 @@ import React from "react";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
-export default function PlantCard({ name, image, state }) {
+export default function PlantCard({id, name, image, state }) {
     const navigation = useNavigation();
     const theme = useTheme();
     let good = false;
     let okay = false;
     let bad = false;
 
-    if (state === "good" ){
+    if (state === "GREAT" ){
         good = true;
     }
-    else if (state === "okay"){
+    else if (state === "NORMAL"){
         okay = true;
     }
-    else if (state === "bad"){
+    else if (state === "BAD"){
         bad = true;
     }
 

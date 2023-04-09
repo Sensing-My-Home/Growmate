@@ -2,15 +2,16 @@ import PlantCard from "./PlantCard";
 import { View } from "react-native";
 
 export default function PlantCardRow({ plantCards }) {
-
+    const image = require('../../../assets/plant.jpeg')
     return (
         <View style={{ marginTop: 10, marginHorizontal: 20, flexDirection: 'row' }}>
             {plantCards.map((plantCard, index) => (
                 <PlantCard
                     key={index}
+                    id={plantCard.id}
                     name={plantCard.name}
-                    image={plantCard.image}
-                    state={plantCard.state}
+                    image={image}
+                    state={plantCard.plantCondition}
                 />
             ))}
         </View>
