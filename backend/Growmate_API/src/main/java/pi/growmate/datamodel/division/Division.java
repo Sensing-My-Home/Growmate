@@ -20,6 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 public class Division {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
