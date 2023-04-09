@@ -1,6 +1,8 @@
 package pi.growmate.datamodel.plant;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 import lombok.*;
 import pi.growmate.datamodel.division.Division;
@@ -44,12 +46,10 @@ public class Plant {
     @JoinColumn(name ="user_id", nullable = false)
     private User owner;
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="species_id", nullable = false)
     private PlantSpecies species;
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="division_id")
     private Division division;
