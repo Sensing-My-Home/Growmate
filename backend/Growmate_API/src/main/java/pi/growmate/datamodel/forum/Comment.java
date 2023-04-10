@@ -12,7 +12,7 @@ import pi.growmate.datamodel.user.User;
 import java.time.LocalDateTime;
 
 @Entity
-@Table
+@Table(name = "comments")
 @Getter
 @Setter
 @NoArgsConstructor
