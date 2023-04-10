@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="added SpeciesProfileService">
-      <change afterPath="$PROJECT_DIR$/service/DiscoverPlantsScreenService.js" afterDir="false" />
+    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="added CategoryScreenService and DiscoverPlantScreenService">
       <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/Categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/Categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/CategoryCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/CategoryCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +93,7 @@
       <workItem from="1680994865494" duration="4661000" />
       <workItem from="1681065748109" duration="6636000" />
       <workItem from="1681123110281" duration="1632000" />
-      <workItem from="1681132689704" duration="1876000" />
+      <workItem from="1681132689704" duration="5973000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
@@ -204,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681125863326</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="added CategoryScreenService and DiscoverPlantScreenService">
+      <created>1681134684857</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1681134684857</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +229,7 @@
     <MESSAGE value="fixed calendar locale of AddPlant" />
     <MESSAGE value="added getPlants and getDivisionsAndAssociatedPlants services" />
     <MESSAGE value="added SpeciesProfileService" />
-    <option name="LAST_COMMIT_MESSAGE" value="added SpeciesProfileService" />
+    <MESSAGE value="added CategoryScreenService and DiscoverPlantScreenService" />
+    <option name="LAST_COMMIT_MESSAGE" value="added CategoryScreenService and DiscoverPlantScreenService" />
   </component>
 </project>
