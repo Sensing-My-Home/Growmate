@@ -17,8 +17,8 @@ export default function HomeScreen() {
     const [userDivisions, setUserDivisions] = useState([]);
 
     useEffect( () => {
-        getPlants(1).then((plants) => {setUserPlants(plants)})
-    }, [] );
+        getPlants(1).then((plants) => {setUserPlants(plants)});
+    }, []);
 
 
     useEffect( () => {

@@ -3,14 +3,12 @@ import {IconButton, Text, useTheme} from "react-native-paper";
 import {useNavigation} from "@react-navigation/native";
 
 
-export default function NextButton({text, reverse, page}){
+export default function NextButton({text, reverse, onPress}){
     const theme = useTheme();
     const navigation = useNavigation();
     return (
         <View style={{alignItems: "flex-end", marginRight: 60}}>
-            <TouchableOpacity onPress={() => {
-                navigation.navigate(page)}
-            }>
+            <TouchableOpacity onPress={onPress}>
 
                 {reverse ?
                     <View style={{width: 120, height: 35, borderRadius: 20,

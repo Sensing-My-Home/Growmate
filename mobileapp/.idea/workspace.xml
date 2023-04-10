@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="added CategoryScreenService and DiscoverPlantScreenService">
-      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="added TasksScreenService">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/components/NextButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/components/NextButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/components/PlantName.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/components/PlantName.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/components/SearchBarSpecies.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/components/SearchBarSpecies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/Categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/Categories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +99,7 @@
       <workItem from="1680994865494" duration="4661000" />
       <workItem from="1681065748109" duration="6636000" />
       <workItem from="1681123110281" duration="1632000" />
-      <workItem from="1681132689704" duration="5973000" />
+      <workItem from="1681132689704" duration="15431000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
@@ -207,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681134684857</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="added TasksScreenService">
+      <created>1681139169580</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1681139169580</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +243,7 @@
     <MESSAGE value="added getPlants and getDivisionsAndAssociatedPlants services" />
     <MESSAGE value="added SpeciesProfileService" />
     <MESSAGE value="added CategoryScreenService and DiscoverPlantScreenService" />
-    <option name="LAST_COMMIT_MESSAGE" value="added CategoryScreenService and DiscoverPlantScreenService" />
+    <MESSAGE value="added TasksScreenService" />
+    <option name="LAST_COMMIT_MESSAGE" value="added TasksScreenService" />
   </component>
 </project>

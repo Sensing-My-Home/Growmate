@@ -16,9 +16,9 @@ export default function Categories({categories}){
         <View>
             <ScrollView style={{maxHeight: 500}}>
             {rows.map((row, index) => (
-                <View style={{flexDirection: "row", marginTop: 30, justifyContent: "center", alignItems: "center"}}>
+                <View style={{flexDirection: "row", marginTop: 30, justifyContent: "center", alignItems: "center"}} key={index}>
                 {row.map((category, index) => (
-                    <CategoryCard name={category.name} image={cacti} id={category.id}/>
+                    <CategoryCard name={category.name} image={cacti} id={category.id} key={index}/>
                     ))}
                 </View>
             ))}

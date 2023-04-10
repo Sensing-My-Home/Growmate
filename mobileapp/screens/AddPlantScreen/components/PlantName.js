@@ -2,7 +2,7 @@ import {View} from "react-native";
 import {Text, TextInput, useTheme} from "react-native-paper";
 import React from "react";
 
-export default function PlantName({isImage}){
+export default function PlantName({isImage, setName}){
     const theme = useTheme()
     return (
         <View>
@@ -16,7 +16,7 @@ export default function PlantName({isImage}){
                                activeUnderlineColor={theme.colors.primary}
                                textColor={theme.colors.onBackground}
                                placeholder={"Plant name"} placeholderTextColor={theme.colors.tertiary}
-                               onChangeText={text => console.log(text)}
+                               onChangeText={text => setName(text)}
                     />
                 </View>
 
@@ -31,7 +31,7 @@ export default function PlantName({isImage}){
                                activeUnderlineColor={theme.colors.primary}
                                textColor={theme.colors.onBackground}
                                placeholder={"Plant name"} placeholderTextColor={theme.colors.tertiary}
-                               onChangeText={text => console.log(text)}
+                               onChangeText={text => setName(text)}
                     />
                 </View>
             }

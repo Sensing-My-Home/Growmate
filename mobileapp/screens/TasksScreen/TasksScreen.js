@@ -11,7 +11,7 @@ import {getTodoTasks} from "../../service/TasksScreenService";
 
 export default function TasksScreen() {
     const [todoTasks, setTodoTasks] = useState([]);
-    const [todoTaskDates, setTodoTaskDates] = useState([]);
+    const [todoTaskDates, setTodoTaskDates] = useState({});
     const [todoSelectedTasks, setTodoSelectedTasks] = useState([]);
     const [selected, setSelected] = useState(false);
     const userId = 1;

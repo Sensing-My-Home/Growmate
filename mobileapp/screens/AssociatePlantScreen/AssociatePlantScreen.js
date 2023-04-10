@@ -9,9 +9,13 @@ import AssociateSensor from "./components/AssociateSensor";
 import AssociateDivision from "./components/AssociateDivision";
 import AddSensorButton from "./components/AddSensorButton";
 import AddDivisionButton from "./components/AddDivisionButton";
+import {createNewPlant} from "../../service/AssociatePlantScreenService";
+import {useNavigation} from "@react-navigation/native";
 
 
-export default function AssociatePlantScreen() {
+export default function AssociatePlantScreen({route}) {
+    const {image, date, specie, name} = route.params;
+    const navigation = useNavigation();
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
     const divisions = ["None", "Balcony", "Kitchen"];
@@ -20,6 +24,10 @@ export default function AssociatePlantScreen() {
     const [humiditySensorTarget, setHumiditySensorTarget] = useState("None");
     const [showDivisionDropDown, setShowDivisionDropDown] = useState(false);
     const [divisionTarget, setDivisionTarget] = useState("None");
+    const onPressNext = () => {
+        createNewPlant(1, name, image, specie, 1, date);
+        navigation.navigate("Home");
+    }
 
     // API call that onPress it adds a Plant;
     return (
@@ -30,7 +38,7 @@ export default function AssociatePlantScreen() {
             <AddSensorButton/>
             <AssociateDivision divisions={divisions} divisionsProps={[showDivisionDropDown, setShowDivisionDropDown, divisionTarget, setDivisionTarget ]}/>
             <AddDivisionButton/>
-            <NextButton text={"CREATE"} reverse={true} page={"Home"}/>
+            <NextButton text={"CREATE"} reverse={true} page={"Home"} onPress={onPressNext}/>
             <BottomMenu screenHeight={screenHeight} active={"leaf"} />
         </View>
     )
