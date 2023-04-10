@@ -1,26 +1,28 @@
-import {View} from "react-native";
+import {View, ScrollView} from "react-native";
 import CategoryCard from "./CategoryCard";
 
-
-export default function Categories(){
-    const flowering = require("../../../assets/orchids.jpeg");
+export default function Categories({categories}){
+    const cardsPerRow = 3;
+    const numRows = Math.ceil(categories.length / cardsPerRow);
+    const rows = [];
+    for (let i = 0; i < numRows; i++) {
+        const start = i * cardsPerRow;
+        const end = start + cardsPerRow;
+        rows.push(categories.slice(start, end));
+    }
     const cacti = require("../../../assets/cacti.jpeg");
-    const herbs = require("../../../assets/herbs.jpeg");
-    const ferns = require("../../../assets/ferns.webp");
-    const moss = require("../../../assets/moss.webp");
-    const conifer = require("../../../assets/conifer.jpeg");
+
     return (
         <View>
-            <View style={{flexDirection: "row", marginTop: 30, justifyContent: "center", alignItems: "center"}}>
-                <CategoryCard name={"Flowering"} image={flowering}/>
-                <CategoryCard name={"Cacti and Suculents"} image={cacti}/>
-                <CategoryCard name={"Herbs"} image={herbs}/>
-            </View>
-            <View style={{flexDirection: "row", marginTop: 30, justifyContent: "center"}}>
-                <CategoryCard name={"Ferns"} image={ferns}/>
-                <CategoryCard name={"Moss"} image={moss}/>
-                <CategoryCard name={"Conifer"} image={conifer}/>
-            </View>
+            <ScrollView style={{maxHeight: 500}}>
+            {rows.map((row, index) => (
+                <View style={{flexDirection: "row", marginTop: 30, justifyContent: "center", alignItems: "center"}}>
+                {row.map((category, index) => (
+                    <CategoryCard name={category.name} image={cacti} id={category.id}/>
+                    ))}
+                </View>
+            ))}
+            </ScrollView>
         </View>
     )
 }
