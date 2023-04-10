@@ -7,11 +7,11 @@ export default function PlantStatus({ name, status}) {
     const getEmote = (status) => {
         switch (status) {
             case "GREAT":
-                return "emoticon-happy"
+                return "emoticon-happy-outline"
             case "NORMAL":
-                return "emoticon-neutral"
+                return "emoticon-confused-outline"
             case "BAD":
-                return "emoticon-sad"
+                return "emoticon-sad-outline"
         }
     }
 
@@ -20,9 +20,9 @@ export default function PlantStatus({ name, status}) {
             case "GREAT":
                 return theme.colors.primary
             case "NORMAL":
-                return theme.colors.secondary
+                return theme.colors.golden
             case "BAD":
-                return theme.colors.error
+                return theme.colors.darkRed
         }
     }
 
@@ -38,9 +38,9 @@ export default function PlantStatus({ name, status}) {
     }
 
     return (
-        <View style={{ paddingBottom: 30, flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 30 }}>
+        <View style={{ paddingBottom: 30, flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 15 }}>
             <View style={{ flex: 1 }}>
-                <Avatar.Icon size={90} icon={getEmote(status)} style={{ backgroundColor: getColor(status) }} />
+                <Avatar.Icon size={120} icon={getEmote(status)} style={{ backgroundColor:  "white"}} color={getColor(status)}/>
             </View>
             <View style={{ flex: 2 }}>
                 <Text variant="headlineSmall" >{name} is feeling {status.toLowerCase()}</Text>

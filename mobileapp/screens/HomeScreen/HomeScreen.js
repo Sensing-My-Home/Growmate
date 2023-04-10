@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import { View, Dimensions } from "react-native";
 import BottomMenu from "../../components/BottomMenu";
 import SearchBar from "../../components/SearchBar";
@@ -16,9 +16,15 @@ export default function HomeScreen() {
     const [userPlants, setUserPlants] = useState([]);
     const [userDivisions, setUserDivisions] = useState([]);
 
+    const [updateCount, setUpdateCount] = useState(0);
+    const handleUpdate = () => {
+        setUpdateCount(updateCount + 1);
+      }
+    
+
     useEffect( () => {
         getPlants(1).then((plants) => {setUserPlants(plants)})
-    }, []);
+    }, [updateCount]);
 
 
     useEffect( () => {
@@ -27,7 +33,7 @@ export default function HomeScreen() {
                 setUserDivisions(divisions)
             }
         );
-    }, []);
+    }, [updateCount]);
 
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
@@ -95,7 +101,7 @@ export default function HomeScreen() {
                         </View>
                     </TabScreen>
                     <TabScreen label="Divisions">
-                        <Divisions divisions={userDivisions}/>
+                        <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate}/>
                     </TabScreen>
                     <TabScreen
                         label="Sensors"
