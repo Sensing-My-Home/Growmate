@@ -380,7 +380,8 @@ ALTER TABLE public.soil_quality_measurement_seq OWNER TO postgres;
 CREATE TABLE public.species_family (
     id bigint NOT NULL,
     name character varying(255) NOT NULL,
-    opt_soil_mix integer
+    opt_soil_mix integer,
+    photo character varying(255)
 );
 
 
