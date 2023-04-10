@@ -37,21 +37,131 @@ VALUES (1, 'Anthony', 2, 'https://cdn.pixabay.com/photo/2018/03/06/19/33/vase-32
        (3, 'Beth', 2, 'https://cdn.pixabay.com/photo/2021/05/16/01/04/orchids-6256963_960_720.jpg', '2022-04-20', 2, 1, 4),
        (4, 'Juliana', 2, 'https://cdn.pixabay.com/photo/2016/11/21/16/05/cacti-1846147_960_720.jpg', '2022-02-10', 2, 1, 5);
 
-
 INSERT INTO public.plant_sensor (id, name, sensor_code, user_id, plant_id)
 VALUES (1, 'Anthony Sensor', 'ANT123', 1, 1),
-       (2, 'Wendy Sensor', 'WEN123', 1, 2),
+       (2, 'Orchid Sensor', 'WEN123', 1, 2),
        (3, 'Beth Sensor', 'BTH123', 1, 3),
        (4, 'Juliana Sensor', 'JUL123', 1, 4);
        
 INSERT INTO public.task VALUES (1,'Check if Anthony is ready for watering by verifying the first 2cm of the soil mixture for dryness', 'Water Anthony',
-                         '2023-04-13', 0, 1, FALSE),
-                        (2, 'Change Wendy soil mix. Remember she is a Orchid, so use their soil mix.', 'Change Wendy soil mix',
+                         CURRENT_DATE, 0, 1, FALSE),
+                        (2, 'Change Orchid soil mix. Remember she is a Orchid, so use their soil mix.', 'Change Orchid soil mix',
                          '2023-04-13', 1, 2, TRUE),
                      (3, 'Beth is a little too warm. Consider changing her location.', 'Move Beth',
-                         '2023-04-8', 2, 3, FALSE),
+                         '2023-04-18', 2, 3, FALSE),
                      (4, 'Check the leafs of Juliana. Annotate her condition on her journal', 'Check Juliana''s condition ',
                          '2023-04-15', 3, 4, FALSE),
                      (5, 'Time to give Anthony some new fertilizer!', 'Fertilize Anthony',
-                         '2023-04-8', 4, 1, TRUE);
+                         CURRENT_DATE, 4, 1, TRUE),
+                         (6, 'Change Anthony soil mix. Remember he is an African Violet, so use their soil mix.', 'Change Anthony soil mix',
+                         CURRENT_DATE, 1, 2, TRUE),
+                         (7, 'Check the leafs of Anthony. Annotate his condition on his journal', 'Check Anthony''s condition ',
+                         CURRENT_DATE, 3, 4, FALSE),
+                         (8,'Check if Orchid is ready for watering by verifying the first 2cm of the soil mixture for dryness', 'Water Orchid',
+                         '2023-04-22', 0, 1, FALSE),
+                         (9,'Check if Beth is ready for watering by verifying the first 2cm of the soil mixture for dryness', 'Water Beth',
+                         '2023-04-13', 0, 1, FALSE),
+                         (10,'Check if Juliana is ready for watering by verifying the first 2cm of the soil mixture for dryness', 'Water Juliana',
+                         '2023-04-15', 0, 1, FALSE);
+  
+-- SETTING ID's               
                  
+
+SELECT pg_catalog.setval('public.air_quality_measurement_seq', (SELECT MAX(id) FROM public.air_quality_measurement WHERE id > 0));
+
+
+--
+-- Name: air_temperature_measurement_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.air_temperature_measurement_seq', (SELECT MAX(id) FROM public.air_temperature_measurement WHERE id > 0));
+
+
+--
+-- Name: comment_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.comments_seq', (SELECT MAX(id) FROM public.comments WHERE id > 0));
+
+
+--
+-- Name: disease_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.disease_seq', (SELECT MAX(id) FROM public.disease WHERE id > 0));
+
+
+--
+-- Name: division_sensor_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.division_sensor_seq', (SELECT MAX(id) FROM public.division_sensor WHERE id > 0));
+
+
+--
+-- Name: division_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.division_seq', (SELECT MAX(id) FROM public.division WHERE id > 0));
+
+
+--
+-- Name: journal_entry_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.journal_entry_seq', (SELECT MAX(id) FROM public.journal_entry WHERE id > 0));
+
+
+--
+-- Name: plant_sensor_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.plant_sensor_seq', (SELECT MAX(id) FROM public.plant_sensor WHERE id > 0));
+
+
+--
+-- Name: plant_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.plant_seq', (SELECT MAX(id) FROM public.plant WHERE id > 0));
+
+
+--
+-- Name: plant_species_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.plant_species_seq', (SELECT MAX(id) FROM public.plant_species WHERE id > 0));
+
+
+--
+-- Name: soil_quality_measurement_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.soil_quality_measurement_seq', (SELECT MAX(id) FROM public.soil_quality_measurement WHERE id > 0));
+
+
+--
+-- Name: species_family_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.species_family_seq', (SELECT MAX(id) FROM public.species_family WHERE id > 0));
+
+
+--
+-- Name: task_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.task_seq', (SELECT MAX(id) FROM public.task WHERE id > 0));
+
+
+--
+-- Name: utilizador_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.utilizador_seq', (SELECT MAX(id) FROM public.utilizador WHERE id > 0));
+
+
+--
+-- Name: air_quality_measurement air_quality_measurement_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+

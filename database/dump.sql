@@ -75,7 +75,7 @@ ALTER TABLE public.air_temperature_measurement_seq OWNER TO postgres;
 -- Name: comment; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.comment (
+CREATE TABLE public.comments (
     id bigint NOT NULL,
     post_date timestamp without time zone,
     text character varying(255) NOT NULL,
@@ -85,13 +85,13 @@ CREATE TABLE public.comment (
 );
 
 
-ALTER TABLE public.comment OWNER TO postgres;
+ALTER TABLE public.comments OWNER TO postgres;
 
 --
 -- Name: comment_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.comment_seq
+CREATE SEQUENCE public.comments_seq
     START WITH 1
     INCREMENT BY 50
     NO MINVALUE
@@ -99,7 +99,7 @@ CREATE SEQUENCE public.comment_seq
     CACHE 1;
 
 
-ALTER TABLE public.comment_seq OWNER TO postgres;
+ALTER TABLE public.comments_seq OWNER TO postgres;
 
 --
 -- Name: disease; Type: TABLE; Schema: public; Owner: postgres
@@ -380,7 +380,8 @@ ALTER TABLE public.soil_quality_measurement_seq OWNER TO postgres;
 CREATE TABLE public.species_family (
     id bigint NOT NULL,
     name character varying(255) NOT NULL,
-    opt_soil_mix integer
+    opt_soil_mix integer,
+    photo character varying(255)
 );
 
 
@@ -484,7 +485,7 @@ SELECT pg_catalog.setval('public.air_temperature_measurement_seq', 1, false);
 -- Name: comment_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.comment_seq', 1, false);
+SELECT pg_catalog.setval('public.comments_seq', 1, false);
 
 
 --
@@ -584,7 +585,7 @@ ALTER TABLE ONLY public.air_temperature_measurement
 -- Name: comment comment_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.comment
+ALTER TABLE ONLY public.comments
     ADD CONSTRAINT comment_pkey PRIMARY KEY (id);
 
 
@@ -800,7 +801,7 @@ ALTER TABLE ONLY public.division_sensor
 -- Name: comment fkf1m5ypf6babiqbvd679v7oy2c; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.comment
+ALTER TABLE ONLY public.comments
     ADD CONSTRAINT fkf1m5ypf6babiqbvd679v7oy2c FOREIGN KEY (plant_id) REFERENCES public.plant(id);
 
 
@@ -808,7 +809,7 @@ ALTER TABLE ONLY public.comment
 -- Name: comment fkf4vjea1lveykjhcv7v2ty51mn; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.comment
+ALTER TABLE ONLY public.comments
     ADD CONSTRAINT fkf4vjea1lveykjhcv7v2ty51mn FOREIGN KEY (user_id) REFERENCES public.utilizador(id);
 
 
@@ -865,7 +866,7 @@ ALTER TABLE ONLY public.division_sensor
 --
 
 ALTER TABLE ONLY public.reaction
-    ADD CONSTRAINT fkskbqddo2ffvogxr3f22awp2wa FOREIGN KEY (comment_id) REFERENCES public.comment(id);
+    ADD CONSTRAINT fkskbqddo2ffvogxr3f22awp2wa FOREIGN KEY (comment_id) REFERENCES public.comments(id);
 
 
 --

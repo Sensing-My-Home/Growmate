@@ -28,6 +28,9 @@ public class SpeciesFamily {
     @Column
     private Integer optSoilMix;
 
+    @Column
+    private String photo;
+
     @JsonIgnore
     @OneToMany(mappedBy = "family", cascade = CascadeType.ALL)
     private List<PlantSpecies> species = new ArrayList<>();
