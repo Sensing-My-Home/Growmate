@@ -2,7 +2,7 @@ import { View } from "react-native";
 import { Button, useTheme } from "react-native-paper";
 import { useNavigation } from '@react-navigation/native';
 
-export default function CheckSpeciesButton({species}) {
+export default function CheckSpeciesButton({plantId}) {
     const theme = useTheme();
     const navigation = useNavigation();
 
@@ -11,7 +11,7 @@ export default function CheckSpeciesButton({species}) {
             <Button
                 textColor={theme.colors.background}
                 buttonColor={theme.colors.primary}
-                onPress={() =>  {navigation.navigate("SpeciesProfile", {species: species});}}
+                onPress={() =>  {navigation.navigate("SpeciesProfile", {plantId: plantId});}}
             >
                 Check Species Info
             </Button>

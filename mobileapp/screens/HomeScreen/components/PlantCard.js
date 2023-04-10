@@ -26,7 +26,8 @@ export default function PlantCard({id, name, image, state }) {
             onPress={() => {
                 navigation.navigate("Plant", {
                     name: name,
-                    image: image
+                    image: image,
+                    id: id
                 });
             }}
         >

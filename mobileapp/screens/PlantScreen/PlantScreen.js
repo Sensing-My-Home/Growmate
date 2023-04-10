@@ -19,7 +19,7 @@ export default function PlantScreen({ route }) {
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme();
 
-    const { name, image } = route.params;
+    const { name, image, id } = route.params;
 
     const [visible, setVisible] = React.useState(false);
     const showDialog = () => setVisible(true);
@@ -41,7 +41,7 @@ export default function PlantScreen({ route }) {
                 <TabScreen label="Info" icon="information">
                     <ScrollView>
                         <View style={{ paddingBottom: 100, paddingTop: 30 }}>
-                            <CheckSpeciesButton species={"Aloe Vera"}/>
+                            <CheckSpeciesButton plantId={id}/>
                             <PlantAvatar
                                 image={image}
                                 species="Aloe Vera"

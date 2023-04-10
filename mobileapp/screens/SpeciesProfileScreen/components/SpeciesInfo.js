@@ -23,15 +23,15 @@ export default function SpeciesInfo({info}){
                 <View style={styles.info}>
                     <IconButton icon={"thermometer"}/>
                     <View style={styles.infoText}>
-                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Temperature</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.temperature}</Text>
+                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Opt. Temperature</Text>
+                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.optimalTemperature}</Text>
                     </View>
                 </View>
                 <View style={styles.infoRow}>
                     <IconButton icon={"recycle-variant"}/>
                     <View style={styles.infoText}>
-                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Cicle</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.cicle}</Text>
+                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Cycle</Text>
+                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.cycle}</Text>
                     </View>
                 </View>
             </View>
@@ -39,8 +39,8 @@ export default function SpeciesInfo({info}){
                 <View style={styles.info}>
                     <IconButton icon={"white-balance-sunny"}/>
                     <View style={styles.infoText}>
-                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Sunlight</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.sunlight}</Text>
+                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Opt. Luminosity</Text>
+                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.optimalLuminosity}</Text>
                     </View>
                 </View>
                 <View style={styles.info}>
@@ -57,15 +57,15 @@ export default function SpeciesInfo({info}){
                 <View style={styles.info}>
                     <IconButton icon={"water-outline"}/>
                     <View style={styles.infoText}>
-                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Humidity</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.humidity}</Text>
+                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Opt. Humidity</Text>
+                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.optimalHumidity}</Text>
                     </View>
                 </View>
                 <View style={styles.info}>
-                    <IconButton icon={"help-circle-outline"}/>
+                    <IconButton icon={"clock-outline"}/>
                     <View style={styles.infoText}>
-                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Plant type</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.plantType}</Text>
+                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Season</Text>
+                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.season}</Text>
                     </View>
                 </View>
             </View>
@@ -74,14 +74,14 @@ export default function SpeciesInfo({info}){
                     <IconButton icon={"watering-can-outline"}/>
                     <View style={styles.infoText}>
                         <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Water freq.</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.waterFreq}</Text>
+                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.wateringFrequency}</Text>
                     </View>
                 </View>
                 <View style={styles.info}>
                     <IconButton icon={"sprout-outline"}/>
                     <View style={styles.infoText}>
-                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Soil Mix</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.soilMix}</Text>
+                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Usual Size</Text>
+                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.usualSize}</Text>
                     </View>
                 </View>
             </View>
@@ -103,6 +103,6 @@ const styles = StyleSheet.create({
 
     infoText: {
         flexDirection: "column",
-        width: 110
+        width: 120
     }
 })

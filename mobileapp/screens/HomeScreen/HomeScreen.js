@@ -28,6 +28,7 @@ export default function HomeScreen() {
             }
         );
     }, []);
+
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
     const [selectedTab, setSelectedTab] = useState(0)
@@ -100,18 +101,18 @@ export default function HomeScreen() {
                         label="Sensors"
                     >
                         <View>
-                        <SensorRow sensorTargets={divisions} sensorsType={"Division"} sensorsValues={sensors}/>
-                        <SensorRow sensorTargets={plants} sensorsType={"Plant"} sensorsValues={sensors}/>
+                        <SensorRow sensorTargets={userDivisions} sensorsType={"Division"} sensorsValues={sensors}/>
+                        <SensorRow sensorTargets={userPlants} sensorsType={"Plant"} sensorsValues={sensors}/>
                         </View>
                     </TabScreen>
                 </Tabs>
                 :
                 <View>
-                    <SearchBar text={"Search a plant or species!"} />
-                    <PlantCards plants={plants} />
+                    <SearchBar />
+                    <PlantCards plants={userPlants} />
                 </View>
             }
-            <PlusButton index={selectedTab} />
+            <PlusButton index={selectedTab}/>
             <BottomMenu screenHeight={screenHeight} active={"leaf"} />
         </View>
     )
