@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../mobileapp/service/SpeciesProfileScreenService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/HomeScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlantCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlantCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlusButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlusButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/PlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/components/CheckSpeciesButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/components/CheckSpeciesButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/components/SpeciesInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/components/SpeciesInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/service/HomeScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/service/HomeScreenService.js" afterDir="false" />
-    </list>
+    <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +97,7 @@
       <workItem from="1680904806729" duration="20000" />
       <workItem from="1680974961667" duration="9584000" />
       <workItem from="1681065749967" duration="4298000" />
-      <workItem from="1681123115474" duration="834000" />
+      <workItem from="1681123115474" duration="1238000" />
     </task>
     <servers />
   </component>
