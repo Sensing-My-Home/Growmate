@@ -1,30 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
 import { DraxProvider, DraxView } from 'react-native-drax';
 import { Text, useTheme } from 'react-native-paper';
 import TaskCard from './TaskCard';
+import { updateTask } from '../../../service/PlantScreenService';
 
-export default function PlantTaskDndBoard() {
+export default function PlantTaskDndBoard({userID, plantID, tasks}) {
     const theme = useTheme();
     const width = Dimensions.get("window").width;
 
-    const [tasks, setTasks] = useState([
-        {
-            id: 0,
-            name: "Water the plant",
-            status: "todo"
-        },
-        {
-            id: 1,
-            name: "Change Plant vase",
-            status: "todo"
-        },
-        {
-            id: 2,
-            name: "Check Plant leafs",
-            status: "done"
-        }
-    ])
+    const [plantTasks, setPlantTasks] = useState([]);
+
+    useEffect(() => {
+        setPlantTasks(tasks)
+    }, [tasks])
 
     const styles = StyleSheet.create({
         container: {
@@ -52,15 +41,16 @@ export default function PlantTaskDndBoard() {
                 <DraxView
                     style={styles.receiver}
                     onReceiveDragDrop={({ dragged: { payload } }) => {
-                        const taskIndex = tasks.findIndex(task => task.id === payload);
+                        const taskIndex = plantTasks.findIndex(task => task.id === payload);
                         if (taskIndex >= 0) {
-                            const updatedTasks = [...tasks];
-                            updatedTasks[taskIndex].status = "todo";
-                            setTasks(updatedTasks);
+                            const updatedTasks = [...plantTasks];
+                            updatedTasks[taskIndex].done = false;
+                            setPlantTasks(updatedTasks);
+                            updateTask(userID, plantID, payload, false);
                         }
                     }}
                 >
-                    {tasks.filter((task) => task.status === "todo").map((task, index) => {
+                    {plantTasks.filter((task) => task.done === false).map((task, index) => {
                         return (
                             <DraxView
                                 key={index}
@@ -79,12 +69,13 @@ export default function PlantTaskDndBoard() {
                         const taskIndex = tasks.findIndex(task => task.id === payload);
                         if (taskIndex >= 0) {
                             const updatedTasks = [...tasks];
-                            updatedTasks[taskIndex].status = "done";
-                            setTasks(updatedTasks);
+                            updatedTasks[taskIndex].done = true;
+                            setPlantTasks(updatedTasks);
+                            updateTask(userID, plantID, payload, true);
                         }
                     }}
                 >
-                    {tasks.filter((task) => task.status === "done").map((task, index) => {
+                    {plantTasks.filter((task) => task.done === true).map((task, index) => {
                         return (
                             <DraxView
                                 key={index}

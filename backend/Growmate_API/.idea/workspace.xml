@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/forum/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/forum/Comment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +53,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "dev",
     "last_opened_file_path": "/home/daniel/Documents/Universidade/Sem_2/TQS/TQS_77036/lab2/lab2_2httpclient",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -102,6 +102,7 @@
       <workItem from="1681065749967" duration="4298000" />
       <workItem from="1681123115474" duration="1238000" />
       <workItem from="1681128454406" duration="1214000" />
+      <workItem from="1681134036490" duration="2466000" />
     </task>
     <servers />
   </component>

@@ -18,7 +18,7 @@ export default function HomeScreen() {
 
     useEffect( () => {
         getPlants(1).then((plants) => {setUserPlants(plants)})
-    }, [] );
+    }, []);
 
 
     useEffect( () => {
