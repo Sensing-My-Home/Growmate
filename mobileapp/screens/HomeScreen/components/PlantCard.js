@@ -25,8 +25,7 @@ export default function PlantCard({id, name, image, state }) {
             style={{ width: 150, flex: 1, margin: 6, backgroundColor: theme.colors.background }}
             onPress={() => {
                 navigation.navigate("Plant", {
-                    name: name,
-                    image: image
+                    plantID: id
                 });
             }}
         >

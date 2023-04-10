@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { View } from "react-native";
 import { Button, Dialog, Portal, Text, useTheme } from "react-native-paper";
 
-export default function DeletePlant({ name, hideDialog, visible, showDialog }) {
+export default function DeletePlant({ name }) {
     const theme = useTheme();
+    const [visible, setVisible] = useState(false);
+    const showDialog = () => setVisible(true);
+    const hideDialog = () => setVisible(false);
 
     return (
         <>

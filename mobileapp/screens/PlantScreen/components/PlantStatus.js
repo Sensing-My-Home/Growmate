@@ -1,41 +1,38 @@
-import { useState } from "react";
 import { View } from "react-native";
 import { useTheme, Text, Avatar } from "react-native-paper";
 
-export default function PlantStatus({ name }) {
+export default function PlantStatus({ name, status}) {
     const theme = useTheme();
-
-    const [status, setStatus] = useState('happy')
 
     const getEmote = (status) => {
         switch (status) {
-            case "happy":
+            case "GREAT":
                 return "emoticon-happy"
-            case "neutral":
+            case "NORMAL":
                 return "emoticon-neutral"
-            case "sad":
+            case "BAD":
                 return "emoticon-sad"
         }
     }
 
     const getColor = (status) => {
         switch (status) {
-            case "happy":
+            case "GREAT":
                 return theme.colors.primary
-            case "neutral":
+            case "NORMAL":
                 return theme.colors.secondary
-            case "sad":
+            case "BAD":
                 return theme.colors.error
         }
     }
 
     const getText = (status) => {
         switch (status) {
-            case "happy":
+            case "GREAT":
                 return "No need to add anything"
-            case "neutral":
+            case "NORMAL":
                 return "You should check your tasks"
-            case "sad":
+            case "BAD":
                 return "Stop neglecting me"
         }
     }
@@ -46,7 +43,7 @@ export default function PlantStatus({ name }) {
                 <Avatar.Icon size={90} icon={getEmote(status)} style={{ backgroundColor: getColor(status) }} />
             </View>
             <View style={{ flex: 2 }}>
-                <Text variant="headlineSmall" >{name} is feeling {status}</Text>
+                <Text variant="headlineSmall" >{name} is feeling {status.toLowerCase()}</Text>
                 <Text variant="bodyLarge" >{getText(status)}</Text>
             </View>
         </View>
