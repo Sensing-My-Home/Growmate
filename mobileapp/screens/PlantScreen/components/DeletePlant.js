@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View } from "react-native";
 import { Button, Dialog, Portal, Text, useTheme } from "react-native-paper";
 
-export default function DeletePlant({ name }) {
+export default function DeletePlant({ name, deletePlant }) {
     const theme = useTheme();
     const [visible, setVisible] = useState(false);
     const showDialog = () => setVisible(true);
@@ -27,7 +27,7 @@ export default function DeletePlant({ name }) {
                     </Dialog.Content>
                     <Dialog.Actions>
                         <Button onPress={hideDialog} buttonColor={theme.colors.error} textColor={theme.colors.background}>Cancel</Button>
-                        <Button onPress={hideDialog} buttonColor={theme.colors.primary} textColor={theme.colors.background}>Confirm</Button>
+                        <Button onPress={deletePlant} buttonColor={theme.colors.primary} textColor={theme.colors.background}>Confirm</Button>
                     </Dialog.Actions>
                 </Dialog>
             </Portal>

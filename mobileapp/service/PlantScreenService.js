@@ -6,9 +6,16 @@ const getPlantInfo = async (userID, plantID) => {
     return response.data;
 }
 
-const getPlantSensors = async (userID, plantID) => {
-    const response = await axios.get(baseURL + "/user/" + userID + "/sensors/plant/" + plantID);
-    return response.data;
+const getSensorsForPlant = async (userID, plantID, divisionID) => {
+    let sensors = [];
+
+    await axios.get(baseURL + "/user/" + userID + "/sensors/plant/" + plantID)
+    .then((plantSensors) => plantSensors.data.map((sensor) => sensors.push(sensor)));
+
+    await axios.get(baseURL + "/user/" + userID + "/sensors/division/" + divisionID)
+    .then((divisionSensors) => divisionSensors.data.map((sensor) => sensors.push(sensor)));
+
+    return sensors;
 }
 
 const getAllDivisions = async (userID) => {
@@ -16,4 +23,22 @@ const getAllDivisions = async (userID) => {
     return response.data;
 }
 
-export {getPlantInfo, getAllDivisions, getPlantSensors}
+const getPlantTasksToday = async (userID, plantID) => {
+    const response = await axios.get(baseURL + "/user/tasks/" + userID + "/plant/" + plantID + "/today");
+    return response.data;
+}
+
+const updateTask = async (userID, plantID, taskID, status) => {
+    const response = await axios.put(
+        baseURL + "/user/tasks/" + userID + "/plant/" + plantID + "/updateTask/" + taskID,
+        null,
+        { params: { bol: status } }
+    );
+    return response.data;
+}
+
+const deletePlant = async (userID, plantID) => {
+    await axios.delete(baseURL + "/user/" + userID + "/inventory/" + plantID);
+}
+
+export {getPlantInfo, getAllDivisions, getSensorsForPlant, getPlantTasksToday, updateTask, deletePlant}

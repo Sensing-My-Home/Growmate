@@ -12,8 +12,8 @@ export default function TaskCard({ name }) {
         <View style={{ width: width / 2 }}>
             <Card>
                 <Card.Content>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "flex-start" }}>
-                        <Text variant="bodyLarge">{name}</Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "center" }}>
+                        <Text variant="titleMedium">{name}</Text>
                     </View>
                 </Card.Content>
             </Card>

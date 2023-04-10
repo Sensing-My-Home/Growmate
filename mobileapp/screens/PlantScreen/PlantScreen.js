@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { View, Dimensions, ScrollView } from "react-native";
 import { Tabs, TabScreen } from 'react-native-paper-tabs';
 import { useTheme } from "react-native-paper";
+import { useNavigation, StackActions } from '@react-navigation/native';
 
 import BottomMenu from "../../components/BottomMenu";
 import GreenBar from "../../components/GreenBar";
@@ -16,11 +17,12 @@ import SensorGraphStack from "./components/SensorGraphStack";
 import PlantTaskDndBoard from "./components/PlantTaskDndBoard";
 
 //API functions
-import { getPlantInfo, getPlantSpeciesInfo, getAllDivisions, getPlantSensors } from "../../service/PlantScreenService";
+import { getPlantInfo, getAllDivisions, getPlantTasksToday, getSensorsForPlant, deletePlant } from "../../service/PlantScreenService";
 
 export default function PlantScreen({ route }) {
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme();
+    const navigation = useNavigation();
 
     // Info for the API call
     const { plantID } = route.params;
@@ -33,29 +35,37 @@ export default function PlantScreen({ route }) {
         .then((info) => setPlantInfo(info));
     }, [])
 
-    // Get Plant sensors
-    const [plantSensor, setPlantSensor] = useState(null);
+    // Get All sensors associated with a plant
+    const [sensors, setSensors] = useState(null)
     useEffect(() => {
         if (plantInfo) {
-            getPlantSensors(userID, plantInfo.id)
-                .then((info) => setPlantSensor(info));
-        }
+            getSensorsForPlant(userID, plantID, plantInfo.division["id"])
+            .then((info) => setSensors(info));
+        };
     }, [plantInfo])
 
     // Get All Divisions
     const [divisions, setDivisions] = useState(null);
     useEffect(() => {
-        if (plantInfo) {
-            getAllDivisions(userID)
-                .then((info) => setDivisions(info));
-        }
-    }, [plantInfo])
+        getAllDivisions(userID)
+        .then((info) => setDivisions(info));
+    }, [])
+
+    //Get Plant tasks for today
+    const [todayTasks, setTodadyTasks] = useState(null);
+    useEffect(() => {
+        getPlantTasksToday(userID, plantID)
+        .then((info) => setTodadyTasks(info));
+    }, [])
 
     // API call to delete plant;
-    // API call to retrieve sensors associated with the plant;
+    const handleDeletePlant = () => {
+        deletePlant(userID, plantID);
+        navigation.dispatch(StackActions.replace('Home'));
+    }
 
     
-    if (plantInfo && divisions && plantSensor) {
+    if (plantInfo && divisions && sensors && todayTasks) {
         return (
             <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
                 <GreenBar />
@@ -73,6 +83,7 @@ export default function PlantScreen({ route }) {
                                 />
                                 <DeletePlant
                                     name={plantInfo.name}
+                                    deletePlant={handleDeletePlant}
                                 />
                                 <SensorsCarousel />
                                 <PlantStatus name={plantInfo.name} status={plantInfo.plantCondition}/>
@@ -80,7 +91,6 @@ export default function PlantScreen({ route }) {
                                     plant={plantInfo}
                                     division={plantInfo.division}
                                     divisions={divisions}
-                                    sensor={plantSensor}
                                 />
                             </View>
                         </ScrollView>
@@ -89,7 +99,11 @@ export default function PlantScreen({ route }) {
                         <SensorGraphStack />
                     </TabScreen>
                     <TabScreen label="Tasks " icon="pencil">
-                        <PlantTaskDndBoard />
+                        <PlantTaskDndBoard 
+                            userID={userID}
+                            plantID={plantInfo.id}
+                            tasks={todayTasks}
+                        />
                     </TabScreen>
                 </Tabs>
                 <BottomMenu screenHeight={screenHeight} />
