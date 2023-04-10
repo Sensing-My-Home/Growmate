@@ -4,7 +4,7 @@ import React from "react";
 import {useNavigation} from "@react-navigation/native";
 
 
-export default function CategoryCard({name, image}){
+export default function CategoryCard({name, image, id}){
     const theme = useTheme();
     const width = 100;
     const height = 100;
@@ -12,7 +12,8 @@ export default function CategoryCard({name, image}){
     return (
         <TouchableOpacity onPress={() => {
             navigation.navigate("Category", {
-                name: name
+                name: name,
+                id: id
             })
         }
         }>
@@ -21,7 +22,7 @@ export default function CategoryCard({name, image}){
             <Card style={{width: width, height: height}} >
                 <Card.Cover source={image} style={{width: width, height: height}} />
             </Card>
-            <Text variant={"bodyMedium"} style={{color: theme.colors.primary, marginTop: 6, height: 40}}>{name}</Text>
+            <Text variant={"bodyMedium"} style={{color: theme.colors.primary, marginTop: 6, height: 40, textAlign: "center"}}>{name}</Text>
         </View>
         </TouchableOpacity>
     )
