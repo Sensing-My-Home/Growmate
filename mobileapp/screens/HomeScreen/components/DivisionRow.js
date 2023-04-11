@@ -8,7 +8,6 @@ import { addPlantToDivision, changePlantDivision, removePlantFromDivision } from
 
 export default function DivisionRow({ plantCards, divisionName, userPlants, divisionID, handleUpdate }) {
     const theme = useTheme();
-    const image = require('../../../assets/plant.jpeg')
 
     const userID = 1
 
@@ -65,7 +64,7 @@ export default function DivisionRow({ plantCards, divisionName, userPlants, divi
                         key={index}
                         id={plantCard.id}
                         name={plantCard.name}
-                        image={image}
+                        image={plantCard.plantPhoto}
                         state={plantCard.plantCondition}
                     />
                 ))}

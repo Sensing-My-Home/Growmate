@@ -61,13 +61,10 @@ export default function TasksScreen() {
         let tempSelectedTasks = []
         for (let f = 0; f < todoTasks.length; f++) {
             let tempTask = todoTasks.at(f);
-            console.log(tempTask);
             if (tempTask.day === chosenDay){
                 chosenTasks.push(tempTask);
             }
         }
-
-        console.log(chosenTasks);
 
         for (let i = 1; i <= chosenTasks.length ; i++){
             tempSelectedTasks.push(

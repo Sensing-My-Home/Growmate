@@ -2,15 +2,15 @@ INSERT INTO public.utilizador (id, address, dob, email, name, password, rating, 
 VALUES
     (1, '123 Main St', '1990-01-01', 'john.doe@example.com', 'John Doe', 'password123', 4, 2);
 
-INSERT INTO public.species_family (id, name, opt_soil_mix)
+INSERT INTO public.species_family (id, name, opt_soil_mix, photo)
 VALUES
-    (1, 'Flowering House Plants', 1),
-    (2, 'Foliage Plants', 2),
-    (3, 'Bromeliads', 3),
-    (4, 'Orchids', 4),
-    (5, 'Succulents and Cacti', 5),
-    (6, 'Ferns', 6),
-    (7, 'African Violets and other Gesneriads', 7);
+    (1, 'Flowering House Plants', 1, 'https://assets.hgtv.ca/wp-content/uploads/2021/12/Kalanchoe-Plants-That-Flower-In-Winter-FT.jpg'),
+    (2, 'Foliage Plants', 2, 'https://www.gardendesign.com/pictures/images/675x529Max/site_3/colorful-foliage-plants-proven-winners_16616.jpg'),
+    (3, 'Bromeliads', 3, 'https://www.gardeningknowhow.com/wp-content/uploads/2012/03/bromeliads-1.jpg'),
+    (4, 'Orchids', 4, 'https://www.allaboutgardening.com/wp-content/uploads/2021/11/Types-of-Orchids-1200x667.jpg'),
+    (5, 'Succulents and Cacti', 5, 'https://buchanansplants.com/wp-content/uploads/2022/03/iStock-1302750927-scaled.jpg'),
+    (6, 'Ferns', 6, 'https://cdn.britannica.com/30/73130-138-917E422E/Ferns-systems-tracheophytes-leaves-water.jpg?w=800&h=450&c=crop'),
+    (7, 'African Violets and other Gesneriads', 7, 'https://bloximages.chicago2.vip.townnews.com/auburnpub.com/content/tncms/assets/v3/editorial/0/80/08049aee-ea8b-5f5d-9a01-ae3d6f27cc7a/601c64139816c.image.jpg');
 
 INSERT INTO public.plant_species (id, common_name, cycle, difficulty, flowering, leaf_color, optimal_humidity, optimal_luminosity, optimal_temperature, scientific_name, season, photo, usual_size, watering_frequency, family_id)
 VALUES (1, 'African Violet', 'Perennial', 2, true, 'Lavender', 2, 2, 2, 'Saintpaulia ionantha', 4, 'https://cdn.pixabay.com/photo/2020/01/09/18/05/african-violets-4753512_960_720.jpg', 6, 1, 7),
@@ -32,10 +32,10 @@ VALUES (1, 'Living Room Temperature Sensor', 'TMP123', 1, 1),
        (4, 'Bedroom Humidity Sensor', 'HMD789', 2, 1);
 
 INSERT INTO public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id)
-VALUES (1, 'Anthony', 2, 'https://cdn.pixabay.com/photo/2018/03/06/19/33/vase-3204337_960_720.jpg', '2022-01-01', 1, 1, 1),
-       (2, 'Wendy', 2, 'https://images.pexels.com/photos/7814295/pexels-photo-7814295.jpeg', '2022-03-15', 1, 1, 7),
-       (3, 'Beth', 2, 'https://cdn.pixabay.com/photo/2021/05/16/01/04/orchids-6256963_960_720.jpg', '2022-04-20', 2, 1, 4),
-       (4, 'Juliana', 2, 'https://cdn.pixabay.com/photo/2016/11/21/16/05/cacti-1846147_960_720.jpg', '2022-02-10', 2, 1, 5);
+VALUES (1, 'Anthony', 0, 'https://cdn.pixabay.com/photo/2018/03/06/19/33/vase-3204337_960_720.jpg', '2022-01-01', 1, 1, 1),
+       (2, 'Orchid', 2, 'https://images.pexels.com/photos/7814295/pexels-photo-7814295.jpeg', '2022-03-15', 1, 1, 7),
+       (3, 'Beth', 1, 'https://cdn.pixabay.com/photo/2021/05/16/01/04/orchids-6256963_960_720.jpg', '2022-04-20', 2, 1, 4),
+       (4, 'Juliana the Cactus', 2, 'https://cdn.pixabay.com/photo/2016/11/21/16/05/cacti-1846147_960_720.jpg', '2022-02-10', 2, 1, 5);
 
 INSERT INTO public.plant_sensor (id, name, sensor_code, user_id, plant_id)
 VALUES (1, 'Anthony Sensor', 'ANT123', 1, 1),

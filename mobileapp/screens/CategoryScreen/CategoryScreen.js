@@ -28,7 +28,7 @@ export default function CategoryScreen({route}){
                     <PlantItem
                         key={index}
                         name={specie.commonName}
-                        image={image}
+                        image={specie.speciesPhoto}
                         difficulty={specie.difficulty}
                     />
                 ))}

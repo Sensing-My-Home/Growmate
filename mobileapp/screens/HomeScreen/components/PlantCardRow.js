@@ -10,7 +10,7 @@ export default function PlantCardRow({ plantCards }) {
                     key={index}
                     id={plantCard.id}
                     name={plantCard.name}
-                    image={image}
+                    image={plantCard.plantPhoto}
                     state={plantCard.plantCondition}
                 />
             ))}

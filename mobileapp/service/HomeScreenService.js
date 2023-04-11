@@ -1,6 +1,12 @@
 import axios from "axios";
 const baseURL = "http://10.0.2.2:8080/growmate"
 
+
+const getFirstName = async (id) => {
+    const response = await axios.get(baseURL + "/user/" + id);
+    return response.data;
+}
+
 const getPlants = async (id) => {
     const response = await axios.get(baseURL + "/user/" + id + "/plants");
     return response.data;
@@ -41,4 +47,4 @@ const removePlantFromDivision = async (userID, plantID, divisionID) => {
     )
 }
 
-export {getPlants, getDivisionsAndAssociatedPlants, addPlantToDivision, changePlantDivision, removePlantFromDivision}
+export {getPlants, getDivisionsAndAssociatedPlants, addPlantToDivision, changePlantDivision, removePlantFromDivision, getFirstName}

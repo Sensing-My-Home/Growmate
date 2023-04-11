@@ -30,7 +30,7 @@ export default function PlantCard({id, name, image, state }) {
             }}
         >
             <Card>
-                <Card.Cover style={{ height: 100, borderRadius: 0, backgroundColor: theme.colors.background }} source={image} />
+                <Card.Cover style={{ height: 100, borderRadius: 0, backgroundColor: theme.colors.background }} source={ {uri : image} } />
                 {good &&
                     <Card.Title
                         title={name}

@@ -11,7 +11,7 @@ export default function SpeciesAvatar({ image, species, speciesFamily }) {
             </Text>
             <Avatar.Image
                 size={150}
-                source={image}
+                source={ {uri: image}}
             />
             <Text variant={"titleMedium"} style={{ color: theme.colors.secondary, fontWeight: '400', marginTop: 10 }}>
                 {speciesFamily}

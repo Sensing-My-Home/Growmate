@@ -4,7 +4,7 @@ import React from "react";
 import DropdownButton from "./DropdownButton";
 import ThinDivider from "../../../components/ThinDivider";
 
-export default function WelcomeHeader({premium}) {
+export default function WelcomeHeader({premium, name}) {
     const theme = useTheme();
 
     return (
@@ -13,11 +13,11 @@ export default function WelcomeHeader({premium}) {
             <View style={{ height: 50}}>
                 {premium ?
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}>
-                        <Text variant={"headlineMedium"} style={{ color: theme.colors.primary, fontWeight: '700' }}>Welcome, User! </Text>
+                        <Text variant={"headlineMedium"} style={{ color: theme.colors.primary, fontWeight: '700' }}>Welcome, {name}! </Text>
                         <IconButton icon={"leaf"} iconColor={theme.colors.golden} size={30} />
                     </View>
                     :
-                    <Text variant={"headlineMedium"} style={{ color: theme.colors.primary, fontWeight: '700', textAlign: 'left', paddingTop: 11 }}>Welcome, User!</Text>
+                    <Text variant={"headlineMedium"} style={{ color: theme.colors.primary, fontWeight: '700', textAlign: 'left', paddingTop: 11 }}>Welcome, {name}!</Text>
                                     }
             </View>
             <DropdownButton theme={theme}></DropdownButton>

@@ -10,7 +10,7 @@ import AssociateDivision from "./components/AssociateDivision";
 import AddSensorButton from "./components/AddSensorButton";
 import AddDivisionButton from "./components/AddDivisionButton";
 import {createNewPlant} from "../../service/AssociatePlantScreenService";
-import {useNavigation} from "@react-navigation/native";
+import {useNavigation, StackActions} from "@react-navigation/native";
 
 
 export default function AssociatePlantScreen({route}) {
@@ -26,7 +26,7 @@ export default function AssociatePlantScreen({route}) {
     const [divisionTarget, setDivisionTarget] = useState("None");
     const onPressNext = () => {
         createNewPlant(1, name, image, specie, 1, date);
-        navigation.navigate("Home");
+        navigation.dispatch(StackActions.replace('Home'));
     }
 
     // API call that onPress it adds a Plant;

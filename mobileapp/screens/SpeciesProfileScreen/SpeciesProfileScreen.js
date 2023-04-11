@@ -22,7 +22,7 @@ export default function SpeciesProfileScreen({route}){
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <GreenBar />
             <SpeciesHeader/>
-            <SpeciesAvatar speciesFamily={plantSpeciesInfo.scientificName} species={plantSpeciesInfo.commonName} image={speciesImage}/>
+            <SpeciesAvatar speciesFamily={plantSpeciesInfo.scientificName} species={plantSpeciesInfo.commonName} image={plantSpeciesInfo.speciesPhoto}/>
             <SpeciesInfo info={plantSpeciesInfo}/>
             <SpeciesFooter/>
             <BottomMenu screenHeight={screenHeight} active={"leaf"} />

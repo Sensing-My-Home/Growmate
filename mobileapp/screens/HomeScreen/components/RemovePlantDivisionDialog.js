@@ -46,7 +46,7 @@ export default function RemovePlantDivision ({ visibleRemove, hideRemove, userPl
                                         return (
                                             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginVertical: 10 }} key={plant.id}>
                                                 <View style={{ flexDirection: "row", alignItems: "center" }}>
-                                                    <Avatar.Image source={plant.plantPhoto} size={35} style={{ marginRight: 10 }} />
+                                                    <Avatar.Image source={ { uri: plant.plantPhoto} } size={35} style={{ marginRight: 10 }} />
                                                     <Text variant='bodyLarge'>{plant.name}</Text>
                                                 </View>
                                                 <Checkbox

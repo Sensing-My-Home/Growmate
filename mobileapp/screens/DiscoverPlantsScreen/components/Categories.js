@@ -10,7 +10,6 @@ export default function Categories({categories}){
         const end = start + cardsPerRow;
         rows.push(categories.slice(start, end));
     }
-    const cacti = require("../../../assets/cacti.jpeg");
 
     return (
         <View>
@@ -18,7 +17,7 @@ export default function Categories({categories}){
             {rows.map((row, index) => (
                 <View style={{flexDirection: "row", marginTop: 30, justifyContent: "center", alignItems: "center"}} key={index}>
                 {row.map((category, index) => (
-                    <CategoryCard name={category.name} image={cacti} id={category.id} key={index}/>
+                    <CategoryCard name={category.name} image={category.photo} id={category.id} key={index}/>
                     ))}
                 </View>
             ))}

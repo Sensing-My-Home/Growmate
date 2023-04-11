@@ -8,7 +8,7 @@ export default function PlantAvatar({ image, species }) {
         <View style={{ alignItems: 'center', paddingBottom: 25 }}>
             <Avatar.Image
                 size={150}
-                source={image}
+                source={{uri : image}}
             />
             <Text variant={"headlineSmall"} style={{ color: theme.colors.primary, fontWeight: '700' }}>
                 {species}

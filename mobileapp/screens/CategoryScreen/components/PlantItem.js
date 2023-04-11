@@ -24,7 +24,7 @@ export default function PlantItem({name, image, difficulty}){
     }
     return (
         <View style={{marginTop: 20, marginHorizontal: 40, flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
-            <Card.Cover source={image} style={{width: image_width, height: image_height, borderWidth: 1, borderColor: theme.colors.opaqueGrey}} />
+            <Card.Cover source={ {uri: image}} style={{width: image_width, height: image_height, borderWidth: 1, borderColor: theme.colors.opaqueGrey}} />
             <View style={{flexDirection: "column"}}>
                 <Text variant={"bodyLarge"} style={{fontWeight: "800", marginBottom: 10, marginTop: 20, color: theme.colors.primary}}>{name}</Text>
                 <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Difficulty</Text>

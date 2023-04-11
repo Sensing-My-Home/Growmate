@@ -10,13 +10,14 @@ import PlusButton from "./components/PlusButton";
 import {Tabs, TabScreen} from 'react-native-paper-tabs';
 import Divisions from "./components/Divisions";
 import SensorRow from "./components/SensorRow";
-import {getPlants, getDivisionsAndAssociatedPlants} from "../../service/HomeScreenService";
+import {getPlants, getDivisionsAndAssociatedPlants, getFirstName} from "../../service/HomeScreenService";
 
 export default function HomeScreen() {
     const [userPlants, setUserPlants] = useState([]);
     const [userDivisions, setUserDivisions] = useState([]);
-
+    const [userFirstName, setUserFirstName] = useState("");
     const [updateCount, setUpdateCount] = useState(0);
+
     const handleUpdate = () => {
         setUpdateCount(updateCount + 1);
       }
@@ -34,6 +35,14 @@ export default function HomeScreen() {
             }
         );
     }, [updateCount]);
+
+    useEffect( () => {
+        getFirstName(1).then(
+            (name) => {
+                setUserFirstName(name.name.split(" ")[0])
+            }
+        );
+    }, []);
 
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
@@ -85,7 +94,7 @@ export default function HomeScreen() {
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <GreenBar />
             <View style={{ position: 'relative', zIndex: 1 }}>
-            <WelcomeHeader premium={premium}  />
+            <WelcomeHeader premium={premium} name={userFirstName}/>
             </View>
             {premium ?
                 <Tabs
