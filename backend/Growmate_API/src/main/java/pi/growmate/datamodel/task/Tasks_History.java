@@ -10,14 +10,13 @@ import pi.growmate.datamodel.plant.Plant;
 
 import java.sql.Date;
 
-
 @Entity
 @Table
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Task {
+public class Tasks_History {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -30,26 +29,10 @@ public class Task {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private String description;
-
     @Column(name = "task_date")
     @Temporal(TemporalType.DATE)
-    private Date taskDate;
+    private Date doneDate;
 
     @Convert(converter = TaskTypeConverter.class)
     private TaskType taskType;
-
-    @Column(name = "task_done", nullable = false)
-    private boolean task_done;
-
-    public void setTaskDone(boolean bol){
-        this.task_done = bol;
-    }
-
-    public boolean isDone(){
-        return task_done;
-    }
-
-
 }

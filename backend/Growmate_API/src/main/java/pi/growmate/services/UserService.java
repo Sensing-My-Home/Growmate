@@ -12,12 +12,15 @@ import pi.growmate.datamodel.plant.Plant;
 import pi.growmate.datamodel.plant.PlantCondition;
 import pi.growmate.datamodel.plant.PlantSensor;
 import pi.growmate.datamodel.species.PlantSpecies;
+import pi.growmate.datamodel.task.TaskType;
+import pi.growmate.datamodel.task.Task_Settings;
 import pi.growmate.datamodel.user.User;
 import pi.growmate.exceptions.ResourceNotFoundException;
 import pi.growmate.repositories.division.DivisionRepository;
 import pi.growmate.repositories.plant.PlantRepository;
 import pi.growmate.repositories.plant.PlantSensorRepository;
 import pi.growmate.repositories.species.PlantSpeciesRepository;
+import pi.growmate.repositories.tasks.TaskSettingsRepository;
 import pi.growmate.repositories.user.UserRepository;
 import pi.growmate.utils.SuccessfulRequest;
 
@@ -39,6 +42,9 @@ public class UserService {
 
     @Autowired
     PlantRepository plantRepository;
+
+    @Autowired
+    TaskSettingsRepository taskSettingsRepository;
 
     // funcao que ira buscar informacao sobre o utilizador
     public User getUser(long userID) throws ResourceNotFoundException{
@@ -84,10 +90,21 @@ public class UserService {
         }
         
         plantRepository.save(plant); //is this gonna work?
-        log.info(plant.getId() + " este e o id da planta");
-        
-        
-        return new SuccessfulRequest("Something!");
+
+        // Create new entries into the Task Settings Repository, relating to the newly added plant, one for each type of task
+        //TODO: Call the task calculation algorithm to determine task frequencies, and setup the next task!
+        for(TaskType type: TaskType.values()){
+            Task_Settings settings = new Task_Settings();
+
+            settings.setAutomatic(true);
+            settings.setPlant(plant);
+            settings.setTaskType(type);
+            settings.setTaskFrequency(7);
+
+            taskSettingsRepository.save(settings);
+        }
+
+        return new SuccessfulRequest("The plant was added successfully!");
     }
 
     // funcoes auxiliares

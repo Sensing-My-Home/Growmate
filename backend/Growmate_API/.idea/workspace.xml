@@ -5,27 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="merged conflicts">
+      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/Task_Settings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/Tasks_History.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/tasks/HistoricTaskRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/tasks/TaskSettingsRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/DivisionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/DivisionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/PlantInventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/PlantInventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/TasksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/forum/JournalEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/JournalEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/Tasks_Current.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/tasks/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/tasks/CurrentTaskRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/TasksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/TasksService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../database/Running_the_db.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../database/Running_the_db.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../database/dump.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../database/dump.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../database/fill_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../database/fill_tables.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/AssociatePlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/AssociatePlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/components/PlantItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/components/PlantItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/Categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/Categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/CategoryCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/CategoryCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/HomeScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/ChangePlantDivisionDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/ChangePlantDivisionDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/DivisionRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/DivisionRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlantCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlantCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlantCardRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlantCardRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/RemovePlantDivisionDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/RemovePlantDivisionDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/WelcomeHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/WelcomeHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/components/PlantAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/components/PlantAvatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/components/SpeciesAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/components/SpeciesAvatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/TasksScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/service/AssociatePlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/service/AssociatePlantScreenService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/service/HomeScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/service/HomeScreenService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +123,8 @@
       <workItem from="1681123115474" duration="1238000" />
       <workItem from="1681128454406" duration="1764000" />
       <workItem from="1681151612684" duration="4224000" />
+      <workItem from="1681668667411" duration="2174000" />
+      <workItem from="1681751041898" duration="4170000" />
     </task>
     <servers />
   </component>

@@ -8,7 +8,7 @@ import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.division.DivisionSensor;
 import pi.growmate.datamodel.plant.PlantSensor;
 import pi.growmate.datamodel.forum.Comment;
-import pi.growmate.datamodel.forum.JournalEntry;
+import pi.growmate.datamodel.plant.JournalEntry;
 import pi.growmate.datamodel.plant.Plant;
 
 import java.sql.Date;

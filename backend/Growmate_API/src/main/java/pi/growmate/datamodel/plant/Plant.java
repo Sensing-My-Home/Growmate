@@ -1,15 +1,15 @@
 package pi.growmate.datamodel.plant;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
 import lombok.*;
 import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.forum.Comment;
-import pi.growmate.datamodel.forum.JournalEntry;
 import pi.growmate.datamodel.species.PlantSpecies;
-import pi.growmate.datamodel.task.Task;
+import pi.growmate.datamodel.task.Task_Settings;
+import pi.growmate.datamodel.task.Tasks_Current;
+import pi.growmate.datamodel.task.Tasks_History;
 import pi.growmate.datamodel.user.User;
 
 import java.sql.Date;
@@ -68,7 +68,15 @@ public class Plant {
 
     @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
-    private List<Task> plantTasks = new ArrayList<>();
+    private List<Tasks_Current> currentTasks = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
+    private List<Tasks_History> historyTasks = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
+    private List<Task_Settings> taskSettings = new ArrayList<>();
 
     // Getter methods that need to be ignored on JSON replies
     @JsonIgnore
@@ -82,13 +90,23 @@ public class Plant {
     }
 
     @JsonIgnore
-    public List<Task> getPlantTasks() {
-        return plantTasks;
+    public List<PlantSensor> getSensors() {
+        return sensors;
     }
 
     @JsonIgnore
-    public List<PlantSensor> getSensors() {
-        return sensors;
+    public List<Tasks_Current> getCurrentTasks() {
+        return currentTasks;
+    }
+
+    @JsonIgnore
+    public List<Tasks_History> getHistoryTasks() {
+        return historyTasks;
+    }
+
+    @JsonIgnore
+    public List<Task_Settings> getTaskSettings() {
+        return taskSettings;
     }
 
     @JsonIgnore
