@@ -4,28 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="added AddPlantScreenService and AssociatePlantScreenService">
+    <list default="true" id="8ee1d484-b765-43c1-a544-f03b0bc4cada" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/AddDivisionScreen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/components/AddDivisionDescription.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/components/DivisionInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/components/SensorDropdown.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/fill_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../database/fill_tables.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/components/PlantItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/components/PlantItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/Categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/Categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/CategoryCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/CategoryCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/ChangePlantDivisionDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/ChangePlantDivisionDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/DivisionRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/DivisionRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCardRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCardRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/RemovePlantDivisionDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/RemovePlantDivisionDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/WelcomeHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/WelcomeHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/components/PlantAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/components/PlantAvatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SpeciesProfileScreen/components/SpeciesAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SpeciesProfileScreen/components/SpeciesAvatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/HomeScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/HomeScreenService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlusButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlusButton.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +79,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="" />
+      <changelist id="8ee1d484-b765-43c1-a544-f03b0bc4cada" name="Changes" comment="" />
       <created>1679593266633</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -112,6 +99,7 @@
       <workItem from="1681065748109" duration="6636000" />
       <workItem from="1681123110281" duration="1632000" />
       <workItem from="1681132689704" duration="15431000" />
+      <workItem from="1681823338915" duration="3923000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
