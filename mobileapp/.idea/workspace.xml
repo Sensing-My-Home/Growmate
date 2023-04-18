@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="added AddPlantScreenService and AssociatePlantScreenService">
+      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/fill_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../database/fill_tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/components/PlantItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/components/PlantItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/Categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/Categories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/CategoryCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/CategoryCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/ChangePlantDivisionDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/ChangePlantDivisionDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/DivisionRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/DivisionRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCardRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCardRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/RemovePlantDivisionDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/RemovePlantDivisionDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/WelcomeHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/WelcomeHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/components/PlantAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/components/PlantAvatar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SpeciesProfileScreen/components/SpeciesAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SpeciesProfileScreen/components/SpeciesAvatar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/HomeScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/HomeScreenService.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NQPKCyGNk0M1jyFenYBdhL6SsF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/andre_butuc/Documents/RepUA/PI/Growmate/mobileapp&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/screens/AddPlantScreen/components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/aux" />
+      <recent name="$PROJECT_DIR$/.images" />
+      <recent name="$PROJECT_DIR$/assets" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="mobileapp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="mobileapp" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="" />
+      <created>1679593266633</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679593266633</updated>
+      <workItem from="1679593268319" duration="486000" />
+      <workItem from="1679777233930" duration="15414000" />
+      <workItem from="1679925377048" duration="53000" />
+      <workItem from="1680616586850" duration="22825000" />
+      <workItem from="1680700045864" duration="20943000" />
+      <workItem from="1680779346173" duration="13941000" />
+      <workItem from="1680821478499" duration="38000" />
+      <workItem from="1680862606989" duration="4029000" />
+      <workItem from="1680874107914" duration="11831000" />
+      <workItem from="1680963672427" duration="805000" />
+      <workItem from="1680969636356" duration="18000" />
+      <workItem from="1680994865494" duration="4661000" />
+      <workItem from="1681065748109" duration="6636000" />
+      <workItem from="1681123110281" duration="1632000" />
+      <workItem from="1681132689704" duration="15431000" />
+    </task>
+    <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
+      <created>1679778003094</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1679778003094</updated>
+    </task>
+    <task id="LOCAL-00002" summary="GM-30 HomeScreen done">
+      <created>1679799807882</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679799807882</updated>
+    </task>
+    <task id="LOCAL-00003" summary="GM-37 HomeScreen &amp; Aba Divisions + Sensors Done">
+      <created>1680657760421</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680657760421</updated>
+    </task>
+    <task id="LOCAL-00004" summary="GM-47 visual part of the screen is done">
+      <created>1680709666674</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680709666674</updated>
+    </task>
+    <task id="LOCAL-00005" summary="GM-47 functional part done">
+      <created>1680713324750</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680713324750</updated>
+    </task>
+    <task id="LOCAL-00006" summary="GM-51">
+      <created>1680737291339</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680737291339</updated>
+    </task>
+    <task id="LOCAL-00007" summary="GM-40 plant details screen done">
+      <created>1680790597435</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680790597435</updated>
+    </task>
+    <task id="LOCAL-00008" summary="GM-40 done">
+      <created>1680796416020</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680796416020</updated>
+    </task>
+    <task id="LOCAL-00009" summary="small colors fix">
+      <created>1680863661034</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1680863661034</updated>
+    </task>
+    <task id="LOCAL-00010" summary="GM-48 done">
+      <created>1680905408457</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680905408457</updated>
+    </task>
+    <task id="LOCAL-00011" summary="GM-50 done">
+      <created>1680908357035</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1680908357035</updated>
+    </task>
+    <task id="LOCAL-00012" summary="minor design fixes from meeting talk">
+      <created>1680913406720</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1680913406720</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fixed calendar locale of AddPlant">
+      <created>1680963891395</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680963891395</updated>
+    </task>
+    <task id="LOCAL-00014" summary="added getPlants and getDivisionsAndAssociatedPlants services">
+      <created>1680999534985</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1680999534985</updated>
+    </task>
+    <task id="LOCAL-00015" summary="added SpeciesProfileService">
+      <created>1681125863326</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1681125863326</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added CategoryScreenService and DiscoverPlantScreenService">
+      <created>1681134684857</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1681134684857</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added TasksScreenService">
+      <created>1681139169580</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1681139169580</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="GM-29 done init project + folder skeleton" />
+    <MESSAGE value="GM-30 HomeScreen done" />
+    <MESSAGE value="GM-37 HomeScreen &amp; Aba Divisions + Sensors Done" />
+    <MESSAGE value="GM-47 visual part of the screen is done" />
+    <MESSAGE value="GM-47 functional part done" />
+    <MESSAGE value="GM-51" />
+    <MESSAGE value="GM-40 plant details screen done" />
+    <MESSAGE value="GM-40 done" />
+    <MESSAGE value="small colors fix" />
+    <MESSAGE value="GM-48 done" />
+    <MESSAGE value="GM-50 done" />
+    <MESSAGE value="minor design fixes from meeting talk" />
+    <MESSAGE value="fixed calendar locale of AddPlant" />
+    <MESSAGE value="added getPlants and getDivisionsAndAssociatedPlants services" />
+    <MESSAGE value="added SpeciesProfileService" />
+    <MESSAGE value="added CategoryScreenService and DiscoverPlantScreenService" />
+    <MESSAGE value="added TasksScreenService" />
+    <option name="LAST_COMMIT_MESSAGE" value="added TasksScreenService" />
+  </component>
+</project>
