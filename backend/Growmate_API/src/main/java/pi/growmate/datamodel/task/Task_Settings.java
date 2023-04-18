@@ -32,4 +32,8 @@ public class Task_Settings {
 
     @Column
     private boolean isAutomatic;
+
+    public void toggleMode(){
+        this.isAutomatic = !this.isAutomatic;
+    }
 }

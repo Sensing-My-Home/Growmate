@@ -5,26 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="merged conflicts">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/Task_Settings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/Tasks_History.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/tasks/HistoricTaskRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/tasks/TaskSettingsRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/DivisionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/DivisionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/PlantInventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/PlantInventoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/TasksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/forum/JournalEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/JournalEntry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/Tasks_Current.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/tasks/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/tasks/CurrentTaskRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/Task_Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/Task_Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/tasks/TaskSettingsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/tasks/TaskSettingsRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/TasksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/TasksService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../database/Running_the_db.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../database/Running_the_db.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../database/dump.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../database/dump.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../database/fill_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../database/fill_tables.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +110,10 @@
       <workItem from="1681128454406" duration="1764000" />
       <workItem from="1681151612684" duration="4224000" />
       <workItem from="1681668667411" duration="2174000" />
-      <workItem from="1681751041898" duration="4170000" />
+      <workItem from="1681751041898" duration="4490000" />
+      <workItem from="1681827023549" duration="52000" />
+      <workItem from="1681827084365" duration="1054000" />
+      <workItem from="1681850285368" duration="3171000" />
     </task>
     <servers />
   </component>

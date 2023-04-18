@@ -44,38 +44,47 @@ public class Plant {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="user_id", nullable = false)
+    @ToString.Exclude
     private User owner;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="species_id", nullable = false)
+    @ToString.Exclude
     private PlantSpecies species;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="division_id")
+    @ToString.Exclude
     private Division division;
 
     @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<PlantSensor> sensors = new ArrayList<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Comment> commentsOnPlant = new ArrayList<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<JournalEntry> journalEntries = new ArrayList<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Tasks_Current> currentTasks = new ArrayList<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Tasks_History> historyTasks = new ArrayList<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Task_Settings> taskSettings = new ArrayList<>();
 
     // Getter methods that need to be ignored on JSON replies

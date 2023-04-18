@@ -3,7 +3,10 @@ package pi.growmate.services;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +14,15 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import pi.growmate.datamodel.plant.Plant;
+import pi.growmate.datamodel.task.TaskType;
+import pi.growmate.datamodel.task.Task_Settings;
 import pi.growmate.datamodel.task.Tasks_Current;
 import pi.growmate.datamodel.task.Tasks_History;
 import pi.growmate.datamodel.user.User;
 import pi.growmate.exceptions.ResourceNotFoundException;
 import pi.growmate.repositories.tasks.CurrentTaskRepository;
 import pi.growmate.repositories.tasks.HistoricTaskRepository;
+import pi.growmate.repositories.tasks.TaskSettingsRepository;
 import pi.growmate.repositories.user.UserRepository;
 import pi.growmate.utils.SuccessfulRequest;
 
@@ -32,6 +38,9 @@ public class TasksService {
 
     @Autowired
     private HistoricTaskRepository historicTaskRepository;
+
+    @Autowired
+    private TaskSettingsRepository taskSettingsRepository;
 
     public List<Tasks_Current> getTasksForToday(Long userID) throws ResourceNotFoundException{
         User user = getUser(userID);
@@ -111,6 +120,86 @@ public class TasksService {
         //currentTaskRepository.save(task);
 
         return new SuccessfulRequest("Updated task with success");
+    }
+
+    public SuccessfulRequest toggleTaskMode(Long idUser, Long idPlant, String taskType) throws ResourceNotFoundException {
+        User user = getUser(idUser);
+        Plant planta = getPlant(user, idPlant);
+
+        // Finding the correct entry in Task_Settings, and toggling the mode
+        TaskType type;
+
+         switch (taskType) {
+            case "FERTILIZER" -> type = TaskType.FERTILIZER;
+            case "CHECK_PLANT" -> type = TaskType.CHECK_PLANT;
+            case "MOVE_PLANT" -> type = TaskType.MOVE_PLANT;
+            case "SOIL_CHANGE" -> type = TaskType.SOIL_CHANGE;
+            case "WATERING" -> type = TaskType.WATERING;
+            default -> throw new IllegalArgumentException("Invalid task type: " + taskType);
+        };
+
+        Task_Settings settings = taskSettingsRepository.findFirstByPlantAndTaskType(planta, type);
+        settings.toggleMode();
+        taskSettingsRepository.save(settings);
+
+        return new SuccessfulRequest("Task mode toggled successfully!");
+    }
+
+    public Map<String, List<Task_Settings>> getAllTaskSettings(Long idUser, Long idPlant) throws ResourceNotFoundException{
+        User user = getUser(idUser);
+
+
+        // Depending on whether we're getting all the settings, or just for a Plant
+        if(idPlant == null){
+            // Getting all of the Plants belonging to the User
+            List<Plant> userPlants = user.getPlants().stream().toList();
+
+            return  userPlants.stream()
+                    .collect(Collectors.toMap(
+                            plant -> plant.getId().toString(),
+                            Plant::getTaskSettings
+                    ));
+        }else{
+            Plant planta = getPlant(user, idPlant);
+
+            HashMap<String, List<Task_Settings>> map = new HashMap<>();
+            map.put(planta.getId().toString(), planta.getTaskSettings());
+
+            return map;
+        }
+    }
+
+    public SuccessfulRequest updateFrequency(Long idUser, Long idPlant, String taskType, Integer frequency) throws ResourceNotFoundException {
+        User user = getUser(idUser);
+        Plant planta = getPlant(user, idPlant);
+
+        // Finding the correct entry in Task_Settings, and toggling the mode
+        TaskType type;
+
+        switch (taskType) {
+            case "FERTILIZER" -> type = TaskType.FERTILIZER;
+            case "CHECK_PLANT" -> type = TaskType.CHECK_PLANT;
+            case "MOVE_PLANT" -> type = TaskType.MOVE_PLANT;
+            case "SOIL_CHANGE" -> type = TaskType.SOIL_CHANGE;
+            case "WATERING" -> type = TaskType.WATERING;
+            default -> throw new IllegalArgumentException("Invalid task type: " + taskType);
+        };
+
+        Task_Settings settings = taskSettingsRepository.findFirstByPlantAndTaskType(planta, type);
+        settings.setTaskFrequency(frequency);
+        taskSettingsRepository.save(settings);
+
+        return new SuccessfulRequest("Task frequency changed successfully!");
+    }
+
+    public SuccessfulRequest updateTaskDate(Long idUser, Long idTask, Date newDate) throws ResourceNotFoundException {
+        User user = getUser(idUser);
+        Tasks_Current task = currentTaskRepository.findById(idTask).orElseThrow(() -> new ResourceNotFoundException("Task with ID: " + idTask + " not found."));
+
+        task.setTaskDate(newDate);
+
+        currentTaskRepository.save(task);
+        return new SuccessfulRequest("Task date updated successfully!");
     }
     
     // Auxilliary functions
