@@ -6,26 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="merged conflicts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../database/fill_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../database/fill_tables.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/AssociatePlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/AssociatePlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/components/PlantItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/components/PlantItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/Categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/Categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/CategoryCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/CategoryCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/HomeScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/ChangePlantDivisionDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/ChangePlantDivisionDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/DivisionRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/DivisionRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlantCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlantCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlantCardRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlantCardRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/RemovePlantDivisionDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/RemovePlantDivisionDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/WelcomeHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/WelcomeHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/components/PlantAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/components/PlantAvatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/components/SpeciesAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/components/SpeciesAvatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/TasksScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/service/AssociatePlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/service/AssociatePlantScreenService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/service/HomeScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/service/HomeScreenService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/AddDivisionScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/AddDivisionScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/AddDivisionDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/AddDivisionDescription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/DivisionInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/DivisionInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/SensorDropdown.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,14 +59,14 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/daniel/Documents/Universidade/Sem_2/TQS/TQS_77036/lab2/lab2_2httpclient&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/andre_butuc/Documents/RepUA/PI/Growmate/backend/Growmate_API&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;3fa0d4944519e39b95ffd0ae9d8b4453&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;84da50b259d34210db8d1b654840f93f&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -124,6 +109,8 @@
       <workItem from="1681123115474" duration="1238000" />
       <workItem from="1681128454406" duration="1764000" />
       <workItem from="1681151612684" duration="4224000" />
+      <workItem from="1681823260930" duration="1269000" />
+      <workItem from="1681898797505" duration="874000" />
     </task>
     <servers />
   </component>

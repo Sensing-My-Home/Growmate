@@ -16,6 +16,7 @@ import DiscoverPlantsScreen from "./screens/DiscoverPlantsScreen/DiscoverPlantsS
 import CategoryScreen from "./screens/CategoryScreen/CategoryScreen";
 
 import { enGB, registerTranslation } from 'react-native-paper-dates'
+import AddDivisionScreen from "./screens/AddDivisionScreen/AddDivisionScreen";
 registerTranslation('en-GB', enGB)
 
 
@@ -67,6 +68,10 @@ export default function App() {
               name="Category"
               component={CategoryScreen}
           />
+          <Stack.Screen name="AddDivision"
+                        component={AddDivisionScreen}
+          />
+
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

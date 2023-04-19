@@ -4,28 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="added AddPlantScreenService and AssociatePlantScreenService">
+    <list default="true" id="8ee1d484-b765-43c1-a544-f03b0bc4cada" name="Changes" comment="AddDivisionScreen semi-completed">
       <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/fill_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../database/fill_tables.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/components/PlantItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/components/PlantItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/Categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/Categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/CategoryCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/CategoryCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/ChangePlantDivisionDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/ChangePlantDivisionDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/DivisionRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/DivisionRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCardRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCardRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/RemovePlantDivisionDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/RemovePlantDivisionDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/WelcomeHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/WelcomeHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/components/PlantAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/components/PlantAvatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SpeciesProfileScreen/components/SpeciesAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SpeciesProfileScreen/components/SpeciesAvatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/HomeScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/HomeScreenService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/AddDivisionScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/AddDivisionScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/components/AddDivisionDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/components/AddDivisionDescription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/components/DivisionInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/components/DivisionInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/components/SensorDropdown.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,25 +59,10 @@
       <recent name="$PROJECT_DIR$/assets" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="mobileapp" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="mobileapp" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="" />
+      <changelist id="8ee1d484-b765-43c1-a544-f03b0bc4cada" name="Changes" comment="" />
       <created>1679593266633</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -112,6 +82,8 @@
       <workItem from="1681065748109" duration="6636000" />
       <workItem from="1681123110281" duration="1632000" />
       <workItem from="1681132689704" duration="15431000" />
+      <workItem from="1681823338915" duration="4182000" />
+      <workItem from="1681898793897" duration="4928000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
@@ -232,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681139169580</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="AddDivisionScreen semi-completed">
+      <created>1681828537532</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1681828537532</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,6 +235,7 @@
     <MESSAGE value="added SpeciesProfileService" />
     <MESSAGE value="added CategoryScreenService and DiscoverPlantScreenService" />
     <MESSAGE value="added TasksScreenService" />
-    <option name="LAST_COMMIT_MESSAGE" value="added TasksScreenService" />
+    <MESSAGE value="AddDivisionScreen semi-completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="AddDivisionScreen semi-completed" />
   </component>
 </project>
