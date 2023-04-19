@@ -8,15 +8,20 @@ import BottomMenu from "../../components/BottomMenu";
 import NextButton from "../AddPlantScreen/components/NextButton";
 import AddDivisionDescription from "./components/AddDivisionDescription";
 import DivisionInfo from "./components/DivisionInfo";
+import {createNewDivision} from "../../service/AddDivisionService";
 
 
 export default function AddDivisionScreen(){
     const screenHeight = Dimensions.get('screen').height;
     const navigation = useNavigation();
     const theme = useTheme()
-    const [divisionName, setDivisionName] = useState();
+    const [divisionName, setDivisionName] = useState("");
+    const [divisionLuminosity, setDivisionLuminosity] = useState("");
+
     const onPressNext = () => {
-        navigation.dispatch(StackActions.replace('Home'));
+        createNewDivision(1, divisionName, divisionLuminosity).then(() =>
+            navigation.dispatch(StackActions.replace('Home'))
+        );
     }
 
     return (
@@ -24,7 +29,7 @@ export default function AddDivisionScreen(){
             <GreenBar />
             <AddPlantHeader text={"Add a Division to your home!"}/>
             <AddDivisionDescription/>
-            <DivisionInfo setName={setDivisionName}/>
+            <DivisionInfo setName={setDivisionName} luminosityTarget={divisionLuminosity} setLuminosityTarget={setDivisionLuminosity}/>
             <NextButton text={"CREATE"} reverse={true} onPress={onPressNext}/>
             <BottomMenu screenHeight={screenHeight} active={"leaf"} />
         </View>
