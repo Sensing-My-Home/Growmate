@@ -2,6 +2,8 @@ import {TouchableOpacity, View} from "react-native";
 import {useTheme, Text, Avatar} from "react-native-paper";
 import React from "react";
 import * as ImagePicker from "expo-image-picker";
+import { uploadImage } from "../../../service/FirebaseService";
+
 export default function AddPhoto({image, setImage}) {
     const theme = useTheme();
     const placeHolderAvatar = require("../../../assets/placeholder_avatar.png")
