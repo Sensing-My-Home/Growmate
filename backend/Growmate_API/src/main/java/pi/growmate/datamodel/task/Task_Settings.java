@@ -36,4 +36,6 @@ public class Task_Settings {
     public void toggleMode(){
         this.isAutomatic = !this.isAutomatic;
     }
+
+    public boolean isTaskAutomatic(){return this.isAutomatic;}
 }

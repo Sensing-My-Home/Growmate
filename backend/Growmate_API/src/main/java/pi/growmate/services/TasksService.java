@@ -42,6 +42,9 @@ public class TasksService {
     @Autowired
     private TaskSettingsRepository taskSettingsRepository;
 
+    @Autowired
+    private AlgorithmsService algorithmsService;
+
     public List<Tasks_Current> getTasksForToday(Long userID) throws ResourceNotFoundException{
         User user = getUser(userID);
         Date today = new Date(System.currentTimeMillis()); //data de hoje
@@ -116,8 +119,8 @@ public class TasksService {
 
         historicTaskRepository.save(taskRecord);
 
-        //TODO: Calculate the new Date for the task, given the task type and the current Task Definition, and save it on the repository
-        //currentTaskRepository.save(task);
+        // Updating the existing Task with a new Date
+        algorithmsService.calculateNewTaskDate(task);
 
         return new SuccessfulRequest("Updated task with success");
     }
