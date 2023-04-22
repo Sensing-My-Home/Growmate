@@ -18,6 +18,7 @@ import PlantTaskDndBoard from "./components/PlantTaskDndBoard";
 
 //API functions
 import { getPlantInfo, getAllDivisions, getPlantTasksToday, getSensorsForPlant, deletePlant } from "../../service/PlantScreenService";
+import { deleteImage } from "../../service/FirebaseService";
 
 export default function PlantScreen({ route }) {
     const screenHeight = Dimensions.get('screen').height;
@@ -59,8 +60,9 @@ export default function PlantScreen({ route }) {
     }, [])
 
     // API call to delete plant;
-    const handleDeletePlant = () => {
-        deletePlant(userID, plantID);
+    const handleDeletePlant = async () => {
+        await deleteImage(userID, plantInfo.name);
+        await deletePlant(userID, plantID);
         navigation.dispatch(StackActions.replace('Home'));
     }
 
