@@ -69,9 +69,9 @@ public class PlantInventoryController {
         return ResponseEntity.ok().body(userService.getUserPlants(idUser));
     }
 
-    // add new plant to invenory
+    // add new plant to inventory
     @PostMapping("/{idUser}/addplant")
-    public ResponseEntity<SuccessfulRequest> addNewPlantToUserInventary(@PathVariable(value = "idUser") Long idUser,
+    public ResponseEntity<SuccessfulRequest> addNewPlantToUserInventory(@PathVariable(value = "idUser") Long idUser,
                                                                         @RequestParam(value = "plantName") String plantName,
                                                                         @RequestParam(value = "photoURL", required = false) String URL,
                                                                         @RequestParam(value = "species-id") Long speciesID,
@@ -79,6 +79,6 @@ public class PlantInventoryController {
                                                                         @RequestParam(value = "sensor-id", required = false) Long sensorID,
                                                                         @RequestParam(value = "plantation-date", required = false) Date date) throws ResourceNotFoundException{
 
-        return ResponseEntity.ok().body(userService.addNewPlantToUserInventary(idUser, plantName, URL, speciesID, divisionID, sensorID, date));
+        return ResponseEntity.ok().body(userService.addNewPlantToUserInventory(idUser, plantName, URL, speciesID, divisionID, sensorID, date));
     }
 }

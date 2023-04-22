@@ -57,12 +57,12 @@ public class UserService {
     }
 
     //post nova planta -> adicionar nova planta a lista de plantas do utilizador.
-    public SuccessfulRequest addNewPlantToUserInventary(long user_id, 
-                                                        String plantName, 
+    public SuccessfulRequest addNewPlantToUserInventory(long user_id,
+                                                        String plantName,
                                                         String photo,
-                                                        Long species_id,  
-                                                        Long division_id, 
-                                                        Long sensor_id, 
+                                                        Long species_id,
+                                                        Long division_id,
+                                                        Long sensor_id,
                                                         Date date) throws ResourceNotFoundException{
 
         Plant plant = new Plant();
