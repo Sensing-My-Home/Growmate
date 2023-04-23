@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,12 +119,12 @@ public class TasksService {
         historicTaskRepository.save(taskRecord);
 
         // Updating the existing Task with a new Date
-        algorithmsService.calculateNewTaskDate(task);
+        algorithmsService.calculateNewTaskDateForSingleTask(task);
 
         return new SuccessfulRequest("Updated task with success");
     }
 
-    public SuccessfulRequest toggleTaskMode(Long idUser, Long idPlant, String taskType) throws ResourceNotFoundException {
+    public SuccessfulRequest toggleTaskMode(Long idUser, Long idPlant, String taskType, Integer frequency) throws ResourceNotFoundException {
         User user = getUser(idUser);
         Plant planta = getPlant(user, idPlant);
 
@@ -142,6 +141,31 @@ public class TasksService {
 
         Task_Settings settings = taskSettingsRepository.findFirstByPlantAndTaskType(planta, type);
         settings.toggleMode();
+
+        // In case the task is now automatic, we should calculate the new frequencies and task dates
+        if(settings.isAutomatic()){
+            int taskFrequency = algorithmsService.calculateNewFrequency(planta, type);
+            settings.setTaskFrequency(taskFrequency);
+
+            taskSettingsRepository.save(settings);
+
+            // Find the corresponding Current_Task, and calculate the new Date
+            Tasks_Current task = currentTaskRepository.findFirstByPlantAndTaskType(planta, type);
+            algorithmsService.calculateNewTaskDateForSingleTask(task);
+
+        }else{
+            // Updating the task Frequency, if present in the call
+            if(frequency != null){
+                settings.setTaskFrequency(frequency);
+
+                // Find the corresponding Current_Task, and calculate the new Date
+                Tasks_Current task = currentTaskRepository.findFirstByPlantAndTaskType(planta, type);
+                algorithmsService.calculateNewTaskDateForSingleTask(task);
+
+                currentTaskRepository.save(task);
+            }
+        }
+
         taskSettingsRepository.save(settings);
 
         return new SuccessfulRequest("Task mode toggled successfully!");
@@ -189,6 +213,14 @@ public class TasksService {
         Task_Settings settings = taskSettingsRepository.findFirstByPlantAndTaskType(planta, type);
         settings.setTaskFrequency(frequency);
         taskSettingsRepository.save(settings);
+
+        // Find the corresponding Current_Task, and calculate the new Date
+        Tasks_Current task = currentTaskRepository.findFirstByPlantAndTaskType(planta, type);
+        log.info(task.toString());
+
+        algorithmsService.calculateNewTaskDateForSingleTask(task);
+
+        currentTaskRepository.save(task);
 
         return new SuccessfulRequest("Task frequency changed successfully!");
     }

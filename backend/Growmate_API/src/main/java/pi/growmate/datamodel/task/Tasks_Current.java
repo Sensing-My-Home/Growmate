@@ -2,10 +2,7 @@ package pi.growmate.datamodel.task;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import pi.growmate.datamodel.plant.Plant;
 
 import java.sql.Date;
@@ -17,6 +14,7 @@ import java.sql.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Tasks_Current {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

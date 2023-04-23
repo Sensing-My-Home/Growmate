@@ -31,7 +31,7 @@ public class AlgorithmsService {
     //TODO: Test
     public void addTasksForNewPlant(Plant newPlant){
 
-        // For each available TaskType, we will create a new Task Settings instance that will store the frequency in which that task will be made, using an algorithem depending on the Task.
+        // For each available TaskType, we will create a new Task Settings instance that will store the frequency in which that task will be made, using an algorithm depending on the Task.
         // Besides this, a new instance of Tasks_Current will be created, with the Date calculated based on the task frequency
         for(TaskType type: TaskType.values()){
             // Create a new Task Settings entity for this Plant and this type of Task
@@ -55,7 +55,7 @@ public class AlgorithmsService {
             task.setName(createTaskName(newPlant, type));
 
             // Calculate the new Date for the Task
-            calculateNewTaskDate(task);
+            calculateNewTaskDateForSingleTask(task);
 
             // Save the new Task
             currentTaskRepository.save(task);
@@ -77,7 +77,7 @@ public class AlgorithmsService {
     }
 
     // This method calculates the next date for a task of a given type, associated with a Plant
-    public void calculateNewTaskDate(Tasks_Current task){
+    public void calculateNewTaskDateForSingleTask(Tasks_Current task){
         Plant plant = task.getPlant();
         TaskType taskType = task.getTaskType();
 
@@ -90,10 +90,28 @@ public class AlgorithmsService {
         currentTaskRepository.save(task);
     }
 
+    // Thus method calculates the next date for all the Tasks associated with a Plant
+    public void calculateNewTaskDateForAllTasks(Plant plant){
+        for(TaskType type: TaskType.values()){
+            // Find the Tasks_Current entity corresponding to this TaskType and this Plant
+            Tasks_Current task = currentTaskRepository.findFirstByPlantAndTaskType(plant, type);
+
+            // Getting the frequency of the Task from the Task Settings, and calculating the new Date for the Task
+            Task_Settings settings = taskSettingsRepository.findFirstByPlantAndTaskType(plant, type);
+
+            Date newDate = Date.valueOf(LocalDate.now().plusDays(settings.getTaskFrequency()));
+
+            task.setTaskDate(newDate);
+
+            // Save the Task
+            currentTaskRepository.save(task);
+        }
+    }
+
     // AUXILLIARY FUNCTIONS
 
     // Setting the name for a new Task
-    public String createTaskName(Plant plant, TaskType taskType){
+    private String createTaskName(Plant plant, TaskType taskType){
         String plantName = plant.getName();
         String taskName;
 
@@ -125,7 +143,7 @@ public class AlgorithmsService {
     }
 
     // Calculating the watering frequency of a plant based on the species determined watering frequency, the species optimal humidity, and the current season
-    public int calculateNewWateringFrequency(PlantSpecies species){
+    private int calculateNewWateringFrequency(PlantSpecies species){
         Season currentSeason = getCurrentSeason();
         int wateringFrequency, optimalHumidity;
 
@@ -171,7 +189,7 @@ public class AlgorithmsService {
     }
 
     // Calculating the frequency with which a plant should be checked, based on the species difficulty
-    public int calculateCheckingFrequency(PlantSpecies species){
+    private int calculateCheckingFrequency(PlantSpecies species){
         return switch (species.getDifficulty()) {
             case 5 -> 7;
             case 4 -> 10;
@@ -183,7 +201,7 @@ public class AlgorithmsService {
     }
 
     // Calculating the fertilizing frequency of a plant based on the type of species, whether it's perennial or not, and the current season
-    public int calculateFertilizingFrequency(PlantSpecies species){
+    private int calculateFertilizingFrequency(PlantSpecies species){
         Season currentSeason = getCurrentSeason();
 
         String cycle = species.getCycle();

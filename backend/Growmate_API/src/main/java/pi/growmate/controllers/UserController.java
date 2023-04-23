@@ -1,17 +1,13 @@
 package pi.growmate.controllers;
 
-import java.sql.Date;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import pi.growmate.datamodel.plant.Plant;
 import pi.growmate.datamodel.user.User;
 import pi.growmate.exceptions.ResourceNotFoundException;
 import pi.growmate.services.UserService;
-import pi.growmate.utils.SuccessfulRequest;
+
 
 @RestController
 @RequestMapping("growmate/user")

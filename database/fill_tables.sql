@@ -56,11 +56,11 @@ INSERT INTO public.tasks_current VALUES (1, 'Water Anthony',
                          (7, 'Check Anthony''s condition ',
                          CURRENT_DATE, 3, 4),
                          (8, 'Water Orchid',
-                         '2023-05-22', 0, 1),
+                         '2023-05-22', 0, 2),
                          (9, 'Water Beth',
-                         '2023-05-13', 0, 1),
+                         '2023-05-13', 0, 3),
                          (10, 'Water Juliana',
-                         '2023-05-15', 0, 1);
+                         '2023-05-15', 0, 4);
                          
 INSERT INTO public.task_settings VALUES (1, TRUE, 7, 0, 1),
                         (2, TRUE,450, 1, 1),
