@@ -62,6 +62,15 @@ public class TasksController {
         return ResponseEntity.ok().body(tasksService.updateTaskDate(idUser, idTask, newDate));
     }
 
+    // Changes the status of a Task to be completed. A new task of the same type for that plant will be created, while the current task is saved in the Tasks History table.
+    @PutMapping("{idUser}/plant/{idPlant}/updateTask/{idTask}")
+    public ResponseEntity<SuccessfulRequest> updateTasksToBeDone(@PathVariable(value = "idUser") Long idUser,
+                                                                 @PathVariable(value = "idPlant") Long idPlant,
+                                                                 @PathVariable(value = "idTask") Long idTask) throws ResourceNotFoundException{
+        return ResponseEntity.ok().body(tasksService.updateTaskStatus(idUser, idPlant, idTask));
+
+    }
+
     // COMPLETED TASKS
 
     // Gets all the tasks done by a User. If a Day is passed as a Request Parameter, it will only return the tasks for that specific day
@@ -78,23 +87,15 @@ public class TasksController {
         return ResponseEntity.ok().body(tasksService.getTasksDonePlant(idUser, idPlant));
     }
 
-    // Changes the status of a Task to completed. A new task of the same type for that plant will be created, while the current task is saved in the Tasks History table.
-    @PutMapping("{idUser}/plant/{idPlant}/updateTask/{idTask}")
-    public ResponseEntity<SuccessfulRequest> updateTasksToBeDone(@PathVariable(value = "idUser") Long idUser,
-                                                                @PathVariable(value = "idPlant") Long idPlant,
-                                                                @PathVariable(value = "idTask") Long idTask) throws ResourceNotFoundException{
-        return ResponseEntity.ok().body(tasksService.updateTaskStatus(idUser, idPlant, idTask));
-        
-    }
-
     // TASK SETTINGS
 
     // Used to Toggle a task between manual and automatic.
     @PutMapping("{idUser}/plant/{idPlant}/toggleMode")
     public ResponseEntity<SuccessfulRequest> toggleTaskMode(@PathVariable(value = "idUser") Long idUser,
                                                             @PathVariable(value = "idPlant") Long idPlant,
-                                                            @RequestParam(value = "taskType") String taskType) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(tasksService.toggleTaskMode(idUser, idPlant, taskType));
+                                                            @RequestParam(value = "taskType") String taskType,
+                                                            @RequestParam(value = "frequency", required = false) Integer frequency) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(tasksService.toggleTaskMode(idUser, idPlant, taskType, frequency));
     }
 
     // Get all the task settings associated with a User. Returns in the form of a dict where the key is the Plant ID, and the value is the list of settings.

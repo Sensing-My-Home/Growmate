@@ -1,6 +1,7 @@
 package pi.growmate.services;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.plant.Plant;
 import pi.growmate.datamodel.plant.PlantCondition;
-import pi.growmate.datamodel.plant.PlantSensor;
+import pi.growmate.datamodel.sensors.PlantSensor;
 import pi.growmate.datamodel.species.PlantSpecies;
 import pi.growmate.datamodel.task.TaskType;
 import pi.growmate.datamodel.task.Task_Settings;
@@ -46,6 +47,9 @@ public class UserService {
     @Autowired
     TaskSettingsRepository taskSettingsRepository;
 
+    @Autowired
+    AlgorithmsService algorithmsService;
+
     // funcao que ira buscar informacao sobre o utilizador
     public User getUser(long userID) throws ResourceNotFoundException{
         return userRepository.findById(userID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
@@ -57,12 +61,12 @@ public class UserService {
     }
 
     //post nova planta -> adicionar nova planta a lista de plantas do utilizador.
-    public SuccessfulRequest addNewPlantToUserInventary(long user_id, 
-                                                        String plantName, 
+    public SuccessfulRequest addNewPlantToUserInventory(long user_id,
+                                                        String plantName,
                                                         String photo,
-                                                        Long species_id,  
-                                                        Long division_id, 
-                                                        Long sensor_id, 
+                                                        Long species_id,
+                                                        Long division_id,
+                                                        Long sensor_id,
                                                         Date date) throws ResourceNotFoundException{
 
         Plant plant = new Plant();
@@ -77,6 +81,8 @@ public class UserService {
 
         if(date != null){
             plant.setPlantationDate(date);
+        }else{
+            plant.setPlantationDate(Date.valueOf(LocalDate.now()));
         }
 
         if (division_id != null) {
@@ -89,20 +95,10 @@ public class UserService {
             plant.addSensor(sensor);
         }
         
-        plantRepository.save(plant); //is this gonna work?
+        plantRepository.save(plant);
 
         // Create new entries into the Task Settings Repository, relating to the newly added plant, one for each type of task
-        //TODO: Call the task calculation algorithm to determine task frequencies, and setup the next task!
-        for(TaskType type: TaskType.values()){
-            Task_Settings settings = new Task_Settings();
-
-            settings.setAutomatic(true);
-            settings.setPlant(plant);
-            settings.setTaskType(type);
-            settings.setTaskFrequency(7);
-
-            taskSettingsRepository.save(settings);
-        }
+        algorithmsService.addTasksForNewPlant(plant);
 
         return new SuccessfulRequest("The plant was added successfully!");
     }

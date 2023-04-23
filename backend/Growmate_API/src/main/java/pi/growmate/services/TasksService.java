@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +40,9 @@ public class TasksService {
 
     @Autowired
     private TaskSettingsRepository taskSettingsRepository;
+
+    @Autowired
+    private AlgorithmsService algorithmsService;
 
     public List<Tasks_Current> getTasksForToday(Long userID) throws ResourceNotFoundException{
         User user = getUser(userID);
@@ -116,13 +118,13 @@ public class TasksService {
 
         historicTaskRepository.save(taskRecord);
 
-        //TODO: Calculate the new Date for the task, given the task type and the current Task Definition, and save it on the repository
-        //currentTaskRepository.save(task);
+        // Updating the existing Task with a new Date
+        algorithmsService.calculateNewTaskDateForSingleTask(task);
 
         return new SuccessfulRequest("Updated task with success");
     }
 
-    public SuccessfulRequest toggleTaskMode(Long idUser, Long idPlant, String taskType) throws ResourceNotFoundException {
+    public SuccessfulRequest toggleTaskMode(Long idUser, Long idPlant, String taskType, Integer frequency) throws ResourceNotFoundException {
         User user = getUser(idUser);
         Plant planta = getPlant(user, idPlant);
 
@@ -132,7 +134,6 @@ public class TasksService {
          switch (taskType) {
             case "FERTILIZER" -> type = TaskType.FERTILIZER;
             case "CHECK_PLANT" -> type = TaskType.CHECK_PLANT;
-            case "MOVE_PLANT" -> type = TaskType.MOVE_PLANT;
             case "SOIL_CHANGE" -> type = TaskType.SOIL_CHANGE;
             case "WATERING" -> type = TaskType.WATERING;
             default -> throw new IllegalArgumentException("Invalid task type: " + taskType);
@@ -140,6 +141,31 @@ public class TasksService {
 
         Task_Settings settings = taskSettingsRepository.findFirstByPlantAndTaskType(planta, type);
         settings.toggleMode();
+
+        // In case the task is now automatic, we should calculate the new frequencies and task dates
+        if(settings.isAutomatic()){
+            int taskFrequency = algorithmsService.calculateNewFrequency(planta, type);
+            settings.setTaskFrequency(taskFrequency);
+
+            taskSettingsRepository.save(settings);
+
+            // Find the corresponding Current_Task, and calculate the new Date
+            Tasks_Current task = currentTaskRepository.findFirstByPlantAndTaskType(planta, type);
+            algorithmsService.calculateNewTaskDateForSingleTask(task);
+
+        }else{
+            // Updating the task Frequency, if present in the call
+            if(frequency != null){
+                settings.setTaskFrequency(frequency);
+
+                // Find the corresponding Current_Task, and calculate the new Date
+                Tasks_Current task = currentTaskRepository.findFirstByPlantAndTaskType(planta, type);
+                algorithmsService.calculateNewTaskDateForSingleTask(task);
+
+                currentTaskRepository.save(task);
+            }
+        }
+
         taskSettingsRepository.save(settings);
 
         return new SuccessfulRequest("Task mode toggled successfully!");
@@ -179,7 +205,6 @@ public class TasksService {
         switch (taskType) {
             case "FERTILIZER" -> type = TaskType.FERTILIZER;
             case "CHECK_PLANT" -> type = TaskType.CHECK_PLANT;
-            case "MOVE_PLANT" -> type = TaskType.MOVE_PLANT;
             case "SOIL_CHANGE" -> type = TaskType.SOIL_CHANGE;
             case "WATERING" -> type = TaskType.WATERING;
             default -> throw new IllegalArgumentException("Invalid task type: " + taskType);
@@ -188,6 +213,14 @@ public class TasksService {
         Task_Settings settings = taskSettingsRepository.findFirstByPlantAndTaskType(planta, type);
         settings.setTaskFrequency(frequency);
         taskSettingsRepository.save(settings);
+
+        // Find the corresponding Current_Task, and calculate the new Date
+        Tasks_Current task = currentTaskRepository.findFirstByPlantAndTaskType(planta, type);
+        log.info(task.toString());
+
+        algorithmsService.calculateNewTaskDateForSingleTask(task);
+
+        currentTaskRepository.save(task);
 
         return new SuccessfulRequest("Task frequency changed successfully!");
     }

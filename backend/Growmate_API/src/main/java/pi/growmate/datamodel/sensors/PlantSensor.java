@@ -1,4 +1,4 @@
-package pi.growmate.datamodel.division;
+package pi.growmate.datamodel.sensors;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -6,10 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pi.growmate.datamodel.division.Division;
-import pi.growmate.datamodel.forum.Comment;
-import pi.growmate.datamodel.measurements.AirQualityMeasurement;
-import pi.growmate.datamodel.measurements.AirTemperatureMeasurement;
+import pi.growmate.datamodel.measurements.SoilQualityMeasurement;
+import pi.growmate.datamodel.plant.Plant;
 import pi.growmate.datamodel.user.User;
 
 import java.util.ArrayList;
@@ -21,7 +19,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DivisionSensor {
+public class PlantSensor implements GenericSensor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -39,23 +37,15 @@ public class DivisionSensor {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "division_id")
-    private Division division;
+    @JoinColumn(name = "plant_id")
+    private Plant plant;
 
     @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL)
-    private List<AirQualityMeasurement> airQualityMeasurements = new ArrayList<>();
-
-    @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL)
-    private List<AirTemperatureMeasurement> airTemperatureMeasurements = new ArrayList<>();
+    private List<SoilQualityMeasurement> soilQualityMeasurements = new ArrayList<>();
 
     // Getter methods that need to be ignored on JSON replies
     @JsonIgnore
-    public List<AirQualityMeasurement> getAirQualityMeasurements() {
-        return airQualityMeasurements;
-    }
-
-    @JsonIgnore
-    public List<AirTemperatureMeasurement> getAirTemperatureMeasurements() {
-        return airTemperatureMeasurements;
+    public void setSoilQualityMeasurements(List<SoilQualityMeasurement> soilQualityMeasurements) {
+        this.soilQualityMeasurements = soilQualityMeasurements;
     }
 }

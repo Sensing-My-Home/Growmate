@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.forum.Comment;
+import pi.growmate.datamodel.sensors.PlantSensor;
 import pi.growmate.datamodel.species.PlantSpecies;
 import pi.growmate.datamodel.task.Task_Settings;
 import pi.growmate.datamodel.task.Tasks_Current;
