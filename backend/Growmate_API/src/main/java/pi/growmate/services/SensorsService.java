@@ -56,18 +56,19 @@ public class SensorsService {
         return plant.getSensors();
     }
 
-    public List<GenericSensor> getSensorsFromUser(long userID, int type) throws ResourceNotFoundException {
+    public Map<Long, List<GenericSensor>> getSensorsFromUser(long userID, int type) throws ResourceNotFoundException {
         User user = this.checkIfUserExists(userID);
 
         return switch (type) {
             case 0 -> user.getDivisionSensors().stream()
-                    .map(sensor -> (GenericSensor) sensor)
-                    .collect(Collectors.toList());
+                    .collect(Collectors.groupingBy(sensor -> sensor.getDivision().getId(),
+                            Collectors.mapping(sensor -> (GenericSensor) sensor,
+                                    Collectors.toList())));
             case 1 -> user.getPlantSensors().stream()
-                    .map(sensor -> (GenericSensor) sensor)
-                    .collect(Collectors.toList());
-            case 2 -> user.getAllSensors();
-            default -> throw new IllegalArgumentException("Invalid type: " + type);
+                    .collect(Collectors.groupingBy(sensor -> sensor.getPlant().getId(),
+                    Collectors.mapping(sensor -> (GenericSensor) sensor,
+                            Collectors.toList())));
+            default -> throw new IllegalArgumentException("Invalid type integer! Must be 0 for Division Sensors or 1 for Plant Sensors!");
         };
     }
 

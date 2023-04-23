@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="merged conflicts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/TasksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/Tasks_Current.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/task/Tasks_Current.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/tasks/CurrentTaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/tasks/CurrentTaskRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/AlgorithmsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/AlgorithmsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/TasksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/TasksService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/SensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/SensorsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/SensorsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/SensorsService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +113,7 @@
       <workItem from="1681850285368" duration="3699000" />
       <workItem from="1682016069786" duration="195000" />
       <workItem from="1682184489142" duration="6175000" />
-      <workItem from="1682261290477" duration="5227000" />
+      <workItem from="1682261290477" duration="5996000" />
     </task>
     <servers />
   </component>

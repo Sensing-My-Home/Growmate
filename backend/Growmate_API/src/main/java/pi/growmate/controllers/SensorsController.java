@@ -25,9 +25,9 @@ public class SensorsController {
         this.sensorsService = sensorsService;
     }
 
-    // Gets all the Sensors associated with an User. For the type parameter: 0 - Division Sensor; 1 - Plant Sensor; 2 - All Sensors
+    // Gets all the Sensors associated with an User. For the type parameter: 0 - Division Sensor; 1 - Plant Sensor
     @GetMapping("/{userID}/sensors")
-    public ResponseEntity<List<GenericSensor>> getSensorsFromUser(@PathVariable(value = "userID") Long userID,
+    public ResponseEntity<Map<Long, List<GenericSensor>>> getSensorsFromUser(@PathVariable(value = "userID") Long userID,
                                                                   @RequestParam(value = "type") int type) throws ResourceNotFoundException {
         return ResponseEntity.ok().body(sensorsService.getSensorsFromUser(userID, type));
     }
