@@ -1,16 +1,19 @@
-import React, {useEffect, useState, useRef} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { View, Dimensions } from "react-native";
 import BottomMenu from "../../components/BottomMenu";
 import SearchBar from "../../components/SearchBar";
 import WelcomeHeader from "./components/WelcomeHeader"
 import GreenBar from "../../components/GreenBar";
 import PlantCards from "./components/PlantCards";
-import {useTheme} from "react-native-paper";
+import { useTheme } from "react-native-paper";
 import PlusButton from "./components/PlusButton";
-import {Tabs, TabScreen} from 'react-native-paper-tabs';
+import { Tabs, TabScreen } from 'react-native-paper-tabs';
 import Divisions from "./components/Divisions";
 import SensorRow from "./components/SensorRow";
-import {getPlants, getDivisionsAndAssociatedPlants, getFirstName} from "../../service/HomeScreenService";
+import SensorsTab from "./components/SensorsTab";
+
+// API Calls
+import { getPlants, getDivisionsAndAssociatedPlants, getFirstName } from "../../service/HomeScreenService";
 
 export default function HomeScreen() {
     const [userPlants, setUserPlants] = useState([]);
@@ -20,15 +23,15 @@ export default function HomeScreen() {
 
     const handleUpdate = () => {
         setUpdateCount(updateCount + 1);
-      }
-    
+    }
 
-    useEffect( () => {
-        getPlants(1).then((plants) => {setUserPlants(plants)})
+
+    useEffect(() => {
+        getPlants(1).then((plants) => { setUserPlants(plants) })
     }, [updateCount]);
 
 
-    useEffect( () => {
+    useEffect(() => {
         getDivisionsAndAssociatedPlants(1).then(
             (divisions) => {
                 setUserDivisions(divisions)
@@ -36,7 +39,7 @@ export default function HomeScreen() {
         );
     }, [updateCount]);
 
-    useEffect( () => {
+    useEffect(() => {
         getFirstName(1).then(
             (name) => {
                 setUserFirstName(name.name.split(" ")[0])
@@ -50,7 +53,7 @@ export default function HomeScreen() {
     const premium = true;
     // API call to retrieve plants (which includes their division id);
     const plants = [
-        { name: 'Wendy', image: require('../../assets/plant.jpeg'), state: "good"},
+        { name: 'Wendy', image: require('../../assets/plant.jpeg'), state: "good" },
         { name: 'Beth', image: require('../../assets/plant2.webp'), state: "okay" },
         { name: 'Anthony', image: require('../../assets/plant3.jpeg'), state: "bad" },
         { name: 'Frederick', image: require('../../assets/plant4.jpeg'), state: "okay" },
@@ -59,15 +62,19 @@ export default function HomeScreen() {
 
     // API call to retrieve divisions
     const divisions = [
-        {name: "Kitchen", plants: [
-                { name: 'Wendy', image: require('../../assets/plant.jpeg'), state: "good"},
+        {
+            name: "Kitchen", plants: [
+                { name: 'Wendy', image: require('../../assets/plant.jpeg'), state: "good" },
                 { name: 'Beth', image: require('../../assets/plant2.webp'), state: "okay" },
                 { name: 'Anthony', image: require('../../assets/plant3.jpeg'), state: "bad" }
-            ]},
-        {name: "Balcony", plants: [
+            ]
+        },
+        {
+            name: "Balcony", plants: [
                 { name: 'Frederick', image: require('../../assets/plant4.jpeg'), state: "okay" },
                 { name: 'John', image: require('../../assets/plant5.jpeg'), state: "good" }
-            ]}
+            ]
+        }
     ]
 
     // one API call to retrieve all sensors values;
@@ -75,18 +82,24 @@ export default function HomeScreen() {
     const sensors = [
         {
             id: 0,
-            type: 'soil',
-            value: '56'
+            name: "Living room temperature sensor",
+            sensorCode: "TMP123",
+            division_id: 1,
+            type: "division"
         },
         {
             id: 1,
-            type: 'temperature',
-            value: '18'
+            name: "Bedroom humidity sensor",
+            sensorCode: "TMP124",
+            division_id: 2,
+            type: "division"
         },
         {
             id: 2,
-            type: 'air',
-            value: '78'
+            name: "Juan soil moisture sensor",
+            sensorCode: "TMP125",
+            plant_id: 4,
+            type: "plant"
         },
     ];
 
@@ -94,14 +107,14 @@ export default function HomeScreen() {
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <GreenBar />
             <View style={{ position: 'relative', zIndex: 1 }}>
-            <WelcomeHeader premium={premium} name={userFirstName}/>
+                <WelcomeHeader premium={premium} name={userFirstName} />
             </View>
             {premium ?
                 <Tabs
                     defaultIndex={0} // default = 0
-                    style={{ backgroundColor:'#fff' }} // works the same as AppBar in react-native-paper
+                    style={{ backgroundColor: '#fff' }} // works the same as AppBar in react-native-paper
                     disableSwipe={true} // (default=false) disable swipe to left/right gestures
-                    onChangeIndex={(newIndex) => {setSelectedTab(newIndex)}}
+                    onChangeIndex={(newIndex) => { setSelectedTab(newIndex) }}
                 >
                     <TabScreen label="Inventory">
                         <View>
@@ -110,14 +123,13 @@ export default function HomeScreen() {
                         </View>
                     </TabScreen>
                     <TabScreen label="Divisions">
-                        <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate}/>
+                        <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate} />
                     </TabScreen>
                     <TabScreen
                         label="Sensors"
                     >
                         <View>
-                        <SensorRow sensorTargets={userDivisions} sensorsType={"Division"} sensorsValues={sensors}/>
-                        <SensorRow sensorTargets={userPlants} sensorsType={"Plant"} sensorsValues={sensors}/>
+                            {userDivisions && userPlants && <SensorsTab userDivisions={userDivisions} sensors={sensors} userPlants={userPlants}/>}
                         </View>
                     </TabScreen>
                 </Tabs>
@@ -127,7 +139,7 @@ export default function HomeScreen() {
                     <PlantCards plants={userPlants} />
                 </View>
             }
-            <PlusButton index={selectedTab}/>
+            <PlusButton index={selectedTab} />
             <BottomMenu screenHeight={screenHeight} active={"leaf"} />
         </View>
     )
