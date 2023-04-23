@@ -3,10 +3,10 @@ package pi.growmate.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pi.growmate.datamodel.division.Division;
-import pi.growmate.datamodel.division.DivisionSensor;
+import pi.growmate.datamodel.sensors.DivisionSensor;
 import pi.growmate.datamodel.measurements.Measurement;
-import pi.growmate.datamodel.plant.PlantSensor;
+import pi.growmate.datamodel.sensors.GenericSensor;
+import pi.growmate.datamodel.sensors.PlantSensor;
 import pi.growmate.exceptions.ResourceNotFoundException;
 import pi.growmate.services.SensorsService;
 import pi.growmate.utils.SuccessfulRequest;
@@ -23,6 +23,13 @@ public class SensorsController {
 
     public SensorsController(SensorsService sensorsService) {
         this.sensorsService = sensorsService;
+    }
+
+    // Gets all the Sensors associated with an User. For the type parameter: 0 - Division Sensor; 1 - Plant Sensor; 2 - All Sensors
+    @GetMapping("/{userID}/sensors")
+    public ResponseEntity<List<GenericSensor>> getSensorsFromUser(@PathVariable(value = "userID") Long userID,
+                                                                  @RequestParam(value = "type") int type) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(sensorsService.getSensorsFromUser(userID, type));
     }
 
     // Gets the Sensors associated with a given Division

@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.plant.Plant;
 import pi.growmate.datamodel.plant.PlantCondition;
-import pi.growmate.datamodel.plant.PlantSensor;
+import pi.growmate.datamodel.sensors.PlantSensor;
 import pi.growmate.datamodel.species.PlantSpecies;
 import pi.growmate.datamodel.task.TaskType;
 import pi.growmate.datamodel.task.Task_Settings;

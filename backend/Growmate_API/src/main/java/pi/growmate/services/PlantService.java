@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.plant.Plant;
-import pi.growmate.datamodel.plant.PlantSensor;
+import pi.growmate.datamodel.sensors.PlantSensor;
 import pi.growmate.datamodel.species.PlantSpecies;
 import pi.growmate.datamodel.user.User;
 import pi.growmate.exceptions.ResourceNotFoundException;

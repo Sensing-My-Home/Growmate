@@ -28,6 +28,7 @@ public class AlgorithmsService {
     // TASKS
 
     // This method adds new Tasks and new Task Settings for a newly created Plant
+    //TODO: Test
     public void addTasksForNewPlant(Plant newPlant){
 
         // For each available TaskType, we will create a new Task Settings instance that will store the frequency in which that task will be made, using an algorithem depending on the Task.
@@ -62,6 +63,7 @@ public class AlgorithmsService {
     }
 
     // This method implements the algorithm to calculate a new frequency for a Task, depending on the TaskType
+    //TODO: Test
     public int calculateNewFrequency(Plant plant, TaskType taskType){
         PlantSpecies species = plant.getSpecies();
 

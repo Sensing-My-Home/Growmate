@@ -1,4 +1,4 @@
-package pi.growmate.datamodel.plant;
+package pi.growmate.datamodel.sensors;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -6,7 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pi.growmate.datamodel.measurements.SoilQualityMeasurement;
+import pi.growmate.datamodel.division.Division;
+import pi.growmate.datamodel.forum.Comment;
+import pi.growmate.datamodel.measurements.AirQualityMeasurement;
+import pi.growmate.datamodel.measurements.AirTemperatureMeasurement;
 import pi.growmate.datamodel.user.User;
 
 import java.util.ArrayList;
@@ -18,7 +21,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PlantSensor {
+public class DivisionSensor implements GenericSensor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -36,15 +39,23 @@ public class PlantSensor {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "plant_id")
-    private Plant plant;
+    @JoinColumn(name = "division_id")
+    private Division division;
 
     @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL)
-    private List<SoilQualityMeasurement> soilQualityMeasurements = new ArrayList<>();
+    private List<AirQualityMeasurement> airQualityMeasurements = new ArrayList<>();
+
+    @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL)
+    private List<AirTemperatureMeasurement> airTemperatureMeasurements = new ArrayList<>();
 
     // Getter methods that need to be ignored on JSON replies
     @JsonIgnore
-    public void setSoilQualityMeasurements(List<SoilQualityMeasurement> soilQualityMeasurements) {
-        this.soilQualityMeasurements = soilQualityMeasurements;
+    public List<AirQualityMeasurement> getAirQualityMeasurements() {
+        return airQualityMeasurements;
+    }
+
+    @JsonIgnore
+    public List<AirTemperatureMeasurement> getAirTemperatureMeasurements() {
+        return airTemperatureMeasurements;
     }
 }

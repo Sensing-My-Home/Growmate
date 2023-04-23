@@ -3,13 +3,14 @@ package pi.growmate.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pi.growmate.datamodel.division.Division;
-import pi.growmate.datamodel.division.DivisionSensor;
+import pi.growmate.datamodel.sensors.DivisionSensor;
 import pi.growmate.datamodel.measurements.AirQualityMeasurement;
 import pi.growmate.datamodel.measurements.AirTemperatureMeasurement;
 import pi.growmate.datamodel.measurements.Measurement;
 import pi.growmate.datamodel.measurements.SoilQualityMeasurement;
 import pi.growmate.datamodel.plant.Plant;
-import pi.growmate.datamodel.plant.PlantSensor;
+import pi.growmate.datamodel.sensors.GenericSensor;
+import pi.growmate.datamodel.sensors.PlantSensor;
 import pi.growmate.datamodel.user.User;
 import pi.growmate.exceptions.ResourceNotFoundException;
 import pi.growmate.repositories.division.DivisionSensorRepository;
@@ -50,10 +51,24 @@ public class SensorsService {
 
     public List<PlantSensor> getPlantSensors(long userID, long plantID) throws ResourceNotFoundException {
         User user = this.checkIfUserExists(userID);
-
         Plant plant = this.getPlant(user, plantID);
 
         return plant.getSensors();
+    }
+
+    public List<GenericSensor> getSensorsFromUser(long userID, int type) throws ResourceNotFoundException {
+        User user = this.checkIfUserExists(userID);
+
+        return switch (type) {
+            case 0 -> user.getDivisionSensors().stream()
+                    .map(sensor -> (GenericSensor) sensor)
+                    .collect(Collectors.toList());
+            case 1 -> user.getPlantSensors().stream()
+                    .map(sensor -> (GenericSensor) sensor)
+                    .collect(Collectors.toList());
+            case 2 -> user.getAllSensors();
+            default -> throw new IllegalArgumentException("Invalid type: " + type);
+        };
     }
 
     public SuccessfulRequest addNewSensor(long userID, int type, String name, String  code, long ownerID) throws ResourceNotFoundException {

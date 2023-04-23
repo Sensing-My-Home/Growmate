@@ -135,7 +135,6 @@ public class TasksService {
          switch (taskType) {
             case "FERTILIZER" -> type = TaskType.FERTILIZER;
             case "CHECK_PLANT" -> type = TaskType.CHECK_PLANT;
-            case "MOVE_PLANT" -> type = TaskType.MOVE_PLANT;
             case "SOIL_CHANGE" -> type = TaskType.SOIL_CHANGE;
             case "WATERING" -> type = TaskType.WATERING;
             default -> throw new IllegalArgumentException("Invalid task type: " + taskType);
@@ -182,7 +181,6 @@ public class TasksService {
         switch (taskType) {
             case "FERTILIZER" -> type = TaskType.FERTILIZER;
             case "CHECK_PLANT" -> type = TaskType.CHECK_PLANT;
-            case "MOVE_PLANT" -> type = TaskType.MOVE_PLANT;
             case "SOIL_CHANGE" -> type = TaskType.SOIL_CHANGE;
             case "WATERING" -> type = TaskType.WATERING;
             default -> throw new IllegalArgumentException("Invalid task type: " + taskType);
