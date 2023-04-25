@@ -17,6 +17,7 @@ import CategoryScreen from "./screens/CategoryScreen/CategoryScreen";
 
 import { enGB, registerTranslation } from 'react-native-paper-dates'
 import AddDivisionScreen from "./screens/AddDivisionScreen/AddDivisionScreen";
+import AddSensorScreen from "./screens/AddSensorScreen/AddSensorScreen";
 registerTranslation('en-GB', enGB)
 
 
@@ -70,6 +71,9 @@ export default function App() {
           />
           <Stack.Screen name="AddDivision"
                         component={AddDivisionScreen}
+          />
+          <Stack.Screen name="AddSensor"
+                        component={AddSensorScreen}
           />
 
         </Stack.Navigator>
