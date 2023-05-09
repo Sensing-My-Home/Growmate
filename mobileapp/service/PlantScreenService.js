@@ -23,8 +23,8 @@ const getAllDivisions = async (userID) => {
     return response.data;
 }
 
-const getPlantTasksToday = async (userID, plantID) => {
-    const response = await axios.get(baseURL + "/user/tasks/" + userID + "/plant/" + plantID + "/today");
+const getPlantTasksTodo = async (userID, plantID) => {
+    const response = await axios.get(baseURL + "/user/tasks/" + userID + "/plant/" + plantID + "/todo");
     return response.data;
 }
 
@@ -41,4 +41,4 @@ const deletePlant = async (userID, plantID) => {
     await axios.delete(baseURL + "/user/" + userID + "/inventory/" + plantID);
 }
 
-export {getPlantInfo, getAllDivisions, getSensorsForPlant, getPlantTasksToday, updateTask, deletePlant}
+export {getPlantInfo, getAllDivisions, getSensorsForPlant, getPlantTasksTodo, updateTask, deletePlant}

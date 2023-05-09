@@ -7,10 +7,13 @@
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="merged conflicts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/AddDivisionScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/AddDivisionScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/AddDivisionDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/AddDivisionDescription.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/DivisionInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/DivisionInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/SensorDropdown.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/PlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/TasksScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/components/DayTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/components/DayTasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/components/Tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/components/Tasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/service/PlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/service/PlantScreenService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +114,10 @@
       <workItem from="1681151612684" duration="4224000" />
       <workItem from="1681823260930" duration="1269000" />
       <workItem from="1681898797505" duration="874000" />
+      <workItem from="1683158080932" duration="2365000" />
+      <workItem from="1683190046075" duration="3317000" />
+      <workItem from="1683216529802" duration="319000" />
+      <workItem from="1683620938295" duration="627000" />
     </task>
     <servers />
   </component>

@@ -29,6 +29,7 @@ export default function TasksScreen() {
                 let month = dateString[1];
                 let year = date.getFullYear();
                 let name = rawTasks[r].name;
+                let id = rawTasks[r].id
                 let description = rawTasks[r].description;
                 todoTasks.push(
                     {
@@ -38,7 +39,8 @@ export default function TasksScreen() {
                         year: year,
                         tasks: [
                             name
-                        ]
+                        ],
+                        id: id
                     }
                 )
                 taskDates[rawTasks[r].taskDate] = {marked: true, dotColor: theme.colors.primary};
@@ -68,9 +70,12 @@ export default function TasksScreen() {
 
         for (let i = 1; i <= chosenTasks.length ; i++){
             tempSelectedTasks.push(
-                {weekday: i.toString(),
-                day: "none",
-                tasks: chosenTasks[i-1].tasks}
+                {
+                    weekday: i.toString(),
+                    day: "none",
+                    tasks: chosenTasks[i-1].tasks,
+                    id: chosenTasks[i-1].id
+                }
             )
         }
 

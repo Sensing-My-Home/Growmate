@@ -1,9 +1,19 @@
-import {View} from "react-native";
-import {Card, Text, useTheme} from "react-native-paper";
-import React from "react";
+import {ScrollView, TouchableOpacity, View} from "react-native";
+import {Avatar, Button, Card, Checkbox, Dialog, Searchbar, Text, useTheme} from "react-native-paper";
+import { updateTask } from '../../../service/PlantScreenService';
+import React, {useState} from "react";
 
-export default function DayTasks({weekday, day, tasks}){
+export default function DayTasks({weekday, day, tasks, userId, plantId, taskId, setCounter, counter, setChange}){
     const theme = useTheme();
+    const [checked, setChecked] = React.useState(false);
+
+    const handleCheckBoxChange = () => {
+        setChecked(!checked);
+        updateTask(userId, plantId, taskId, !checked).then(() => {
+                setCounter(counter+1);
+            });
+    }
+
     return (
         <View style={{marginBottom: 20}}>
             <View style={{flexDirection: "row"}}>
@@ -18,15 +28,25 @@ export default function DayTasks({weekday, day, tasks}){
                         </Text>
                     }
                 </View>
-                <Card style={{backgroundColor: theme.colors.background, width: 230}}>
-                    <Card.Content>
-                        {tasks.map((task, index) => (
-                            <Text key={index} variant={"bodyMedium"}>
-                                {task}
-                            </Text>
-                        ))}
-                    </Card.Content>
-                </Card>
+                <TouchableOpacity onPress={setChange}>
+                    <Card style={{backgroundColor: theme.colors.background, width: 230}}>
+                        <Card.Content style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
+                            {tasks.map((task, index) => (
+                                <Text key={index} variant={"bodyMedium"} style={{width: 160}}>
+                                    {task}
+                                </Text>
+                            ))}
+                            <Checkbox
+                                status={checked ? 'checked' : 'unchecked'}
+                                onPress={() => {
+                                    handleCheckBoxChange();
+
+                                }}
+                            />
+                        </Card.Content>
+                    </Card>
+                </TouchableOpacity>
+
             </View>
         </View>
     )

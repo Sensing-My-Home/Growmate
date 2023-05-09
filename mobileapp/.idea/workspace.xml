@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ee1d484-b765-43c1-a544-f03b0bc4cada" name="Changes" comment="AddDivisionScreen semi-completed">
+    <list default="true" id="8ee1d484-b765-43c1-a544-f03b0bc4cada" name="Changes" comment="GM-42 done">
       <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/AddDivisionScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/AddDivisionScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/components/AddDivisionDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/components/AddDivisionDescription.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/components/DivisionInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/components/DivisionInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/components/SensorDropdown.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/components/DayTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/components/DayTasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/components/Tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/components/Tasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/PlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/PlantScreenService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +87,12 @@
       <workItem from="1681132689704" duration="15431000" />
       <workItem from="1681823338915" duration="4182000" />
       <workItem from="1681898793897" duration="4928000" />
+      <workItem from="1682792656541" duration="2000" />
+      <workItem from="1683152180054" duration="1861000" />
+      <workItem from="1683157033429" duration="3816000" />
+      <workItem from="1683190047854" duration="6093000" />
+      <workItem from="1683216531818" duration="318000" />
+      <workItem from="1683620935559" duration="630000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
@@ -236,6 +245,7 @@
     <MESSAGE value="added CategoryScreenService and DiscoverPlantScreenService" />
     <MESSAGE value="added TasksScreenService" />
     <MESSAGE value="AddDivisionScreen semi-completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="AddDivisionScreen semi-completed" />
+    <MESSAGE value="GM-42 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-42 done" />
   </component>
 </project>
