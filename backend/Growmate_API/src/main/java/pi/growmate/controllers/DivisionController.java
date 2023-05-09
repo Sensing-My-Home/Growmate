@@ -10,7 +10,6 @@ import pi.growmate.services.DivisionService;
 import pi.growmate.utils.SuccessfulRequest;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("growmate/user")

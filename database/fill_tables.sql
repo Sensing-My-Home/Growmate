@@ -43,26 +43,53 @@ VALUES (1, 'Anthony Sensor', 'ANT123', 1, 1),
        (3, 'Beth Sensor', 'BTH123', 1, 3),
        (4, 'Juliana Sensor', 'JUL123', 1, 4);
        
-INSERT INTO public.task VALUES (1,'Check if Anthony is ready for watering by verifying the first 2cm of the soil mixture for dryness', 'Water Anthony',
-                         CURRENT_DATE, 0, 1, FALSE),
-                        (2, 'Change Orchid soil mix. Remember she is a Orchid, so use their soil mix.', 'Change Orchid soil mix',
-                         '2023-04-13', 1, 2, TRUE),
-                     (3, 'Beth is a little too warm. Consider changing her location.', 'Move Beth',
-                         '2023-04-18', 2, 3, FALSE),
-                     (4, 'Check the leafs of Juliana. Annotate her condition on her journal', 'Check Juliana''s condition ',
-                         '2023-04-15', 3, 4, FALSE),
-                     (5, 'Time to give Anthony some new fertilizer!', 'Fertilize Anthony',
-                         CURRENT_DATE, 4, 1, TRUE),
-                         (6, 'Change Anthony soil mix. Remember he is an African Violet, so use their soil mix.', 'Change Anthony soil mix',
-                         CURRENT_DATE, 1, 2, TRUE),
-                         (7, 'Check the leafs of Anthony. Annotate his condition on his journal', 'Check Anthony''s condition ',
-                         CURRENT_DATE, 3, 4, FALSE),
-                         (8,'Check if Orchid is ready for watering by verifying the first 2cm of the soil mixture for dryness', 'Water Orchid',
-                         '2023-04-22', 0, 1, FALSE),
-                         (9,'Check if Beth is ready for watering by verifying the first 2cm of the soil mixture for dryness', 'Water Beth',
-                         '2023-04-13', 0, 1, FALSE),
-                         (10,'Check if Juliana is ready for watering by verifying the first 2cm of the soil mixture for dryness', 'Water Juliana',
-                         '2023-04-15', 0, 1, FALSE);
+INSERT INTO public.tasks_current VALUES (1, 'Water Anthony',
+                         CURRENT_DATE, 0, 1),
+                        (2, 'Change Orchid soil mix',
+                         '2023-05-13', 1, 2),
+                     (4, 'Check Juliana''s condition ',
+                         '2023-05-15', 3, 4),
+                     (5, 'Fertilize Anthony',
+                         CURRENT_DATE, 4, 1),
+                         (6, 'Change Anthony soil mix',
+                         CURRENT_DATE, 1, 2),
+                         (7, 'Check Anthony''s condition ',
+                         CURRENT_DATE, 3, 4),
+                         (8, 'Water Orchid',
+                         '2023-05-22', 0, 2),
+                         (9, 'Water Beth',
+                         '2023-05-13', 0, 3),
+                         (10, 'Water Juliana',
+                         '2023-05-15', 0, 4);
+                         
+INSERT INTO public.task_settings VALUES (1, TRUE, 7, 0, 1),
+                        (2, TRUE,450, 1, 1),
+                        (3, TRUE,7, 3, 1),
+                        (4, TRUE,30, 4, 1),
+                        (5, TRUE,4, 0, 2),
+                        (6, TRUE,450, 1, 2),
+                        (7, TRUE,5, 3, 2),
+                        (8, TRUE,30, 4, 2),
+                        (9, TRUE,7, 0, 3),
+                        (10, TRUE,450, 1, 3),
+                        (11, TRUE,7, 3, 3),
+                        (12, TRUE,30, 4, 3),
+                        (13, TRUE,10, 0, 4),
+                        (14, TRUE,450, 1, 4),
+                        (15, TRUE,10, 3, 4),
+                        (16, TRUE,60, 4, 4);
+     
+INSERT INTO public.tasks_history VALUES (1, '2023-04-10', 'Water Anthony', 0, 1),
+                        (2,'2023-04-13', 'Change Orchid soil mix', 1, 2),
+                     (4,'2023-04-15','Check Juliana''s condition ', 3, 4),
+                     (5,'2023-04-18', 'Fertilize Anthony', 4, 1),
+                         (6, '2023-04-18', 'Change Anthony soil mix', 1, 2),
+                         (7, '2023-04-18','Check Anthony''s condition ', 3, 4),
+                         (8,'2023-04-22', 'Water Orchid', 0, 1),
+                         (9, '2023-04-13', 'Water Beth', 0, 1),
+                         (10,'2023-04-15', 'Water Juliana', 0, 1);                    
+                         
+                                    
   
 -- SETTING ID's               
                  
@@ -151,8 +178,11 @@ SELECT pg_catalog.setval('public.species_family_seq', (SELECT MAX(id) FROM publi
 -- Name: task_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.task_seq', (SELECT MAX(id) FROM public.task WHERE id > 0));
+SELECT pg_catalog.setval('public.tasks_current_seq', (SELECT MAX(id) FROM public.tasks_current WHERE id > 0));
 
+SELECT pg_catalog.setval('public.task_settings_seq', (SELECT MAX(id) FROM public.task_settings WHERE id > 0));
+
+SELECT pg_catalog.setval('public.tasks_history_seq', (SELECT MAX(id) FROM public.tasks_history WHERE id > 0));
 
 --
 -- Name: utilizador_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
