@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import pi.growmate.datamodel.plant.Plant;
 import pi.growmate.datamodel.task.Task_Settings;
 import pi.growmate.datamodel.task.Tasks_Current;
 import pi.growmate.datamodel.task.Tasks_History;
