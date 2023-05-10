@@ -2,10 +2,7 @@ package pi.growmate.services;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -171,9 +168,8 @@ public class TasksService {
         return new SuccessfulRequest("Task mode toggled successfully!");
     }
 
-    public Map<String, List<Task_Settings>> getAllTaskSettings(Long idUser, Long idPlant) throws ResourceNotFoundException{
+    public Map<String, List<Task_Settings>> getTaskSettings(Long idUser, Long idPlant, String taskType) throws ResourceNotFoundException{
         User user = getUser(idUser);
-
 
         // Depending on whether we're getting all the settings, or just for a Plant
         if(idPlant == null){
@@ -185,11 +181,33 @@ public class TasksService {
                             plant -> plant.getId().toString(),
                             Plant::getTaskSettings
                     ));
-        }else{
+        }else if(taskType == null){
+            // Getting all the task related to a Plant
             Plant planta = getPlant(user, idPlant);
 
             HashMap<String, List<Task_Settings>> map = new HashMap<>();
             map.put(planta.getId().toString(), planta.getTaskSettings());
+
+            return map;
+        }else{
+            // Getting only a specific task
+            // Finding the correct entry in Task_Settings, and toggling the mode
+            TaskType type;
+
+            switch (taskType) {
+                case "FERTILIZER" -> type = TaskType.FERTILIZER;
+                case "CHECK_PLANT" -> type = TaskType.CHECK_PLANT;
+                case "SOIL_CHANGE" -> type = TaskType.SOIL_CHANGE;
+                case "WATERING" -> type = TaskType.WATERING;
+                default -> throw new IllegalArgumentException("Invalid task type: " + taskType);
+            };
+
+            Plant planta = getPlant(user, idPlant);
+
+            Task_Settings settings = taskSettingsRepository.findFirstByPlantAndTaskType(planta, type);
+
+            HashMap<String, List<Task_Settings>> map = new HashMap<>();
+            map.put(planta.getId().toString(), Collections.singletonList(settings));
 
             return map;
         }
