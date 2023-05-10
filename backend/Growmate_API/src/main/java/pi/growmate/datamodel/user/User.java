@@ -44,6 +44,12 @@ public class User {
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
 
+    @Column(name = "experience")
+    private Long exp;
+
+    @Column(name = "dead_plant_count")
+    private Long dead_plants;
+
     @Column
     private String address;
 

@@ -81,13 +81,13 @@ INSERT INTO public.task_settings VALUES (1, TRUE, 7, 0, 1),
      
 INSERT INTO public.tasks_history VALUES (1, '2023-04-10', 'Water Anthony', 0, 1),
                         (2,'2023-04-13', 'Change Orchid soil mix', 1, 2),
-                     (4,'2023-04-15','Check Juliana''s condition ', 3, 4),
-                     (5,'2023-04-18', 'Fertilize Anthony', 4, 1),
-                         (6, '2023-04-18', 'Change Anthony soil mix', 1, 2),
-                         (7, '2023-04-18','Check Anthony''s condition ', 3, 4),
-                         (8,'2023-04-22', 'Water Orchid', 0, 1),
-                         (9, '2023-04-13', 'Water Beth', 0, 1),
-                         (10,'2023-04-15', 'Water Juliana', 0, 1);                    
+                        (4,'2023-04-15','Check Juliana''s condition ', 3, 4),
+                        (5,'2023-04-18', 'Fertilize Anthony', 4, 1),
+                        (6, '2023-04-18', 'Change Anthony soil mix', 1, 2),
+                        (7, '2023-04-18','Check Anthony''s condition ', 3, 4),
+                        (8,'2023-04-22', 'Water Orchid', 0, 1),
+                        (9, '2023-04-13', 'Water Beth', 0, 1),
+                        (10,'2023-04-15', 'Water Juliana', 0, 1);                    
                          
                                     
   

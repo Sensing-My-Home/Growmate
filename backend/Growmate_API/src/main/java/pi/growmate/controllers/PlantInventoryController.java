@@ -45,8 +45,9 @@ public class PlantInventoryController {
     // Deletes a plant from a user's inventory
     @DeleteMapping("{idUser}/inventory/{idPlanta}")
     public ResponseEntity<SuccessfulRequest> removePlant(@PathVariable(value = "idUser") Long idUser,
-                                                        @PathVariable(value = "idPlanta") Long idPlanta) throws ResourceNotFoundException{
-        return ResponseEntity.ok().body(plantService.removePlant(idUser, idPlanta));
+                                                        @PathVariable(value = "idPlanta") Long idPlanta
+                                                        /* @RequestParam boolean dead */) throws ResourceNotFoundException{
+        return ResponseEntity.ok().body(plantService.removePlant(idUser, idPlanta/* , dead */));
     }
 
     //String nome, String photo, Long division_id, Long sensor_id, Date plantation_date

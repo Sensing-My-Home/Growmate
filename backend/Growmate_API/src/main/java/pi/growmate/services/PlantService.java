@@ -50,13 +50,19 @@ public class PlantService {
         return planta.getSpecies();
     }
 
-    public SuccessfulRequest removePlant(long userID, long plantID) throws ResourceNotFoundException{
+    public SuccessfulRequest removePlant(long userID, long plantID/* , boolean dead */) throws ResourceNotFoundException{
         User user = checkIfUserExists(userID);
         Plant planta = getPlant(user, plantID);
 
         List<Plant> userPlants = user.getPlants();
         userPlants.remove(planta);
         user.setPlants(userPlants);
+        
+
+        /* if (dead){
+            user.setDead_plants(user.getDead_plants()+1);
+        } */
+
         userRepository.save(user);
 
         plantRepository.delete(planta);
