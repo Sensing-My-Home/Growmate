@@ -41,7 +41,7 @@ public class TasksController {
 
     // Gets all the tasks to be completed by a User in the future
     @GetMapping("{idUser}/todo")
-    public ResponseEntity<List<Tasks_Current>> getTasksToDo(@PathVariable(value = "idUser") Long idUser) throws ResourceNotFoundException{
+    public ResponseEntity<Map<String, List<Tasks_Current>>> getTasksToDo(@PathVariable(value = "idUser") Long idUser) throws ResourceNotFoundException{
         return ResponseEntity.ok().body(tasksService.getTasksToDo(idUser));
     }
 

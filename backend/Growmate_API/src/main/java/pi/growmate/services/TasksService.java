@@ -55,12 +55,14 @@ public class TasksService {
         
     }
 
-    public List<Tasks_Current> getTasksToDo(Long userID) throws ResourceNotFoundException{
+    public Map<String, List<Tasks_Current>> getTasksToDo(Long userID) throws ResourceNotFoundException{
         User user = getUser(userID);
-        List<Tasks_Current> tasks = user.getPlants().stream()
-                            .flatMap(plant -> plant.getCurrentTasks().stream())
-                            .collect(Collectors.toList());
-        return tasks;
+
+        return user.getPlants().stream()
+                    .collect(Collectors.toMap(
+                            plant -> plant.getId().toString(),
+                            Plant::getCurrentTasks
+                    ));
     }
 
     public List<Tasks_History> getTasksDone(Long userID) throws ResourceNotFoundException{
