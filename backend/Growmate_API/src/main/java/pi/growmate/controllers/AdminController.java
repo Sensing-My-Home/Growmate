@@ -51,8 +51,9 @@ public class AdminController {
     }
 
     @GetMapping("/allUsers")
-    public ResponseEntity<List<User>> getAllUsers(){
-        return ResponseEntity.ok().body(userService.getAllUsers());
+    public ResponseEntity<List<User>> getAllUsers(@RequestParam(value="adminPass") String adminPass,
+                                                  @RequestParam(value = "email") String adminEmail) throws Exception {
+        return ResponseEntity.ok().body(userService.getAllUsers(adminEmail, adminPass));
     }
 
 }

@@ -162,8 +162,24 @@ public class UserService {
         return new SuccessfulRequest("User created successfully!");
     }
 
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
+    public List<User> getAllUsers(String email, String password) throws Exception{
+        if(email == null || password == null){
+            throw new ResourceNotFoundException("No e-mail or password found on the Login Request.");
+        }
+
+        User user = userRepository.findFirstByEmail(email);
+
+        if(user == null){
+            throw new ResourceNotFoundException("User with e-mail: " + email + " not found.");
+        }
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        if(!passwordEncoder.matches(password, user.getPassword())){
+            throw new Exception("Invalid login credentials");
+        }else{
+            return userRepository.findAll();
+        }
     }
 
     // Auxilliary Functions
