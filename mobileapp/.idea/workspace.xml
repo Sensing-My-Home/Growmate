@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ee1d484-b765-43c1-a544-f03b0bc4cada" name="Changes" comment="GM-42 done">
+    <list default="true" id="8ee1d484-b765-43c1-a544-f03b0bc4cada" name="Changes" comment="plant tasks screen has calendar">
+      <change afterPath="$PROJECT_DIR$/screens/PlantScreen/components/TaskDialog.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/TasksScreen/components/DayTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/components/DayTasks.js" afterDir="false" />
@@ -93,6 +94,7 @@
       <workItem from="1683190047854" duration="6093000" />
       <workItem from="1683216531818" duration="318000" />
       <workItem from="1683620935559" duration="630000" />
+      <workItem from="1683743016163" duration="10790000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
@@ -220,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681828537532</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="plant tasks screen has calendar">
+      <created>1683622275151</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1683622275151</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +255,7 @@
     <MESSAGE value="added TasksScreenService" />
     <MESSAGE value="AddDivisionScreen semi-completed" />
     <MESSAGE value="GM-42 done" />
-    <option name="LAST_COMMIT_MESSAGE" value="GM-42 done" />
+    <MESSAGE value="plant tasks screen has calendar" />
+    <option name="LAST_COMMIT_MESSAGE" value="plant tasks screen has calendar" />
   </component>
 </project>

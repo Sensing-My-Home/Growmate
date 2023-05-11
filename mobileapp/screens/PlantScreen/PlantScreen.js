@@ -21,6 +21,7 @@ import { getPlantInfo, getAllDivisions, getPlantTasksTodo, getSensorsForPlant, d
 import { deleteImage } from "../../service/FirebaseService";
 import Tasks from "../TasksScreen/components/Tasks";
 import GoBackButton from "../TasksScreen/components/GoBackButton";
+import TaskDialog from "./components/TaskDialog";
 
 
 export default function PlantScreen({ route }) {
@@ -77,6 +78,7 @@ export default function PlantScreen({ route }) {
                 let description = rawTasks[r].description;
                 todoTasks.push(
                     {
+                        dateString: rawTasks[r].taskDate,
                         weekday: weekday,
                         day: day,
                         month: month,
@@ -89,9 +91,22 @@ export default function PlantScreen({ route }) {
                 )
                 taskDates[rawTasks[r].taskDate] = {marked: true, dotColor: theme.colors.primary};
             }
-            setTodoTaskDates(taskDates);
-            setTodoTasks(todoTasks);
-            setTodoSelectedTasks(todoTasks);
+            console.log(selected)
+            if (selected) {
+                console.log("inside not selected")
+                console.log(todoTasks)
+                setTodoTaskDates(taskDates);
+                setTodoTasks(todoTasks);
+                onDaySelect(selectedDay)
+            }
+            else {
+                console.log("inside not selected")
+                console.log(todoTasks)
+                setTodoTaskDates(taskDates);
+                setTodoTasks(todoTasks);
+                setTodoSelectedTasks(todoTasks);
+            }
+
         });
     }, [counter]);
 
@@ -136,10 +151,20 @@ export default function PlantScreen({ route }) {
     }
 
     const [visibleChange, setVisibleChange] = useState(false);
-    const setChange = () => setVisibleChange(true);
+    const [taskName, setTaskName] = useState("");
+    const [taskDueDate, setTaskDueDate] = useState("");
+    const [taskMode, setTaskMode] = useState(true);
+    const [taskFrequency, setTaskFrequency] = useState(0);
+
+    const setChange = (taskName, taskDueDate, taskMode, taskFrequency) => {
+        setTaskName(taskName);
+        setTaskDueDate(taskDueDate);
+        setTaskMode(taskMode);
+        setTaskFrequency(taskFrequency);
+        setVisibleChange(true);
+    }
     const hideChange = () => setVisibleChange(false);
 
-    
     if (plantInfo && divisions && sensors && todoTasks) {
         return (
             <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
@@ -176,22 +201,18 @@ export default function PlantScreen({ route }) {
                     <TabScreen label="Tasks " icon="pencil">
                         <View>
                         <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect}/>
-                        <Tasks tasks={todoSelectedTasks} selected={selected} userId={userID} plantID={plantID} setCounter={setCounter} counter={counter} maxHeight={200} setChange={setChange}/>
+                        <Tasks tasks={todoSelectedTasks} selected={selected} userId={userID} plantID={plantID} setCounter={setCounter} counter={counter} maxHeight={160} setChange={setChange}/>
                         {selected &&
                             <GoBackButton onPress={goBack}/>
                         }
-                        <Dialog visible={visibleChange} onDismiss={hideChange} style={{ backgroundColor: theme.colors.background }}>
-                            <Dialog.Content>
-                                <Text variant={"bodyMedium"}>Hello</Text>
-                            </Dialog.Content>
-                            <Dialog.Actions>
-                                <Button onPress={hideChange} buttonColor={theme.colors.darkRed} textColor={theme.colors.background}>Close</Button>
-                            </Dialog.Actions>
-                        </Dialog>
 
                         </View>
                     </TabScreen>
                 </Tabs>
+                <TaskDialog hideChange={hideChange} visibleChange={visibleChange} taskName={taskName}
+                            taskDueDate={taskDueDate} taskMode={taskMode} taskFrequency={taskFrequency}
+                            setTaskMode={setTaskMode} setTaskDueDate={setTaskDueDate} setTaskFrequency={setTaskFrequency}
+                />
                 <BottomMenu screenHeight={screenHeight} />
             </View>
         )

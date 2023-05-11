@@ -29,6 +29,7 @@ const getPlantTasksTodo = async (userID, plantID) => {
 }
 
 const updateTask = async (userID, plantID, taskID, status) => {
+    console.log("inside update")
     const response = await axios.put(
         baseURL + "/user/tasks/" + userID + "/plant/" + plantID + "/updateTask/" + taskID,
         null,

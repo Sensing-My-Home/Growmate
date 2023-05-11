@@ -95,7 +95,7 @@ export default function TasksScreen() {
             <GreenBar />
             <TasksHeader/>
             <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect}/>
-            <Tasks tasks={todoSelectedTasks} selected={selected}/>
+            <Tasks tasks={todoSelectedTasks} selected={selected} maxHeight={220}/>
             {selected &&
                 <GoBackButton onPress={goBack}/>
             }
