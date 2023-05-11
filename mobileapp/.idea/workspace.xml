@@ -4,17 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ee1d484-b765-43c1-a544-f03b0bc4cada" name="Changes" comment="plant tasks screen has calendar">
-      <change afterPath="$PROJECT_DIR$/screens/PlantScreen/components/TaskDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/components/DayTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/components/DayTasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/components/Tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/components/Tasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/PlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/PlantScreenService.js" afterDir="false" />
+    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="added AddPlantScreenService and AssociatePlantScreenService">
+      <change afterPath="$PROJECT_DIR$/../.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/controllers/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/services/PlantSpeciesService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../database/triggers.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/controllers/PlantInventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/controllers/PlantInventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/controllers/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/controllers/TasksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/datamodel/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/datamodel/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/services/PlantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/services/PlantService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/services/TasksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/src/main/java/pi/growmate/services/TasksService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/dump.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../database/dump.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/fill_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../database/fill_tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683622275151</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added AddPlantScreenService and AssociatePlantScreenService">
+      <created>1683793540279</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1683793540279</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,6 +266,7 @@
     <MESSAGE value="AddDivisionScreen semi-completed" />
     <MESSAGE value="GM-42 done" />
     <MESSAGE value="plant tasks screen has calendar" />
-    <option name="LAST_COMMIT_MESSAGE" value="plant tasks screen has calendar" />
+    <MESSAGE value="added AddPlantScreenService and AssociatePlantScreenService" />
+    <option name="LAST_COMMIT_MESSAGE" value="added AddPlantScreenService and AssociatePlantScreenService" />
   </component>
 </project>

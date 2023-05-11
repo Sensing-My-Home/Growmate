@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="merged conflicts">
+    <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/TasksController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/TasksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/TasksService.java" afterDir="false" />
     </list>

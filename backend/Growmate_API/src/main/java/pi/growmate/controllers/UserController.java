@@ -22,4 +22,6 @@ public class UserController {
     public ResponseEntity<User> getUserInfo(@PathVariable(value = "idUser") Long idUser) throws ResourceNotFoundException{
         return ResponseEntity.ok().body(userService.getUser(idUser));
     }
+
+    
 }
