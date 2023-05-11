@@ -1,4 +1,4 @@
-package pi.growmate.datamodel.forum;
+package pi.growmate.datamodel.plant;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

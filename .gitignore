@@ -13,7 +13,7 @@
 .idea/**/shelf
 
 .idea
-.backend/.idea
+.backend/Growmate_API/.idea
 
 # AWS User-specific
 .idea/**/aws.xml
