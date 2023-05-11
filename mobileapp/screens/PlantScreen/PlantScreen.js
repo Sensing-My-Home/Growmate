@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Dimensions, ScrollView } from "react-native";
 import { Tabs, TabScreen } from 'react-native-paper-tabs';
-import {Button, Dialog, Text, useTheme} from "react-native-paper";
+import {useTheme} from "react-native-paper";
 import { useNavigation, StackActions } from '@react-navigation/native';
 
 import BottomMenu from "../../components/BottomMenu";
@@ -17,7 +17,14 @@ import SensorGraphStack from "./components/SensorGraphStack";
 import TaskCalendar from "../TasksScreen/components/TaskCalendar";
 
 //API functions
-import { getPlantInfo, getAllDivisions, getPlantTasksTodo, getSensorsForPlant, deletePlant } from "../../service/PlantScreenService";
+import {
+    getPlantInfo,
+    getAllDivisions,
+    getPlantTasksTodo,
+    getSensorsForPlant,
+    deletePlant,
+    getTaskSettings
+} from "../../service/PlantScreenService";
 import { deleteImage } from "../../service/FirebaseService";
 import Tasks from "../TasksScreen/components/Tasks";
 import GoBackButton from "../TasksScreen/components/GoBackButton";
@@ -45,7 +52,7 @@ export default function PlantScreen({ route }) {
         if (plantInfo) {
             getSensorsForPlant(userID, plantID, plantInfo.division["id"])
             .then((info) => setSensors(info));
-        };
+        }
     }, [plantInfo])
 
     // Get All Divisions
@@ -75,7 +82,6 @@ export default function PlantScreen({ route }) {
                 let year = date.getFullYear();
                 let name = rawTasks[r].name;
                 let id = rawTasks[r].id
-                let description = rawTasks[r].description;
                 todoTasks.push(
                     {
                         dateString: rawTasks[r].taskDate,
@@ -86,22 +92,18 @@ export default function PlantScreen({ route }) {
                         tasks: [
                             name
                         ],
-                        id: id
+                        id: id,
+                        taskType: rawTasks[r].taskType
                     }
                 )
                 taskDates[rawTasks[r].taskDate] = {marked: true, dotColor: theme.colors.primary};
             }
-            console.log(selected)
             if (selected) {
-                console.log("inside not selected")
-                console.log(todoTasks)
                 setTodoTaskDates(taskDates);
                 setTodoTasks(todoTasks);
-                onDaySelect(selectedDay)
+                onDaySelect(selectedDay, todoTasks);
             }
             else {
-                console.log("inside not selected")
-                console.log(todoTasks)
                 setTodoTaskDates(taskDates);
                 setTodoTasks(todoTasks);
                 setTodoSelectedTasks(todoTasks);
@@ -112,30 +114,37 @@ export default function PlantScreen({ route }) {
 
     const [selectedDay, setSelectedDay] = useState(0);
 
-    const onDaySelect = (day) => {
-        setSelectedDay(day);
-        let chosenDay = day.day.toString();
-        let chosenTasks = [];
-        let tempSelectedTasks = []
-        for (let f = 0; f < todoTasks.length; f++) {
-            let tempTask = todoTasks.at(f);
-            if (tempTask.day === chosenDay){
-                chosenTasks.push(tempTask);
-            }
-        }
-
-        for (let i = 1; i <= chosenTasks.length ; i++){
-            tempSelectedTasks.push(
-                {weekday: i.toString(),
-                    day: "none",
-                    tasks: chosenTasks[i-1].tasks,
-                    id: chosenTasks[i-1].id
+    const onDaySelect = (date, manualTodoTasks) => {
+        if (manualTodoTasks){
+            setSelectedDay(date);
+            let chosenDay = date.day.toString();
+            let chosenMonth = new Date(date.dateString).toDateString().split(" ")[1];
+            let chosenYear = date.year.toString();
+            let selectedTasks = [];
+            for (let f = 0; f < manualTodoTasks.length; f++) {
+                let task = manualTodoTasks.at(f);
+                if (task.day.toString() === chosenDay && task.month === chosenMonth && task.year.toString() === chosenYear){
+                    selectedTasks.push(task);
                 }
-            )
+            }
+            setTodoSelectedTasks(selectedTasks);
+            setSelected(true);
         }
-
-        setTodoSelectedTasks(tempSelectedTasks);
-        setSelected(true);
+        else {
+            setSelectedDay(date);
+            let chosenDay = date.day.toString();
+            let chosenMonth = new Date(date.dateString).toDateString().split(" ")[1];
+            let chosenYear = date.year.toString();
+            let selectedTasks = [];
+            for (let f = 0; f < todoTasks.length; f++) {
+                let task = todoTasks.at(f);
+                if (task.day.toString() === chosenDay && task.month === chosenMonth && task.year.toString() === chosenYear){
+                    selectedTasks.push(task);
+                }
+            }
+            setTodoSelectedTasks(selectedTasks);
+            setSelected(true);
+        }
     }
 
     const goBack = () => {
@@ -155,13 +164,17 @@ export default function PlantScreen({ route }) {
     const [taskDueDate, setTaskDueDate] = useState("");
     const [taskMode, setTaskMode] = useState(true);
     const [taskFrequency, setTaskFrequency] = useState(0);
-
-    const setChange = (taskName, taskDueDate, taskMode, taskFrequency) => {
+    const setChange = (taskName, taskDueDate, taskType) => {
         setTaskName(taskName);
         setTaskDueDate(taskDueDate);
-        setTaskMode(taskMode);
-        setTaskFrequency(taskFrequency);
-        setVisibleChange(true);
+        getTaskSettings(userID, plantID, taskType).then(
+            (task) => {
+                setTaskMode(task[plantID][0].automatic);
+                setTaskFrequency(task[plantID][0].taskFrequency);
+                setVisibleChange(true);
+            }
+        )
+
     }
     const hideChange = () => setVisibleChange(false);
 

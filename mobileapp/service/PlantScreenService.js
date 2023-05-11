@@ -28,12 +28,10 @@ const getPlantTasksTodo = async (userID, plantID) => {
     return response.data;
 }
 
-const updateTask = async (userID, plantID, taskID, status) => {
-    console.log("inside update")
+const updateTask = async (userID, plantID, taskID) => {
     const response = await axios.put(
         baseURL + "/user/tasks/" + userID + "/plant/" + plantID + "/updateTask/" + taskID,
         null,
-        { params: { bol: status } }
     );
     return response.data;
 }
@@ -42,4 +40,9 @@ const deletePlant = async (userID, plantID) => {
     await axios.delete(baseURL + "/user/" + userID + "/inventory/" + plantID);
 }
 
-export {getPlantInfo, getAllDivisions, getSensorsForPlant, getPlantTasksTodo, updateTask, deletePlant}
+const getTaskSettings = async (userID, plantID, taskType) => {
+    const response = await axios.get(baseURL + "/user/tasks/" + userID + "/settings?idPlant=" + plantID + "&taskType=" + taskType);
+    return response.data
+}
+
+export {getPlantInfo, getAllDivisions, getSensorsForPlant, getPlantTasksTodo, updateTask, deletePlant, getTaskSettings}

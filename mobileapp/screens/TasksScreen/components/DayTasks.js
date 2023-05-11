@@ -1,23 +1,19 @@
-import {ScrollView, TouchableOpacity, View} from "react-native";
-import {Avatar, Button, Card, Checkbox, Dialog, Searchbar, Text, useTheme} from "react-native-paper";
+import {TouchableOpacity, View} from "react-native";
+import {Card, Checkbox, Text, useTheme} from "react-native-paper";
 import { updateTask } from '../../../service/PlantScreenService';
-import React, {useState} from "react";
+import React from "react";
 
-export default function DayTasks({weekday, day, tasks, userId, plantId, taskId, setCounter, counter, setChange, dateString}){
+export default function DayTasks({weekday, day, tasks, userId, plantId, taskId, setCounter, counter, setChange, dateString, taskType}){
     const theme = useTheme();
     const [checked, setChecked] = React.useState(false);
 
     const handleCheckBoxChange = () => {
         setChecked(!checked);
-        console.log(userId)
-        console.log(plantId)
-        console.log(taskId)
-        console.log(!checked)
-        updateTask(userId, plantId, taskId, !checked).then(() => {
-                console.log("after update")
-                setCounter(counter+1);
-                setTimeout( () => {setChecked(!checked)},
-                1000)
+        updateTask(userId, plantId, taskId).then(() => {
+                setTimeout( () => {
+                    setCounter(counter+1);
+                    setChecked(false);},
+                500)
             });
     }
 
@@ -35,7 +31,7 @@ export default function DayTasks({weekday, day, tasks, userId, plantId, taskId, 
                         </Text>
                     }
                 </View>
-                <TouchableOpacity onPress={() => {setChange(tasks[0], dateString, true, 7)}}>
+                <TouchableOpacity onPress={() => {setChange(tasks[0], dateString, taskType, plantId)}}>
                     <Card style={{backgroundColor: theme.colors.background, width: 230}}>
                         <Card.Content style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                             {tasks.map((task, index) => (
