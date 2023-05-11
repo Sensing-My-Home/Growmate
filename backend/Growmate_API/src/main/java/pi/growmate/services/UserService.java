@@ -162,6 +162,10 @@ public class UserService {
         return new SuccessfulRequest("User created successfully!");
     }
 
+    public List<User> getAllUsers(){
+        return userRepository.findAll();
+    }
+
     // Auxilliary Functions
     private Division getDivision(User user, long divisionID) throws ResourceNotFoundException {
         return user.getDivisions().stream()
