@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="merged conflicts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/SensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/SensorsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/SensorsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/SensorsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/PublicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/PublicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +115,11 @@
       <workItem from="1681850285368" duration="3699000" />
       <workItem from="1682016069786" duration="195000" />
       <workItem from="1682184489142" duration="6175000" />
-      <workItem from="1682261290477" duration="5996000" />
+      <workItem from="1682261290477" duration="6783000" />
+      <workItem from="1682269531264" duration="782000" />
+      <workItem from="1683755919579" duration="1841000" />
+      <workItem from="1683822287462" duration="6188000" />
+      <workItem from="1683910326809" duration="980000" />
     </task>
     <servers />
   </component>

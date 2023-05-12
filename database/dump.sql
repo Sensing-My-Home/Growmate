@@ -380,6 +380,7 @@ ALTER TABLE public.soil_quality_measurement_seq OWNER TO postgres;
 CREATE TABLE public.species_family (
     id bigint NOT NULL,
     name character varying(255) NOT NULL,
+    difficulty integer,
     opt_soil_mix integer,
     photo character varying(255)
 );
@@ -501,6 +502,8 @@ CREATE TABLE public.utilizador (
     password character varying(255) NOT NULL,
     profile_photo character varying(255),
     rating integer DEFAULT 3.0,
+    experience integer DEFAULT 1,
+    dead_plant_count integer DEFAULT 0,
     user_type integer
 );
 

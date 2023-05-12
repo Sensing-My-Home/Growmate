@@ -11,13 +11,14 @@ import pi.growmate.datamodel.sensors.PlantSensor;
 import pi.growmate.datamodel.forum.Comment;
 import pi.growmate.datamodel.plant.JournalEntry;
 import pi.growmate.datamodel.plant.Plant;
+import pi.growmate.datamodel.species.TemperatureConverter;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="Utilizador")
+@Table(name="utilizador")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -43,6 +44,12 @@ public class User {
     @Column(name = "DOB")
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
+
+    @Column(name = "experience")
+    private Long exp;
+
+    @Column(name = "dead_plant_count")
+    private Long dead_plants;
 
     @Column
     private String address;
