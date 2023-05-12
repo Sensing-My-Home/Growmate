@@ -10,6 +10,7 @@ import GoBackButton from "./components/GoBackButton";
 import {getTodoTasks} from "../../service/TasksScreenService";
 import {getTaskSettings} from "../../service/PlantScreenService";
 import TaskDialog from "../PlantScreen/components/TaskDialog";
+import {userID} from "../../user";
 
 export default function TasksScreen() {
     const [todoTasks, setTodoTasks] = useState([]);
@@ -18,10 +19,9 @@ export default function TasksScreen() {
     const [selected, setSelected] = useState(false);
     const [selectedDay, setSelectedDay] = useState(0);
     const [counter, setCounter] = useState(0);
-    const userId = 1;
 
     useEffect( () => {
-        getTodoTasks(userId).then((tasks) => {
+        getTodoTasks(userID).then((tasks) => {
             const rawTasks = tasks;
             const taskDates = {};
             const todoTasks = [];
@@ -128,7 +128,7 @@ export default function TasksScreen() {
         setTaskID(taskID);
         setTaskType(taskType);
         setPlantID(plantID);
-        getTaskSettings(userId, plantID, taskType).then(
+        getTaskSettings(userID, plantID, taskType).then(
             (task) => {
                 setTaskMode(task[plantID][0].automatic);
                 setInitialTaskMode(task[plantID][0].automatic);
@@ -150,7 +150,7 @@ export default function TasksScreen() {
             <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect}/>
             <Tasks tasks={todoSelectedTasks} selected={selected} maxHeight={220}
                    setCounter={setCounter} counter={counter} setChange={setChange}
-                   userId={userId}
+                   userId={userID}
             />
             {selected &&
                 <GoBackButton onPress={goBack}/>
@@ -158,7 +158,7 @@ export default function TasksScreen() {
             <TaskDialog hideChange={hideChange} visibleChange={visibleChange} taskName={taskName}
                         taskDueDate={taskDueDate} taskMode={taskMode} taskFrequency={taskFrequency}
                         setTaskMode={setTaskMode} setTaskDueDate={setTaskDueDate} setTaskFrequency={setTaskFrequency}
-                        taskID={taskID} userID={userId} initialTaskDueDate={initialTaskDueDate} initialTaskFrequency={initialTaskFrequency}
+                        taskID={taskID} userID={userID} initialTaskDueDate={initialTaskDueDate} initialTaskFrequency={initialTaskFrequency}
                         initialTaskMode={initialTaskMode} setCounter={setCounter} counter={counter} plantID={plantID} taskType={taskType}/>
             <BottomMenu screenHeight={screenHeight} active={"calendar"} />
         </View>

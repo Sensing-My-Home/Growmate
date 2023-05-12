@@ -17,7 +17,6 @@ export default function CategoryScreen({route}){
     const screenHeight = Dimensions.get('screen').height;
     const {name, id} = route.params;
     const theme = useTheme()
-    const image = require("../../assets/lavender.jpeg");
 
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
