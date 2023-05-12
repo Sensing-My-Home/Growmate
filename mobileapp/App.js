@@ -18,6 +18,7 @@ import CategoryScreen from "./screens/CategoryScreen/CategoryScreen";
 import { enGB, registerTranslation } from 'react-native-paper-dates'
 import AddDivisionScreen from "./screens/AddDivisionScreen/AddDivisionScreen";
 import AddSensorScreen from "./screens/AddSensorScreen/AddSensorScreen";
+import InitializerScreen from "./screens/InitializerScreen/InitializerScreen";
 registerTranslation('en-GB', enGB)
 
 
@@ -37,6 +38,10 @@ export default function App() {
             headerShown: false
           }}
         >
+          <Stack.Screen
+              name="Initializer"
+              component={InitializerScreen}
+          />
           <Stack.Screen
             name="Home"
             component={gestureHandlerRootHOC(HomeScreen)}
