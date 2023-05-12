@@ -1,0 +1,49 @@
+import {Dimensions, View} from "react-native";
+import {useTheme} from "react-native-paper";
+import GreenBar from "../../components/GreenBar";
+import React, {useState} from "react";
+import LoginHeader from "./components/LoginHeader";
+import LoginInfo from "./components/LoginInfo";
+import LoginButton from "./components/LoginButton";
+import SignUpButton from "./components/SignUpButton";
+import {login} from "../../service/LoginScreenService";
+import {useNavigation} from "@react-navigation/native";
+import WarningMessage from "./components/WarningMessage";
+import {setUserFirstName, setUserID, setUserType} from "../../user";
+
+export default function LoginScreen(){
+    const screenHeight = Dimensions.get('screen').height;
+    const theme = useTheme()
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigation = useNavigation();
+    const [incorrectCredentials, setIncorrectCredentials] = useState(false);
+
+    const pressLogin = () => {
+        login(email, password).then((response) => {
+            if (response !== false) {
+                setIncorrectCredentials(false);
+                setUserID(response.id);
+                setUserFirstName(response.name.split(" ")[0]);
+                setUserType(response.userType);
+                navigation.navigate("Home");
+            }
+            else {
+                setIncorrectCredentials(true);
+            }
+
+        } )
+    }
+    return (
+        <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
+            <GreenBar />
+            <LoginHeader/>
+            <LoginInfo setPassword={setPassword} setEmail={setEmail}/>
+            {incorrectCredentials &&
+                <WarningMessage/>
+            }
+            <LoginButton login={pressLogin}/>
+            <SignUpButton/>
+        </View>
+    )
+}

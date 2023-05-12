@@ -29,6 +29,7 @@ import { deleteImage } from "../../service/FirebaseService";
 import Tasks from "../TasksScreen/components/Tasks";
 import GoBackButton from "../TasksScreen/components/GoBackButton";
 import TaskDialog from "./components/TaskDialog";
+import {userID} from "../../user";
 
 
 export default function PlantScreen({ route }) {
@@ -36,8 +37,7 @@ export default function PlantScreen({ route }) {
     const theme = useTheme();
     const navigation = useNavigation();
     // Info for the API call
-    const { plantID } = route.params;
-    const userID = 1;
+    const { plantID} = route.params;
 
     // Get Plant info
     const [plantInfo, setPlantInfo] = useState(null);
@@ -155,7 +155,7 @@ export default function PlantScreen({ route }) {
     // API call to delete plant;
     const handleDeletePlant = async () => {
         await deleteImage(userID, plantInfo.name);
-        await deletePlant(userID, plantID);
+        await deletePlant(userID, plantID, true);
         navigation.dispatch(StackActions.replace('Home'));
     }
 

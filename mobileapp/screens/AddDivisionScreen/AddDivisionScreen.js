@@ -9,6 +9,7 @@ import NextButton from "../AddPlantScreen/components/NextButton";
 import AddDivisionDescription from "./components/AddDivisionDescription";
 import DivisionInfo from "./components/DivisionInfo";
 import {createNewDivision} from "../../service/AddDivisionService";
+import {userID} from "../../user";
 
 
 export default function AddDivisionScreen(){
@@ -19,7 +20,7 @@ export default function AddDivisionScreen(){
     const [divisionLuminosity, setDivisionLuminosity] = useState("");
 
     const onPressNext = () => {
-        createNewDivision(1, divisionName, divisionLuminosity).then(() =>
+        createNewDivision(userID, divisionName, divisionLuminosity).then(() =>
             navigation.dispatch(StackActions.replace('Home'))
         );
     }

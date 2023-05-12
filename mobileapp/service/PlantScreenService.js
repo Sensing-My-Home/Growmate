@@ -36,8 +36,8 @@ const updateTask = async (userID, plantID, taskID) => {
     return response.data;
 }
 
-const deletePlant = async (userID, plantID) => {
-    await axios.delete(baseURL + "/user/" + userID + "/inventory/" + plantID);
+const deletePlant = async (userID, plantID, dead) => {
+    await axios.delete(baseURL + "/user/" + userID + "/inventory/" + plantID + "?dead=" + dead);
 }
 
 const getTaskSettings = async (userID, plantID, taskType) => {

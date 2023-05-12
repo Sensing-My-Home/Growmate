@@ -10,6 +10,7 @@ import {createNewSensor, getDivisions} from "../../service/AddSensorService";
 import AddSensorDescription from "./components/AddSensorDescription";
 import {getPlants} from "../../service/HomeScreenService";
 import SensorInfo from "./components/SensorInfo";
+import {userID} from "../../user";
 
 
 export default function AddSensorScreen(){
@@ -24,15 +25,15 @@ export default function AddSensorScreen(){
     const [userDivisions, setUserDivisions] = useState([]);
 
     useEffect( () => {
-        getPlants(1).then((plants) => {setUserPlants(plants)})
+        getPlants(userID).then((plants) => {setUserPlants(plants)})
     }, [])
 
     useEffect( () => {
-        getDivisions(1).then((divisions) => {setUserDivisions(divisions)})
+        getDivisions(userID).then((divisions) => {setUserDivisions(divisions)})
     }, [])
 
     const onPressNext = () => {
-        createNewSensor(1, sensorType, sensorName, sensorCode, ownerID).then(() =>
+        createNewSensor(userID, sensorType, sensorName, sensorCode, ownerID).then(() =>
             navigation.dispatch(StackActions.replace('Home'))
         );
     }

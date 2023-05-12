@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pi.growmate.datamodel.species.PlantSpecies;
+import pi.growmate.datamodel.user.User;
 import pi.growmate.exceptions.ResourceNotFoundException;
 import pi.growmate.services.PlantSpeciesService;
+import pi.growmate.services.UserService;
 
 @RestController
 @RequestMapping("growmate/admin")
@@ -22,6 +24,8 @@ public class AdminController {
     
     @Autowired
     private PlantSpeciesService plantSpeciesService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/plants")
     public ResponseEntity<List<PlantSpecies>> getAllPlants(){
@@ -46,5 +50,10 @@ public class AdminController {
         return ResponseEntity.ok().body(plantSpeciesService.addPlantSpecies(common_name, cycle, usual_size, flowering, season, scientific_name, photo, leaf_color, optimal_humidity, optimal_temperature, optimal_luminosity, watering_frequency, family_id));
     }
 
+    @GetMapping("/allUsers")
+    public ResponseEntity<List<User>> getAllUsers(@RequestParam(value="adminPass") String adminPass,
+                                                  @RequestParam(value = "email") String adminEmail) throws Exception {
+        return ResponseEntity.ok().body(userService.getAllUsers(adminEmail, adminPass));
+    }
 
 }

@@ -52,7 +52,7 @@ export default function AddPlantScreen() {
             image: image,
             date: formattedDate,
             specie: specieId,
-            name: name
+            name: name,
         });
     }
     return (

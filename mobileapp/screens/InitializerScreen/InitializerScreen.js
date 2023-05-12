@@ -15,8 +15,8 @@ export default function InitializerScreen(){
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <GreenBar />
             <Logo/>
-            <SignUp/>
             <LogIn/>
+            <SignUp/>
             <NoAccount/>
         </View>
     )

@@ -8,14 +8,14 @@ import SpeciesInfo from "./components/SpeciesInfo";
 import SpeciesFooter from "./components/SpeciesFooter";
 import SpeciesHeader from "./components/SpeciesHeader";
 import {getPlantSpeciesInfo} from "../../service/SpeciesProfileScreenService";
+import {userID} from "../../user";
 
 export default function SpeciesProfileScreen({route}){
     const [plantSpeciesInfo, setPlantSpeciesInfo] = useState({});
     useEffect( () => {
         const {plantId} = route.params;
-        getPlantSpeciesInfo(1, plantId).then((info) => {setPlantSpeciesInfo(info)});
+        getPlantSpeciesInfo(userID, plantId).then((info) => {setPlantSpeciesInfo(info)});
     }, [])
-    const speciesImage = require('../../assets/aloe-vera-closeup.jpeg');
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
     return (
