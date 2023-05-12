@@ -41,5 +41,4 @@ public class PublicController {
                                                               @RequestParam(value = "userType") String userType) throws ResourceNotFoundException {
         return ResponseEntity.ok().body(userService.createNewProfile(name, email, password, profilePhoto, dob, experience, address, userType));
     }
-
 }

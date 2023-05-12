@@ -115,9 +115,7 @@ public class UserService {
             throw new ResourceNotFoundException("User with e-mail: " + email + " not found.");
         }
 
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-        if(!passwordEncoder.matches(password, user.getPassword())){
+        if(!this.checkPassword(password, user)){
             throw new Exception("Invalid login credentials");
         }else{
             return user;
@@ -173,16 +171,45 @@ public class UserService {
             throw new ResourceNotFoundException("User with e-mail: " + email + " not found.");
         }
 
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-        if(!passwordEncoder.matches(password, user.getPassword())){
+        if(! this.checkPassword(password, user)){
             throw new Exception("Invalid login credentials");
         }else{
             return userRepository.findAll();
         }
     }
 
+    public SuccessfulRequest changePassword(Long userID, String oldPassword, String newPassword) throws Exception {
+        User user = this.checkIfUserExists(userID);
+
+        if(!this.checkPassword(oldPassword, user)){
+            throw new Exception("Invalid login credentials");
+        }
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        user.setPassword(passwordEncoder.encode(oldPassword));
+        userRepository.save(user);
+
+        return new SuccessfulRequest("Password changed successfully!");
+    }
+
+    public SuccessfulRequest editProfile(Long userID, String name, String email, Date dob, String address) throws ResourceNotFoundException {
+        User user = this.checkIfUserExists(userID);
+
+        user.setName(name != null ? name : user.getName());
+        user.setEmail(email != null ? email : user.getEmail());
+        user.setDateOfBirth(dob != null ? dob : user.getDateOfBirth());
+        user.setAddress(address != null ? address : user.getAddress());
+
+        userRepository.save(user);
+
+        return new SuccessfulRequest("Profile information changed successfully!");
+    }
+
     // Auxilliary Functions
+    private User checkIfUserExists(long userID) throws ResourceNotFoundException {
+        return userRepository.findById(userID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
+    }
+
     private Division getDivision(User user, long divisionID) throws ResourceNotFoundException {
         return user.getDivisions().stream()
                 .filter(d -> d.getId().equals(divisionID))
@@ -196,5 +223,11 @@ public class UserService {
 
     private PlantSensor getPlantSensor(long id_sensor) throws ResourceNotFoundException{
         return plantSensorRepository.findById(id_sensor).orElseThrow(() -> new ResourceNotFoundException("PlantSensor with id " + id_sensor + " not found."));
+    }
+
+    private boolean checkPassword(String password, User user){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        return passwordEncoder.matches(password, user.getPassword());
     }
 }
