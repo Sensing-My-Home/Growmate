@@ -1,7 +1,9 @@
 package pi.growmate.datamodel.species;
 
 import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 
+@Converter
 public class LuminosityConverter implements AttributeConverter<OptimalLuminosity, Integer> {
     @Override
     public Integer convertToDatabaseColumn(OptimalLuminosity optimalLuminosity) {

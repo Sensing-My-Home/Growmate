@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="merged conflicts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/InitializerScreen/InitializerScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/InitializerScreen/InitializerScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/InitializerScreen/components/LogIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/InitializerScreen/components/LogIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/PublicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/PublicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,18 +55,17 @@
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/andre_butuc/Documents/RepUA/PI/Growmate/backend/Growmate_API&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/daniel/Documents/Universidade/Sem_2/TQS/TQS_77036/lab2/lab2_2httpclient&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;84da50b259d34210db8d1b654840f93f&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;3fa0d4944519e39b95ffd0ae9d8b4453&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -118,10 +117,9 @@
       <workItem from="1682184489142" duration="6175000" />
       <workItem from="1682261290477" duration="6783000" />
       <workItem from="1682269531264" duration="782000" />
-      <workItem from="1683755919579" duration="1619000" />
-      <workItem from="1683804100303" duration="1498000" />
-      <workItem from="1683889454927" duration="5842000" />
-      <workItem from="1683909098149" duration="743000" />
+      <workItem from="1683755919579" duration="1841000" />
+      <workItem from="1683822287462" duration="6188000" />
+      <workItem from="1683910326809" duration="980000" />
     </task>
     <servers />
   </component>
