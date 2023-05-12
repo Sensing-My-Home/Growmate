@@ -31,7 +31,7 @@ export default function DayTasks({weekday, day, tasks, userId, plantId, taskId, 
                         </Text>
                     }
                 </View>
-                <TouchableOpacity onPress={() => {setChange(tasks[0], dateString, taskType, plantId)}}>
+                <TouchableOpacity onPress={() => {setChange(tasks[0], dateString, taskType, plantId, taskId)}}>
                     <Card style={{backgroundColor: theme.colors.background, width: 230}}>
                         <Card.Content style={{flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                             {tasks.map((task, index) => (

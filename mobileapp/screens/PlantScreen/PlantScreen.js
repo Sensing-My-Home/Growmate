@@ -164,13 +164,24 @@ export default function PlantScreen({ route }) {
     const [taskDueDate, setTaskDueDate] = useState("");
     const [taskMode, setTaskMode] = useState(true);
     const [taskFrequency, setTaskFrequency] = useState(0);
-    const setChange = (taskName, taskDueDate, taskType) => {
+    const [taskID, setTaskID] = useState(0);
+    const [taskType, setTaskType] = useState(0);
+    const [initialTaskDueDate, setInitialTaskDueDate] = useState("");
+    const [initialTaskMode, setInitialTaskMode] = useState(true);
+    const [initialTaskFrequency, setInitialTaskFrequency] = useState(0);
+
+    const setChange = (taskName, taskDueDate, taskType, taskID) => {
         setTaskName(taskName);
         setTaskDueDate(taskDueDate);
+        setInitialTaskDueDate(taskDueDate);
+        setTaskID(taskID);
+        setTaskType(taskType);
         getTaskSettings(userID, plantID, taskType).then(
             (task) => {
                 setTaskMode(task[plantID][0].automatic);
+                setInitialTaskMode(task[plantID][0].automatic);
                 setTaskFrequency(task[plantID][0].taskFrequency);
+                setInitialTaskFrequency(task[plantID][0].taskFrequency)
                 setVisibleChange(true);
             }
         )
@@ -225,7 +236,8 @@ export default function PlantScreen({ route }) {
                 <TaskDialog hideChange={hideChange} visibleChange={visibleChange} taskName={taskName}
                             taskDueDate={taskDueDate} taskMode={taskMode} taskFrequency={taskFrequency}
                             setTaskMode={setTaskMode} setTaskDueDate={setTaskDueDate} setTaskFrequency={setTaskFrequency}
-                />
+                            taskID={taskID} userID={userID} initialTaskDueDate={initialTaskDueDate} initialTaskFrequency={initialTaskFrequency}
+                            initialTaskMode={initialTaskMode} setCounter={setCounter} counter={counter} plantID={plantID} taskType={taskType}/>
                 <BottomMenu screenHeight={screenHeight} />
             </View>
         )

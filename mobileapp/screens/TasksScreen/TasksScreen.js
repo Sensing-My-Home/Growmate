@@ -114,13 +114,26 @@ export default function TasksScreen() {
     const [taskDueDate, setTaskDueDate] = useState("");
     const [taskMode, setTaskMode] = useState(true);
     const [taskFrequency, setTaskFrequency] = useState(0);
-    const setChange = (taskName, taskDueDate, taskType, plantID) => {
+    const [taskID, setTaskID] = useState(0);
+    const [taskType, setTaskType] = useState(0);
+    const [plantID, setPlantID] = useState(0);
+    const [initialTaskDueDate, setInitialTaskDueDate] = useState("");
+    const [initialTaskMode, setInitialTaskMode] = useState(true);
+    const [initialTaskFrequency, setInitialTaskFrequency] = useState(0);
+
+    const setChange = (taskName, taskDueDate, taskType, plantID, taskID) => {
         setTaskName(taskName);
         setTaskDueDate(taskDueDate);
+        setInitialTaskDueDate(taskDueDate);
+        setTaskID(taskID);
+        setTaskType(taskType);
+        setPlantID(plantID);
         getTaskSettings(userId, plantID, taskType).then(
             (task) => {
                 setTaskMode(task[plantID][0].automatic);
+                setInitialTaskMode(task[plantID][0].automatic);
                 setTaskFrequency(task[plantID][0].taskFrequency);
+                setInitialTaskFrequency(task[plantID][0].taskFrequency)
                 setVisibleChange(true);
             }
         )
@@ -145,7 +158,8 @@ export default function TasksScreen() {
             <TaskDialog hideChange={hideChange} visibleChange={visibleChange} taskName={taskName}
                         taskDueDate={taskDueDate} taskMode={taskMode} taskFrequency={taskFrequency}
                         setTaskMode={setTaskMode} setTaskDueDate={setTaskDueDate} setTaskFrequency={setTaskFrequency}
-            />
+                        taskID={taskID} userID={userId} initialTaskDueDate={initialTaskDueDate} initialTaskFrequency={initialTaskFrequency}
+                        initialTaskMode={initialTaskMode} setCounter={setCounter} counter={counter} plantID={plantID} taskType={taskType}/>
             <BottomMenu screenHeight={screenHeight} active={"calendar"} />
         </View>
     )

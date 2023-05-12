@@ -45,4 +45,23 @@ const getTaskSettings = async (userID, plantID, taskType) => {
     return response.data
 }
 
-export {getPlantInfo, getAllDivisions, getSensorsForPlant, getPlantTasksTodo, updateTask, deletePlant, getTaskSettings}
+const updateTaskDate = async (userID, taskID, newDate) => {
+    await axios.put(baseURL + "/user/tasks/" + userID + "/task/" + taskID + "?taskDate=" + newDate);
+}
+
+const toggleTaskMode = async (userID, plantID, taskType, taskFrequency) => {
+    if (taskFrequency) {
+        await axios.put(baseURL + "/user/tasks/" + userID + "/plant/" + plantID + "/toggleMode?taskType=" + taskType + "&frequency=" + taskFrequency);
+    }
+    else {
+        await axios.put(baseURL + "/user/tasks/" + userID + "/plant/" + plantID + "/toggleMode?taskType=" + taskType);
+    }
+
+}
+
+const updateTaskFrequency = async (userID, plantID, taskType, frequency) => {
+    await axios.put(baseURL + "/user/tasks/" + userID + "/plant/" + plantID + "/frequency?taskType=" + taskType + "&frequency=" + frequency);
+}
+
+export {getPlantInfo, getAllDivisions, getSensorsForPlant, getPlantTasksTodo, updateTask, deletePlant, getTaskSettings,
+    updateTaskDate, toggleTaskMode, updateTaskFrequency}

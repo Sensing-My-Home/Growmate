@@ -1,11 +1,63 @@
 import {Button, Dialog, Text, TextInput, useTheme, Switch} from "react-native-paper";
 import React, {useState} from "react";
 import {View} from "react-native";
+import {toggleTaskMode, updateTaskDate, updateTaskFrequency} from "../../../service/PlantScreenService";
 
 
-export default function TaskDialog({visibleChange, hideChange, taskName, taskDueDate, taskMode, taskFrequency, setTaskDueDate, setTaskMode, setTaskFrequency}) {
+export default function TaskDialog({visibleChange, hideChange, taskName, taskDueDate, taskMode, taskFrequency, setTaskDueDate, setTaskMode, setTaskFrequency, userID, taskID,
+                                   initialTaskDueDate, initialTaskFrequency, initialTaskMode, setCounter, counter, plantID, taskType}) {
     const theme = useTheme();
-    const [editTask, setEditTask] = useState(false)
+    const [editTask, setEditTask] = useState(false);
+    const [validDate, setValidDate] = useState(true);
+    const [validFrequency, setValidFrequency] = useState(true);
+    const dateRegex = /^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|1\d|2\d|3[01])$/;
+    const frequencyRegex = /^\d+$/;
+
+
+
+    const dateTextChanged = (text) => {
+        if (dateRegex.test(text)){
+            setValidDate(true);
+        }
+        else {
+            setValidDate(false);
+        }
+        setTaskDueDate(text);
+    }
+
+    const frequencyTextChanged = (text) => {
+        if (frequencyRegex.test(text)){
+            setValidFrequency(true);
+        }
+        else {
+            setValidFrequency(false);
+        }
+        setTaskFrequency(text);
+    }
+
+    const saveSettings = () => {
+        if (initialTaskDueDate !== taskDueDate){
+            updateTaskDate(userID, taskID, taskDueDate);
+        }
+
+        if (initialTaskMode !== taskMode){
+            if (initialTaskFrequency.toString() !== taskFrequency.toString()){
+                toggleTaskMode(userID, plantID, taskType, taskFrequency);
+            }
+            else {
+                toggleTaskMode(userID, plantID, taskType);
+            }
+
+        }
+        else {
+            if (initialTaskFrequency.toString() !== taskFrequency.toString()){
+                updateTaskFrequency(userID, plantID, taskType, taskFrequency);
+            }
+        }
+
+        setEditTask(false);
+        setCounter(counter+1);
+    }
 
     return (
         <Dialog visible={visibleChange} onDismiss={hideChange} style={{ backgroundColor: theme.colors.background }}>
@@ -17,9 +69,10 @@ export default function TaskDialog({visibleChange, hideChange, taskName, taskDue
                                 <Text variant={"bodyMedium"}>Due date: </Text>
                                 <TextInput
                                 value={taskDueDate}
-                                onChangeText={text => setTaskDueDate(text)}
+                                onChangeText={text => dateTextChanged(text)}
                                 contentStyle={{backgroundColor: theme.colors.background}}
-                                underlineColor={theme.colors.primary}/>
+                                activeUnderlineColor={validDate ? theme.colors.primary : theme.colors.error}
+                                underlineColor={validDate ? theme.colors.primary : theme.colors.error}/>
                             </View>
                             <View style={{flexDirection: "row", marginBottom: 10, marginHorizontal: 30, alignItems: "center", justifyContent: "space-between"}}>
                                 <Text variant={"bodyMedium"}>Automatic Mode: </Text>
@@ -31,9 +84,10 @@ export default function TaskDialog({visibleChange, hideChange, taskName, taskDue
                                     <Text variant={"bodyMedium"}>Task frequency: </Text>
                                     <TextInput
                                         value={taskFrequency.toString()}
-                                        onChangeText={text => setTaskFrequency(parseInt(text))}
+                                        onChangeText={text => frequencyTextChanged(text)}
                                         contentStyle={{backgroundColor: theme.colors.background}}
-                                        underlineColor={theme.colors.primary}/>
+                                        activeUnderlineColor={validFrequency ? theme.colors.primary : theme.colors.error}
+                                        underlineColor={validFrequency ? theme.colors.primary : theme.colors.error}/>
                                 </View>
                             }
                         </View>
@@ -51,11 +105,7 @@ export default function TaskDialog({visibleChange, hideChange, taskName, taskDue
                             {taskMode === false &&
                                 <View style={{flexDirection: "row", marginBottom: 10, marginHorizontal: 30, alignItems: "center", justifyContent: "space-between"}}>
                                     <Text variant={"bodyMedium"}>Task frequency: </Text>
-                                    <TextInput
-                                        value={taskFrequency.toString()}
-                                        onChangeText={text => setTaskFrequency(parseInt(text))}
-                                        contentStyle={{backgroundColor: theme.colors.background}}
-                                        underlineColor={theme.colors.primary}/>
+                                    <Text variant={"bodyMedium"}>{taskFrequency}</Text>
                                 </View>
                             }
                         </View>
@@ -64,7 +114,7 @@ export default function TaskDialog({visibleChange, hideChange, taskName, taskDue
             </Dialog.Content>
             <Dialog.Actions>
                 {editTask ?
-                    <Button onPress={() => {setEditTask(false)}} style={{width: 50}} buttonColor={theme.colors.primary} textColor={theme.colors.background}>Save</Button>
+                    <Button disabled={!(validDate && validFrequency)} onPress={saveSettings} style={{width: 50}} buttonColor={theme.colors.primary} textColor={theme.colors.background}>Save</Button>
                     :
                     <Button onPress={() => {setEditTask(true)}} style={{width: 50}} buttonColor={theme.colors.secondary} textColor={theme.colors.background}>Edit</Button>
 

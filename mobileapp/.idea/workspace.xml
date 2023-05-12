@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-88 DONE">
+    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-88 completely done">
       <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/PlantScreen/components/TaskDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/components/TaskDialog.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/TasksScreen/components/DayTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/components/DayTasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/components/Tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/components/Tasks.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/PlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/PlantScreenService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +92,8 @@
       <workItem from="1683216531818" duration="318000" />
       <workItem from="1683620935559" duration="630000" />
       <workItem from="1683743016163" duration="10790000" />
-      <workItem from="1683804101914" duration="3204000" />
+      <workItem from="1683804101914" duration="3302000" />
+      <workItem from="1683889452528" duration="8382000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
@@ -242,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683793635286</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="GM-88 DONE">
+      <created>1683809011774</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1683809011774</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +279,7 @@
     <MESSAGE value="added AddPlantScreenService and AssociatePlantScreenService" />
     <MESSAGE value="merged with backend" />
     <MESSAGE value="GM-88 DONE" />
-    <option name="LAST_COMMIT_MESSAGE" value="GM-88 DONE" />
+    <MESSAGE value="GM-88 completely done" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-88 completely done" />
   </component>
 </project>
