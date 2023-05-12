@@ -1,6 +1,7 @@
 package pi.growmate.services;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +11,17 @@ import lombok.extern.slf4j.Slf4j;
 import pi.growmate.datamodel.division.Division;
 import pi.growmate.datamodel.plant.Plant;
 import pi.growmate.datamodel.plant.PlantCondition;
-import pi.growmate.datamodel.plant.PlantSensor;
+import pi.growmate.datamodel.sensors.PlantSensor;
 import pi.growmate.datamodel.species.PlantSpecies;
+import pi.growmate.datamodel.task.TaskType;
+import pi.growmate.datamodel.task.Task_Settings;
 import pi.growmate.datamodel.user.User;
 import pi.growmate.exceptions.ResourceNotFoundException;
 import pi.growmate.repositories.division.DivisionRepository;
 import pi.growmate.repositories.plant.PlantRepository;
 import pi.growmate.repositories.plant.PlantSensorRepository;
 import pi.growmate.repositories.species.PlantSpeciesRepository;
+import pi.growmate.repositories.tasks.TaskSettingsRepository;
 import pi.growmate.repositories.user.UserRepository;
 import pi.growmate.utils.SuccessfulRequest;
 
@@ -40,6 +44,12 @@ public class UserService {
     @Autowired
     PlantRepository plantRepository;
 
+    @Autowired
+    TaskSettingsRepository taskSettingsRepository;
+
+    @Autowired
+    AlgorithmsService algorithmsService;
+
     // funcao que ira buscar informacao sobre o utilizador
     public User getUser(long userID) throws ResourceNotFoundException{
         return userRepository.findById(userID).orElseThrow(() -> new ResourceNotFoundException("User with ID: " + userID + " not found."));
@@ -51,12 +61,12 @@ public class UserService {
     }
 
     //post nova planta -> adicionar nova planta a lista de plantas do utilizador.
-    public SuccessfulRequest addNewPlantToUserInventary(long user_id, 
-                                                        String plantName, 
+    public SuccessfulRequest addNewPlantToUserInventory(long user_id,
+                                                        String plantName,
                                                         String photo,
-                                                        Long species_id,  
-                                                        Long division_id, 
-                                                        Long sensor_id, 
+                                                        Long species_id,
+                                                        Long division_id,
+                                                        Long sensor_id,
                                                         Date date) throws ResourceNotFoundException{
 
         Plant plant = new Plant();
@@ -71,6 +81,8 @@ public class UserService {
 
         if(date != null){
             plant.setPlantationDate(date);
+        }else{
+            plant.setPlantationDate(Date.valueOf(LocalDate.now()));
         }
 
         if (division_id != null) {
@@ -83,11 +95,12 @@ public class UserService {
             plant.addSensor(sensor);
         }
         
-        plantRepository.save(plant); //is this gonna work?
-        log.info(plant.getId() + " este e o id da planta");
-        
-        
-        return new SuccessfulRequest("Something!");
+        plantRepository.save(plant);
+
+        // Create new entries into the Task Settings Repository, relating to the newly added plant, one for each type of task
+        algorithmsService.addTasksForNewPlant(plant);
+
+        return new SuccessfulRequest("The plant was added successfully!");
     }
 
     // funcoes auxiliares

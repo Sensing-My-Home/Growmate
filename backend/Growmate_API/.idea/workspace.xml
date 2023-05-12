@@ -7,10 +7,11 @@
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="merged conflicts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/AddDivisionScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/AddDivisionScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/AddDivisionDescription.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/AddDivisionDescription.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/DivisionInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/DivisionInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/SensorDropdown.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/PlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/components/TaskDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/components/TaskDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/TasksScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/components/DayTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/components/DayTasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/service/PlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/service/PlantScreenService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +60,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/andre_butuc/Documents/RepUA/PI/Growmate/backend/Growmate_API&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/daniel/Documents/Universidade/Sem_2/TQS/TQS_77036/lab2/lab2_2httpclient&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -109,8 +110,18 @@
       <workItem from="1681123115474" duration="1238000" />
       <workItem from="1681128454406" duration="1764000" />
       <workItem from="1681151612684" duration="4224000" />
-      <workItem from="1681823260930" duration="1269000" />
-      <workItem from="1681898797505" duration="874000" />
+      <workItem from="1681668667411" duration="2174000" />
+      <workItem from="1681751041898" duration="4490000" />
+      <workItem from="1681827023549" duration="52000" />
+      <workItem from="1681827084365" duration="1054000" />
+      <workItem from="1681850285368" duration="3699000" />
+      <workItem from="1682016069786" duration="195000" />
+      <workItem from="1682184489142" duration="6175000" />
+      <workItem from="1682261290477" duration="6783000" />
+      <workItem from="1682269531264" duration="782000" />
+      <workItem from="1683755919579" duration="1619000" />
+      <workItem from="1683804100303" duration="1498000" />
+      <workItem from="1683889454927" duration="5126000" />
     </task>
     <servers />
   </component>

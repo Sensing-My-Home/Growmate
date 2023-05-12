@@ -28,9 +28,12 @@ services:
       - '5432:5432'
     volumes:
       #copy the sql script to create tables
-      - ./database/dump.sql:/docker-entrypoint-initdb.d/dump.sql
-       #copy the sql script to fill tables
-      - ./database/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
+      - ./database/dump.sql:/docker-entrypoint-initdb.d/01_dump.sql
+      #copy the sql script to create triggers
+      - ./database/triggers.sql:/docker-entrypoint-initdb.d/02_triggers.sql
+      #copy the sql script to fill tables
+      - ./database/fill_tables.sql:/docker-entrypoint-initdb.d/03_fill_tables.sql
+
     networks:
       - net
 
