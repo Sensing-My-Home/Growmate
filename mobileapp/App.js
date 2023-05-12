@@ -19,6 +19,7 @@ import { enGB, registerTranslation } from 'react-native-paper-dates'
 import AddDivisionScreen from "./screens/AddDivisionScreen/AddDivisionScreen";
 import AddSensorScreen from "./screens/AddSensorScreen/AddSensorScreen";
 import InitializerScreen from "./screens/InitializerScreen/InitializerScreen";
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
 registerTranslation('en-GB', enGB)
 
 
@@ -41,6 +42,10 @@ export default function App() {
           <Stack.Screen
               name="Initializer"
               component={InitializerScreen}
+          />
+          <Stack.Screen
+              name="Login"
+              component={LoginScreen}
           />
           <Stack.Screen
             name="Home"
