@@ -25,12 +25,12 @@ export default function AssociatePlantScreen({route}) {
     const [showHumidityDropDown, setShowHumidityDropDown] = useState(false);
     const [humiditySensorTarget, setHumiditySensorTarget] = useState("None");
     const [showDivisionDropDown, setShowDivisionDropDown] = useState(false);
-    const [divisionTarget, setDivisionTarget] = useState("None");
+    const [divisionTarget, setDivisionTarget] = useState(null);
 
     const onPressNext = async () => {
         const imageURL = await uploadImage(image, userID, name);
 
-        createNewPlant(userID, name, imageURL, specie, 1, date);
+        createNewPlant(userID, name, imageURL, specie, divisionTarget, date);
         navigation.dispatch(StackActions.replace('Home'));
     }
 

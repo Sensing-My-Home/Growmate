@@ -50,7 +50,7 @@ export default function PlantScreen({ route }) {
     const [sensors, setSensors] = useState(null)
     useEffect(() => {
         if (plantInfo) {
-            getSensorsForPlant(userID, plantID, plantInfo.division["id"])
+            getSensorsForPlant(userID, plantID, plantInfo.division)
             .then((info) => setSensors(info));
         }
     }, [plantInfo])

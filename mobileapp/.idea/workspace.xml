@@ -4,22 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="merged with backend">
-      <change afterPath="$PROJECT_DIR$/screens/LoginScreen/components/WarningMessage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/LoginScreenService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-118 done">
+      <change afterPath="$PROJECT_DIR$/assets/placeholder_user_avatar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/SignUpScreen/SignUpScreen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/SignUpScreen/components/LogInText.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/SignUpScreen/components/SignUpNextButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/SignUpScreen/components/SingUpInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/SignUpScreenTwo/SignUpScreenTwo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/SignUpScreenTwo/components/SignUpButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/SignUpScreenTwo/components/SignUpMoreInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/SignUpScreenService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/AddDivisionScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/AddDivisionScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddSensorScreen/AddSensorScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddSensorScreen/AddSensorScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/components/AddPhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/components/AddPhoto.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/DivisionRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/DivisionRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/InitializerScreen/components/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/InitializerScreen/components/SignUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/LoginScreen/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LoginScreen/LoginScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/LoginScreen/components/LoginHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/LoginSignUpHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/LoginScreen/components/LoginInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LoginScreen/components/LoginInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/LoginScreen/components/SignUpButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LoginScreen/components/SignUpButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/components/PlantInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/components/PlantInformation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/HomeScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/HomeScreenService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/PlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/PlantScreenService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -280,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683920494624</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="GM-117 done">
+      <created>1683935896148</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1683935896148</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,8 +315,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="GM-29 done init project + folder skeleton" />
-    <MESSAGE value="GM-30 HomeScreen done" />
     <MESSAGE value="GM-37 HomeScreen &amp; Aba Divisions + Sensors Done" />
     <MESSAGE value="GM-47 visual part of the screen is done" />
     <MESSAGE value="GM-47 functional part done" />
@@ -323,6 +338,8 @@
     <MESSAGE value="GM-88 completely done" />
     <MESSAGE value="GM-117 visual part done" />
     <MESSAGE value="merged with backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="merged with backend" />
+    <MESSAGE value="GM-117 done" />
+    <MESSAGE value="GM-118 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-118 done" />
   </component>
 </project>

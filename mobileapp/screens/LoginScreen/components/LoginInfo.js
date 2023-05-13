@@ -7,7 +7,7 @@ export default function LoginInfo({setEmail, setPassword}){
     const theme = useTheme();
     const [hidePassword, setHidePassword] = useState(true);
     return (
-        <View style={{marginLeft: 70, marginTop: 125}}>
+        <View style={{marginLeft: 70, marginTop: 105}}>
             <TextInput style={{ width: 260, backgroundColor: theme.colors.background, fontSize: 14, marginBottom: 20}}
                        underlineColor={theme.colors.primaryContainer}
                        activeUnderlineColor={theme.colors.primary}

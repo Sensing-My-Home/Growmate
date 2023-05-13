@@ -6,15 +6,17 @@ const getPlantInfo = async (userID, plantID) => {
     return response.data;
 }
 
-const getSensorsForPlant = async (userID, plantID, divisionID) => {
+const getSensorsForPlant = async (userID, plantID, division) => {
     let sensors = [];
 
     await axios.get(baseURL + "/user/" + userID + "/sensors/plant/" + plantID)
     .then((plantSensors) => plantSensors.data.map((sensor) => sensors.push(sensor)));
 
-    await axios.get(baseURL + "/user/" + userID + "/sensors/division/" + divisionID)
-    .then((divisionSensors) => divisionSensors.data.map((sensor) => sensors.push(sensor)));
+    if (division !== null){
+        await axios.get(baseURL + "/user/" + userID + "/sensors/division/" + division["id"])
+            .then((divisionSensors) => divisionSensors.data.map((sensor) => sensors.push(sensor)));
 
+    }
     return sensors;
 }
 
