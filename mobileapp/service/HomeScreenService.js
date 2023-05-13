@@ -21,7 +21,7 @@ const getDivisionsAndAssociatedPlants = async (id) => {
             {
             id: divisions[i-1].id,
             name: divisions[i-1].name,
-            plants: (await axios.get(baseURL + "/user/" + id + "/division/" + i + "/plants")).data
+            plants: (await axios.get(baseURL + "/user/" + id + "/division/" + divisions[i-1].id + "/plants")).data
             })
     }
     return data;

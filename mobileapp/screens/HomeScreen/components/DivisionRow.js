@@ -5,11 +5,10 @@ import {Divider, IconButton, Text, useTheme} from "react-native-paper";
 import ChangePlantDivision from "./ChangePlantDivisionDialog";
 import RemovePlantDivision from "./RemovePlantDivisionDialog";
 import { addPlantToDivision, changePlantDivision, removePlantFromDivision } from "../../../service/HomeScreenService";
+import {userID} from "../../../user";
 
 export default function DivisionRow({ plantCards, divisionName, userPlants, divisionID, handleUpdate }) {
     const theme = useTheme();
-
-    const userID = 1
 
     // API call to remove Plant from Division
     const [visibleRemove, setVisibleRemove] = useState(false);

@@ -20,6 +20,8 @@ import AddDivisionScreen from "./screens/AddDivisionScreen/AddDivisionScreen";
 import AddSensorScreen from "./screens/AddSensorScreen/AddSensorScreen";
 import InitializerScreen from "./screens/InitializerScreen/InitializerScreen";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
+import SignUpScreen from "./screens/SignUpScreen/SignUpScreen";
+import SignUpScreenTwo from "./screens/SignUpScreenTwo/SignUpScreenTwo";
 registerTranslation('en-GB', enGB)
 
 
@@ -42,6 +44,14 @@ export default function App() {
           <Stack.Screen
               name="Initializer"
               component={InitializerScreen}
+          />
+          <Stack.Screen
+              name="SignUp"
+              component={SignUpScreen}
+          />
+          <Stack.Screen
+              name="SignUpTwo"
+              component={SignUpScreenTwo}
           />
           <Stack.Screen
               name="Login"
