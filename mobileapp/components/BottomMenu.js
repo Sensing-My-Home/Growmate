@@ -9,7 +9,7 @@ export default function BottomMenu({ screenHeight, active }) {
     let leafColor = theme.colors.primary;
     let magnifyColor = theme.colors.primary;
     let calendarColor = theme.colors.primary;
-    let messageColor = theme.colors.primary;
+    let accountColor = theme.colors.primary;
 
     switch (active) {
         case "leaf":
@@ -21,8 +21,8 @@ export default function BottomMenu({ screenHeight, active }) {
         case "calendar":
             calendarColor = theme.colors.background;
             break
-        case "message":
-            messageColor = theme.colors.background;
+        case "account":
+            accountColor = theme.colors.background;
             break
     }
 
@@ -53,7 +53,9 @@ export default function BottomMenu({ screenHeight, active }) {
                             }}/>
             </View>
             <View style={{ position: 'relative', flex: 1 }}>
-                <IconButton icon={"message-outline"} iconColor={messageColor} size={35} />
+                <IconButton icon={"account-outline"} iconColor={accountColor} size={35} onPress={() => {
+                    navigation.navigate("Profile");
+                }}/>
             </View>
         </View>
     )

@@ -22,6 +22,7 @@ import InitializerScreen from "./screens/InitializerScreen/InitializerScreen";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import SignUpScreen from "./screens/SignUpScreen/SignUpScreen";
 import SignUpScreenTwo from "./screens/SignUpScreenTwo/SignUpScreenTwo";
+import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
 registerTranslation('en-GB', enGB)
 
 
@@ -94,6 +95,9 @@ export default function App() {
           />
           <Stack.Screen name="AddSensor"
                         component={AddSensorScreen}
+          />
+          <Stack.Screen name="Profile"
+                        component={ProfileScreen}
           />
 
         </Stack.Navigator>
