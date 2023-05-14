@@ -59,6 +59,7 @@ const getSensors = async (userID) => {
       plants[k].map((plant) => {
         sensorsFiltered.push({
           id: `${plant.id}_plant`,
+          original_id: plant.id,
           name: plant.name,
           sensorCode: plant.sensorCode,
           plant_id: k,
@@ -76,6 +77,7 @@ const getSensors = async (userID) => {
       divisions[k].map((division) => {
         sensorsFiltered.push({
           id: `${division.id}_division`,
+          original_id: division.id,
           name: division.name,
           sensorCode: division.sensorCode,
           division_id: k,

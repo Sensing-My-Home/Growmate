@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { Card, Avatar, Button, Text, useTheme } from "react-native-paper";
 
-export default function SensorInfoCard({ sensor }) {
+export default function SensorInfoCard({ sensor, onPress }) {
   const theme = useTheme();
 
   return (
@@ -19,11 +19,8 @@ export default function SensorInfoCard({ sensor }) {
             />
           )}
         />
-        <Card.Content>
-          <Text>Sensor Code: {sensor.sensorCode}</Text>
-        </Card.Content>
         <Card.Actions>
-          <Button style={{backgroundColor: theme.colors.background}}>View Details</Button>
+          <Button style={{backgroundColor: theme.colors.background}} onPress={onPress}>View Details</Button>
         </Card.Actions>
       </Card>
     </View>
