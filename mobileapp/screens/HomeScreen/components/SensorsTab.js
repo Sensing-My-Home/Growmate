@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { View, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, ScrollView, Dimensions } from "react-native";
 import { List, Card, useTheme, Text } from "react-native-paper";
 
 import SensorTypeRadioGroup from "./SensorTypeRadioGroup";
@@ -7,97 +7,86 @@ import SensorDropdown from "./SensorDropdown";
 import SensorInfoCard from "./SensorInfoCard";
 
 export default function SensorsTab({ userDivisions, sensors, userPlants }) {
-    const theme = useTheme();
+  const theme = useTheme();
+  const screenHeight = Dimensions.get('screen').height;
 
-    // Format userDivisions data for the dropdown
-    const [divisionsList, setDivisionsList] = useState([]);
+  const [divisionsList, setDivisionsList] = useState([]);
+  const [plantsList, setPlantsList] = useState([]);
+  const [division, setDivision] = useState("");
+  const [plant, setPlant] = useState("");
+  const [sensorType, setSensorType] = useState("");
+  const [filteredSensors, setFilteredSensors] = useState([]);
 
-    useEffect(() => {
-        const formattedList = userDivisions.map((division) => ({
-            label: division.name,
-            value: division.id,
-        }));
-        setDivisionsList([{ label: 'All', value: "" }, ...formattedList]);
-    }, []);
+  useEffect(() => {
+    const formatDivisionsList = (data) =>
+      [{ label: 'All', value: "" }, ...data.map(item => ({ label: item.name, value: item.id }))];
+  
+    const formatPlantsList = (data) =>
+      [{ label: 'All', value: "" }, ...data.map(item => ({ label: item.name, value: item.id }))];
+  
+    setDivisionsList(formatDivisionsList(userDivisions));
+    setPlantsList(formatPlantsList(userPlants));
+  }, [userDivisions, userPlants]);  
 
-    // Format userPlants data for the dropdown
-    const [plantsList, setPlantsList] = useState([]);
-    useEffect(() => {
-        const formattedList = userPlants.map((plant) => ({
-            label: plant.name,
-            value: plant.id,
-        }));
-        setPlantsList([{ label: 'All', value: "" }, ...formattedList]);
-    }, []);
-
-    // This is the selected division
-    const [division, setDivision] = useState("");
-
-    // This is the selected plant
-    const [plant, setPlant] = useState("");
-
-    // This is the type of sensor
-    const [sensorType, setSensorType] = useState('');
-
-    // Filter sensors
-    const [filteredSensors, setFilteredSensors] = useState([]);
-
-    // Count sensors shown
-    const [countSensors, setCountSensors] = useState();
-
-    useEffect(() => {
-        let filteredSensorsList = [];
-        switch (sensorType) {
-          case 'division':
-            filteredSensorsList = sensors.filter((sensor) => sensor["type"] === 'division');
-            if (division !== "") {
-                filteredSensorsList = filteredSensorsList.filter((sensor) => sensor["division_id"] === division);
-            }
-            break;
-          case 'plant':
-            filteredSensorsList = sensors.filter((sensor) => sensor["type"] === 'plant');
-            if (plant !== "") {
-                filteredSensorsList = filteredSensorsList.filter((sensor) => sensor["plant_id"] === plant);
-            }
-            break;
-          default:
-            filteredSensorsList = sensors;
+  useEffect(() => {
+    const filteredSensorsList = sensors.filter((sensor) => {
+      if (sensorType === 'division') {
+        if (division === "") {
+          return sensor.type === 'division'; // Include all division sensors
+        } else {
+          return sensor.type === 'division' && sensor.division_id === String(division); // Matched division sensor
         }
-      
-        setFilteredSensors(filteredSensorsList);
-        setCountSensors(filteredSensorsList.length);
-      }, [sensorType, division, plant]);
+      } else if (sensorType === 'plant') {
+        if (plant === "") {
+          return sensor.type === 'plant'; // Include all plant sensors
+        } else {
+          return sensor.type === 'plant' && sensor.plant_id === String(plant); // Matched plant sensor
+        }
+      }
+      return true; // No filter applied for other sensor types
+    });
+  
+    setFilteredSensors(filteredSensorsList);
+  }, [sensorType, division, plant, sensors]);  
 
-    return (
-        <View style={{ margin: 10 }}>
-            <Card contentStyle={{ backgroundColor: theme.colors.background }}>
-                <List.Accordion
-                    title="Filters"
-                >
-                    <List.Item
-                        title=""
-                        left={props => <SensorTypeRadioGroup sensorType={sensorType} setSensorType={setSensorType} />}
-                    />
-                    {sensorType && sensorType === 'division' && <List.Item
-                        title=""
-                        left={props => <SensorDropdown value={division} setValue={setDivision} list={divisionsList} label="Division"/>}
-                    />}
-                    {sensorType && sensorType === 'plant' && <List.Item
-                        title=""
-                        left={props => <SensorDropdown value={plant} setValue={setPlant} list={plantsList} label="Plant"/>}
-                    />}
-                </List.Accordion>
-            </Card>
-            <View style={{marginTop: 10}}>
-                <Text variant="titleLarge">{countSensors} Sensor{countSensors !== 1 ? 's' : ''}</Text>
-            </View>
-            <ScrollView>
-                {filteredSensors.map((sensor, index) => {
-                    return(
-                        <SensorInfoCard key={index} sensor={sensor}/>
-                    )
-                })}
-            </ScrollView>
-        </View>
-    )
+  const countSensors = filteredSensors.length;
+
+  return (
+    <View style={{ margin: 10 }}>
+      <Card contentStyle={{ backgroundColor: theme.colors.background }}>
+        <List.Accordion title="Filters">
+          <List.Item
+            title=""
+            left={(props) => (
+              <SensorTypeRadioGroup sensorType={sensorType} setSensorType={setSensorType} />
+            )}
+          />
+          {sensorType === 'division' && (
+            <List.Item
+              title=""
+              left={(props) => (
+                <SensorDropdown value={division} setValue={setDivision} list={divisionsList} label="Division" />
+              )}
+            />
+          )}
+          {sensorType === 'plant' && (
+            <List.Item
+              title=""
+              left={(props) => (
+                <SensorDropdown value={plant} setValue={setPlant} list={plantsList} label="Plant" />
+              )}
+            />
+          )}
+        </List.Accordion>
+      </Card>
+      <View style={{ marginTop: 10 }}>
+        <Text variant="titleLarge">{countSensors} Sensor{countSensors !== 1 ? 's' : ''}</Text>
+      </View>
+      <ScrollView style={{height: screenHeight/2}}>
+        {filteredSensors.map((sensor) => (
+          <SensorInfoCard key={sensor.id} sensor={sensor} />
+        ))}
+      </ScrollView>
+    </View>
+  );
 }

@@ -13,13 +13,14 @@ import SensorRow from "./components/SensorRow";
 import SensorsTab from "./components/SensorsTab";
 
 // API Calls
-import { getPlants, getDivisionsAndAssociatedPlants, getFirstName } from "../../service/HomeScreenService";
+import { getPlants, getDivisionsAndAssociatedPlants, getFirstName, getSensors } from "../../service/HomeScreenService";
 
 export default function HomeScreen() {
     const [userPlants, setUserPlants] = useState([]);
     const [userDivisions, setUserDivisions] = useState([]);
     const [userFirstName, setUserFirstName] = useState("");
     const [updateCount, setUpdateCount] = useState(0);
+    const [sensors, setSensors] = useState(null);
 
     const handleUpdate = () => {
         setUpdateCount(updateCount + 1);
@@ -46,6 +47,14 @@ export default function HomeScreen() {
             }
         );
     }, []);
+
+    useEffect(() => {
+        getSensors(1).then(
+            (sensors) => {
+                setSensors(sensors)
+            }
+        )
+    }, [])
 
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
@@ -79,7 +88,7 @@ export default function HomeScreen() {
 
     // one API call to retrieve all sensors values;
 
-    const sensors = [
+    const s = [
         {
             id: 0,
             name: "Living room temperature sensor",
@@ -129,7 +138,7 @@ export default function HomeScreen() {
                         label="Sensors"
                     >
                         <View>
-                            {userDivisions && userPlants && <SensorsTab userDivisions={userDivisions} sensors={sensors} userPlants={userPlants}/>}
+                            {userDivisions.length > 0 && userPlants && sensors && <SensorsTab userDivisions={userDivisions} sensors={sensors} userPlants={userPlants} />}
                         </View>
                     </TabScreen>
                 </Tabs>
