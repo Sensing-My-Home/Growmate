@@ -100,6 +100,22 @@ public class SensorsService {
         return new SuccessfulRequest("Sensor added succesfully!");
     }
 
+    public SuccessfulRequest deleteSensor(long userID, long sensorID, int type) throws ResourceNotFoundException {
+        User user = this.checkIfUserExists(userID);
+
+        if(type == 0){ // Division Sensor
+            DivisionSensor sensor = divisionSensorRepository.findById(sensorID).orElseThrow(() -> new ResourceNotFoundException("Sensor with ID: " + sensorID + " not found."));
+
+            divisionSensorRepository.save(sensor);
+        }else{  // Plant Sensor
+            PlantSensor sensor = plantSensorRepository.findById(sensorID).orElseThrow(() -> new ResourceNotFoundException("Sensor with ID: " + sensorID + " not found."));
+
+            plantSensorRepository.save(sensor);
+        }
+
+        return new SuccessfulRequest("Sensor deleted succesfully!");
+    }
+
     public Map<String, Measurement> getLatestMeasurements(long userID) throws ResourceNotFoundException{
         User user = this.checkIfUserExists(userID);
 

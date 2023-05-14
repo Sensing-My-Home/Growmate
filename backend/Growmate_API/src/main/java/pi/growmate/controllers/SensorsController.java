@@ -56,6 +56,14 @@ public class SensorsController {
         return ResponseEntity.ok().body(sensorsService.addNewSensor(userID, type, name, code, ownerID));
     }
 
+    // Deletes a Sensor (0 - Division Sensor; 1 - Plant Sensor)
+    @DeleteMapping("/{userID}/sensors/{sensorID}")
+    public ResponseEntity<SuccessfulRequest> deleteSensor(@PathVariable(value = "userID") long userID,
+                                                          @PathVariable(value = "sensorID") long sensorID,
+                                                          @RequestParam(name = "sensorType") int type) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(sensorsService.deleteSensor(userID, sensorID, type));
+    }
+
     // Getting the last measurements from all sensors related to a user
     //TODO: Not Tested
     @GetMapping("/{userID}/sensors/last")
