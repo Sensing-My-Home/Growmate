@@ -20,5 +20,4 @@ export const createNewPlant = async (userId, name, photoURL, speciesId, division
             "&division-id=" + divisionId +
             "&plantation-date=" + plantationDate);
     }
-
 }

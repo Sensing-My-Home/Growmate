@@ -16,7 +16,7 @@ const getDivisionsAndAssociatedPlants = async (id) => {
     let response = await axios.get(baseURL + "/user/" + id + "/divisions");
     const divisions = response.data;
     const data = [];
-    for (let i = 1; i <= divisions.length; i++){
+    for (let i = 1; i <= divisions.length; i++) {
         data.push(
             {
             id: divisions[i-1].id,
@@ -47,4 +47,45 @@ const removePlantFromDivision = async (userID, plantID, divisionID) => {
     )
 }
 
-export {getPlants, getDivisionsAndAssociatedPlants, addPlantToDivision, changePlantDivision, removePlantFromDivision, getFirstName}
+const getSensors = async (userID) => {
+    let sensorsFiltered = [];
+  
+    // First get all the sensors associated with plants
+    let response = await axios.get(baseURL + "/user/" + userID + "/sensors?type=1");
+    const plants = response.data;
+  
+    // Then put the plant sensors with the right format
+    Object.keys(plants).forEach((k) => {
+      plants[k].map((plant) => {
+        sensorsFiltered.push({
+          id: `${plant.id}_plant`,
+          name: plant.name,
+          sensorCode: plant.sensorCode,
+          plant_id: k,
+          type: "plant",
+        });
+      });
+    });
+  
+    // Get the sensors associated with divisions
+    let response2 = await axios.get(baseURL + "/user/" + userID + "/sensors?type=0");
+    const divisions = response2.data;
+  
+    // Then put the division sensors with the right format
+    Object.keys(divisions).forEach((k) => {
+      divisions[k].map((division) => {
+        sensorsFiltered.push({
+          id: `${division.id}_division`,
+          name: division.name,
+          sensorCode: division.sensorCode,
+          division_id: k,
+          type: "division",
+        });
+      });
+    });
+  
+    return sensorsFiltered;
+  };
+  
+
+export { getPlants, getDivisionsAndAssociatedPlants, addPlantToDivision, changePlantDivision, removePlantFromDivision, getFirstName, getSensors }

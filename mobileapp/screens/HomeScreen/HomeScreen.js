@@ -1,27 +1,31 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { View, Dimensions } from "react-native";
 import BottomMenu from "../../components/BottomMenu";
 import SearchBar from "../../components/SearchBar";
 import WelcomeHeader from "./components/WelcomeHeader"
 import GreenBar from "../../components/GreenBar";
 import PlantCards from "./components/PlantCards";
-import {useTheme} from "react-native-paper";
+import { useTheme } from "react-native-paper";
 import PlusButton from "./components/PlusButton";
-import {Tabs, TabScreen} from 'react-native-paper-tabs';
+import { Tabs, TabScreen } from 'react-native-paper-tabs';
 import Divisions from "./components/Divisions";
 import SensorRow from "./components/SensorRow";
-import {getPlants, getDivisionsAndAssociatedPlants} from "../../service/HomeScreenService";
 import {userFirstName, userID, userType} from "../../user";
+import SensorsTab from "./components/SensorsTab";
+
+// API Calls
+import { getPlants, getDivisionsAndAssociatedPlants, getFirstName, getSensors } from "../../service/HomeScreenService";
 
 export default function HomeScreen() {
     const [userPlants, setUserPlants] = useState([]);
     const [userDivisions, setUserDivisions] = useState([]);
     const [updateCount, setUpdateCount] = useState(0);
+    const [sensors, setSensors] = useState(null);
 
     const handleUpdate = () => {
         setUpdateCount(updateCount + 1);
-      }
-    
+    }
+
 
     useEffect( () => {
         getPlants(userID).then((plants) => {setUserPlants(plants)})
@@ -36,29 +40,25 @@ export default function HomeScreen() {
         );
     }, [updateCount]);
 
+    useEffect(() => {
+        getFirstName(1).then(
+            (name) => {
+                setUserFirstName(name.name.split(" ")[0])
+            }
+        );
+    }, []);
+
+    useEffect(() => {
+        getSensors(1).then(
+            (sensors) => {
+                setSensors(sensors)
+            }
+        )
+    }, [])
 
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
     const [selectedTab, setSelectedTab] = useState(0)
-
-
-    const sensors = [
-        {
-            id: 0,
-            type: 'soil',
-            value: '56'
-        },
-        {
-            id: 1,
-            type: 'temperature',
-            value: '18'
-        },
-        {
-            id: 2,
-            type: 'air',
-            value: '78'
-        },
-    ];
 
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
@@ -69,9 +69,9 @@ export default function HomeScreen() {
             {userType === "PREMIUM" ?
                 <Tabs
                     defaultIndex={0} // default = 0
-                    style={{ backgroundColor:'#fff' }} // works the same as AppBar in react-native-paper
+                    style={{ backgroundColor: '#fff' }} // works the same as AppBar in react-native-paper
                     disableSwipe={true} // (default=false) disable swipe to left/right gestures
-                    onChangeIndex={(newIndex) => {setSelectedTab(newIndex)}}
+                    onChangeIndex={(newIndex) => { setSelectedTab(newIndex) }}
                 >
                     <TabScreen label="Inventory">
                         <View>
@@ -80,14 +80,13 @@ export default function HomeScreen() {
                         </View>
                     </TabScreen>
                     <TabScreen label="Divisions">
-                        <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate}/>
+                        <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate} />
                     </TabScreen>
                     <TabScreen
                         label="Sensors"
                     >
                         <View>
-                        <SensorRow sensorTargets={userDivisions} sensorsType={"Division"} sensorsValues={sensors}/>
-                        <SensorRow sensorTargets={userPlants} sensorsType={"Plant"} sensorsValues={sensors}/>
+                            {userDivisions.length > 0 && userPlants && sensors && <SensorsTab userDivisions={userDivisions} sensors={sensors} userPlants={userPlants} />}
                         </View>
                     </TabScreen>
                 </Tabs>
@@ -97,7 +96,7 @@ export default function HomeScreen() {
                     <PlantCards plants={userPlants} />
                 </View>
             }
-            <PlusButton index={selectedTab}/>
+            <PlusButton index={selectedTab} />
             <BottomMenu screenHeight={screenHeight} active={"leaf"} />
         </View>
     )

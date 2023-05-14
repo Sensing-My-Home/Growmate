@@ -31,7 +31,6 @@ import GoBackButton from "../TasksScreen/components/GoBackButton";
 import TaskDialog from "./components/TaskDialog";
 import {userID} from "../../user";
 
-
 export default function PlantScreen({ route }) {
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme();
