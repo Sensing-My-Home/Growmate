@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Dimensions } from "react-native";
 import BottomMenu from "../../components/BottomMenu";
 import SearchBar from "../../components/SearchBar";
@@ -9,7 +9,6 @@ import { useTheme } from "react-native-paper";
 import PlusButton from "./components/PlusButton";
 import { Tabs, TabScreen } from 'react-native-paper-tabs';
 import Divisions from "./components/Divisions";
-import SensorRow from "./components/SensorRow";
 import {userFirstName, userID, userType} from "../../user";
 import SensorsTab from "./components/SensorsTab";
 
@@ -26,11 +25,9 @@ export default function HomeScreen() {
         setUpdateCount(updateCount + 1);
     }
 
-
     useEffect( () => {
         getPlants(userID).then((plants) => {setUserPlants(plants)})
     }, [updateCount]);
-
 
     useEffect( () => {
         getDivisionsAndAssociatedPlants(userID).then(

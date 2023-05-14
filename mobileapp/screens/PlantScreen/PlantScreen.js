@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Dimensions, ScrollView } from "react-native";
 import { Tabs, TabScreen } from 'react-native-paper-tabs';
-import {useTheme} from "react-native-paper";
+import { useTheme } from "react-native-paper";
 import { useNavigation, StackActions } from '@react-navigation/native';
 
 import BottomMenu from "../../components/BottomMenu";
@@ -29,20 +29,20 @@ import { deleteImage } from "../../service/FirebaseService";
 import Tasks from "../TasksScreen/components/Tasks";
 import GoBackButton from "../TasksScreen/components/GoBackButton";
 import TaskDialog from "./components/TaskDialog";
-import {userID} from "../../user";
+import { userID } from "../../user";
 
 export default function PlantScreen({ route }) {
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme();
     const navigation = useNavigation();
     // Info for the API call
-    const { plantID} = route.params;
+    const { plantID } = route.params;
 
     // Get Plant info
     const [plantInfo, setPlantInfo] = useState(null);
     useEffect(() => {
         getPlantInfo(userID, plantID)
-        .then((info) => setPlantInfo(info));
+            .then((info) => setPlantInfo(info));
     }, [])
 
     // Get All sensors associated with a plant
@@ -50,7 +50,7 @@ export default function PlantScreen({ route }) {
     useEffect(() => {
         if (plantInfo) {
             getSensorsForPlant(userID, plantID, plantInfo.division)
-            .then((info) => setSensors(info));
+                .then((info) => setSensors(info));
         }
     }, [plantInfo])
 
@@ -58,7 +58,7 @@ export default function PlantScreen({ route }) {
     const [divisions, setDivisions] = useState(null);
     useEffect(() => {
         getAllDivisions(userID)
-        .then((info) => setDivisions(info));
+            .then((info) => setDivisions(info));
     }, [])
 
     //Get Plant tasks
@@ -67,12 +67,12 @@ export default function PlantScreen({ route }) {
     const [todoSelectedTasks, setTodoSelectedTasks] = useState([]);
     const [selected, setSelected] = useState(false);
     const [counter, setCounter] = useState(0);
-    useEffect( () => {
+    useEffect(() => {
         getPlantTasksTodo(userID, plantID).then((tasks) => {
             const rawTasks = tasks;
             const taskDates = {};
             const todoTasks = [];
-            for (let r = 0; r < rawTasks.length; r++){
+            for (let r = 0; r < rawTasks.length; r++) {
                 let date = new Date(rawTasks[r].taskDate);
                 let dateString = date.toDateString().split(" ");
                 let weekday = dateString[0];
@@ -95,7 +95,7 @@ export default function PlantScreen({ route }) {
                         taskType: rawTasks[r].taskType
                     }
                 )
-                taskDates[rawTasks[r].taskDate] = {marked: true, dotColor: theme.colors.primary};
+                taskDates[rawTasks[r].taskDate] = { marked: true, dotColor: theme.colors.primary };
             }
             if (selected) {
                 setTodoTaskDates(taskDates);
@@ -114,7 +114,7 @@ export default function PlantScreen({ route }) {
     const [selectedDay, setSelectedDay] = useState(0);
 
     const onDaySelect = (date, manualTodoTasks) => {
-        if (manualTodoTasks){
+        if (manualTodoTasks) {
             setSelectedDay(date);
             let chosenDay = date.day.toString();
             let chosenMonth = new Date(date.dateString).toDateString().split(" ")[1];
@@ -122,7 +122,7 @@ export default function PlantScreen({ route }) {
             let selectedTasks = [];
             for (let f = 0; f < manualTodoTasks.length; f++) {
                 let task = manualTodoTasks.at(f);
-                if (task.day.toString() === chosenDay && task.month === chosenMonth && task.year.toString() === chosenYear){
+                if (task.day.toString() === chosenDay && task.month === chosenMonth && task.year.toString() === chosenYear) {
                     selectedTasks.push(task);
                 }
             }
@@ -137,7 +137,7 @@ export default function PlantScreen({ route }) {
             let selectedTasks = [];
             for (let f = 0; f < todoTasks.length; f++) {
                 let task = todoTasks.at(f);
-                if (task.day.toString() === chosenDay && task.month === chosenMonth && task.year.toString() === chosenYear){
+                if (task.day.toString() === chosenDay && task.month === chosenMonth && task.year.toString() === chosenYear) {
                     selectedTasks.push(task);
                 }
             }
@@ -199,7 +199,7 @@ export default function PlantScreen({ route }) {
                     <TabScreen label="Info" icon="information">
                         <ScrollView>
                             <View style={{ paddingBottom: 100, paddingTop: 30 }}>
-                                <CheckSpeciesButton plantId={plantID}/>
+                                <CheckSpeciesButton plantId={plantID} />
                                 <PlantAvatar
                                     image={plantInfo.plantPhoto}
                                     species={plantInfo.species["commonName"]}
@@ -209,7 +209,7 @@ export default function PlantScreen({ route }) {
                                     deletePlant={handleDeletePlant}
                                 />
                                 <SensorsCarousel />
-                                <PlantStatus name={plantInfo.name} status={plantInfo.plantCondition}/>
+                                <PlantStatus name={plantInfo.name} status={plantInfo.plantCondition} />
                                 <PlantInformation
                                     plant={plantInfo}
                                     division={plantInfo.division}
@@ -223,20 +223,20 @@ export default function PlantScreen({ route }) {
                     </TabScreen>
                     <TabScreen label="Tasks " icon="pencil">
                         <View>
-                        <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect}/>
-                        <Tasks tasks={todoSelectedTasks} selected={selected} userId={userID} plantID={plantID} setCounter={setCounter} counter={counter} maxHeight={160} setChange={setChange}/>
-                        {selected &&
-                            <GoBackButton onPress={goBack}/>
-                        }
+                            <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect} />
+                            <Tasks tasks={todoSelectedTasks} selected={selected} userId={userID} plantID={plantID} setCounter={setCounter} counter={counter} maxHeight={160} setChange={setChange} />
+                            {selected &&
+                                <GoBackButton onPress={goBack} />
+                            }
 
                         </View>
                     </TabScreen>
                 </Tabs>
                 <TaskDialog hideChange={hideChange} visibleChange={visibleChange} taskName={taskName}
-                            taskDueDate={taskDueDate} taskMode={taskMode} taskFrequency={taskFrequency}
-                            setTaskMode={setTaskMode} setTaskDueDate={setTaskDueDate} setTaskFrequency={setTaskFrequency}
-                            taskID={taskID} userID={userID} initialTaskDueDate={initialTaskDueDate} initialTaskFrequency={initialTaskFrequency}
-                            initialTaskMode={initialTaskMode} setCounter={setCounter} counter={counter} plantID={plantID} taskType={taskType}/>
+                    taskDueDate={taskDueDate} taskMode={taskMode} taskFrequency={taskFrequency}
+                    setTaskMode={setTaskMode} setTaskDueDate={setTaskDueDate} setTaskFrequency={setTaskFrequency}
+                    taskID={taskID} userID={userID} initialTaskDueDate={initialTaskDueDate} initialTaskFrequency={initialTaskFrequency}
+                    initialTaskMode={initialTaskMode} setCounter={setCounter} counter={counter} plantID={plantID} taskType={taskType} />
                 <BottomMenu screenHeight={screenHeight} />
             </View>
         )
