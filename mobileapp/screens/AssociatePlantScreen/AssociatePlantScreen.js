@@ -12,6 +12,7 @@ import AddDivisionButton from "./components/AddDivisionButton";
 import {createNewPlant} from "../../service/AssociatePlantScreenService";
 import {useNavigation, StackActions} from "@react-navigation/native";
 import { uploadImage } from "../../service/FirebaseService";
+import {userID} from "../../user";
 
 
 export default function AssociatePlantScreen({route}) {
@@ -24,12 +25,12 @@ export default function AssociatePlantScreen({route}) {
     const [showHumidityDropDown, setShowHumidityDropDown] = useState(false);
     const [humiditySensorTarget, setHumiditySensorTarget] = useState("None");
     const [showDivisionDropDown, setShowDivisionDropDown] = useState(false);
-    const [divisionTarget, setDivisionTarget] = useState("None");
+    const [divisionTarget, setDivisionTarget] = useState(null);
 
     const onPressNext = async () => {
-        const imageURL = await uploadImage(image, 1, name);
+        const imageURL = await uploadImage(image, userID, name);
 
-        createNewPlant(1, name, imageURL, specie, 1, date);
+        createNewPlant(userID, name, imageURL, specie, divisionTarget, date);
         navigation.dispatch(StackActions.replace('Home'));
     }
 

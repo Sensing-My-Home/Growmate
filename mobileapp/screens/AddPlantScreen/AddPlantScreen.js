@@ -52,7 +52,7 @@ export default function AddPlantScreen() {
             image: image,
             date: formattedDate,
             specie: specieId,
-            name: name
+            name: name,
         });
     }
     return (
@@ -60,7 +60,7 @@ export default function AddPlantScreen() {
             <GreenBar />
             <AddPlantHeader text={"Let us know the plant's details"} />
             <SearchBarSpecies inputValue={specie} setInputValue={setSpecie} setSpecieId={setSpecieId} />
-            <AddPhoto image={image} setImage={setImage} />
+            <AddPhoto image={image} setImage={setImage} plant={true}/>
             <AddPlantationDate inputDate={date} setInputDate={setDate} />
             <PlantName isImage={image} setName={setName} />
             <NextButton text={"Next"} page={"AssociatePlant"} reverse={false} onPress={onPressNext} />

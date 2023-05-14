@@ -19,9 +19,9 @@ const getDivisionsAndAssociatedPlants = async (id) => {
     for (let i = 1; i <= divisions.length; i++) {
         data.push(
             {
-                id: divisions[i - 1].id,
-                name: divisions[i - 1].name,
-                plants: (await axios.get(baseURL + "/user/" + id + "/division/" + i + "/plants")).data
+            id: divisions[i-1].id,
+            name: divisions[i-1].name,
+            plants: (await axios.get(baseURL + "/user/" + id + "/division/" + divisions[i-1].id + "/plants")).data
             })
     }
     return data;

@@ -4,9 +4,11 @@ import React from "react";
 import * as ImagePicker from "expo-image-picker";
 import { uploadImage } from "../../../service/FirebaseService";
 
-export default function AddPhoto({image, setImage}) {
+export default function AddPhoto({image, setImage, plant}) {
     const theme = useTheme();
-    const placeHolderAvatar = require("../../../assets/placeholder_avatar.png")
+    const plantPlaceHolderAvatar = require("../../../assets/placeholder_avatar.png");
+    const userPlaceHolderAvatar = require("../../../assets/placeholder_user_avatar.png" );
+
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -26,23 +28,23 @@ export default function AddPhoto({image, setImage}) {
     }
 
     return (
-        <View style={{ marginTop: 10, marginHorizontal: 35, marginBottom: 10}}>
+        <View style={{ marginTop: 10, marginHorizontal: 35, marginBottom: plant ? 10 : 0}}>
             <View>
                 <Text variant={"titleMedium"} style={{color: theme.colors.primary, fontWeight: "600", marginLeft: 30}}>
                     Add a photo:
                 </Text>
-                <View style={{alignItems: "center", marginTop: 15}}>
+                <View style={{alignItems: "center", marginTop: plant ? 10 : 5}}>
                     <TouchableOpacity onPress={pickImage}>
                         {image ?
                             <Avatar.Image
-                                size={100}
+                                size={plant ? 100 : 80}
                                 source={{ uri: image }}
                             />
                             :
                             <Avatar.Image
-                                size={100}
+                                size={plant ? 100 : 80}
                                 style={{backgroundColor: theme.colors.placeholderImageBackground, borderWidth: 1, borderColor: "rgba(87, 98, 74, 0.3)"}}
-                                source={placeHolderAvatar}
+                                source={plant ? plantPlaceHolderAvatar : userPlaceHolderAvatar}
                             />
                         }
 
