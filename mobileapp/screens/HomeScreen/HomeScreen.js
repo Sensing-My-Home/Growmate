@@ -14,7 +14,7 @@ import {userFirstName, userID, userType} from "../../user";
 import SensorsTab from "./components/SensorsTab";
 
 // API Calls
-import { getPlants, getDivisionsAndAssociatedPlants, getFirstName, getSensors } from "../../service/HomeScreenService";
+import { getPlants, getDivisionsAndAssociatedPlants, getSensors } from "../../service/HomeScreenService";
 
 export default function HomeScreen() {
     const [userPlants, setUserPlants] = useState([]);
@@ -41,15 +41,7 @@ export default function HomeScreen() {
     }, [updateCount]);
 
     useEffect(() => {
-        getFirstName(1).then(
-            (name) => {
-                setUserFirstName(name.name.split(" ")[0])
-            }
-        );
-    }, []);
-
-    useEffect(() => {
-        getSensors(1).then(
+        getSensors(userID).then(
             (sensors) => {
                 setSensors(sensors)
             }
