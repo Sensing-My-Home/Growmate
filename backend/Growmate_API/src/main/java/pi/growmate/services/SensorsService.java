@@ -202,6 +202,25 @@ public class SensorsService {
 
     }
 
+    public Map<String, Measurement> getLatestSingleMeasurement(long userID, long sensorID, int type) throws ResourceNotFoundException{
+        User user = this.checkIfUserExists(userID);
+        Map<String, Measurement> measurementMap = new HashMap<>();
+
+        if(type == 0){ // Division Sensor
+            DivisionSensor sensor = divisionSensorRepository.findById(sensorID).orElseThrow(() -> new ResourceNotFoundException("Sensor with ID: " + sensorID + " not found."));
+
+            measurementMap.put(sensor.getDivision().getName() + "_airq", airQualityRepository.findFirstBySensorOrderByPostDateDesc(sensor));
+            measurementMap.put(sensor.getDivision().getName() + "_airtemp", airTemperatureRepository.findFirstBySensorOrderByPostDateDesc(sensor));
+
+        }else{  // Plant Sensor
+            PlantSensor sensor = plantSensorRepository.findById(sensorID).orElseThrow(() -> new ResourceNotFoundException("Sensor with ID: " + sensorID + " not found."));
+
+            measurementMap.put(sensor.getPlant().getName() + "_soilq", soilQualityRepository.findFirstBySensorOrderByPostDateDesc(sensor));
+        }
+
+        return measurementMap;
+    }
+
     public Map<String, List<Measurement>> getThreeDaysMeasurements(long userID, long plantID) throws ResourceNotFoundException{
         User user = this.checkIfUserExists(userID);
         Map<String, List<Measurement>> returnMap = new HashMap<>();
