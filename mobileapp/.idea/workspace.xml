@@ -5,32 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-118 done">
-      <change afterPath="$PROJECT_DIR$/assets/placeholder_user_avatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/SignUpScreen/SignUpScreen.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/SignUpScreen/components/LogInText.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/SignUpScreen/components/SignUpNextButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/SignUpScreen/components/SingUpInfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/SignUpScreenTwo/SignUpScreenTwo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/SignUpScreenTwo/components/SignUpButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/SignUpScreenTwo/components/SignUpMoreInfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/SignUpScreenService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/ProfileScreen/ProfileScreen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/ProfileScreen/components/ChangePassword.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/ProfileScreen/components/ProfileButtons.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/ProfileScreen/components/ProfileDetails.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/ProfileScreen/components/TaskLog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/ProfileScreen/components/UserHeader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/ProfileScreenService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/components/AddPhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/components/AddPhoto.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/DivisionRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/DivisionRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/InitializerScreen/components/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/InitializerScreen/components/SignUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/BottomMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/BottomMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/DropdownButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProfileScreen/components/DropdownButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/WelcomeHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/WelcomeHeader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/LoginScreen/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LoginScreen/LoginScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/LoginScreen/components/LoginHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/LoginSignUpHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/LoginScreen/components/LoginInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LoginScreen/components/LoginInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/LoginScreen/components/SignUpButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LoginScreen/components/SignUpButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/components/PlantInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/components/PlantInformation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/HomeScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/HomeScreenService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/PlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/PlantScreenService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/SignUpScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/SignUpScreenService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +64,7 @@
       <recent name="$PROJECT_DIR$/screens/AddPlantScreen/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/screens/ProfileScreen/components" />
       <recent name="$PROJECT_DIR$/aux" />
       <recent name="$PROJECT_DIR$/.images" />
       <recent name="$PROJECT_DIR$/assets" />
@@ -297,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683935896148</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="GM-118 done">
+      <created>1684001483719</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1684001483719</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

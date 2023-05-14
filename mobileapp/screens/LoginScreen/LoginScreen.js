@@ -8,7 +8,17 @@ import SignUpButton from "./components/SignUpButton";
 import {login} from "../../service/LoginScreenService";
 import {useNavigation} from "@react-navigation/native";
 import WarningMessage from "./components/WarningMessage";
-import {setUserFirstName, setUserID, setUserType} from "../../user";
+import {
+    setUserAddress,
+    setUserDateOfBirth,
+    setUserDeadPlants,
+    setUserEmail,
+    setUserFirstName,
+    setUserID,
+    setUserName,
+    setUserPhoto, setUserRating,
+    setUserType
+} from "../../user";
 import LoginSignUpHeader from "../../components/LoginSignUpHeader";
 
 export default function LoginScreen(){
@@ -26,6 +36,13 @@ export default function LoginScreen(){
                 setUserID(response.id);
                 setUserFirstName(response.name.split(" ")[0]);
                 setUserType(response.userType);
+                setUserPhoto(response.profilePhoto);
+                setUserName(response.name);
+                setUserEmail(response.email);
+                setUserDeadPlants(response.dead_plants);
+                setUserDateOfBirth(response.dateOfBirth);
+                setUserRating(response.rating);
+                setUserAddress(response.address);
                 navigation.navigate("Home");
             }
             else {
