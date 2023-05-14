@@ -7,6 +7,7 @@ import SensorDropdown from "./SensorDropdown";
 export default function SensorDialog({ sensor, lastMeasurement, visible, onDismiss, onSave, onDelete, dropDownList }) {
     const [editedName, setEditedName] = useState();
     const [dropDownValue, setDropDownValue] = useState();
+    const [alert, setAlert] = useState(false);
     const dropDownLabel = sensor.type === "plant" ? "Plant" : "Division";
     const theme = useTheme();
 
@@ -27,13 +28,14 @@ export default function SensorDialog({ sensor, lastMeasurement, visible, onDismi
     };
 
     const handleDelete = () => {
+        setAlert(false);
         onDelete(sensor.original_id);
         onDismiss();
     };
 
     return (
         <Portal>
-            <Dialog visible={visible} onDismiss={onDismiss} style={{backgroundColor: theme.colors.background}}>
+            <Dialog visible={visible} onDismiss={onDismiss} style={{ backgroundColor: theme.colors.background }}>
                 <Dialog.Title>Sensor Details</Dialog.Title>
                 <Dialog.Content>
                     <View style={styles.row}>
@@ -56,8 +58,18 @@ export default function SensorDialog({ sensor, lastMeasurement, visible, onDismi
                 </Dialog.Content>
                 <Dialog.Actions>
                     <Button onPress={handleSave} buttonColor={theme.colors.primary} textColor={theme.colors.background}>Save</Button>
-                    <Button onPress={handleDelete} buttonColor={theme.colors.error} textColor={theme.colors.background}>Delete</Button>
+                    <Button onPress={() => setAlert(true)} buttonColor={theme.colors.error} textColor={theme.colors.background}>Delete</Button>
                     <Button onPress={onDismiss} buttonColor={theme.colors.secondary} textColor={theme.colors.background}>Close</Button>
+                </Dialog.Actions>
+            </Dialog>
+            <Dialog visible={alert} onDismiss={() => setAlert(false)} style={{ backgroundColor: theme.colors.background }}>
+                <Dialog.Title>Alert</Dialog.Title>
+                <Dialog.Content>
+                    <Text variant="bodyMedium">Are you sure that you want to delete the sensor?</Text>
+                </Dialog.Content>
+                <Dialog.Actions>
+                    <Button onPress={() => setAlert(false)} buttonColor={theme.colors.error} textColor={theme.colors.background}>Cancel</Button>
+                    <Button onPress={handleDelete} buttonColor={theme.colors.primary} textColor={theme.colors.background}>Confirm</Button>
                 </Dialog.Actions>
             </Dialog>
         </Portal>
