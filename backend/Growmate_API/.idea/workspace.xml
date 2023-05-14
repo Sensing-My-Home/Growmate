@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="merged conflicts">
-      <change afterPath="$PROJECT_DIR$/../../mobileapp/screens/ProfileScreen/ProfileScreen.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../mobileapp/screens/ProfileScreen/components/ChangePassword.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../mobileapp/screens/ProfileScreen/components/ProfileButtons.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../mobileapp/screens/ProfileScreen/components/ProfileDetails.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../mobileapp/screens/ProfileScreen/components/TaskLog.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../mobileapp/screens/ProfileScreen/components/UserHeader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../mobileapp/service/ProfileScreenService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/components/BottomMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/components/BottomMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/DropdownButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/ProfileScreen/components/DropdownButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/WelcomeHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/WelcomeHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/LoginScreen/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/LoginScreen/LoginScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/service/SignUpScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/service/SignUpScreenService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,6 +117,12 @@
       <workItem from="1683755919579" duration="1841000" />
       <workItem from="1683822287462" duration="6188000" />
       <workItem from="1683910326809" duration="980000" />
+      <workItem from="1683918896457" duration="280000" />
+      <workItem from="1683919638037" duration="604000" />
+      <workItem from="1683920674890" duration="524000" />
+      <workItem from="1683927738370" duration="176000" />
+      <workItem from="1683928569944" duration="2402000" />
+      <workItem from="1684093778465" duration="319000" />
     </task>
     <servers />
   </component>
