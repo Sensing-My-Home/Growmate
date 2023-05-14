@@ -13,10 +13,12 @@ import pi.growmate.datamodel.sensors.GenericSensor;
 import pi.growmate.datamodel.sensors.PlantSensor;
 import pi.growmate.datamodel.user.User;
 import pi.growmate.exceptions.ResourceNotFoundException;
+import pi.growmate.repositories.division.DivisionRepository;
 import pi.growmate.repositories.division.DivisionSensorRepository;
 import pi.growmate.repositories.measurements.AirQualityRepository;
 import pi.growmate.repositories.measurements.AirTemperatureRepository;
 import pi.growmate.repositories.measurements.SoilQualityRepository;
+import pi.growmate.repositories.plant.PlantRepository;
 import pi.growmate.repositories.plant.PlantSensorRepository;
 import pi.growmate.repositories.user.UserRepository;
 import pi.growmate.utils.SuccessfulRequest;
@@ -41,6 +43,10 @@ public class SensorsService {
     private AirQualityRepository airQualityRepository;
     @Autowired
     private AirTemperatureRepository airTemperatureRepository;
+    @Autowired
+    private DivisionRepository divisionRepository;
+    @Autowired
+    private PlantRepository plantRepository;
 
     public List<DivisionSensor> getDivisionSensors(long userID, long divisionID) throws ResourceNotFoundException {
         User user = this.checkIfUserExists(userID);
@@ -106,14 +112,46 @@ public class SensorsService {
         if(type == 0){ // Division Sensor
             DivisionSensor sensor = divisionSensorRepository.findById(sensorID).orElseThrow(() -> new ResourceNotFoundException("Sensor with ID: " + sensorID + " not found."));
 
+            divisionSensorRepository.delete(sensor);
+        }else{  // Plant Sensor
+            PlantSensor sensor = plantSensorRepository.findById(sensorID).orElseThrow(() -> new ResourceNotFoundException("Sensor with ID: " + sensorID + " not found."));
+
+            plantSensorRepository.delete(sensor);
+        }
+
+        return new SuccessfulRequest("Sensor deleted succesfully!");
+    }
+
+    public SuccessfulRequest updateSensorInformation(long userID, long sensorID, int type, String newName, Long newAssociatedID) throws ResourceNotFoundException{
+        User user = this.checkIfUserExists(userID);
+
+        if(type == 0){ // Division Sensor
+            DivisionSensor sensor = divisionSensorRepository.findById(sensorID).orElseThrow(() -> new ResourceNotFoundException("Sensor with ID: " + sensorID + " not found."));
+
+            sensor.setName(newName != null ? newName : sensor.getName());
+
+            if(newAssociatedID !=  null){
+                Division newDiv = divisionRepository.findById(newAssociatedID).orElseThrow(() -> new ResourceNotFoundException("Division with ID: " + newAssociatedID + " not found."));
+
+                sensor.setDivision(newDiv);
+            }
+
             divisionSensorRepository.save(sensor);
         }else{  // Plant Sensor
             PlantSensor sensor = plantSensorRepository.findById(sensorID).orElseThrow(() -> new ResourceNotFoundException("Sensor with ID: " + sensorID + " not found."));
 
+            sensor.setName(newName != null ? newName : sensor.getName());
+
+            if(newAssociatedID !=  null){
+                Plant newPlant = plantRepository.findById(newAssociatedID).orElseThrow(() -> new ResourceNotFoundException("Plant with ID: " + newAssociatedID + " not found."));
+
+                sensor.setPlant(newPlant);
+            }
+
             plantSensorRepository.save(sensor);
         }
 
-        return new SuccessfulRequest("Sensor deleted succesfully!");
+        return new SuccessfulRequest("Sensor updated successfully!");
     }
 
     public Map<String, Measurement> getLatestMeasurements(long userID) throws ResourceNotFoundException{

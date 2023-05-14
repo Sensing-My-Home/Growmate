@@ -56,12 +56,23 @@ public class SensorsController {
         return ResponseEntity.ok().body(sensorsService.addNewSensor(userID, type, name, code, ownerID));
     }
 
-    // Deletes a Sensor (0 - Division Sensor; 1 - Plant Sensor)
+    // Deletes a Sensor (sensorType: 0 - Division Sensor; 1 - Plant Sensor)
     @DeleteMapping("/{userID}/sensors/{sensorID}")
     public ResponseEntity<SuccessfulRequest> deleteSensor(@PathVariable(value = "userID") long userID,
                                                           @PathVariable(value = "sensorID") long sensorID,
                                                           @RequestParam(name = "sensorType") int type) throws ResourceNotFoundException {
         return ResponseEntity.ok().body(sensorsService.deleteSensor(userID, sensorID, type));
+    }
+
+    // Changes a sensor's information, such as the division/plant it's associated with, or it's name. The ID of the new division/plant it's associated with
+    // is given by newAssociatedID. (sensorType: 0 - Division Sensor; 1 - Plant Sensor)
+    @PutMapping("/{userID}/sensors/{sensorID}")
+    public ResponseEntity<SuccessfulRequest> updateSensorInformation(@PathVariable(value = "userID") long userID,
+                                                                     @PathVariable(value = "sensorID") long sensorID,
+                                                                     @RequestParam(name = "sensorType") int type,
+                                                                     @RequestParam(name = "newName", required = false) String newName,
+                                                                     @RequestParam(name = "newAssociatedID", required = false) Long newAssociatedID) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(sensorsService.updateSensorInformation(userID, sensorID, type, newName, newAssociatedID));
     }
 
     // Getting the last measurements from all sensors related to a user
