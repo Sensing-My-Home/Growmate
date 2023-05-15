@@ -2,6 +2,11 @@
 #include <Adafruit_Sensor.h>
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
+#include <ArduinoJson.h>
+
+#define HumidityCode  "TMP123"
+#define TemperatureCode  "HMD456"
+#define SoilCode  "ANT123"
 
 #define DHTPIN     2
 #define DHTTYPE    DHT11
@@ -11,14 +16,14 @@ const int soil_dry = 1023;
 const int soil_wet = 490;
 
 // Change the credentials below, so your ESP8266 connects to your router
-const char* ssid = "";
-const char* password = "";
+const char* ssid = "Vodafone-065437";
+const char* password = "CACCACCDCE36CJH3";
 
 // Change the variable to your Raspberry Pi IP address, so it connects to your MQTT broker
-const char* mqtt_server = "";
+const char* mqtt_server = "192.168.1.180";
 const int mqtt_port = 1883;
-const char* mqttUser = "";
-const char* mqttPassword = "";
+const char* mqttUser = "growmate";
+const char* mqttPassword = "growmate";
 
 // Initializes the espClient
 WiFiClient espClient;
@@ -29,7 +34,7 @@ DHT dht(DHTPIN, DHTTYPE);
 float t = 0.0;
 float h = 0.0;
 
-const long interval = 1000;
+const long interval = 10000;
 
 // This functions connects your ESP8266 to your router
 void setup_wifi() {
@@ -90,6 +95,30 @@ void setup() {
   client.setCallback(callback);
 }
 
+const char* createJsonMessage(const char* code, const char* value) {
+  // Create a JSON object
+  StaticJsonDocument<200> jsonDocument;
+  
+  // Set values in the JSON object
+  jsonDocument["code"] = code;
+  jsonDocument["value"] = value;
+
+  // Convert the JSON object to a string
+  String jsonString;
+  serializeJson(jsonDocument, jsonString);
+
+  // Remove leading/trailing spaces from the value field
+  jsonString.replace("\"value\":\" ", "\"value\":\"");
+  jsonString.replace("\"value\":\"", "\"value\":\"");
+
+  // Store the JSON string in a static buffer
+  static char jsonBuffer[200];
+  jsonString.toCharArray(jsonBuffer, sizeof(jsonBuffer));
+
+  // Return the JSON string as a const char*
+  return jsonBuffer;
+}
+
 void loop() {
   if (!client.connected()) {
     reconnect();
@@ -132,10 +161,14 @@ void loop() {
   static char soilMoistureTemp[7];
   dtostrf(moisture_percentage, 6, 2, soilMoistureTemp);
 
+  const char* temperatureJson = createJsonMessage(TemperatureCode, temperatureTemp);
+
+  Serial.println(temperatureJson);
+
   // Publishes Temperature and Humidity values
-  client.publish("temperature", temperatureTemp);
-  client.publish("humidity", humidityTemp);
-  client.publish("soil", soilMoistureTemp);
+  client.publish("temperature", temperatureJson);
+  client.publish("humidity", createJsonMessage(HumidityCode, humidityTemp));
+  client.publish("soil", createJsonMessage(SoilCode, soilMoistureTemp));
 
   delay(interval);  
 }  

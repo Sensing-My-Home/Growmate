@@ -83,7 +83,6 @@ public class SensorsController {
     }
 
     // Getting the last measurements from a specific sensor related to a user (sensorType: 0 - Division Sensor; 1 - Plant Sensor)
-    //TODO: Not Tested
     @GetMapping("/{userID}/sensors/{sensorID}/last")
     public ResponseEntity<Map<String, Measurement>> returnLatestSingleMeasurement(@PathVariable(value = "userID") Long userID,
                                                                                   @PathVariable(value = "sensorID") Long sensorID,
@@ -92,7 +91,6 @@ public class SensorsController {
     }
 
     // Get the measurements of a plant in the past 3 days
-    //TODO: Not Tested
     @GetMapping("/{userID}/sensors/last/plant/{plantID}")
     public ResponseEntity<Map<String, List<Measurement>>> returnMeasurementsPlant(@PathVariable(value = "userID") Long userID,
                                                                             @PathVariable(value = "plantID") Long plantID) throws ResourceNotFoundException {
