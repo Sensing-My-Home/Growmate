@@ -89,5 +89,24 @@ const getSensors = async (userID) => {
     return sensorsFiltered;
   };
   
+const deleteSensor = async (userID, sensorID, sensorType) => {
+  await axios.delete(
+    baseURL + '/user/' + userID + '/sensors/' + sensorID + '?sensorType=' + sensorType,
+  );
+};
 
-export { getPlants, getDivisionsAndAssociatedPlants, addPlantToDivision, changePlantDivision, removePlantFromDivision, getFirstName, getSensors }
+const getSensorLastMeasurement = async (userID, sensorID, sensorType) => {
+  let response = await axios.get(
+    baseURL + '/user/' + userID + '/sensors/' + sensorID + '/last?sensorType=' + sensorType,
+  );
+  console.log(response.data);
+  return response.data;
+};
+
+const editSensor = async (userID, sensorID, sensorType, newName, newAssociatedID) => {
+  await axios.put(
+    baseURL + '/user/' + userID + '/sensors/' + sensorID + '?sensorType=' + sensorType + '&newName=' + newName + '&newAssociatedID=' + newAssociatedID,
+  );
+};
+
+export { getPlants, getDivisionsAndAssociatedPlants, addPlantToDivision, changePlantDivision, removePlantFromDivision, getFirstName, getSensors, deleteSensor, getSensorLastMeasurement, editSensor }
