@@ -16,6 +16,7 @@ import pi.growmate.datamodel.task.Tasks_Current;
 import pi.growmate.datamodel.task.Tasks_History;
 import pi.growmate.datamodel.user.User;
 import pi.growmate.exceptions.ResourceNotFoundException;
+import pi.growmate.repositories.plant.PlantRepository;
 import pi.growmate.repositories.tasks.CurrentTaskRepository;
 import pi.growmate.repositories.tasks.HistoricTaskRepository;
 import pi.growmate.repositories.tasks.TaskSettingsRepository;
@@ -40,6 +41,9 @@ public class TasksService {
 
     @Autowired
     private AlgorithmsService algorithmsService;
+
+    @Autowired
+    private PlantRepository plantRepository;
 
     public List<Tasks_Current> getTasksForToday(Long userID) throws ResourceNotFoundException{
         User user = getUser(userID);
@@ -119,6 +123,10 @@ public class TasksService {
 
         // Updating the existing Task with a new Date
         algorithmsService.calculateNewTaskDateForSingleTask(task);
+
+        // Updating the Plant's condition
+        algorithmsService.setNewPlantCondition(planta);
+        plantRepository.save(planta);
 
         return new SuccessfulRequest("Updated task with success");
     }
@@ -252,6 +260,12 @@ public class TasksService {
         task.setTaskDate(newDate);
 
         currentTaskRepository.save(task);
+
+        // Recalculate plant's condition
+        Plant plant = task.getPlant();
+        algorithmsService.setNewPlantCondition(plant);
+        plantRepository.save(plant);
+
         return new SuccessfulRequest("Task date updated successfully!");
     }
     

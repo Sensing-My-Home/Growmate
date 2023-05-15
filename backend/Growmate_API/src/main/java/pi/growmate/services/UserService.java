@@ -77,7 +77,7 @@ public class UserService {
         plant.setOwner(user);
         plant.setName(plantName);
         plant.setPlantPhoto(photo);
-        plant.setPlantCondition(PlantCondition.NORMAL);
+        plant.setPlantCondition(PlantCondition.GREAT);
         plant.setSpecies(getPlantSpecies(species_id));
 
         if(date != null){
@@ -118,6 +118,9 @@ public class UserService {
         if(!this.checkPassword(password, user)){
             throw new Exception("Invalid login credentials");
         }else{
+            // Recalculate Plant's condition
+            user.getPlants().forEach(plant -> algorithmsService.setNewPlantCondition(plant));
+
             return user;
         }
     }
