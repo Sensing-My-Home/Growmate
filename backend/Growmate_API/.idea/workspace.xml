@@ -5,8 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="merged conflicts">
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/SensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/SensorsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/SensorsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/SensorsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/components/BottomMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/components/BottomMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/DivisionInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/components/DivisionInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/AssociatePlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/AssociatePlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/components/PlantItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/components/PlantItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/Categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/Categories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/CategoryCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/CategoryCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/InitializerScreen/components/NoAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/InitializerScreen/components/NoAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/PlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/components/CheckSpeciesButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/components/CheckSpeciesButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/ProfileScreen/components/UserHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/ProfileScreen/components/UserHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/SignUpScreenTwo/SignUpScreenTwo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/SignUpScreenTwo/SignUpScreenTwo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/service/SpeciesProfileScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/service/SpeciesProfileScreenService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

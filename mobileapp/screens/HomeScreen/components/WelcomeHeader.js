@@ -1,7 +1,6 @@
 import { View } from "react-native";
 import { IconButton, Text, useTheme } from "react-native-paper";
 import React from "react";
-import DropdownButton from "./DropdownButton";
 import ThinDivider from "../../../components/ThinDivider";
 
 export default function WelcomeHeader({premium, name}) {
@@ -20,7 +19,6 @@ export default function WelcomeHeader({premium, name}) {
                     <Text variant={"headlineMedium"} style={{ color: theme.colors.primary, fontWeight: '700', textAlign: 'left', paddingTop: 11 }}>Welcome, {name}!</Text>
                                     }
             </View>
-            <DropdownButton theme={theme}></DropdownButton>
         </View>
         <ThinDivider />
         </View>
