@@ -12,6 +12,17 @@ const getUserStats = async (userID) => {
 const editProfile = async (userID, name, email, dateOfBirth, address) => {
     await axios.put(baseURL + "/user/" + userID + "/editProfile?name=" + name +
     "&email=" + email + "&dateOfBirth=" + dateOfBirth + "&address=" + address);
+
+    // Update cache
+    const cacheKey = "login";
+    const cacheData = await getItem(cacheKey);
+    if (cacheData !== null) {
+        cacheData["name"] = name;
+        cacheData["email"] = email;
+        cacheData["dateOfBirth"] = dateOfBirth;
+        cacheData["address"] = address;
+        await setItem(cacheKey, cacheData);
+    }
 }
 
 const getTasksLog = async (userID) => {
