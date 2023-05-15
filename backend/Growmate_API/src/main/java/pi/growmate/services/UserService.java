@@ -186,7 +186,7 @@ public class UserService {
         }
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        user.setPassword(passwordEncoder.encode(oldPassword));
+        user.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(user);
 
         return new SuccessfulRequest("Password changed successfully!");
