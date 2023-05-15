@@ -97,7 +97,7 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
   }
 
   // Get selected sensor last measurement value
-  //NOTE: NOT TESTED
+  // NOTE: NOT TESTED
   useEffect(() => {
     const getSensorLastMeasurementValue = async () => {
       if (selectedSensor) {
@@ -154,7 +154,7 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
                 setSensorModalVisible(true);
               }} />
           ))}
-          <View style={{ height: 100 }} /> {/* Spacer */}
+          <View style={{ height: 100 }} />
         </ScrollView>
       </View>
 
@@ -162,7 +162,7 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
         sensor={selectedSensor}
         lastMeasurement={selectedSensorLastMeasurement}
         visible={sensorModalVisible}
-        onDismiss={() => setSensorModalVisible(false)} // Update this line
+        onDismiss={() => setSensorModalVisible(false)}
         onSave={(name, sensor, dropDownValue) => editSensor(name, sensor, dropDownValue)}
         onDelete={(sensor) => deleteSensor(sensor)}
         dropDownList={selectedSensor.type === 'division' ? userDivisions : userPlants}
