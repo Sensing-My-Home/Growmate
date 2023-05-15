@@ -12,7 +12,7 @@ export default function NoAccount(){
             alignItems: "center", marginTop: 60, borderColor: theme.colors.primaryContainer,
             width: 135, height: 30, alignSelf: "center"
         }}>
-            <TouchableOpacity onPress={() => {navigation.navigate("DiscoverPlants")}}>
+            <TouchableOpacity onPress={() => {navigation.navigate("DiscoverPlants", {anonymous: true})}}>
             <View style={{flexDirection: "row", justifyContent: "center", alignItems: "center"}} >
                 <Text variant={"bodyMedium"} style={{color: theme.colors.primaryContainer, marginLeft: 20}}>
                     No Account

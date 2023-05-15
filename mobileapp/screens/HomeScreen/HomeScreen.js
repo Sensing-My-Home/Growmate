@@ -80,10 +80,22 @@ export default function HomeScreen() {
                     </TabScreen>
                 </Tabs>
                 :
-                <View>
-                    <SearchBar />
-                    <PlantCards plants={userPlants} />
-                </View>
+                <Tabs
+                    defaultIndex={0} // default = 0
+                    style={{ backgroundColor: '#fff' }} // works the same as AppBar in react-native-paper
+                    disableSwipe={true} // (default=false) disable swipe to left/right gestures
+                    onChangeIndex={(newIndex) => { setSelectedTab(newIndex) }}
+                >
+                    <TabScreen label="Inventory">
+                        <View>
+                            <SearchBar />
+                            <PlantCards plants={userPlants}/>
+                        </View>
+                    </TabScreen>
+                    <TabScreen label="Divisions">
+                        <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate} />
+                    </TabScreen>
+                </Tabs>
             }
             <PlusButton index={selectedTab} />
             <BottomMenu screenHeight={screenHeight} active={"leaf"} />

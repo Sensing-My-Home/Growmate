@@ -29,7 +29,7 @@ export default function SignUpScreenTwo({route}){
             finalType = "PREMIUM";
         }
         else {
-            finalType = "NORMAL";
+            finalType = "NON-PREMIUM";
         }
 
         signUp(name, email, password, photo, dateOfBirth, experience, address, finalType).then(

@@ -3,6 +3,7 @@ import {IconButton, Text, TextInput, useTheme} from "react-native-paper";
 import React, {useState} from "react";
 import DropDown from "react-native-paper-dropdown";
 import AssociateSensorsDialog from "./AssociateSensorsDialog";
+import {userType} from "../../../user";
 
 export default function DivisionInfo({sensors, setName, setSensors, luminosity, luminosityTarget, setLuminosityTarget}){
     const theme = useTheme();
@@ -57,41 +58,45 @@ export default function DivisionInfo({sensors, setName, setSensors, luminosity, 
                     dropDownStyle={{maxHeight: 200 }}
                 />
             </View>
-            <View style={{marginHorizontal: 50, marginTop: 20, marginBottom: 5}}>
-                <Text variant={"bodyMedium"} style={{ color: theme.colors.primary }}>Associate sensors</Text>
-            </View>
-            {associatedSensors.length > 0 &&
-                <ScrollView style={{maxHeight: 100, marginHorizontal: 50}}>
-                    {associatedSensors.map((sensor, index) => (
-                        <View key={index} style={{
-                            width: 250, alignItems: "center",
-                            borderWidth: 1, borderRadius: 20,
-                            borderColor: theme.colors.opaqueGrey,
-                            marginTop: 5
-                        }}>
-                            <Text variant={"bodyLarge"}>
-                                {sensor.name}
-                            </Text>
-                        </View>
-                    ))
+            {userType === "PREMIUM" &&
+                <View>
+                    <View style={{marginHorizontal: 50, marginTop: 20, marginBottom: 5}}>
+                        <Text variant={"bodyMedium"} style={{ color: theme.colors.primary }}>Associate sensors</Text>
+                    </View>
+                    {associatedSensors.length > 0 &&
+                        <ScrollView style={{maxHeight: 100, marginHorizontal: 50}}>
+                            {associatedSensors.map((sensor, index) => (
+                                <View key={index} style={{
+                                    width: 250, alignItems: "center",
+                                    borderWidth: 1, borderRadius: 20,
+                                    borderColor: theme.colors.opaqueGrey,
+                                    marginTop: 5
+                                }}>
+                                    <Text variant={"bodyLarge"}>
+                                        {sensor.name}
+                                    </Text>
+                                </View>
+                            ))
+                            }
+                        </ScrollView>
                     }
-                </ScrollView>
-            }
 
-            {associatedSensors.length > 0 ?
-                <IconButton icon="playlist-edit" iconColor={theme.colors.secondary} size={25}
-                            onPress={setAdd} style={{alignSelf: "center", marginTop: 10, marginBottom: 20}}/>
-                :
-                <IconButton icon="plus-circle-outline" iconColor={theme.colors.secondary} size={25}
-                            onPress={setAdd} style={{alignSelf: "center", marginTop: 10, marginBottom: 100}}/>
-            }
+                    {associatedSensors.length > 0 ?
+                        <IconButton icon="playlist-edit" iconColor={theme.colors.secondary} size={25}
+                                    onPress={setAdd} style={{alignSelf: "center", marginTop: 10, marginBottom: 20}}/>
+                        :
+                        <IconButton icon="plus-circle-outline" iconColor={theme.colors.secondary} size={25}
+                                    onPress={setAdd} style={{alignSelf: "center", marginTop: 10, marginBottom: 100}}/>
+                    }
 
-            <AssociateSensorsDialog
-                visibleChange={visibleAdd}
-                hideChange={hideAdd}
-                userSensors={sensors_static}
-                associateSensors={setAssociatedSensors}
-            />
+                    <AssociateSensorsDialog
+                        visibleChange={visibleAdd}
+                        hideChange={hideAdd}
+                        userSensors={sensors_static}
+                        associateSensors={setAssociatedSensors}
+                    />
+                </View>
+            }
         </View>
     )
 }
