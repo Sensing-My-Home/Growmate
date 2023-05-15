@@ -5,3 +5,8 @@ export const getPlantSpeciesInfo = async (userId, plantId) => {
     const response = await axios.get(baseURL + "/user/" + userId + "/inventory/" + plantId + "/speciesinfo");
     return response.data;
 }
+
+export const getSpeciesInfo = async (specieID) => {
+    const response = await axios.get(baseURL + "/public/catalogue/species/" + specieID);
+    return response.data;
+}
