@@ -2,10 +2,7 @@ package pi.growmate.services;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +16,7 @@ import pi.growmate.datamodel.task.Tasks_Current;
 import pi.growmate.datamodel.task.Tasks_History;
 import pi.growmate.datamodel.user.User;
 import pi.growmate.exceptions.ResourceNotFoundException;
+import pi.growmate.repositories.plant.PlantRepository;
 import pi.growmate.repositories.tasks.CurrentTaskRepository;
 import pi.growmate.repositories.tasks.HistoricTaskRepository;
 import pi.growmate.repositories.tasks.TaskSettingsRepository;
@@ -44,6 +42,9 @@ public class TasksService {
     @Autowired
     private AlgorithmsService algorithmsService;
 
+    @Autowired
+    private PlantRepository plantRepository;
+
     public List<Tasks_Current> getTasksForToday(Long userID) throws ResourceNotFoundException{
         User user = getUser(userID);
         Date today = new Date(System.currentTimeMillis()); //data de hoje
@@ -58,12 +59,14 @@ public class TasksService {
         
     }
 
-    public List<Tasks_Current> getTasksToDo(Long userID) throws ResourceNotFoundException{
+    public Map<String, List<Tasks_Current>> getTasksToDo(Long userID) throws ResourceNotFoundException{
         User user = getUser(userID);
-        List<Tasks_Current> tasks = user.getPlants().stream()
-                            .flatMap(plant -> plant.getCurrentTasks().stream())
-                            .collect(Collectors.toList());
-        return tasks;
+
+        return user.getPlants().stream()
+                    .collect(Collectors.toMap(
+                            plant -> plant.getId().toString(),
+                            Plant::getCurrentTasks
+                    ));
     }
 
     public List<Tasks_History> getTasksDone(Long userID) throws ResourceNotFoundException{
@@ -121,6 +124,10 @@ public class TasksService {
         // Updating the existing Task with a new Date
         algorithmsService.calculateNewTaskDateForSingleTask(task);
 
+        // Updating the Plant's condition
+        algorithmsService.setNewPlantCondition(planta);
+        plantRepository.save(planta);
+
         return new SuccessfulRequest("Updated task with success");
     }
 
@@ -171,9 +178,8 @@ public class TasksService {
         return new SuccessfulRequest("Task mode toggled successfully!");
     }
 
-    public Map<String, List<Task_Settings>> getAllTaskSettings(Long idUser, Long idPlant) throws ResourceNotFoundException{
+    public Map<String, List<Task_Settings>> getTaskSettings(Long idUser, Long idPlant, String taskType) throws ResourceNotFoundException{
         User user = getUser(idUser);
-
 
         // Depending on whether we're getting all the settings, or just for a Plant
         if(idPlant == null){
@@ -185,11 +191,33 @@ public class TasksService {
                             plant -> plant.getId().toString(),
                             Plant::getTaskSettings
                     ));
-        }else{
+        }else if(taskType == null){
+            // Getting all the task related to a Plant
             Plant planta = getPlant(user, idPlant);
 
             HashMap<String, List<Task_Settings>> map = new HashMap<>();
             map.put(planta.getId().toString(), planta.getTaskSettings());
+
+            return map;
+        }else{
+            // Getting only a specific task
+            // Finding the correct entry in Task_Settings, and toggling the mode
+            TaskType type;
+
+            switch (taskType) {
+                case "FERTILIZER" -> type = TaskType.FERTILIZER;
+                case "CHECK_PLANT" -> type = TaskType.CHECK_PLANT;
+                case "SOIL_CHANGE" -> type = TaskType.SOIL_CHANGE;
+                case "WATERING" -> type = TaskType.WATERING;
+                default -> throw new IllegalArgumentException("Invalid task type: " + taskType);
+            };
+
+            Plant planta = getPlant(user, idPlant);
+
+            Task_Settings settings = taskSettingsRepository.findFirstByPlantAndTaskType(planta, type);
+
+            HashMap<String, List<Task_Settings>> map = new HashMap<>();
+            map.put(planta.getId().toString(), Collections.singletonList(settings));
 
             return map;
         }
@@ -232,6 +260,12 @@ public class TasksService {
         task.setTaskDate(newDate);
 
         currentTaskRepository.save(task);
+
+        // Recalculate plant's condition
+        Plant plant = task.getPlant();
+        algorithmsService.setNewPlantCondition(plant);
+        plantRepository.save(plant);
+
         return new SuccessfulRequest("Task date updated successfully!");
     }
     

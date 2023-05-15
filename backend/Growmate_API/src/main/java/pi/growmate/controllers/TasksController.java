@@ -41,7 +41,7 @@ public class TasksController {
 
     // Gets all the tasks to be completed by a User in the future
     @GetMapping("{idUser}/todo")
-    public ResponseEntity<List<Tasks_Current>> getTasksToDo(@PathVariable(value = "idUser") Long idUser) throws ResourceNotFoundException{
+    public ResponseEntity<Map<String, List<Tasks_Current>>> getTasksToDo(@PathVariable(value = "idUser") Long idUser) throws ResourceNotFoundException{
         return ResponseEntity.ok().body(tasksService.getTasksToDo(idUser));
     }
 
@@ -98,11 +98,13 @@ public class TasksController {
     }
 
     // Get all the task settings associated with a User. Returns in the form of a dict where the key is the Plant ID, and the value is the list of settings.
-    // If the request param plantID is passed, it will only reutrn the definitions related to that plant
+    // If the request param plantID is passed, it will only return the definitions related to that plant
+    // If the request param plantID and the requestParam task type is passed, will only return the specific task related with that type and plant
     @GetMapping("{idUser}/settings")
-    public ResponseEntity<Map<String, List<Task_Settings>>> getAllTaskSettings(@PathVariable(value = "idUser") Long idUser,
-                                                                               @RequestParam(value = "idPlant", required = false) Long idPlant) throws ResourceNotFoundException {
-        return ResponseEntity.ok().body(tasksService.getAllTaskSettings(idUser, idPlant));
+    public ResponseEntity<Map<String, List<Task_Settings>>> getTaskSettings(@PathVariable(value = "idUser") Long idUser,
+                                                                            @RequestParam(value = "idPlant", required = false) Long idPlant,
+                                                                            @RequestParam(value = "taskType", required = false) String taskType) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(tasksService.getTaskSettings(idUser, idPlant, taskType));
     }
 
     // Used to update the frequency of a task by a User

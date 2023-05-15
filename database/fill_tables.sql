@@ -4,7 +4,7 @@ VALUES
 
 INSERT INTO public.utilizador (id, address, dob, email, name, password, rating, user_type)
 VALUES
-    (2, '123 Main St', '1990-01-01', 'john.doe@example.com', 'John Doe', 'password123', 4, 2);
+    (1, '123 Main St', '1990-01-01', 'john.doe@example.com', 'John Doe', '$2a$10$3ScENDnVbvrmcpRA4jn0p.eXSmg2vSWJqLBIVcRz14bwo5lWniK82', 4, 2);
 
 INSERT INTO public.species_family (id, name, difficulty, opt_soil_mix, photo)
 VALUES
