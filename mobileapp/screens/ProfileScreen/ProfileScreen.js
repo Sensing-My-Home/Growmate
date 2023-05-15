@@ -23,6 +23,8 @@ import {
 import {CommonActions, useNavigation} from "@react-navigation/native";
 import ChangePassword from "./components/ChangePassword";
 
+import { clear } from "../../cache";
+
 
 export default function ProfileScreen(){
     const screenHeight = Dimensions.get('screen').height;
@@ -69,6 +71,7 @@ export default function ProfileScreen(){
         setUserPhoto("");
         setUserType("");
         setUserExperience(0);
+        clear();
         navigation.dispatch(CommonActions.reset({
             index: 0,
             routes: [{ name: "Initializer" }],
