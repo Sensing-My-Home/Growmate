@@ -27,7 +27,7 @@ export default function UserHeader({stats, name, logout}){
                 left: 0}} />
             }
             <View style={{alignItems: "center", marginTop: 40}}>
-            {userPhoto !== null ?
+            {userPhoto !== "null" && userPhoto !== null ?
                 <Avatar.Image
                 size={120}
                 source={ {uri: userPhoto}}

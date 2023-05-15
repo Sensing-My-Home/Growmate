@@ -29,7 +29,7 @@ import { deleteImage } from "../../service/FirebaseService";
 import Tasks from "../TasksScreen/components/Tasks";
 import GoBackButton from "../TasksScreen/components/GoBackButton";
 import TaskDialog from "./components/TaskDialog";
-import { userID } from "../../user";
+import {userID, userType} from "../../user";
 
 export default function PlantScreen({ route }) {
     const screenHeight = Dimensions.get('screen').height;
@@ -193,45 +193,83 @@ export default function PlantScreen({ route }) {
             <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
                 <GreenBar />
                 <PlantHeader name={plantInfo.name} />
-                <Tabs
-                    style={{ backgroundColor: theme.colors.background }}
-                >
-                    <TabScreen label="Info" icon="information">
-                        <ScrollView>
-                            <View style={{ paddingBottom: 100, paddingTop: 30 }}>
-                                <CheckSpeciesButton plantId={plantID} />
-                                <PlantAvatar
-                                    image={plantInfo.plantPhoto}
-                                    species={plantInfo.species["commonName"]}
-                                />
-                                <DeletePlant
-                                    name={plantInfo.name}
-                                    deletePlant={handleDeletePlant}
-                                />
-                                <SensorsCarousel />
-                                <PlantStatus name={plantInfo.name} status={plantInfo.plantCondition} />
-                                <PlantInformation
-                                    plant={plantInfo}
-                                    division={plantInfo.division}
-                                    divisions={divisions}
-                                />
-                            </View>
-                        </ScrollView>
-                    </TabScreen>
-                    <TabScreen label="Statistics " icon="chart-line">
-                        <SensorGraphStack />
-                    </TabScreen>
-                    <TabScreen label="Tasks " icon="pencil">
-                        <View>
-                            <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect} />
-                            <Tasks tasks={todoSelectedTasks} selected={selected} userId={userID} plantID={plantID} setCounter={setCounter} counter={counter} maxHeight={160} setChange={setChange} />
-                            {selected &&
-                                <GoBackButton onPress={goBack} />
-                            }
+                {userType === "PREMIUM" ?
+                    <Tabs
+                        style={{ backgroundColor: theme.colors.background }}
+                    >
+                        <TabScreen label="Info" icon="information">
+                            <ScrollView>
+                                <View style={{ paddingBottom: 100, paddingTop: 30 }}>
+                                    <CheckSpeciesButton plantId={plantID} />
+                                    <PlantAvatar
+                                        image={plantInfo.plantPhoto}
+                                        species={plantInfo.species["commonName"]}
+                                    />
+                                    <DeletePlant
+                                        name={plantInfo.name}
+                                        deletePlant={handleDeletePlant}
+                                    />
+                                    <SensorsCarousel />
+                                    <PlantStatus name={plantInfo.name} status={plantInfo.plantCondition} />
+                                    <PlantInformation
+                                        plant={plantInfo}
+                                        division={plantInfo.division}
+                                        divisions={divisions}
+                                    />
+                                </View>
+                            </ScrollView>
+                        </TabScreen>
+                        <TabScreen label="Statistics " icon="chart-line">
+                            <SensorGraphStack />
+                        </TabScreen>
+                        <TabScreen label="Tasks " icon="pencil">
+                            <View>
+                                <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect} />
+                                <Tasks tasks={todoSelectedTasks} selected={selected} userId={userID} plantID={plantID} setCounter={setCounter} counter={counter} maxHeight={160} setChange={setChange} />
+                                {selected &&
+                                    <GoBackButton onPress={goBack} />
+                                }
 
-                        </View>
-                    </TabScreen>
-                </Tabs>
+                            </View>
+                        </TabScreen>
+                    </Tabs>
+                    :
+                    <Tabs
+                        style={{ backgroundColor: theme.colors.background }}
+                    >
+                        <TabScreen label="Info" icon="information">
+                            <ScrollView>
+                                <View style={{ paddingBottom: 100, paddingTop: 30 }}>
+                                    <CheckSpeciesButton plantId={plantID} />
+                                    <PlantAvatar
+                                        image={plantInfo.plantPhoto}
+                                        species={plantInfo.species["commonName"]}
+                                    />
+                                    <DeletePlant
+                                        name={plantInfo.name}
+                                        deletePlant={handleDeletePlant}
+                                    />
+                                    <PlantStatus name={plantInfo.name} status={plantInfo.plantCondition} />
+                                    <PlantInformation
+                                        plant={plantInfo}
+                                        division={plantInfo.division}
+                                        divisions={divisions}
+                                    />
+                                </View>
+                            </ScrollView>
+                        </TabScreen>
+                        <TabScreen label="Tasks " icon="pencil">
+                            <View>
+                                <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect} />
+                                <Tasks tasks={todoSelectedTasks} selected={selected} userId={userID} plantID={plantID} setCounter={setCounter} counter={counter} maxHeight={160} setChange={setChange} />
+                                {selected &&
+                                    <GoBackButton onPress={goBack} />
+                                }
+
+                            </View>
+                        </TabScreen>
+                    </Tabs>
+                }
                 <TaskDialog hideChange={hideChange} visibleChange={visibleChange} taskName={taskName}
                     taskDueDate={taskDueDate} taskMode={taskMode} taskFrequency={taskFrequency}
                     setTaskMode={setTaskMode} setTaskDueDate={setTaskDueDate} setTaskFrequency={setTaskFrequency}

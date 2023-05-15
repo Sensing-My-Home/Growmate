@@ -15,7 +15,7 @@ export default function CategoryScreen({route}){
     }, []);
 
     const screenHeight = Dimensions.get('screen').height;
-    const {name, id} = route.params;
+    const {name, id, anonymous} = route.params;
     const theme = useTheme()
 
     return (
@@ -29,10 +29,12 @@ export default function CategoryScreen({route}){
                         name={specie.commonName}
                         image={specie.speciesPhoto}
                         difficulty={specie.difficulty}
+                        anonymous={anonymous}
+                        speciesID={specie.id}
                     />
                 ))}
             </ScrollView>
-            <BottomMenu screenHeight={screenHeight} active={"magnify"} />
+            <BottomMenu screenHeight={screenHeight} active={"magnify"} anonymous={anonymous} />
         </View>
     )
 }
