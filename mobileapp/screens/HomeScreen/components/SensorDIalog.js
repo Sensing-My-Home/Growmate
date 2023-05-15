@@ -23,13 +23,13 @@ export default function SensorDialog({ sensor, lastMeasurement, visible, onDismi
     }, [sensor]);
 
     const handleSave = () => {
-        onSave(editedName, sensor.original_id, dropDownValue);
+        onSave(editedName, sensor, dropDownValue);
         onDismiss();
     };
 
     const handleDelete = () => {
         setAlert(false);
-        onDelete(sensor.original_id);
+        onDelete(sensor);
         onDismiss();
     };
 

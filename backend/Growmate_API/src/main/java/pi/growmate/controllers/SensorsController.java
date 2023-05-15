@@ -52,8 +52,27 @@ public class SensorsController {
                                                           @RequestParam(name = "sensorType") int type,
                                                           @RequestParam(name = "sensorName") String name,
                                                           @RequestParam(name = "sensorCode") String code,
-                                                          @RequestParam(name = "ownerID") long ownerID) throws ResourceNotFoundException {
+                                                          @RequestParam(name = "ownerID") Long ownerID) throws ResourceNotFoundException {
         return ResponseEntity.ok().body(sensorsService.addNewSensor(userID, type, name, code, ownerID));
+    }
+
+    // Deletes a Sensor (sensorType: 0 - Division Sensor; 1 - Plant Sensor)
+    @DeleteMapping("/{userID}/sensors/{sensorID}")
+    public ResponseEntity<SuccessfulRequest> deleteSensor(@PathVariable(value = "userID") Long userID,
+                                                          @PathVariable(value = "sensorID") Long sensorID,
+                                                          @RequestParam(name = "sensorType") int type) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(sensorsService.deleteSensor(userID, sensorID, type));
+    }
+
+    // Changes a sensor's information, such as the division/plant it's associated with, or it's name. The ID of the new division/plant it's associated with
+    // is given by newAssociatedID. (sensorType: 0 - Division Sensor; 1 - Plant Sensor)
+    @PutMapping("/{userID}/sensors/{sensorID}")
+    public ResponseEntity<SuccessfulRequest> updateSensorInformation(@PathVariable(value = "userID") Long userID,
+                                                                     @PathVariable(value = "sensorID") Long sensorID,
+                                                                     @RequestParam(name = "sensorType") int type,
+                                                                     @RequestParam(name = "newName", required = false) String newName,
+                                                                     @RequestParam(name = "newAssociatedID", required = false) Long newAssociatedID) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(sensorsService.updateSensorInformation(userID, sensorID, type, newName, newAssociatedID));
     }
 
     // Getting the last measurements from all sensors related to a user
@@ -61,6 +80,15 @@ public class SensorsController {
     @GetMapping("/{userID}/sensors/last")
     public ResponseEntity<Map<String, Measurement>> returnLatestMeasurements(@PathVariable(value = "userID") Long userID) throws ResourceNotFoundException {
         return ResponseEntity.ok().body(sensorsService.getLatestMeasurements(userID));
+    }
+
+    // Getting the last measurements from a specific sensor related to a user (sensorType: 0 - Division Sensor; 1 - Plant Sensor)
+    //TODO: Not Tested
+    @GetMapping("/{userID}/sensors/{sensorID}/last")
+    public ResponseEntity<Map<String, Measurement>> returnLatestSingleMeasurement(@PathVariable(value = "userID") Long userID,
+                                                                                  @PathVariable(value = "sensorID") Long sensorID,
+                                                                                  @RequestParam(name = "sensorType") int type) throws ResourceNotFoundException {
+        return ResponseEntity.ok().body(sensorsService.getLatestSingleMeasurement(userID, sensorID, type));
     }
 
     // Get the measurements of a plant in the past 3 days

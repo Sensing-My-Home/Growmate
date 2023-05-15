@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { View, ScrollView, Dimensions } from "react-native";
-import { List, Card, useTheme, Text, Portal, Dialog } from "react-native-paper";
+import { List, Card, useTheme, Text } from "react-native-paper";
 
 import SensorTypeRadioGroup from "./SensorTypeRadioGroup";
 import SensorDropdown from "./SensorDropdown";
 import SensorInfoCard from "./SensorInfoCard";
 import SensorDialog from "./SensorDIalog";
+
+import { userID } from "../../../user";
+import { deleteSensor as deleteSensorService, getSensorLastMeasurement, editSensor as editSensorService } from "../../../service/HomeScreenService";
 
 export default function SensorsTab({ userDivisions, sensors, userPlants }) {
   const theme = useTheme();
@@ -20,6 +23,7 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
   const [filteredSensors, setFilteredSensors] = useState([]);
   const [sensorModalVisible, setSensorModalVisible] = useState(false);
   const [selectedSensor, setSelectedSensor] = useState(null);
+  const [selectedSensorLastMeasurement, setSelectedSensorLastMeasurement] = useState(null);
 
   useEffect(() => {
     const formatDivisionsList = (data) =>
@@ -55,15 +59,54 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
 
   const countSensors = filteredSensors.length;
 
-  const editSensor = (name, sensorID, dropDownValue) => {
+  const editSensor = async (name, sensor, dropDownValue) => {
     console.log(name);
-    console.log(sensorID);
+    console.log(sensor.id);
     console.log(dropDownValue);
+
+    let sensorType = sensor.type === "division" ? 0 : 1;
+
+    await editSensorService(userID, sensor.original_id, sensorType, name, dropDownValue);
+
+    // update sensor name
+    const newSensors = sensors.map((item) => {
+      if (item.id === sensor.id) {
+        item.name = name;
+        if (sensorType === 0) {
+          item.division_id = dropDownValue;
+        } else {
+          item.plant_id = dropDownValue;
+        }
+      }
+      return item;
+    });
+
+    setFilteredSensors(newSensors);
   }
 
-  const deleteSensor = (sensorID) => {
-    console.log(sensorID);
+  const deleteSensor = async (sensor) => {
+    console.log("Deleting " + sensor.name);
+
+    let sensorType = sensor.type === "division" ? 0 : 1;
+
+    await deleteSensorService(userID, sensor.original_id, sensorType);
+    
+    // remove sensor from list
+    const newSensors = sensors.filter((item) => item.original_id !== sensor.original_id);
+    setFilteredSensors(newSensors);
   }
+
+  // Get selected sensor last measurement value
+  //NOTE: NOT TESTED
+  useEffect(() => {
+    const getSensorLastMeasurementValue = async () => {
+      if (selectedSensor) {
+        const lastMeasurement = await getSensorLastMeasurement(userID, selectedSensor.original_id);
+        setSelectedSensorLastMeasurement(lastMeasurement);
+      }
+    }
+    getSensorLastMeasurementValue();
+  }, [selectedSensor]);
 
   return (
     <>
@@ -111,16 +154,17 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
                 setSensorModalVisible(true);
               }} />
           ))}
+          <View style={{ height: 100 }} /> {/* Spacer */}
         </ScrollView>
       </View>
 
       {selectedSensor && <SensorDialog
         sensor={selectedSensor}
-        lastMeasurement={100}
+        lastMeasurement={selectedSensorLastMeasurement}
         visible={sensorModalVisible}
         onDismiss={() => setSensorModalVisible(false)} // Update this line
-        onSave={(name, sensorID, dropDownValue) => editSensor(name, sensorID, dropDownValue)}
-        onDelete={(sensorID) => deleteSensor(sensorID)}
+        onSave={(name, sensor, dropDownValue) => editSensor(name, sensor, dropDownValue)}
+        onDelete={(sensor) => deleteSensor(sensor)}
         dropDownList={selectedSensor.type === 'division' ? userDivisions : userPlants}
       />}
     </>
