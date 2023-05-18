@@ -307,7 +307,7 @@ CREATE TABLE public.plant_species (
     optimal_temperature integer,
     scientific_name character varying(255),
     season integer,
-    photo character varying(255),
+    photo character varying(500),
     usual_size double precision,
     watering_frequency integer,
     family_id bigint NOT NULL,
