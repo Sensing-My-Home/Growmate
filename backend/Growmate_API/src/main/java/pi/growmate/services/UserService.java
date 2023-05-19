@@ -249,11 +249,12 @@ public class UserService {
             .average()
             .orElse(0);
 
-        double overall_score = sigmoid_score*0.2 + average_plant_condition * 0.6 + average_plant_difficulty * 0.2;
+        double overall_score = sigmoid_score*0.15 + getUser(idUser).getExp()*0.1 + average_plant_condition * 0.55 + average_plant_difficulty * 0.2;
 
         log.info("simgmoid score: {}", sigmoid_score);
         log.info("average condition: {}", average_plant_condition);
         log.info("average difficulty: {}", average_plant_difficulty);
+        log.info("user experience: {}", getUser(idUser).getExp());
         log.info("overall score: {}", overall_score);
 
         return plantSpeciesRepository.findAll().stream()
