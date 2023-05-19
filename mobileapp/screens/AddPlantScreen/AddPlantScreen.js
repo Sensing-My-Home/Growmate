@@ -1,15 +1,15 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { View, Dimensions } from "react-native";
 import BottomMenu from "../../components/BottomMenu";
 import GreenBar from "../../components/GreenBar";
 import AddPlantHeader from "./components/AddPlantHeader";
-import {useTheme} from "react-native-paper";
+import { useTheme } from "react-native-paper";
 import SearchBarSpecies from "./components/SearchBarSpecies";
 import AddPhoto from "./components/AddPhoto";
 import PlantName from "./components/PlantName";
 import NextButton from "./components/NextButton";
 import AddPlantationDate from "./components/AddPlantationDate";
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 
 export default function AddPlantScreen() {
@@ -27,7 +27,7 @@ export default function AddPlantScreen() {
             let dateFullYear = date.getFullYear().toString();
             let month;
 
-            if (date.getMonth() + 1 < 10){
+            if (date.getMonth() + 1 < 10) {
                 month = "0" + (date.getMonth() + 1).toString();
             }
             else {
@@ -36,7 +36,7 @@ export default function AddPlantScreen() {
 
             let day;
 
-            if (date.getDate() < 10){
+            if (date.getDate() < 10) {
                 day = "0" + date.getDate().toString();
             }
             else {
@@ -44,27 +44,26 @@ export default function AddPlantScreen() {
             }
 
             formattedDate = dateFullYear + "-" + month + "-" + day
-        }
-       else {
-           formattedDate = null;
+        } else {
+            formattedDate = null;
         }
 
         navigation.navigate("AssociatePlant", {
             image: image,
             date: formattedDate,
             specie: specieId,
-            name: name
+            name: name,
         });
     }
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <GreenBar />
-            <AddPlantHeader text={"Let us know the plant's details"}/>
-            <SearchBarSpecies inputValue={specie} setInputValue={setSpecie} setSpecieId={setSpecieId}/>
-            <AddPhoto image={image} setImage={setImage}/>
-            <AddPlantationDate inputDate={date} setInputDate={setDate}/>
-            <PlantName isImage={image} setName={setName}/>
-            <NextButton text={"Next"} page={"AssociatePlant"} reverse={false} onPress={onPressNext}/>
+            <AddPlantHeader text={"Let us know the plant's details"} />
+            <SearchBarSpecies inputValue={specie} setInputValue={setSpecie} setSpecieId={setSpecieId} />
+            <AddPhoto image={image} setImage={setImage} plant={true}/>
+            <AddPlantationDate inputDate={date} setInputDate={setDate} />
+            <PlantName isImage={image} setName={setName} />
+            <NextButton text={"Next"} page={"AssociatePlant"} reverse={false} onPress={onPressNext} />
             <BottomMenu screenHeight={screenHeight} active={"leaf"} />
         </View>
     )

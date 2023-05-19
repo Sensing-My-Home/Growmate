@@ -8,7 +8,8 @@ import DiscoverNewPlantsSearchBar from "./components/DiscoverNewPlantsSearchBar"
 import Categories from "./components/Categories";
 import {getCategories} from "../../service/DiscoverPlantsScreenService";
 
-export default function DiscoverPlantsScreen(){
+export default function DiscoverPlantsScreen({route}){
+    const {anonymous} = route.params;
     const [categories, setCategories] = useState([]);
 
     useEffect( () => {
@@ -22,8 +23,8 @@ export default function DiscoverPlantsScreen(){
             <GreenBar />
             <DiscoverNewPlantsHeader/>
             <DiscoverNewPlantsSearchBar/>
-            <Categories categories={categories}/>
-            <BottomMenu screenHeight={screenHeight} active={"magnify"} />
+            <Categories categories={categories} anonymous={anonymous}/>
+            <BottomMenu screenHeight={screenHeight} active={"magnify"} anonymous={anonymous}/>
         </View>
     )
 }

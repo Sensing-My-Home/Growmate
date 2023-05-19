@@ -6,4 +6,5 @@ import pi.growmate.datamodel.sensors.DivisionSensor;
 
 @Repository
 public interface DivisionSensorRepository extends JpaRepository<DivisionSensor, Long> {
+    DivisionSensor findDivisionSensorBySensorCode(String code);
 }

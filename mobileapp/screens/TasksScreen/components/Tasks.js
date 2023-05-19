@@ -2,34 +2,27 @@ import {ScrollView, View} from "react-native";
 import DayTasks from "./DayTasks";
 
 
-export default  function Tasks({tasks, selected}){
+export default  function Tasks({tasks, userId, plantID, setCounter, counter, maxHeight, setChange}){
     return (
         <View style={{ marginTop: 10, marginHorizontal: 30, justifyContent: "center", alignItems:"center"}}>
-            {selected ?
-                <ScrollView style={{ maxHeight: 220 }}  >
+                <ScrollView style={{ maxHeight: maxHeight}}  >
                     {tasks.map((task, index) => (
                         <DayTasks
+                            dateString={task.dateString}
                             key={index}
                             weekday={task.weekday}
                             day={task.day}
                             tasks = {task.tasks}
+                            userId={userId}
+                            plantId={plantID ? plantID : task.plantID}
+                            taskId={task.id}
+                            setCounter={setCounter}
+                            counter={counter}
+                            setChange={setChange}
+                            taskType={task.taskType}
                         />
                     ))}
                 </ScrollView>
-
-                :
-
-                <ScrollView style={{ maxHeight: 260 }}  >
-                    {tasks.map((task, index) => (
-                        <DayTasks
-                            key={index}
-                            weekday={task.weekday}
-                            day={task.day}
-                            tasks = {task.tasks}
-                        />
-                    ))}
-                </ScrollView>
-            }
         </View>
     )
 }

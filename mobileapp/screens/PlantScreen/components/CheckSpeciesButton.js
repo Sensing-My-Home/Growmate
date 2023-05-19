@@ -11,7 +11,7 @@ export default function CheckSpeciesButton({plantId}) {
             <Button
                 textColor={theme.colors.background}
                 buttonColor={theme.colors.primary}
-                onPress={() =>  {navigation.navigate("SpeciesProfile", {plantId: plantId});}}
+                onPress={() =>  {navigation.navigate("SpeciesProfile", {plantId: plantId, specieID: -1, anonymous: false});}}
             >
                 Check Species Info
             </Button>

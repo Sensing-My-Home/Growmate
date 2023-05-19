@@ -5,17 +5,22 @@ import React, {useEffect, useState} from "react";
 import {useTheme} from "react-native-paper";
 import SpeciesAvatar from "./components/SpeciesAvatar";
 import SpeciesInfo from "./components/SpeciesInfo";
-import SpeciesFooter from "./components/SpeciesFooter";
 import SpeciesHeader from "./components/SpeciesHeader";
-import {getPlantSpeciesInfo} from "../../service/SpeciesProfileScreenService";
+import {getPlantSpeciesInfo, getSpeciesInfo} from "../../service/SpeciesProfileScreenService";
+import {userID} from "../../user";
 
 export default function SpeciesProfileScreen({route}){
     const [plantSpeciesInfo, setPlantSpeciesInfo] = useState({});
+    const {plantId, specieID, anonymous} = route.params;
     useEffect( () => {
-        const {plantId} = route.params;
-        getPlantSpeciesInfo(1, plantId).then((info) => {setPlantSpeciesInfo(info)});
+        if (specieID > 0) {
+            getSpeciesInfo(specieID).then((info) => {setPlantSpeciesInfo(info)});
+        }
+        else {
+            getPlantSpeciesInfo(userID, plantId).then((info) => {setPlantSpeciesInfo(info)});
+        }
+
     }, [])
-    const speciesImage = require('../../assets/aloe-vera-closeup.jpeg');
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
     return (
@@ -24,8 +29,7 @@ export default function SpeciesProfileScreen({route}){
             <SpeciesHeader/>
             <SpeciesAvatar speciesFamily={plantSpeciesInfo.scientificName} species={plantSpeciesInfo.commonName} image={plantSpeciesInfo.speciesPhoto}/>
             <SpeciesInfo info={plantSpeciesInfo}/>
-            <SpeciesFooter/>
-            <BottomMenu screenHeight={screenHeight} active={"leaf"} />
+            <BottomMenu screenHeight={screenHeight} active={"leaf"} anonymous={anonymous}/>
         </View>
     )
 }
