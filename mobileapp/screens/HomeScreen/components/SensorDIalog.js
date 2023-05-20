@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Dialog, Portal, Button, TextInput, Text, useTheme } from "react-native-paper";
 import { View, StyleSheet } from "react-native";
 
 import SensorDropdown from "./SensorDropdown";
+import { getMeasurementUnit, lastTimeUpdated } from "../../../utils";
 
 export default function SensorDialog({ sensor, lastMeasurement, visible, onDismiss, onSave, onDelete, dropDownList }) {
-    const [editedName, setEditedName] = useState();
-    const [dropDownValue, setDropDownValue] = useState();
+    const [editedName, setEditedName] = useState(sensor.name);
+    const [dropDownValue, setDropDownValue] = useState(sensor.type === "plant" ? sensor.plant_id : sensor.division_id);
     const [alert, setAlert] = useState(false);
     const dropDownLabel = sensor.type === "plant" ? "Plant" : "Division";
     const theme = useTheme();
 
-    const dropDownListFormated = dropDownList.map(item => ({ label: item.name, value: String(item.id) }));
+    const dropDownListFormatted = dropDownList.map(({ name, id }) => ({ label: name, value: String(id) }));
 
     const handleNameChange = (name) => {
         setEditedName(name);
     };
-
-    useEffect(() => {
-        setEditedName(sensor.name);
-        setDropDownValue(sensor.type === "plant" ? sensor.plant_id : sensor.division_id);
-    }, [sensor]);
 
     const handleSave = () => {
         onSave(editedName, sensor, dropDownValue);
@@ -52,9 +48,16 @@ export default function SensorDialog({ sensor, lastMeasurement, visible, onDismi
                     </View>
                     <View style={styles.row}>
                         <Text variant="bodyLarge">Last Measurement:</Text>
-                        <Text style={styles.text} variant="bodyMedium">{lastMeasurement}</Text>
+                        {lastMeasurement !== "No data" ? (
+                            <>
+                                <Text style={styles.text} variant="bodyMedium">{lastMeasurement.value} {getMeasurementUnit(lastMeasurement.type)}</Text>
+                                <Text style={styles.text} variant="bodySmall">{lastTimeUpdated(lastMeasurement.date)}</Text>
+                            </>
+                        ) : (
+                            <Text style={styles.text} variant="bodyMedium">No measurements</Text>
+                        )}
                     </View>
-                    <SensorDropdown value={dropDownValue} setValue={setDropDownValue} list={dropDownListFormated} label={dropDownLabel} />
+                    <SensorDropdown value={dropDownValue} setValue={setDropDownValue} list={dropDownListFormatted} label={dropDownLabel} />
                 </Dialog.Content>
                 <Dialog.Actions>
                     <Button onPress={handleSave} buttonColor={theme.colors.primary} textColor={theme.colors.background}>Save</Button>
@@ -65,7 +68,7 @@ export default function SensorDialog({ sensor, lastMeasurement, visible, onDismi
             <Dialog visible={alert} onDismiss={() => setAlert(false)} style={{ backgroundColor: theme.colors.background }}>
                 <Dialog.Title>Alert</Dialog.Title>
                 <Dialog.Content>
-                    <Text variant="bodyMedium">Are you sure that you want to delete the sensor?</Text>
+                    <Text variant="bodyMedium">Are you sure you want to delete the sensor?</Text>
                 </Dialog.Content>
                 <Dialog.Actions>
                     <Button onPress={() => setAlert(false)} buttonColor={theme.colors.error} textColor={theme.colors.background}>Cancel</Button>
@@ -91,6 +94,3 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
 });
-
-
-

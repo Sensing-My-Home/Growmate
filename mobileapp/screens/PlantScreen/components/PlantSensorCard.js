@@ -1,28 +1,30 @@
 import { View, Dimensions } from "react-native";
 import { Card, Text, Avatar, useTheme } from 'react-native-paper';
 
-export default function PlantSensorCard({ type, value }) {
+export default function PlantSensorCard({ sensor }) {
     const cardSize = Dimensions.get('screen').width / 2;
     const theme = useTheme();
 
+    const { id, name, sensorCode, type, value } = sensor;
+
     const selectIcon = (type) => {
         switch (type) {
-            case "soil":
+            case "soilq":
                 return "water"
-            case "air":
+            case "airq":
                 return "weather-windy"
-            case "temperature":
+            case "airtemp":
                 return "thermometer"
         }
     }
 
     const selectLabel = (type) => {
         switch (type) {
-            case "soil":
+            case "soilq":
                 return "Soil Moisture"
-            case "air":
+            case "airq":
                 return "Air Humidity"
-            case "temperature":
+            case "airtemp":
                 return "Air Temperature"
         }
     }
@@ -34,13 +36,13 @@ export default function PlantSensorCard({ type, value }) {
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Avatar.Icon
                             size={40}
-                            icon={selectIcon(type)}
+                            icon={selectIcon(value.type)}
                             style={{ backgroundColor: theme.colors.primary }}
                             color={theme.colors.background}
                         />
                         <View style={{ marginHorizontal: 15 }}>
-                            <Text variant="bodyLarge">{value}{type == 'temperature' ? "ºC" : "%"}</Text>
-                            <Text variant="bodyMedium">{selectLabel(type)}</Text>
+                            <Text variant="bodyLarge">{value.value}{type == 'temperature' ? "ºC" : "%"}</Text>
+                            <Text variant="bodyMedium">{selectLabel(value.type)}</Text>
                         </View>
                     </View>
                 </Card.Content>

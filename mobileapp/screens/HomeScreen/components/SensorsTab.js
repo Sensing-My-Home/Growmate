@@ -60,10 +60,6 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
   const countSensors = filteredSensors.length;
 
   const editSensor = async (name, sensor, dropDownValue) => {
-    console.log(name);
-    console.log(sensor.id);
-    console.log(dropDownValue);
-
     let sensorType = sensor.type === "division" ? 0 : 1;
 
     await editSensorService(userID, sensor.original_id, sensorType, name, dropDownValue);
@@ -90,7 +86,7 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
     let sensorType = sensor.type === "division" ? 0 : 1;
 
     await deleteSensorService(userID, sensor.original_id, sensorType);
-    
+
     // remove sensor from list
     const newSensors = sensors.filter((item) => item.original_id !== sensor.original_id);
     setFilteredSensors(newSensors);
@@ -101,12 +97,19 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
   useEffect(() => {
     const getSensorLastMeasurementValue = async () => {
       if (selectedSensor) {
-        const lastMeasurement = await getSensorLastMeasurement(userID, selectedSensor.original_id);
+        const sensorType = selectedSensor.type === "division" ? 0 : 1;
+        const lastMeasurement = await getSensorLastMeasurement(userID, selectedSensor.original_id, sensorType);
         setSelectedSensorLastMeasurement(lastMeasurement);
       }
     }
     getSensorLastMeasurementValue();
   }, [selectedSensor]);
+
+  const handleDismiss = () => {
+    setSensorModalVisible(false);
+    setSelectedSensor(null);
+    setSelectedSensorLastMeasurement(null);
+  }
 
   return (
     <>
@@ -158,11 +161,11 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
         </ScrollView>
       </View>
 
-      {selectedSensor && <SensorDialog
+      {selectedSensor && selectedSensorLastMeasurement && <SensorDialog
         sensor={selectedSensor}
         lastMeasurement={selectedSensorLastMeasurement}
         visible={sensorModalVisible}
-        onDismiss={() => setSensorModalVisible(false)}
+        onDismiss={() => handleDismiss()}
         onSave={(name, sensor, dropDownValue) => editSensor(name, sensor, dropDownValue)}
         onDelete={(sensor) => deleteSensor(sensor)}
         dropDownList={selectedSensor.type === 'division' ? userDivisions : userPlants}

@@ -6,38 +6,24 @@ import { View, Dimensions } from 'react-native';
 const { width: screenWidth } = Dimensions.get('window');
 const { height: screenHeight } = Dimensions.get('window');
 
-export default function SensorsCarousel() {
-
-    const sensors = [
-        {
-            id: 0,
-            type: 'soil',
-            value: '56'
-        },
-        {
-            id: 1,
-            type: 'temperature',
-            value: '18'
-        },
-        {
-            id: 2,
-            type: 'air',
-            value: '78'
-        },
-    ];
+export default function SensorsCarousel({sensors}) {
 
     const [entries, setEntries] = useState([]);
 
     useEffect(() => {
-        setEntries(sensors);
+        // Only set entries if the value in not "No data"
+        for (let i = 0; i < sensors.length; i++) {
+            if (sensors[i].value !== "No data") {
+                setEntries((prev) => [...prev, sensors[i]]);
+            }
+        }
     }, []);
 
     const renderItem = ({ item, index }) => {
         return (
             <PlantSensorCard
                 key={index}
-                type={item.type}
-                value={item.value}
+                sensor={item}
             />
         );
     };

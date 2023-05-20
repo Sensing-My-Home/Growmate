@@ -1,4 +1,6 @@
 import axios from "axios";
+import { getSensorLastMeasurement } from "./HomeScreenService";
+
 const baseURL = "http://10.0.2.2:8080/growmate"
 
 const getPlantInfo = async (userID, plantID) => {
@@ -10,13 +12,27 @@ const getSensorsForPlant = async (userID, plantID, division) => {
     let sensors = [];
 
     await axios.get(baseURL + "/user/" + userID + "/sensors/plant/" + plantID)
-    .then((plantSensors) => plantSensors.data.map((sensor) => sensors.push(sensor)));
+        .then((plantSensors) => plantSensors.data.map((sensor) => sensors.push({
+            id: sensor["id"],
+            name: sensor["name"],
+            sensorCode: sensor["sensorCode"],
+            type: 1,
+        })));
 
-    if (division !== null){
+    if (division !== null) {
         await axios.get(baseURL + "/user/" + userID + "/sensors/division/" + division["id"])
-            .then((divisionSensors) => divisionSensors.data.map((sensor) => sensors.push(sensor)));
-
+            .then((divisionSensors) => divisionSensors.data.map((sensor) => sensors.push({
+                id: sensor["id"],
+                name: sensor["name"],
+                sensorCode: sensor["sensorCode"],
+                type: 0,
+            })));
     }
+
+    for (let i = 0; i < sensors.length; i++) {
+        sensors[i]["value"] = await getSensorLastMeasurement(userID, sensors[i]["id"], sensors[i]["type"]);
+    }
+
     return sensors;
 }
 
@@ -24,6 +40,44 @@ const getAllDivisions = async (userID) => {
     const response = await axios.get(baseURL + "/user/" + userID + "/divisions");
     return response.data;
 }
+
+const groupSensorData = (data) => {
+    const groupedData = {};
+
+    for (const sensorType in data) {
+        for (const item of data[sensorType]) {
+            const date = item.postDate.slice(0, 10);
+            const type = sensorType.split("_")[1];
+
+            if (!groupedData[type]) {
+                groupedData[type] = {};
+            }
+
+            if (!groupedData[type][date]) {
+                groupedData[type][date] = [];
+            }
+
+            groupedData[type][date].push(item);
+        }
+    }
+
+    return groupedData;
+};
+
+const getLastThreeDaysMeasurements = async (userID, plantID) => {
+    try {
+        const response = await axios.get(
+            `${baseURL}/user/${userID}/sensors/last/plant/${plantID}`
+        );
+
+        const sensorData = response.data;
+        const groupedData = groupSensorData(sensorData);
+        return groupedData;
+    } catch (error) {
+        console.error("Error fetching measurements:", error);
+        return null;
+    }
+};
 
 const getPlantTasksTodo = async (userID, plantID) => {
     const response = await axios.get(baseURL + "/user/tasks/" + userID + "/plant/" + plantID + "/todo");
@@ -65,5 +119,7 @@ const updateTaskFrequency = async (userID, plantID, taskType, frequency) => {
     await axios.put(baseURL + "/user/tasks/" + userID + "/plant/" + plantID + "/frequency?taskType=" + taskType + "&frequency=" + frequency);
 }
 
-export {getPlantInfo, getAllDivisions, getSensorsForPlant, getPlantTasksTodo, updateTask, deletePlant, getTaskSettings,
-    updateTaskDate, toggleTaskMode, updateTaskFrequency}
+export {
+    getPlantInfo, getAllDivisions, getSensorsForPlant, getPlantTasksTodo, updateTask, deletePlant, getTaskSettings,
+    updateTaskDate, toggleTaskMode, updateTaskFrequency, getLastThreeDaysMeasurements
+}

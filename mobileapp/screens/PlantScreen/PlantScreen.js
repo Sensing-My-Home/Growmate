@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Dimensions, ScrollView } from "react-native";
 import { Tabs, TabScreen } from 'react-native-paper-tabs';
-import { useTheme } from "react-native-paper";
+import { useTheme, ActivityIndicator } from "react-native-paper";
 import { useNavigation, StackActions } from '@react-navigation/native';
 
 import BottomMenu from "../../components/BottomMenu";
@@ -23,7 +23,8 @@ import {
     getPlantTasksTodo,
     getSensorsForPlant,
     deletePlant,
-    getTaskSettings
+    getTaskSettings,
+    getLastThreeDaysMeasurements
 } from "../../service/PlantScreenService";
 import { deleteImage } from "../../service/FirebaseService";
 import Tasks from "../TasksScreen/components/Tasks";
@@ -35,31 +36,57 @@ export default function PlantScreen({ route }) {
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme();
     const navigation = useNavigation();
+
     // Info for the API call
     const { plantID } = route.params;
 
     // Get Plant info
     const [plantInfo, setPlantInfo] = useState(null);
+    const [loadingPlantInfo, setLoadingPlantInfo] = useState(true);
     useEffect(() => {
         getPlantInfo(userID, plantID)
-            .then((info) => setPlantInfo(info));
+            .then((info) => {
+                setPlantInfo(info);
+                setLoadingPlantInfo(false);
+            });
     }, [])
 
     // Get All sensors associated with a plant
     const [sensors, setSensors] = useState(null)
+    const [loadingSensors, setLoadingSensors] = useState(true);
     useEffect(() => {
         if (plantInfo) {
             getSensorsForPlant(userID, plantID, plantInfo.division)
-                .then((info) => setSensors(info));
+                .then((info) => {
+                    setSensors(info);
+                    setLoadingSensors(false);
+                });
         }
     }, [plantInfo])
 
     // Get All Divisions
     const [divisions, setDivisions] = useState(null);
+    const [loadingDivisions, setLoadingDivisions] = useState(true);
     useEffect(() => {
         getAllDivisions(userID)
-            .then((info) => setDivisions(info));
+            .then((info) => {
+                setDivisions(info);
+                setLoadingDivisions(false);
+            });
     }, [])
+
+    // Get Last 3 days of measurements
+    const [lastThreeDaysMeasurements, setLastThreeDaysMeasurements] = useState(null);
+    const [loadingMeasurements, setLoadingMeasurements] = useState(true);
+    useEffect(() => {
+        if (sensors) {
+            getLastThreeDaysMeasurements(userID, plantID)
+                .then((info) => {
+                    setLastThreeDaysMeasurements(info);
+                    setLoadingMeasurements(false);
+                });
+        }
+    }, [sensors])
 
     //Get Plant tasks
     const [todoTasks, setTodoTasks] = useState([]);
@@ -67,6 +94,7 @@ export default function PlantScreen({ route }) {
     const [todoSelectedTasks, setTodoSelectedTasks] = useState([]);
     const [selected, setSelected] = useState(false);
     const [counter, setCounter] = useState(0);
+    const [loadingTasks, setLoadingTasks] = useState(true);
     useEffect(() => {
         getPlantTasksTodo(userID, plantID).then((tasks) => {
             const rawTasks = tasks;
@@ -101,11 +129,13 @@ export default function PlantScreen({ route }) {
                 setTodoTaskDates(taskDates);
                 setTodoTasks(todoTasks);
                 onDaySelect(selectedDay, todoTasks);
+                setLoadingTasks(false);
             }
             else {
                 setTodoTaskDates(taskDates);
                 setTodoTasks(todoTasks);
                 setTodoSelectedTasks(todoTasks);
+                setLoadingTasks(false);
             }
 
         });
@@ -188,7 +218,16 @@ export default function PlantScreen({ route }) {
     }
     const hideChange = () => setVisibleChange(false);
 
-    if (plantInfo && divisions && sensors && todoTasks) {
+    // Render loading indicator if any data is loading
+    if (loadingPlantInfo || loadingSensors || loadingDivisions || loadingMeasurements || loadingTasks) {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <ActivityIndicator size="large" />
+            </View>
+        );
+    }
+
+    if (plantInfo && divisions && sensors && todoTasks && lastThreeDaysMeasurements && todoSelectedTasks) {
         return (
             <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
                 <GreenBar />
@@ -209,7 +248,7 @@ export default function PlantScreen({ route }) {
                                         name={plantInfo.name}
                                         deletePlant={handleDeletePlant}
                                     />
-                                    <SensorsCarousel />
+                                    <SensorsCarousel sensors={sensors}/>
                                     <PlantStatus name={plantInfo.name} status={plantInfo.plantCondition} />
                                     <PlantInformation
                                         plant={plantInfo}
@@ -220,7 +259,7 @@ export default function PlantScreen({ route }) {
                             </ScrollView>
                         </TabScreen>
                         <TabScreen label="Statistics " icon="chart-line">
-                            <SensorGraphStack />
+                            <SensorGraphStack measurements={lastThreeDaysMeasurements}/>
                         </TabScreen>
                         <TabScreen label="Tasks " icon="pencil">
                             <View>
