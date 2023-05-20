@@ -1,8 +1,8 @@
 import GreenBar from "../../components/GreenBar";
 import BottomMenu from "../../components/BottomMenu";
-import { Dimensions, ScrollView, View, ActivityIndicator, FlatList } from "react-native";
+import { Dimensions, View, FlatList } from "react-native";
 import React, { useState, useEffect } from "react";
-import { useTheme } from "react-native-paper";
+import { useTheme, ActivityIndicator } from "react-native-paper";
 import AddPlantHeader from "../AddPlantScreen/components/AddPlantHeader";
 import PlantItem from "./components/PlantItem";
 import { getCategorySpecies } from "../../service/CategoryScreenService";

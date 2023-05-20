@@ -16,7 +16,7 @@ export default function SensorGraphStack({ measurements }) {
     const processSensorData = (sensorData) => {
         return sensorData.map((date) => {
           const hourlyData = date.reduce((acc, item) => {
-            const hour = item.postDate.slice(0, 13);
+            const hour = item.postDate.slice(11, 13);
             acc[hour] = item;
             return acc;
           }, {});

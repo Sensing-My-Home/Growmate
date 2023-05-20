@@ -1,7 +1,6 @@
 package pi.growmate.rabbitmq;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -10,6 +9,8 @@ import org.springframework.stereotype.Service;
 import pi.growmate.datamodel.measurements.AirQualityMeasurement;
 import pi.growmate.datamodel.measurements.AirTemperatureMeasurement;
 import pi.growmate.datamodel.measurements.SoilQualityMeasurement;
+import pi.growmate.datamodel.sensors.DivisionSensor;
+import pi.growmate.datamodel.sensors.PlantSensor;
 import pi.growmate.repositories.division.DivisionSensorRepository;
 import pi.growmate.repositories.measurements.AirQualityRepository;
 import pi.growmate.repositories.measurements.AirTemperatureRepository;
@@ -47,9 +48,16 @@ public class RabbitMQConsumer {
             String code = jsonNode.get("code").asText();
             double value = jsonNode.get("value").asDouble();
 
+            // Check if the sensor exists
+            DivisionSensor sensor = divisionSensorRepository.findDivisionSensorBySensorCode(code);
+            if (sensor == null) {
+                LOGGER.warn("Sensor with code {} does not exist. Skipping measurement.", code);
+                return;
+            }
+
             // Create a new AirQualityMeasurement object
             AirQualityMeasurement measurement = new AirQualityMeasurement();
-            measurement.setSensor(divisionSensorRepository.findDivisionSensorBySensorCode(code));
+            measurement.setSensor(sensor);
             measurement.setMeasurement(value);
             measurement.setPostDate(LocalDateTime.now());
 
@@ -71,9 +79,16 @@ public class RabbitMQConsumer {
             String code = jsonNode.get("code").asText();
             double value = jsonNode.get("value").asDouble();
 
+            // Check if the sensor exists
+            DivisionSensor sensor = divisionSensorRepository.findDivisionSensorBySensorCode(code);
+            if (sensor == null) {
+                LOGGER.warn("Sensor with code {} does not exist. Skipping measurement.", code);
+                return;
+            }
+
             // Create a new AirTemperatureMeasurement object
             AirTemperatureMeasurement measurement = new AirTemperatureMeasurement();
-            measurement.setSensor(divisionSensorRepository.findDivisionSensorBySensorCode(code));
+            measurement.setSensor(sensor);
             measurement.setMeasurement(value);
             measurement.setPostDate(LocalDateTime.now());
 
@@ -86,6 +101,7 @@ public class RabbitMQConsumer {
         }
     }
 
+
     @RabbitListener(queues = "${rabbitmq.soil.humidity.queue.name}")
     public void consumeSoilHumidity(JsonNode jsonNode) {
         LOGGER.info("Received message -> {}", jsonNode);
@@ -95,9 +111,16 @@ public class RabbitMQConsumer {
             String code = jsonNode.get("code").asText();
             double value = jsonNode.get("value").asDouble();
 
+            // Check if the sensor exists
+            PlantSensor sensor = plantSensorRepository.findPlantSensorBySensorCode(code);
+            if (sensor == null) {
+                LOGGER.warn("Sensor with code {} does not exist. Skipping measurement.", code);
+                return;
+            }
+
             // Create a new SoilQualityMeasurement object
             SoilQualityMeasurement measurement = new SoilQualityMeasurement();
-            measurement.setSensor(plantSensorRepository.findPlantSensorBySensorCode(code));
+            measurement.setSensor(sensor);
             measurement.setMeasurement(value);
             measurement.setPostDate(LocalDateTime.now());
 

@@ -4,8 +4,8 @@
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
 
-#define HumidityCode  "TMP123"
-#define TemperatureCode  "HMD456"
+#define HumidityCode  "HMD456"
+#define TemperatureCode  "TMP123"
 #define SoilCode  "ANT123"
 
 #define DHTPIN     2
@@ -16,11 +16,11 @@ const int soil_dry = 1023;
 const int soil_wet = 490;
 
 // Change the credentials below, so your ESP8266 connects to your router
-const char* ssid = "Vodafone-065437";
-const char* password = "CACCACCDCE36CJH3";
+const char* ssid = "MEO-F6B820";
+const char* password = "2f1d682ac9";
 
 // Change the variable to your Raspberry Pi IP address, so it connects to your MQTT broker
-const char* mqtt_server = "192.168.1.180";
+const char* mqtt_server = "192.168.1.68";
 const int mqtt_port = 1883;
 const char* mqttUser = "growmate";
 const char* mqttPassword = "growmate";

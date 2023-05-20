@@ -28,6 +28,10 @@ export default function SensorsCarousel({sensors}) {
         );
     };
 
+    if (entries.length === 0) return (
+        <></>
+    );
+
     return (
         <View style={{ height: screenHeight / 6 }}>
             <Carousel
