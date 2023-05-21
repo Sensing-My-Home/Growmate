@@ -20,7 +20,7 @@ const char* ssid = "MEO-F6B820";
 const char* password = "2f1d682ac9";
 
 // Change the variable to your Raspberry Pi IP address, so it connects to your MQTT broker
-const char* mqtt_server = "192.168.1.68";
+const char* mqtt_server = "13.80.159.172";
 const int mqtt_port = 1883;
 const char* mqttUser = "growmate";
 const char* mqttPassword = "growmate";

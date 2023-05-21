@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="merged conflicts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/datamodel/plant/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/rabbitmq/RabbitMQConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/rabbitmq/RabbitMQConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/plant/PlantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/repositories/plant/PlantRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/services/AlgorithmsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/services/AlgorithmsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../sensors/soil_hum_temp/soil_hum_temp.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../../sensors/soil_hum_temp/soil_hum_temp.ino" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +133,7 @@
       <workItem from="1684676940253" duration="70000" />
       <workItem from="1684677016087" duration="105000" />
       <workItem from="1684677173535" duration="2864000" />
+      <workItem from="1684684931036" duration="807000" />
     </task>
     <servers />
   </component>
