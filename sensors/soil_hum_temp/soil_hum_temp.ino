@@ -13,7 +13,7 @@
 
 const int soil_sensor_pin = A0;
 const int soil_dry = 1023;
-const int soil_wet = 490;
+const int soil_wet = 550;
 
 // Change the credentials below, so your ESP8266 connects to your router
 const char* ssid = "MEO-F6B820";
