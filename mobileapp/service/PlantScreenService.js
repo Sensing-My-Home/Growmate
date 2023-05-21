@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getSensorLastMeasurement } from "./HomeScreenService";
 
-const baseURL = "http://10.0.2.2:8080/growmate"
+const baseURL = "http://13.80.159.172/growmate"
 
 const getPlantInfo = async (userID, plantID) => {
     const response = await axios.get(baseURL + "/user/" + userID + "/inventory/" + plantID);

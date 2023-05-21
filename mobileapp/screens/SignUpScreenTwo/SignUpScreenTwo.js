@@ -40,7 +40,6 @@ export default function SignUpScreenTwo({route}){
 
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <LoginSignUpHeader title={"Just a few more steps..."} subtitle={"Tell us more about yourself!"}/>
             <SignUpMoreInfo photo={photo} setPhoto={setPhoto} setName={setName} nameIsValid={nameIsValid} setNameIsValid={setNameIsValid}
                             addressIsValid={addressIsValid} dateOfBirthIsValid={dateOfBirthIsValid} setAddress={setAddress}

@@ -51,7 +51,6 @@ export default function HomeScreen() {
 
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <View style={{ position: 'relative', zIndex: 1 }}>
             <WelcomeHeader premium={userType === "PREMIUM"} name={userFirstName}/>
             </View>

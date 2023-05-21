@@ -73,7 +73,6 @@ export default function InitializerScreen() {
 
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <Logo />
             <LogIn />
             <SignUp />

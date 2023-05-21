@@ -25,6 +25,8 @@ import SignUpScreenTwo from "./screens/SignUpScreenTwo/SignUpScreenTwo";
 import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
 registerTranslation('en-GB', enGB)
 
+import GreenBar from './components/GreenBar';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +38,7 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
+      <GreenBar />
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{

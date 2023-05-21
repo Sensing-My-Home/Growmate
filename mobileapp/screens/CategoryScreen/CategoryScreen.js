@@ -42,7 +42,6 @@ export default function CategoryScreen({ route }) {
 
   return (
     <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-      <GreenBar />
       <AddPlantHeader text={name} />
       <FlatList
         data={species}

@@ -20,7 +20,6 @@ export default function DiscoverPlantsScreen({route}){
     const theme = useTheme()
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <DiscoverNewPlantsHeader/>
             <DiscoverNewPlantsSearchBar/>
             <Categories categories={categories} anonymous={anonymous}/>

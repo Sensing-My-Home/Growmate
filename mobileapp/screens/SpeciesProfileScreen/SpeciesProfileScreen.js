@@ -25,7 +25,6 @@ export default function SpeciesProfileScreen({route}){
     const theme = useTheme()
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <SpeciesHeader/>
             <SpeciesAvatar speciesFamily={plantSpeciesInfo.scientificName} species={plantSpeciesInfo.commonName} image={plantSpeciesInfo.speciesPhoto}/>
             <SpeciesInfo info={plantSpeciesInfo}/>

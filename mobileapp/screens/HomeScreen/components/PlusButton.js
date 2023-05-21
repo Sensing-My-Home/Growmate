@@ -25,7 +25,7 @@ export default function PlusButton({ index}) {
             navigation.navigate(page);
         }} style={{
             position: 'absolute',
-            bottom: screenHeight/13 * 2,
+            bottom: screenHeight/12 * 2,
             right: screenWidth/12,
             borderRadius: 50,
             backgroundColor: theme.colors.primary,

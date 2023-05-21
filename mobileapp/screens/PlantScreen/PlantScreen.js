@@ -249,7 +249,6 @@ export default function PlantScreen({ route }) {
     if (plantInfo && divisions && sensors && todoTasks && lastThreeDaysMeasurements && todoSelectedTasks) {
         return (
             <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-                <GreenBar />
                 <PlantHeader name={plantInfo.name} />
                 {userType === "PREMIUM" ?
                     <Tabs
