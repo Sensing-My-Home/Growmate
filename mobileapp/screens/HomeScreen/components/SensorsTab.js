@@ -157,7 +157,7 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
                 setSensorModalVisible(true);
               }} />
           ))}
-          <View style={{ height: 100 }} />
+          <View style={{ height: 200 }} />
         </ScrollView>
       </View>
 

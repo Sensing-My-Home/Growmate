@@ -24,13 +24,14 @@ import {
     getSensorsForPlant,
     deletePlant,
     getTaskSettings,
-    getLastThreeDaysMeasurements
+    getLastThreeDaysMeasurements,
+    updatePlantInfo,
 } from "../../service/PlantScreenService";
 import { deleteImage } from "../../service/FirebaseService";
 import Tasks from "../TasksScreen/components/Tasks";
 import GoBackButton from "../TasksScreen/components/GoBackButton";
 import TaskDialog from "./components/TaskDialog";
-import {userID, userType} from "../../user";
+import { userID, userType } from "../../user";
 
 export default function PlantScreen({ route }) {
     const screenHeight = Dimensions.get('screen').height;
@@ -218,6 +219,24 @@ export default function PlantScreen({ route }) {
     }
     const hideChange = () => setVisibleChange(false);
 
+    // Handle Save information
+    const handleSave = (plantName, plantationDate) => {
+        // Set plantation date to java.sql.Date format
+        const date = new Date(plantationDate);
+        const sqlDate = date.toISOString().slice(0, 10);
+
+        updatePlantInfo(userID, plantID, plantName, sqlDate).then(
+            () => {
+                setPlantInfo({
+                    ...plantInfo,
+                    name: plantName,
+                    plantationDate: sqlDate
+                });
+                hideChange();
+            }
+        )
+    }
+
     // Render loading indicator if any data is loading
     if (loadingPlantInfo || loadingSensors || loadingDivisions || loadingMeasurements || loadingTasks) {
         return (
@@ -248,18 +267,18 @@ export default function PlantScreen({ route }) {
                                         name={plantInfo.name}
                                         deletePlant={handleDeletePlant}
                                     />
-                                    <SensorsCarousel sensors={sensors}/>
+                                    <SensorsCarousel sensors={sensors} />
                                     <PlantStatus name={plantInfo.name} status={plantInfo.plantCondition} />
                                     <PlantInformation
                                         plant={plantInfo}
                                         division={plantInfo.division}
-                                        divisions={divisions}
+                                        handleSave={(plantName, plantationDate) => handleSave(plantName, plantationDate)}
                                     />
                                 </View>
                             </ScrollView>
                         </TabScreen>
                         <TabScreen label="Statistics " icon="chart-line">
-                            <SensorGraphStack measurements={lastThreeDaysMeasurements}/>
+                            <SensorGraphStack measurements={lastThreeDaysMeasurements} />
                         </TabScreen>
                         <TabScreen label="Tasks " icon="pencil">
                             <View>

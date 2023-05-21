@@ -119,7 +119,12 @@ const updateTaskFrequency = async (userID, plantID, taskType, frequency) => {
     await axios.put(baseURL + "/user/tasks/" + userID + "/plant/" + plantID + "/frequency?taskType=" + taskType + "&frequency=" + frequency);
 }
 
+const updatePlantInfo = async (userID, plantID, plantName, plantationDate) => {
+
+    await axios.put(baseURL + "/user/" + userID + "/inventory/" + plantID + "?nomePlanta=" + plantName + "&plantation-date=" + plantationDate);
+}
+
 export {
     getPlantInfo, getAllDivisions, getSensorsForPlant, getPlantTasksTodo, updateTask, deletePlant, getTaskSettings,
-    updateTaskDate, toggleTaskMode, updateTaskFrequency, getLastThreeDaysMeasurements
+    updateTaskDate, toggleTaskMode, updateTaskFrequency, getLastThreeDaysMeasurements, updatePlantInfo
 }
