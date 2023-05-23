@@ -16,3 +16,17 @@ export const getCategorySpecies = async (id) => {
     
     return response.data;
 };
+
+export const getSuggestedSpecies = async (userID) => {
+    const cacheKey = "suggestedSpecies";
+
+    const cacheData = await getItem(cacheKey);
+    if (cacheData !== null) {
+        console.log("cache");
+        return cacheData;
+    }
+
+    const response = await axios.get(baseURL + "/user/" + userID + "/recommendation");
+    await setItem(cacheKey, response.data);
+    return response.data;
+}
