@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { View, Dimensions } from "react-native";
 import BottomMenu from "../../components/BottomMenu";
 import SearchBar from "../../components/SearchBar";
 import WelcomeHeader from "./components/WelcomeHeader"
 import PlantCards from "./components/PlantCards";
-import { useTheme } from "react-native-paper";
+import {IconButton, useTheme} from "react-native-paper";
 import PlusButton from "./components/PlusButton";
 import { Tabs, TabScreen } from 'react-native-paper-tabs';
 import Divisions from "./components/Divisions";
@@ -59,6 +59,20 @@ export default function HomeScreen() {
         setQueriedUserPlants(queriedPlants)
     }
 
+    const scrollViewRef = useRef(null);
+    const [scrollOffset, setScrollOffset] = useState(0);
+
+    const handleScroll = (event) => {
+        const offsetY = event.nativeEvent.contentOffset.y;
+        setScrollOffset(offsetY);
+    };
+    const handleScrollToBottom = () => {
+        const newOffset = scrollOffset + 100;
+        // Access the ScrollView component and scroll to the bottom
+        scrollViewRef.current?.scrollTo({ y: newOffset, animated: true });
+        setScrollOffset(newOffset);
+    };
+
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <View style={{ position: 'relative', zIndex: 1 }}>
@@ -78,7 +92,15 @@ export default function HomeScreen() {
                         </View>
                     </TabScreen>
                     <TabScreen label="Divisions">
-                        <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate} />
+                        <View>
+                            <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate} handleScroll={handleScroll} scrollViewRef={scrollViewRef}/>
+                            { userDivisions.length > 2 &&
+                            <IconButton icon={"chevron-down"} iconColor={theme.colors.primary} size={35}
+                                        style={{margin: 0, alignSelf: "center"}}
+                                        onPress={handleScrollToBottom}
+                            />
+                            }
+                        </View>
                     </TabScreen>
                     <TabScreen
                         label="Sensors"
@@ -102,7 +124,13 @@ export default function HomeScreen() {
                         </View>
                     </TabScreen>
                     <TabScreen label="Divisions">
-                        <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate} />
+                        <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate} handleScroll={handleScroll} scrollViewRef={scrollViewRef}/>
+                        { userDivisions.length > 2 &&
+                            <IconButton icon={"chevron-down"} iconColor={theme.colors.primary} size={35}
+                                        style={{margin: 0, alignSelf: "center"}}
+                                        onPress={handleScrollToBottom}
+                            />
+                        }
                     </TabScreen>
                 </Tabs>
             }
