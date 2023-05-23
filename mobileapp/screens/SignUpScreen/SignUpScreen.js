@@ -23,7 +23,6 @@ export default function SignUpScreen(){
     }
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <LoginSignUpHeader title={"Sign Up On Our App!"} subtitle={"Become one our many plant enthusiasts!"}/>
             <SignUpInfo setPassword={setPassword} setEmail={setEmail} password={password}
                         setEmailIsValid={setEmailIsValid} setPasswordIsValid={setPasswordIsValid}

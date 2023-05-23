@@ -1,4 +1,4 @@
-import {View, ScrollView} from "react-native";
+import {View} from "react-native";
 import CategoryCard from "./CategoryCard";
 
 export default function Categories({categories, anonymous}){
@@ -11,9 +11,9 @@ export default function Categories({categories, anonymous}){
         rows.push(categories.slice(start, end));
     }
 
+
     return (
         <View>
-            <ScrollView style={{maxHeight: 500}}>
             {rows.map((row, index) => (
                 <View style={{flexDirection: "row", marginTop: 30, justifyContent: "center", alignItems: "center"}} key={index}>
                 {row.map((category, index) => (
@@ -21,7 +21,6 @@ export default function Categories({categories, anonymous}){
                     ))}
                 </View>
             ))}
-            </ScrollView>
         </View>
     )
 }

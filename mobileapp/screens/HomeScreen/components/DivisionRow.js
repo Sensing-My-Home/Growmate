@@ -4,7 +4,12 @@ import {ScrollView, View} from "react-native";
 import {Divider, IconButton, Text, useTheme} from "react-native-paper";
 import ChangePlantDivision from "./ChangePlantDivisionDialog";
 import RemovePlantDivision from "./RemovePlantDivisionDialog";
-import { addPlantToDivision, changePlantDivision, removePlantFromDivision } from "../../../service/HomeScreenService";
+import {
+    addPlantToDivision,
+    changePlantDivision,
+    deleteDivision,
+    removePlantFromDivision
+} from "../../../service/HomeScreenService";
 import {userID} from "../../../user";
 
 export default function DivisionRow({ plantCards, divisionName, userPlants, divisionID, handleUpdate }) {
@@ -38,6 +43,13 @@ export default function DivisionRow({ plantCards, divisionName, userPlants, divi
         hideChange();
         handleUpdate();
       }
+
+    const handleDeleteDivision = () => {
+        deleteDivision(userID, divisionID).then(() => {
+            hideRemove();
+            handleUpdate();
+        });
+    }
 
     return (
         <View>
@@ -81,6 +93,7 @@ export default function DivisionRow({ plantCards, divisionName, userPlants, divi
                 userPlants={plantCards}
                 divisionID={divisionID}
                 addPlant={handleRemovePlant}
+                deleteDivision={handleDeleteDivision}
             />
             <Divider bold={true}/>
         </View>

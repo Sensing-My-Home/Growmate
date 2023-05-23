@@ -1,4 +1,3 @@
-import GreenBar from "../../components/GreenBar";
 import BottomMenu from "../../components/BottomMenu";
 import {Dimensions, View} from "react-native";
 import React, {useState, useEffect} from "react";
@@ -13,14 +12,17 @@ export default function DiscoverPlantsScreen({route}){
     const [categories, setCategories] = useState([]);
 
     useEffect( () => {
-        getCategories().then((categories) => {setCategories(categories)});
+        getCategories().then((categories) => {
+            if (!anonymous){
+                categories.unshift({name: "Suggested", photo: require("../../assets/plant.png"), id: "suggested"});
+            }
+            setCategories(categories)});
     }, []);
 
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <DiscoverNewPlantsHeader/>
             <DiscoverNewPlantsSearchBar/>
             <Categories categories={categories} anonymous={anonymous}/>

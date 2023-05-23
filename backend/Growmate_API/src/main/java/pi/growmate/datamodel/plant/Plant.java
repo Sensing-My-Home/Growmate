@@ -48,12 +48,12 @@ public class Plant {
     @ToString.Exclude
     private User owner;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="species_id", nullable = false)
     @ToString.Exclude
     private PlantSpecies species;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="division_id")
     @ToString.Exclude
     private Division division;

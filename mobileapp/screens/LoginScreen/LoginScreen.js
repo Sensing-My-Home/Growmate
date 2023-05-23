@@ -53,7 +53,6 @@ export default function LoginScreen(){
     }
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <LoginSignUpHeader title={"Login Into Our App!"} subtitle={"Dont waste more time...go check on your plants!"}/>
             <LoginInfo setPassword={setPassword} setEmail={setEmail}/>
             {incorrectCredentials &&

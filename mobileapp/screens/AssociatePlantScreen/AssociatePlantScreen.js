@@ -37,7 +37,6 @@ export default function AssociatePlantScreen({route}) {
     // API call that onPress it adds a Plant;
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <AddPlantHeader text={"Just a few more steps!"}/>
             {userType === "PREMIUM" &&
                 <AssociateSensor humiditySensors={humiditySensors} humidityProps={[showHumidityDropDown, setShowHumidityDropDown, humiditySensorTarget, setHumiditySensorTarget]}/>

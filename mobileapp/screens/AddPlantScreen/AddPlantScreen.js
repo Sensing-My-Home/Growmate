@@ -57,7 +57,6 @@ export default function AddPlantScreen() {
     }
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <AddPlantHeader text={"Let us know the plant's details"} />
             <SearchBarSpecies inputValue={specie} setInputValue={setSpecie} setSpecieId={setSpecieId} />
             <AddPhoto image={image} setImage={setImage} plant={true}/>

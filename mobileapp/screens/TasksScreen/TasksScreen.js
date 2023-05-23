@@ -145,7 +145,6 @@ export default function TasksScreen() {
     
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <TasksHeader/>
             <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect}/>
             <Tasks tasks={todoSelectedTasks} selected={selected} maxHeight={220}

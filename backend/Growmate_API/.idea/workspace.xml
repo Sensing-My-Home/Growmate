@@ -54,14 +54,14 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/daniel/Documents/Universidade/Sem_2/TQS/TQS_77036/lab2/lab2_2httpclient&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/afartur/Documents/Universidade/PI/Growmate/backend/Growmate_API&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;3fa0d4944519e39b95ffd0ae9d8b4453&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;84da50b259d34210db8d1b654840f93f&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -129,11 +129,30 @@
       <workItem from="1684432404896" duration="7000" />
       <workItem from="1684511967204" duration="2039000" />
       <workItem from="1684851042060" duration="1424000" />
+      <workItem from="1684576836772" duration="14705000" />
+      <workItem from="1684676940253" duration="70000" />
+      <workItem from="1684677016087" duration="105000" />
+      <workItem from="1684677173535" duration="2864000" />
+      <workItem from="1684684931036" duration="807000" />
+      <workItem from="1684831576023" duration="3458000" />
+      <workItem from="1684843946668" duration="2271000" />
     </task>
+    <task id="LOCAL-00001" summary="GM-139 done">
+      <created>1684833820939</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1684833820939</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="GM-139 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-139 done" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

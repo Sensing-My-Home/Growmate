@@ -40,7 +40,6 @@ export default function AddSensorScreen(){
 
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <AddPlantHeader text={"Add a Sensor to your home!"}/>
             <AddSensorDescription/>
             <SensorInfo sensorType={sensorType} plants={userPlants} divisions={userDivisions}

@@ -27,7 +27,6 @@ export default function AddDivisionScreen(){
 
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <AddPlantHeader text={"Add a Division to your home!"}/>
             <AddDivisionDescription/>
             <DivisionInfo setName={setDivisionName} luminosityTarget={divisionLuminosity} setLuminosityTarget={setDivisionLuminosity}/>

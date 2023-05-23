@@ -99,7 +99,6 @@ export default function ProfileScreen(){
 
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <GreenBar />
             <UserHeader stats={userStats} name={name} logout={logout}/>
             <ThinDivider/>
             <ProfileButtons selected={selected} setSelected={setSelected}/>

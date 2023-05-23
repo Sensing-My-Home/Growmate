@@ -332,18 +332,18 @@ public class AlgorithmsService {
     }
 
     // Returns true if the latest humidity measurement for a plant is within it's optimal range, otherwise returns false
-    private boolean checkPlantHumidity(Plant plant, SoilQualityMeasurement measurement) {
+    public boolean checkPlantHumidity(Plant plant, SoilQualityMeasurement measurement) {
         OptimalHumidity optimalHumidity = plant.getSpecies().getOptimalHumidity();
 
-        if (optimalHumidity.equals(OptimalHumidity.LOW) && (measurement.getMeasurement() < 0.24)) {
+        if (optimalHumidity.equals(OptimalHumidity.LOW) && (measurement.getMeasurement() < 24)) {
             return true;
-        } else if (optimalHumidity.equals(OptimalHumidity.MEDIUM) && (measurement.getMeasurement() > 0.24 && measurement.getMeasurement() < 0.50)) {
+        } else if (optimalHumidity.equals(OptimalHumidity.MEDIUM) && (measurement.getMeasurement() > 24 && measurement.getMeasurement() < 50)) {
             return true;
-        } else return optimalHumidity.equals(OptimalHumidity.HIGH) && measurement.getMeasurement() > 0.5;
+        } else return optimalHumidity.equals(OptimalHumidity.HIGH) && measurement.getMeasurement() > 50;
     }
 
     // Returns true if the latest temperature measurement for a plant is within it's optimal range, otherwise returns false
-    private boolean checkPlantTemperature(Plant plant, AirTemperatureMeasurement measurement) {
+    public boolean checkPlantTemperature(Plant plant, AirTemperatureMeasurement measurement) {
         OptimalTemperature optimalTemperature = plant.getSpecies().getOptimalTemperature();
 
         if (optimalTemperature.equals(OptimalTemperature.COOL) && (measurement.getMeasurement() < 18 && measurement.getMeasurement() > 10)) {

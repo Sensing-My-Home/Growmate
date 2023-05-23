@@ -15,6 +15,8 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
   const screenHeight = Dimensions.get('screen').height;
   const screenWidth = Dimensions.get("screen").width;
 
+  const [sensorsList, setSensorsList] = useState(sensors);
+
   const [divisionsList, setDivisionsList] = useState([]);
   const [plantsList, setPlantsList] = useState([]);
   const [division, setDivision] = useState("");
@@ -37,7 +39,7 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
   }, [userDivisions, userPlants]);
 
   useEffect(() => {
-    const filteredSensorsList = sensors.filter((sensor) => {
+    const filteredSensorsList = sensorsList.filter((sensor) => {
       if (sensorType === 'division') {
         if (division === "") {
           return sensor.type === 'division'; // Include all division sensors
@@ -52,24 +54,20 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
         }
       }
       return true; // No filter applied for other sensor types
-    });
+    }, [sensorsList, sensorType, division, plant]);
 
     setFilteredSensors(filteredSensorsList);
-  }, [sensorType, division, plant, sensors]);
+  }, [sensorType, division, plant, sensorsList]);
 
   const countSensors = filteredSensors.length;
 
   const editSensor = async (name, sensor, dropDownValue) => {
-    console.log(name);
-    console.log(sensor.id);
-    console.log(dropDownValue);
-
     let sensorType = sensor.type === "division" ? 0 : 1;
 
     await editSensorService(userID, sensor.original_id, sensorType, name, dropDownValue);
 
     // update sensor name
-    const newSensors = sensors.map((item) => {
+    const newSensors = sensorsList.map((item) => {
       if (item.id === sensor.id) {
         item.name = name;
         if (sensorType === 0) {
@@ -81,7 +79,7 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
       return item;
     });
 
-    setFilteredSensors(newSensors);
+    setSensorsList(newSensors);
   }
 
   const deleteSensor = async (sensor) => {
@@ -90,23 +88,29 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
     let sensorType = sensor.type === "division" ? 0 : 1;
 
     await deleteSensorService(userID, sensor.original_id, sensorType);
-    
+
     // remove sensor from list
-    const newSensors = sensors.filter((item) => item.original_id !== sensor.original_id);
-    setFilteredSensors(newSensors);
+    const newSensors = sensorsList.filter((item) => item.original_id !== sensor.original_id);
+    setSensorsList(newSensors);
   }
 
   // Get selected sensor last measurement value
-  // NOTE: NOT TESTED
   useEffect(() => {
     const getSensorLastMeasurementValue = async () => {
       if (selectedSensor) {
-        const lastMeasurement = await getSensorLastMeasurement(userID, selectedSensor.original_id);
+        const sensorType = selectedSensor.type === "division" ? 0 : 1;
+        const lastMeasurement = await getSensorLastMeasurement(userID, selectedSensor.original_id, sensorType);
         setSelectedSensorLastMeasurement(lastMeasurement);
       }
     }
     getSensorLastMeasurementValue();
   }, [selectedSensor]);
+
+  const handleDismiss = () => {
+    setSensorModalVisible(false);
+    setSelectedSensor(null);
+    setSelectedSensorLastMeasurement(null);
+  }
 
   return (
     <>
@@ -154,15 +158,15 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
                 setSensorModalVisible(true);
               }} />
           ))}
-          <View style={{ height: 100 }} />
+          <View style={{ height: 200 }} />
         </ScrollView>
       </View>
 
-      {selectedSensor && <SensorDialog
+      {selectedSensor && selectedSensorLastMeasurement && <SensorDialog
         sensor={selectedSensor}
         lastMeasurement={selectedSensorLastMeasurement}
         visible={sensorModalVisible}
-        onDismiss={() => setSensorModalVisible(false)}
+        onDismiss={() => handleDismiss()}
         onSave={(name, sensor, dropDownValue) => editSensor(name, sensor, dropDownValue)}
         onDelete={(sensor) => deleteSensor(sensor)}
         dropDownList={selectedSensor.type === 'division' ? userDivisions : userPlants}
