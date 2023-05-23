@@ -13,6 +13,7 @@ import pi.growmate.repositories.plant.PlantRepository;
 import pi.growmate.repositories.user.UserRepository;
 import pi.growmate.utils.SuccessfulRequest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -82,6 +83,14 @@ public class DivisionService {
     public Division deleteDivision(Long userID, Long divisionID) throws ResourceNotFoundException {
         User user = this.checkIfUserExists(userID);
         Division div = this.getDivision(user, divisionID);
+
+        // Making the division related to plants null
+        div.getPlantsOnDivision().forEach(plant -> {
+            plant.setDivision(null);
+            plantRepository.save(plant);
+        });
+
+        div.setPlantsOnDivision(new ArrayList<>());
 
         List<Division> userDivisions = user.getDivisions();
         userDivisions.remove(div);
