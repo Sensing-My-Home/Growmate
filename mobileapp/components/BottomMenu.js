@@ -3,13 +3,13 @@ import { IconButton, useTheme } from "react-native-paper";
 import React from "react";
 import {useNavigation} from "@react-navigation/native";
 
-export default function BottomMenu({ screenHeight, active }) {
+export default function BottomMenu({ screenHeight, active, anonymous }) {
     const theme = useTheme();
     const navigation = useNavigation();
     let leafColor = theme.colors.primary;
     let magnifyColor = theme.colors.primary;
     let calendarColor = theme.colors.primary;
-    let messageColor = theme.colors.primary;
+    let accountColor = theme.colors.primary;
 
     switch (active) {
         case "leaf":
@@ -21,8 +21,8 @@ export default function BottomMenu({ screenHeight, active }) {
         case "calendar":
             calendarColor = theme.colors.background;
             break
-        case "message":
-            messageColor = theme.colors.background;
+        case "account":
+            accountColor = theme.colors.background;
             break
     }
 
@@ -34,27 +34,38 @@ export default function BottomMenu({ screenHeight, active }) {
             width: "100%", backgroundColor: theme.colors.primaryContainer, height: screenHeight / 13, position: 'absolute',
             bottom: screenHeight/17 , flexDirection: "row"
         }}>
-            <View style={{ position: 'relative', flex: 1, paddingLeft: 20 }}>
-                <IconButton icon={"leaf"} iconColor={leafColor} size={35}
-                            onPress={() => {
-                                navigation.navigate("Home");
-                            }}/>
-            </View>
-            <View style={{ position: 'relative', flex: 1 }}>
-                <IconButton icon={"magnify"} iconColor={magnifyColor} size={35}
-                            onPress={() => {
-                                navigation.navigate("DiscoverPlants");
-                            }}/>
-            </View>
-            <View style={{ position: 'relative', flex: 1 }}>
-                <IconButton icon={"calendar-month-outline"} iconColor={calendarColor} size={35}
-                            onPress={() => {
-                                navigation.navigate("Tasks");
-                            }}/>
-            </View>
-            <View style={{ position: 'relative', flex: 1 }}>
-                <IconButton icon={"message-outline"} iconColor={messageColor} size={35} />
-            </View>
+            {anonymous ?
+                <View style={{ position: 'relative', flex: 1, justifyContent: "center", alignItems: "center" }}>
+                    <IconButton icon={"magnify"} iconColor={magnifyColor} size={35}
+                                onPress={() => {
+                                    navigation.navigate("DiscoverPlants", {anonymous: true});}}/>
+                </View>
+                :
+                <View style={{
+                    width: "100%", backgroundColor: theme.colors.primaryContainer, height: screenHeight / 13, position: 'absolute',
+                    bottom: 0 , flexDirection: "row"
+                }}>
+                    <View style={{ position: 'relative', flex: 1, paddingLeft: 20 }}>
+                        <IconButton icon={"leaf"} iconColor={leafColor} size={35}
+                                    onPress={() => {
+                                        navigation.navigate("Home");}}/>
+                    </View>
+                    <View style={{ position: 'relative', flex: 1 }}>
+                        <IconButton icon={"magnify"} iconColor={magnifyColor} size={35}
+                        onPress={() => {
+                        navigation.navigate("DiscoverPlants", {anonymous: false});}}/>
+                    </View>
+                    <View style={{ position: 'relative', flex: 1 }}>
+                        <IconButton icon={"calendar-month-outline"} iconColor={calendarColor} size={35}
+                        onPress={() => {
+                        navigation.navigate("Tasks");}}/>
+                    </View>
+                    <View style={{ position: 'relative', flex: 1 }}>
+                        <IconButton icon={"account-outline"} iconColor={accountColor} size={35} onPress={() => {
+                        navigation.navigate("Profile");}}/>
+                        </View>
+                </View>
+            }
         </View>
     )
 }

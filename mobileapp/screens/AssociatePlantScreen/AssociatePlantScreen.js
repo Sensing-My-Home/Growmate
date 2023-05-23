@@ -11,6 +11,8 @@ import AddSensorButton from "./components/AddSensorButton";
 import AddDivisionButton from "./components/AddDivisionButton";
 import {createNewPlant} from "../../service/AssociatePlantScreenService";
 import {useNavigation, StackActions} from "@react-navigation/native";
+import { uploadImage } from "../../service/FirebaseService";
+import {userID, userType} from "../../user";
 
 
 export default function AssociatePlantScreen({route}) {
@@ -23,9 +25,12 @@ export default function AssociatePlantScreen({route}) {
     const [showHumidityDropDown, setShowHumidityDropDown] = useState(false);
     const [humiditySensorTarget, setHumiditySensorTarget] = useState("None");
     const [showDivisionDropDown, setShowDivisionDropDown] = useState(false);
-    const [divisionTarget, setDivisionTarget] = useState("None");
-    const onPressNext = () => {
-        createNewPlant(1, name, image, specie, 1, date);
+    const [divisionTarget, setDivisionTarget] = useState(null);
+
+    const onPressNext = async () => {
+        const imageURL = await uploadImage(image, userID, name);
+
+        createNewPlant(userID, name, imageURL, specie, divisionTarget, date);
         navigation.dispatch(StackActions.replace('Home'));
     }
 
@@ -34,8 +39,13 @@ export default function AssociatePlantScreen({route}) {
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <GreenBar />
             <AddPlantHeader text={"Just a few more steps!"}/>
-            <AssociateSensor humiditySensors={humiditySensors} humidityProps={[showHumidityDropDown, setShowHumidityDropDown, humiditySensorTarget, setHumiditySensorTarget]}/>
-            <AddSensorButton/>
+            {userType === "PREMIUM" &&
+                <AssociateSensor humiditySensors={humiditySensors} humidityProps={[showHumidityDropDown, setShowHumidityDropDown, humiditySensorTarget, setHumiditySensorTarget]}/>
+
+            }
+            {userType === "PREMIUM" &&
+                <AddSensorButton/>
+            }
             <AssociateDivision divisions={divisions} divisionsProps={[showDivisionDropDown, setShowDivisionDropDown, divisionTarget, setDivisionTarget ]}/>
             <AddDivisionButton/>
             <NextButton text={"CREATE"} reverse={true} page={"Home"} onPress={onPressNext}/>

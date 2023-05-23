@@ -4,7 +4,7 @@ import React from "react";
 import {useNavigation} from "@react-navigation/native";
 
 
-export default function CategoryCard({name, image, id}){
+export default function CategoryCard({name, image, id, anonymous}){
     const theme = useTheme();
     const width = 100;
     const height = 100;
@@ -13,7 +13,8 @@ export default function CategoryCard({name, image, id}){
         <TouchableOpacity onPress={() => {
             navigation.navigate("Category", {
                 name: name,
-                id: id
+                id: id,
+                anonymous: anonymous
             })
         }
         }>

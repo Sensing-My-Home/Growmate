@@ -22,7 +22,7 @@ export default function PlusButton({ index}) {
     }
     return (
         <TouchableOpacity onPress={() => {
-            navigation.navigate("AddPlant");
+            navigation.navigate(page);
         }} style={{
             position: 'absolute',
             bottom: screenHeight/13 * 2,
