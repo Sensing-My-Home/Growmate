@@ -9,12 +9,17 @@ export default function PlantInformation({ plant, division, handleSave }) {
     // Form
     const [text, setText] = useState(plant.name);
     const [inputDate, setInputDate] = useState(Date.parse(plant.plantationDate));
-    const [currentDivision, setCurrentDivision] = useState(division.name);
+    const [currentDivision, setCurrentDivision] = useState(division === null ? "None" : division.name);
 
     useEffect(() => {
         setText(plant.name);
         setInputDate(Date.parse(plant.plantationDate));
-        setCurrentDivision(division.name);
+        if (division === null) {
+            setCurrentDivision("None");
+        }
+        else {
+            setCurrentDivision(division.name);
+        }
     }, [plant, division]);
 
     return (

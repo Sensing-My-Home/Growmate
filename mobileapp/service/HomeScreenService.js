@@ -129,6 +129,13 @@ const editSensor = async (userID, sensorID, sensorType, newName, newAssociatedID
   );
 };
 
+const deleteDivision = async (userID, divisionID) => {
+    await axios.delete(
+        baseURL + '/user/' + userID + '/division/' + divisionID,
+    );
+}
 
 
-export { getPlants, getDivisionsAndAssociatedPlants, addPlantToDivision, changePlantDivision, removePlantFromDivision, getFirstName, getSensors, deleteSensor, getSensorLastMeasurement, editSensor }
+
+export { getPlants, getDivisionsAndAssociatedPlants, addPlantToDivision, changePlantDivision, removePlantFromDivision,
+  getFirstName, getSensors, deleteSensor, getSensorLastMeasurement, editSensor, deleteDivision }

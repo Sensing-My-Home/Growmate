@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseURL = "http://19.80.159.172/growmate"
+const baseURL = "http://13.80.159.172/growmate"
 
 
 export const getSpeciesFromQuery = async (query) => {
