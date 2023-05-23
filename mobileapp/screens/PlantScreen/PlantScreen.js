@@ -14,6 +14,7 @@ import SensorsCarousel from "./components/SensorsCarousel";
 import PlantStatus from "./components/PlantStatus";
 import SensorGraphStack from "./components/SensorGraphStack";
 import TaskCalendar from "../TasksScreen/components/TaskCalendar";
+import PlantSensorFlatList from "./components/PlantSensorsFlatList";
 
 //API functions
 import {

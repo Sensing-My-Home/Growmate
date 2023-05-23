@@ -6,7 +6,7 @@ import { View, Dimensions } from 'react-native';
 const { width: screenWidth } = Dimensions.get('window');
 const { height: screenHeight } = Dimensions.get('window');
 
-export default function SensorsCarousel({sensors}) {
+export default function SensorsCarousel({ sensors }) {
 
     const [entries, setEntries] = useState([]);
 
@@ -21,10 +21,9 @@ export default function SensorsCarousel({sensors}) {
 
     const renderItem = ({ item, index }) => {
         return (
-            <PlantSensorCard
-                key={index}
-                sensor={item}
-            />
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <PlantSensorCard key={index} sensor={item} />
+            </View>
         );
     };
 
@@ -35,6 +34,7 @@ export default function SensorsCarousel({sensors}) {
     return (
         <View style={{ height: screenHeight / 6 }}>
             <Carousel
+                loop={false}
                 width={screenWidth}
                 data={entries}
                 renderItem={renderItem}
