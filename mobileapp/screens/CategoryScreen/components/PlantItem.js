@@ -4,7 +4,7 @@ import React from "react";
 import {useNavigation} from "@react-navigation/native";
 
 
-export default function PlantItem({name, image, difficulty, anonymous, speciesID}){
+export default function PlantItem({name, image, difficulty, anonymous, speciesID, scientificName}){
     const theme = useTheme();
     const navigation = useNavigation();
     const image_width = 70;
@@ -40,7 +40,7 @@ export default function PlantItem({name, image, difficulty, anonymous, speciesID
                     navigation.navigate("Login");
                 }
                 else {
-                    navigation.navigate("AddPlant");
+                    navigation.navigate("AddPlant", {speciesID: speciesID, scientificName: scientificName});
                 }
             }}>
 

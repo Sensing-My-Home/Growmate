@@ -22,7 +22,7 @@ export default function PlusButton({ index}) {
     }
     return (
         <TouchableOpacity onPress={() => {
-            navigation.navigate(page);
+            navigation.navigate(page, {speciesID: null, scientificName: null});
         }} style={{
             position: 'absolute',
             bottom: screenHeight/12 * 2,

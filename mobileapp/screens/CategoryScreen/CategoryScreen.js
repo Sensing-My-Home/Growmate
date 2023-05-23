@@ -5,6 +5,7 @@ import { useTheme, ActivityIndicator } from "react-native-paper";
 import AddPlantHeader from "../AddPlantScreen/components/AddPlantHeader";
 import PlantItem from "./components/PlantItem";
 import {getCategorySpecies, getSuggestedSpecies} from "../../service/CategoryScreenService";
+import {userID} from "../../user";
 
 export default function CategoryScreen({ route }) {
   const screenHeight = Dimensions.get("screen").height;
@@ -25,7 +26,7 @@ export default function CategoryScreen({ route }) {
   useEffect(() => {
     setLoading(true);
     if (id === "suggested") {
-      getSuggestedSpecies().then((species) => {
+      getSuggestedSpecies(userID).then((species) => {
         setSpecies(species);
         setLoading(false);
       });
@@ -53,6 +54,7 @@ export default function CategoryScreen({ route }) {
       difficulty={item.difficulty}
       anonymous={anonymous}
       speciesID={item.id}
+      scientificName={item.scientificName}
     />
   );
 

@@ -21,11 +21,15 @@ export default function DiscoverPlantsScreen({route}){
 
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
+    const [hideCategories, setHideCategories] = useState(false)
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <DiscoverNewPlantsHeader/>
-            <DiscoverNewPlantsSearchBar/>
-            <Categories categories={categories} anonymous={anonymous}/>
+            <DiscoverNewPlantsSearchBar anonymous={anonymous} setHideCategories={setHideCategories}/>
+            {!hideCategories &&
+                <Categories categories={categories} anonymous={anonymous}/>
+            }
+
             <BottomMenu screenHeight={screenHeight} active={"magnify"} anonymous={anonymous}/>
         </View>
     )
