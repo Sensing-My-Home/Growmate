@@ -4,7 +4,8 @@ VALUES
 
 INSERT INTO public.utilizador (id, address, dob, email, name, password, rating, user_type)
 VALUES
-    (2, '123 Main St', '1990-01-01', 'john.doe@example.com', 'John Doe', '$2a$10$3ScENDnVbvrmcpRA4jn0p.eXSmg2vSWJqLBIVcRz14bwo5lWniK82', 4, 2);
+    (2, '123 Main St', '1990-01-01', 'john.doe@example.com', 'John Doe', '$2a$10$3ScENDnVbvrmcpRA4jn0p.eXSmg2vSWJqLBIVcRz14bwo5lWniK82', 4, 2),
+    (3, '123 Main St', '1990-01-01', 'john.doe.poor@example.com', 'John Doe Poor', '$2a$10$3ScENDnVbvrmcpRA4jn0p.eXSmg2vSWJqLBIVcRz14bwo5lWniK82', 4, 1);;
 
 INSERT INTO public.species_family (id, name, difficulty, opt_soil_mix, photo)
 VALUES
@@ -232,7 +233,9 @@ VALUES
 
 INSERT INTO public.division (id, luminosity, name, user_id)
 VALUES (1, 2, 'Living Room', 2),
-       (2, 3, 'Bedroom', 2);
+       (2, 3, 'Bedroom', 2),
+       (3, 2, 'Living Room', 3),
+       (4, 3, 'Bedroom', 3);
 
 INSERT INTO public.division_sensor (id, name, sensor_code, division_id, user_id)
 VALUES (1, 'Living Room Temperature Sensor', 'TMP123', 1, 2),
@@ -244,7 +247,11 @@ INSERT INTO public.plant (id, name, plant_condition, photo, plantation_date, div
 VALUES (1, 'Anthony', 0, 'https://cdn.pixabay.com/photo/2018/03/06/19/33/vase-3204337_960_720.jpg', '2022-01-01', 1, 2, 1),
        (2, 'Orchid', 2, 'https://images.pexels.com/photos/7814295/pexels-photo-7814295.jpeg', '2022-03-15', 1, 2, 7),
        (3, 'Beth', 1, 'https://cdn.pixabay.com/photo/2021/05/16/01/04/orchids-6256963_960_720.jpg', '2022-04-20', 2, 2, 4),
-       (4, 'Juliana the Cactus', 2, 'https://cdn.pixabay.com/photo/2016/11/21/16/05/cacti-1846147_960_720.jpg', '2022-02-10', 2, 2, 5);
+       (4, 'Juliana the Cactus', 2, 'https://cdn.pixabay.com/photo/2016/11/21/16/05/cacti-1846147_960_720.jpg', '2022-02-10', 2, 2, 5),
+       (5, 'Anthony', 0, 'https://cdn.pixabay.com/photo/2018/03/06/19/33/vase-3204337_960_720.jpg', '2022-01-01', 3, 3, 1),
+       (6, 'Orchid', 2, 'https://images.pexels.com/photos/7814295/pexels-photo-7814295.jpeg', '2022-03-15', 3, 3, 7),
+       (7, 'Beth', 1, 'https://cdn.pixabay.com/photo/2021/05/16/01/04/orchids-6256963_960_720.jpg', '2022-04-20', 4, 3, 4),
+       (8, 'Juliana the Cactus', 2, 'https://cdn.pixabay.com/photo/2016/11/21/16/05/cacti-1846147_960_720.jpg', '2022-02-10', 4, 3, 5);
 
 INSERT INTO public.plant_sensor (id, name, sensor_code, user_id, plant_id)
 VALUES (1, 'Anthony Sensor', 'ANT123', 2, 1),
@@ -255,21 +262,39 @@ VALUES (1, 'Anthony Sensor', 'ANT123', 2, 1),
 INSERT INTO public.tasks_current VALUES (1, 'Water Anthony',
                          CURRENT_DATE, 0, 1),
                         (2, 'Change Orchid soil mix',
-                         '2023-05-13', 1, 2),
+                         '2023-06-13', 1, 2),
                         (4, 'Check Juliana''s condition ',
-                         '2023-05-15', 3, 4),
+                         '2023-06-15', 3, 4),
                         (5, 'Fertilize Anthony',
                          CURRENT_DATE, 4, 1),
                          (6, 'Change Anthony soil mix',
-                         CURRENT_DATE, 1, 2),
+                         CURRENT_DATE, 1, 1),
                          (7, 'Check Anthony''s condition ',
                          CURRENT_DATE, 3, 4),
                          (8, 'Water Orchid',
-                         '2023-05-22', 0, 2),
+                         '2023-06-22', 0, 2),
                          (9, 'Water Beth',
-                         '2023-05-13', 0, 3),
+                         '2023-06-13', 0, 3),
                          (10, 'Water Juliana',
-                         '2023-05-15', 0, 4);
+                         '2023-06-15', 0, 4),
+                         (11, 'Water Anthony',
+                         CURRENT_DATE, 0, 5),
+                        (12, 'Change Orchid soil mix',
+                         '2023-06-13', 1, 6),
+                        (13, 'Check Juliana''s condition ',
+                         '2023-06-15', 3, 8),
+                        (14, 'Fertilize Anthony',
+                         CURRENT_DATE, 4, 5),
+                         (15, 'Change Anthony soil mix',
+                         CURRENT_DATE, 1, 5),
+                         (16, 'Check Anthony''s condition ',
+                         CURRENT_DATE, 3, 5),
+                         (17, 'Water Orchid',
+                         '2023-06-22', 0, 6),
+                         (18, 'Water Beth',
+                         '2023-06-13', 0, 7),
+                         (19, 'Water Juliana',
+                         '2023-06-15', 0, 8);
                          
 INSERT INTO public.task_settings VALUES (1, TRUE, 7, 0, 1),
                         (2, TRUE,450, 1, 1),
@@ -286,17 +311,42 @@ INSERT INTO public.task_settings VALUES (1, TRUE, 7, 0, 1),
                         (13, TRUE,10, 0, 4),
                         (14, TRUE,450, 1, 4),
                         (15, TRUE,10, 3, 4),
-                        (16, TRUE,60, 4, 4);
+                        (16, TRUE,60, 4, 4),
+                        (17, TRUE, 7, 0, 5),
+                        (18, TRUE,450, 1, 5),
+                        (19, TRUE,7, 3, 5),
+                        (20, TRUE,30, 4, 5),
+                        (21, TRUE,4, 0, 6),
+                        (22, TRUE,450, 1, 6),
+                        (23, TRUE,5, 3, 6),
+                        (24, TRUE,30, 4, 6),
+                        (25, TRUE,7, 0, 7),
+                        (26, TRUE,450, 1, 7),
+                        (27, TRUE,7, 3, 7),
+                        (28, TRUE,30, 4, 7),
+                        (29, TRUE,10, 0, 8),
+                        (30, TRUE,450, 1, 8),
+                        (31, TRUE,10, 3, 8),
+                        (32, TRUE,60, 4, 8);
      
-INSERT INTO public.tasks_history VALUES (1, '2023-04-10', 'Water Anthony', 0, 1),
-                        (2,'2023-04-13', 'Change Orchid soil mix', 1, 2),
-                        (4,'2023-04-15','Check Juliana''s condition ', 3, 4),
-                        (5,'2023-04-18', 'Fertilize Anthony', 4, 1),
-                        (6, '2023-04-18', 'Change Anthony soil mix', 1, 2),
-                        (7, '2023-04-18','Check Anthony''s condition ', 3, 4),
-                        (8,'2023-04-22', 'Water Orchid', 0, 1),
-                        (9, '2023-04-13', 'Water Beth', 0, 1),
-                        (10,'2023-04-15', 'Water Juliana', 0, 1);                    
+INSERT INTO public.tasks_history VALUES (1, '2023-05-10', 'Water Anthony', 0, 1),
+                        (2,'2023-05-13', 'Change Orchid soil mix', 1, 2),
+                        (4,'2023-05-15','Check Juliana''s condition ', 3, 4),
+                        (5,'2023-05-18', 'Fertilize Anthony', 4, 1),
+                        (6, '2023-05-18', 'Change Anthony soil mix', 1, 1),
+                        (7, '2023-05-18','Check Anthony''s condition ', 3, 1),
+                        (8,'2023-05-22', 'Water Orchid', 0, 2),
+                        (9, '2023-05-13', 'Water Beth', 0, 3),
+                        (10,'2023-05-15', 'Water Juliana', 0, 4),
+                        (11, '2023-05-10', 'Water Anthony', 0, 5),
+                        (12,'2023-05-13', 'Change Orchid soil mix', 1, 6),
+                        (13,'2023-05-15','Check Juliana''s condition ', 3, 8),
+                        (14,'2023-05-18', 'Fertilize Anthony', 4, 5),
+                        (15, '2023-05-18', 'Change Anthony soil mix', 1, 5),
+                        (16, '2023-05-18','Check Anthony''s condition ', 3, 5),
+                        (17,'2023-05-22', 'Water Orchid', 0, 6),
+                        (18, '2023-05-13', 'Water Beth', 0, 7),
+                        (19,'2023-05-15', 'Water Juliana', 0, 8); ;                    
                          
                                     
   
