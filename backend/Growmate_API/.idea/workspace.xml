@@ -4,8 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="merged conflicts">
-      <change beforePath="$PROJECT_DIR$/../../database/fill_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../database/fill_tables.sql" afterDir="false" />
+    <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="GM-139 done">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddPlantScreen/AddPlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddPlantScreen/AddPlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddPlantScreen/components/SearchBarSpecies.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddPlantScreen/components/SearchBarSpecies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/components/PlantItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/components/PlantItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/DiscoverNewPlantsSearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/DiscoverNewPlantsSearchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlusButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlusButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/service/CategoryScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/service/CategoryScreenService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +145,7 @@
       <workItem from="1684684931036" duration="807000" />
       <workItem from="1684831576023" duration="3458000" />
       <workItem from="1684843946668" duration="2271000" />
+      <workItem from="1684858186176" duration="1170000" />
     </task>
     <task id="LOCAL-00001" summary="GM-139 done">
       <created>1684833820939</created>

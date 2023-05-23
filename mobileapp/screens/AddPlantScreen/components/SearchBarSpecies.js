@@ -9,14 +9,19 @@ export default function SearchBarSpecies({inputValue, setInputValue, setSpecieId
     const [species, setSpecies] = useState([]);
 
     const onChangeText = (text) => {
-        if (text.length > 0){
+        if (text.length > 2){
             setIsDropDownVisible(true);
             setInputValue(text);
             getSpeciesFromQuery(text).then((species) => {setSpecies(species)});
         }
-        else {
+
+        else if (text.length === 0) {
             setInputValue("")
             setIsDropDownVisible(false);
+        }
+
+        else {
+            setInputValue(text);
         }
     }
 

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { View, Dimensions } from "react-native";
 import BottomMenu from "../../components/BottomMenu";
-import GreenBar from "../../components/GreenBar";
 import AddPlantHeader from "./components/AddPlantHeader";
 import { useTheme } from "react-native-paper";
 import SearchBarSpecies from "./components/SearchBarSpecies";
@@ -12,14 +11,15 @@ import AddPlantationDate from "./components/AddPlantationDate";
 import { useNavigation } from "@react-navigation/native";
 
 
-export default function AddPlantScreen() {
+export default function AddPlantScreen({route}) {
     const screenHeight = Dimensions.get('screen').height;
+    const {specieID, scientificName} = route.params;
     const navigation = useNavigation();
     const theme = useTheme()
     const [image, setImage] = useState(null);
     const [date, setDate] = useState("")
-    const [specie, setSpecie] = useState("");
-    const [specieId, setSpecieId] = useState("");
+    const [specie, setSpecie] = useState(scientificName ? scientificName : "");
+    const [specieId, setSpecieId] = useState(specieID ? specieID : "");
     const [name, setName] = useState("");
     let formattedDate;
     const onPressNext = () => {

@@ -25,7 +25,6 @@ export const getSuggestedSpecies = async (userID) => {
         console.log("cache");
         return cacheData;
     }
-
     const response = await axios.get(baseURL + "/user/" + userID + "/recommendation");
     await setItem(cacheKey, response.data);
     return response.data;

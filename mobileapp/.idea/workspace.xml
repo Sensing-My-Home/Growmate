@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-146 done">
+    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-175 done">
       <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SpeciesProfileScreen/components/SpeciesInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SpeciesProfileScreen/components/SpeciesInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/components/SearchBarSpecies.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/components/SearchBarSpecies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/components/PlantItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/components/PlantItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/DiscoverNewPlantsSearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/DiscoverNewPlantsSearchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlusButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlusButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/CategoryScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/CategoryScreenService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +100,7 @@
       <workItem from="1683889452528" duration="11368000" />
       <workItem from="1683908967413" duration="1964000" />
       <workItem from="1684843943424" duration="3448000" />
+      <workItem from="1684858184047" duration="3904000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
@@ -318,7 +326,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684845794510</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="GM-175 service method">
+      <created>1684853111607</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1684853111607</updated>
+    </task>
+    <task id="LOCAL-00034" summary="GM-175 done">
+      <created>1684854658484</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1684854658484</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,8 +358,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="GM-40 done" />
-    <MESSAGE value="small colors fix" />
     <MESSAGE value="GM-48 done" />
     <MESSAGE value="GM-50 done" />
     <MESSAGE value="minor design fixes from meeting talk" />
@@ -361,6 +381,8 @@
     <MESSAGE value="GM-141 done" />
     <MESSAGE value="GM-142 done" />
     <MESSAGE value="GM-146 done" />
-    <option name="LAST_COMMIT_MESSAGE" value="GM-146 done" />
+    <MESSAGE value="GM-175 service method" />
+    <MESSAGE value="GM-175 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-175 done" />
   </component>
 </project>
