@@ -3,7 +3,6 @@ import { View, Dimensions } from "react-native";
 import BottomMenu from "../../components/BottomMenu";
 import SearchBar from "../../components/SearchBar";
 import WelcomeHeader from "./components/WelcomeHeader"
-import GreenBar from "../../components/GreenBar";
 import PlantCards from "./components/PlantCards";
 import { useTheme } from "react-native-paper";
 import PlusButton from "./components/PlusButton";
@@ -17,6 +16,7 @@ import { getPlants, getDivisionsAndAssociatedPlants, getSensors } from "../../se
 
 export default function HomeScreen() {
     const [userPlants, setUserPlants] = useState([]);
+    const [queriedUserPlants, setQueriedUserPlants] = useState([]);
     const [userDivisions, setUserDivisions] = useState([]);
     const [updateCount, setUpdateCount] = useState(0);
     const [sensors, setSensors] = useState(null);
@@ -26,7 +26,10 @@ export default function HomeScreen() {
     }
 
     useEffect( () => {
-        getPlants(userID).then((plants) => {setUserPlants(plants)})
+        getPlants(userID).then((plants) => {
+            setUserPlants(plants);
+            setQueriedUserPlants(plants);
+        })
     }, [updateCount]);
 
     useEffect( () => {
@@ -49,6 +52,13 @@ export default function HomeScreen() {
     const theme = useTheme()
     const [selectedTab, setSelectedTab] = useState(0)
 
+    const filterPlants = (query) => {
+        const queriedPlants = userPlants.filter((plant) => {
+            return plant.name.toLowerCase().includes(query.toLowerCase()) || plant.species.commonName.toLowerCase().includes(query.toLowerCase())
+        })
+        setQueriedUserPlants(queriedPlants)
+    }
+
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <View style={{ position: 'relative', zIndex: 1 }}>
@@ -63,8 +73,8 @@ export default function HomeScreen() {
                 >
                     <TabScreen label="Inventory">
                         <View>
-                            <SearchBar />
-                            <PlantCards plants={userPlants}/>
+                            <SearchBar filterPlants={filterPlants}/>
+                            <PlantCards plants={queriedUserPlants}/>
                         </View>
                     </TabScreen>
                     <TabScreen label="Divisions">
@@ -87,8 +97,8 @@ export default function HomeScreen() {
                 >
                     <TabScreen label="Inventory">
                         <View>
-                            <SearchBar />
-                            <PlantCards plants={userPlants}/>
+                            <SearchBar filterPlants={filterPlants}/>
+                            <PlantCards plants={queriedUserPlants}/>
                         </View>
                     </TabScreen>
                     <TabScreen label="Divisions">

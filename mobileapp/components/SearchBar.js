@@ -2,7 +2,7 @@ import { View } from "react-native";
 import { IconButton, TextInput, useTheme } from "react-native-paper";
 import React from "react";
 
-export default function SearchBar() {
+export default function SearchBar({filterPlants}) {
     const theme = useTheme();
 
     return (
@@ -15,7 +15,7 @@ export default function SearchBar() {
                 activeUnderlineColor={theme.colors.primary}
                 textColor={theme.colors.onBackground}
                 placeholder={"Search a plant or species!"} placeholderTextColor={theme.colors.secondary}
-                onChangeText={text => console.log(text)}
+                onChangeText={text => filterPlants(text)}
             />
         </View>
     )
