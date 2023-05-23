@@ -5,7 +5,6 @@ import { useTheme, ActivityIndicator } from "react-native-paper";
 import { useNavigation, StackActions } from '@react-navigation/native';
 
 import BottomMenu from "../../components/BottomMenu";
-import GreenBar from "../../components/GreenBar";
 import PlantHeader from "./components/PlantHeader";
 import PlantAvatar from "./components/PlantAvatar";
 import DeletePlant from "./components/DeletePlant";
@@ -332,7 +331,7 @@ export default function PlantScreen({ route }) {
                     setTaskMode={setTaskMode} setTaskDueDate={setTaskDueDate} setTaskFrequency={setTaskFrequency}
                     taskID={taskID} userID={userID} initialTaskDueDate={initialTaskDueDate} initialTaskFrequency={initialTaskFrequency}
                     initialTaskMode={initialTaskMode} setCounter={setCounter} counter={counter} plantID={plantID} taskType={taskType} />
-                <BottomMenu screenHeight={screenHeight} />
+                <BottomMenu screenHeight={screenHeight} active={"leaf"} />
             </View>
         )
     }
