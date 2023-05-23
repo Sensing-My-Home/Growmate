@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useTheme, ActivityIndicator } from "react-native-paper";
 import AddPlantHeader from "../AddPlantScreen/components/AddPlantHeader";
 import PlantItem from "./components/PlantItem";
-import { getCategorySpecies } from "../../service/CategoryScreenService";
+import {getCategorySpecies, getSuggestedSpecies} from "../../service/CategoryScreenService";
 
 export default function CategoryScreen({ route }) {
   const screenHeight = Dimensions.get("screen").height;
@@ -24,10 +24,20 @@ export default function CategoryScreen({ route }) {
   // This gets all the species for a category
   useEffect(() => {
     setLoading(true);
-    getCategorySpecies(id).then((species) => {
-      setSpecies(species);
-      setLoading(false);
-    });
+    if (id === "suggested") {
+      getSuggestedSpecies().then((species) => {
+        setSpecies(species);
+        setLoading(false);
+      });
+    }
+
+    else {
+      getCategorySpecies(id).then((species) => {
+        setSpecies(species);
+        setLoading(false);
+      });
+    }
+
   }, []);
 
   // This paginates the species
