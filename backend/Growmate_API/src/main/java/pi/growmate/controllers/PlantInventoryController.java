@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import lombok.extern.slf4j.Slf4j;
 import pi.growmate.datamodel.plant.Plant;
 import pi.growmate.datamodel.species.PlantSpecies;
 import pi.growmate.exceptions.ResourceNotFoundException;
@@ -81,5 +82,11 @@ public class PlantInventoryController {
                                                                         @RequestParam(value = "plantation-date", required = false) Date date) throws ResourceNotFoundException{
 
         return ResponseEntity.ok().body(userService.addNewPlantToUserInventory(idUser, plantName, URL, speciesID, divisionID, sensorID, date));
+    }
+
+    // get a plant recomended to a user
+    @GetMapping("/{idUser}/recommendation")
+    public ResponseEntity<List<PlantSpecies>> recommendPlantSpecies(@PathVariable(value = "idUser") Long idUser) throws ResourceNotFoundException{
+        return ResponseEntity.ok().body(userService.recommendPlantSpecies(idUser));
     }
 }
