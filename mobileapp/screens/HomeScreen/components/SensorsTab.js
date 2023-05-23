@@ -15,6 +15,8 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
   const screenHeight = Dimensions.get('screen').height;
   const screenWidth = Dimensions.get("screen").width;
 
+  const [sensorsList, setSensorsList] = useState(sensors);
+
   const [divisionsList, setDivisionsList] = useState([]);
   const [plantsList, setPlantsList] = useState([]);
   const [division, setDivision] = useState("");
@@ -37,7 +39,7 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
   }, [userDivisions, userPlants]);
 
   useEffect(() => {
-    const filteredSensorsList = sensors.filter((sensor) => {
+    const filteredSensorsList = sensorsList.filter((sensor) => {
       if (sensorType === 'division') {
         if (division === "") {
           return sensor.type === 'division'; // Include all division sensors
@@ -52,10 +54,10 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
         }
       }
       return true; // No filter applied for other sensor types
-    });
+    }, [sensorsList, sensorType, division, plant]);
 
     setFilteredSensors(filteredSensorsList);
-  }, [sensorType, division, plant, sensors]);
+  }, [sensorType, division, plant, sensorsList]);
 
   const countSensors = filteredSensors.length;
 
@@ -65,7 +67,7 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
     await editSensorService(userID, sensor.original_id, sensorType, name, dropDownValue);
 
     // update sensor name
-    const newSensors = sensors.map((item) => {
+    const newSensors = sensorsList.map((item) => {
       if (item.id === sensor.id) {
         item.name = name;
         if (sensorType === 0) {
@@ -77,7 +79,7 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
       return item;
     });
 
-    setFilteredSensors(newSensors);
+    setSensorsList(newSensors);
   }
 
   const deleteSensor = async (sensor) => {
@@ -88,12 +90,11 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
     await deleteSensorService(userID, sensor.original_id, sensorType);
 
     // remove sensor from list
-    const newSensors = sensors.filter((item) => item.original_id !== sensor.original_id);
-    setFilteredSensors(newSensors);
+    const newSensors = sensorsList.filter((item) => item.original_id !== sensor.original_id);
+    setSensorsList(newSensors);
   }
 
   // Get selected sensor last measurement value
-  // NOTE: NOT TESTED
   useEffect(() => {
     const getSensorLastMeasurementValue = async () => {
       if (selectedSensor) {
