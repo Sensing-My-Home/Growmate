@@ -145,7 +145,12 @@ public class AlgorithmsService {
         boolean hasDivSensors, hasPlantSensors;
 
         // Checking whether the Plant, or its Division, has sensors associated with it or not
-        hasDivSensors = plant.getDivision().getSensors().size() > 0;
+        if (plant.getDivision() != null) {
+            hasDivSensors = plant.getDivision().getSensors().size() > 0;
+        }else{
+            hasDivSensors = false;
+        }
+
         hasPlantSensors = plant.getSensors().size() > 0;
 
 

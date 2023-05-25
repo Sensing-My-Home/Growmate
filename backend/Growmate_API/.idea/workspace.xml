@@ -70,7 +70,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;84da50b259d34210db8d1b654840f93f&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;3fa0d4944519e39b95ffd0ae9d8b4453&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -145,7 +145,8 @@
       <workItem from="1684684931036" duration="807000" />
       <workItem from="1684831576023" duration="3458000" />
       <workItem from="1684843946668" duration="2271000" />
-      <workItem from="1684858186176" duration="1170000" />
+      <workItem from="1684858401115" duration="303000" />
+      <workItem from="1684864120017" duration="782000" />
     </task>
     <task id="LOCAL-00001" summary="GM-139 done">
       <created>1684833820939</created>
