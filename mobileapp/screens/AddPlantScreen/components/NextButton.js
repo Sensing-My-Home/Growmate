@@ -1,14 +1,12 @@
 import {TouchableOpacity, View} from "react-native";
 import {IconButton, Text, useTheme} from "react-native-paper";
-import {useNavigation} from "@react-navigation/native";
 
 
-export default function NextButton({text, reverse, onPress}){
+export default function NextButton({text, reverse, onPress, disabled}){
     const theme = useTheme();
-    const navigation = useNavigation();
     return (
         <View style={{alignItems: "flex-end", marginRight: 60}}>
-            <TouchableOpacity onPress={onPress}>
+            <TouchableOpacity onPress={onPress} disabled={disabled}>
 
                 {reverse ?
                     <View style={{width: 120, height: 35, borderRadius: 20,
@@ -22,7 +20,7 @@ export default function NextButton({text, reverse, onPress}){
                     </View>
                     :
                     <View style={{width: 120, height: 35, borderRadius: 20,
-                        backgroundColor: theme.colors.primary, flexDirection: "row",
+                        backgroundColor: disabled ? theme.colors.outline : theme.colors.primary, flexDirection: "row",
                         alignItems:"center", justifyContent: "center"
                     }}>
                         <Text variant={"bodyMedium"} style={{color: theme.colors.background, marginLeft: 25}}>

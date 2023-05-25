@@ -13,14 +13,18 @@ export default function SearchBarSpecies({inputValue, setInputValue, setSpecieId
             setIsDropDownVisible(true);
             setInputValue(text);
             getSpeciesFromQuery(text).then((species) => {setSpecies(species)});
+            setSpecieId("");
+
         }
 
         else if (text.length === 0) {
             setInputValue("")
+            setSpecieId("");
             setIsDropDownVisible(false);
         }
 
         else {
+            setSpecieId("");
             setInputValue(text);
         }
     }

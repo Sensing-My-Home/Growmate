@@ -1,10 +1,10 @@
 import React, {useEffect, useRef, useState} from "react";
-import { View, Dimensions } from "react-native";
+import {View, Dimensions, TouchableOpacity} from "react-native";
 import BottomMenu from "../../components/BottomMenu";
 import SearchBar from "../../components/SearchBar";
 import WelcomeHeader from "./components/WelcomeHeader"
 import PlantCards from "./components/PlantCards";
-import {IconButton, useTheme} from "react-native-paper";
+import {IconButton, Text, useTheme} from "react-native-paper";
 import PlusButton from "./components/PlusButton";
 import { Tabs, TabScreen } from 'react-native-paper-tabs';
 import Divisions from "./components/Divisions";
@@ -13,6 +13,7 @@ import SensorsTab from "./components/SensorsTab";
 
 // API Calls
 import { getPlants, getDivisionsAndAssociatedPlants, getSensors } from "../../service/HomeScreenService";
+import {useNavigation} from "@react-navigation/native";
 
 export default function HomeScreen() {
     const [userPlants, setUserPlants] = useState([]);
@@ -20,6 +21,7 @@ export default function HomeScreen() {
     const [userDivisions, setUserDivisions] = useState([]);
     const [updateCount, setUpdateCount] = useState(0);
     const [sensors, setSensors] = useState(null);
+    const navigation = useNavigation();
 
     const handleUpdate = () => {
         setUpdateCount(updateCount + 1);
@@ -43,6 +45,7 @@ export default function HomeScreen() {
     useEffect(() => {
         getSensors(userID).then(
             (sensors) => {
+                console.log(sensors)
                 setSensors(sensors)
             }
         )
@@ -87,12 +90,34 @@ export default function HomeScreen() {
                 >
                     <TabScreen label="Inventory">
                         <View>
+                            { userPlants.length > 0 &&
                             <SearchBar filterPlants={filterPlants}/>
+                            }
+                            { userPlants.length === 0 &&
+                                <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
+                                                    onPress={() => navigation.navigate("AddPlant", {speciesID: null, scientificName: null})}
+                                >
+                                    <View style={{flexDirection: "column"}}>
+                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no plants in your inventory.</Text>
+                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some plants to get started!</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            }
                             <PlantCards plants={queriedUserPlants}/>
                         </View>
                     </TabScreen>
                     <TabScreen label="Divisions">
                         <View>
+                            { userDivisions.length === 0 &&
+                                <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
+                                                  onPress={() => navigation.navigate("AddDivision")}
+                                >
+                                    <View style={{flexDirection: "column"}}>
+                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no divisions.</Text>
+                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some divisions to get started!</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            }
                             <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate} handleScroll={handleScroll} scrollViewRef={scrollViewRef}/>
                             { userDivisions.length > 2 &&
                             <IconButton icon={"chevron-down"} iconColor={theme.colors.primary} size={35}
@@ -106,7 +131,19 @@ export default function HomeScreen() {
                         label="Sensors"
                     >
                         <View>
-                            {userDivisions.length > 0 && userPlants && sensors && <SensorsTab userDivisions={userDivisions} sensors={sensors} userPlants={userPlants} />}
+                        { sensors === null ||  sensors.length === 0 &&
+                            <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
+                                              onPress={() => navigation.navigate("AddSensor")}
+                            >
+                                <View style={{flexDirection: "column"}}>
+                                    <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no sensors.</Text>
+                                    <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some sensors to get started!</Text>
+                                </View>
+                            </TouchableOpacity>
+                        }
+                        <View>
+                            {userDivisions.length > 0 && userPlants && sensors && sensors.length !== 0 && <SensorsTab userDivisions={userDivisions} sensors={sensors} userPlants={userPlants} />}
+                        </View>
                         </View>
                     </TabScreen>
                 </Tabs>
@@ -119,11 +156,33 @@ export default function HomeScreen() {
                 >
                     <TabScreen label="Inventory">
                         <View>
-                            <SearchBar filterPlants={filterPlants}/>
+                            { userPlants.length > 0 &&
+                                <SearchBar filterPlants={filterPlants}/>
+                            }
+                            { userPlants.length === 0 &&
+                                <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
+                                                  onPress={() => navigation.navigate("AddPlant", {speciesID: null, scientificName: null})}
+                                >
+                                    <View style={{flexDirection: "column"}}>
+                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no plants in your inventory.</Text>
+                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some plants to get started!</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            }
                             <PlantCards plants={queriedUserPlants}/>
                         </View>
                     </TabScreen>
                     <TabScreen label="Divisions">
+                        { userDivisions.length === 0 &&
+                            <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
+                                              onPress={() => navigation.navigate("AddDivision")}
+                            >
+                                <View style={{flexDirection: "column"}}>
+                                    <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no divisions.</Text>
+                                    <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some divisions to get started!</Text>
+                                </View>
+                            </TouchableOpacity>
+                        }
                         <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate} handleScroll={handleScroll} scrollViewRef={scrollViewRef}/>
                         { userDivisions.length > 2 &&
                             <IconButton icon={"chevron-down"} iconColor={theme.colors.primary} size={35}
