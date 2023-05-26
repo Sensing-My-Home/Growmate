@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-180 done">
-      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/ProfileScreen/ProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProfileScreen/ProfileScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SpeciesProfileScreen/components/SpeciesFooter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SpeciesProfileScreen/components/SpeciesInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SpeciesProfileScreen/components/SpeciesInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/aloe-vera-closeup.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/cacti.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/conifer.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ferns.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/herbs.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/lavender.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/mint.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/moss.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/orchids.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/parsley.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCardRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCardRow.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,7 @@
       <workItem from="1683908967413" duration="1964000" />
       <workItem from="1684843943424" duration="3448000" />
       <workItem from="1684858184047" duration="3904000" />
-      <workItem from="1685096750713" duration="6512000" />
+      <workItem from="1685096750713" duration="6664000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
@@ -356,7 +356,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685102165102</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="GM-180 done">
+      <created>1685103771220</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1685103771221</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
