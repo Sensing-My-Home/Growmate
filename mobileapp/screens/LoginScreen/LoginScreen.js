@@ -1,6 +1,5 @@
 import {Dimensions, View} from "react-native";
 import {useTheme} from "react-native-paper";
-import GreenBar from "../../components/GreenBar";
 import React, {useState} from "react";
 import LoginInfo from "./components/LoginInfo";
 import LoginButton from "./components/LoginButton";
@@ -53,7 +52,7 @@ export default function LoginScreen(){
     }
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <LoginSignUpHeader title={"Login Into Our App!"} subtitle={"Dont waste more time...go check on your plants!"}/>
+            <LoginSignUpHeader title={"Login Into Our App!"} subtitle={"Don't waste more time...go check on your plants!"}/>
             <LoginInfo setPassword={setPassword} setEmail={setEmail}/>
             {incorrectCredentials &&
                 <WarningMessage/>
