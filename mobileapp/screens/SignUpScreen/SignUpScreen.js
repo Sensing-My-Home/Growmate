@@ -1,4 +1,3 @@
-import GreenBar from "../../components/GreenBar";
 import {Dimensions, View} from "react-native";
 import React, {useState} from "react";
 import {useTheme} from "react-native-paper";
