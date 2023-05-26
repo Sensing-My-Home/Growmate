@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-149 done">
+    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-151 + GM-152 done done">
       <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/AddDivisionScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/AddDivisionScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/components/AssociateSensorsDialog.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/components/DivisionInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/components/DivisionInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/components/NextButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/components/NextButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/AddSensorScreen/AddSensorScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddSensorScreen/AddSensorScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/components/AssociateSensor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/SensorsTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/SensorsTab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddSensorScreen/components/SensorInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddSensorScreen/components/SensorInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +95,7 @@
       <workItem from="1683908967413" duration="1964000" />
       <workItem from="1684843943424" duration="3448000" />
       <workItem from="1684858184047" duration="3904000" />
-      <workItem from="1685096750713" duration="3864000" />
+      <workItem from="1685096750713" duration="4839000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
@@ -341,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684854658484</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="GM-151 + GM-152 done done">
+      <created>1685101085009</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1685101085009</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,7 +360,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="GM-48 done" />
     <MESSAGE value="GM-50 done" />
     <MESSAGE value="minor design fixes from meeting talk" />
     <MESSAGE value="fixed calendar locale of AddPlant" />
@@ -384,6 +384,7 @@
     <MESSAGE value="GM-146 done" />
     <MESSAGE value="GM-175 service method" />
     <MESSAGE value="GM-175 done" />
-    <option name="LAST_COMMIT_MESSAGE" value="GM-175 done" />
+    <MESSAGE value="GM-151 + GM-152 done done" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-151 + GM-152 done done" />
   </component>
 </project>
