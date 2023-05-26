@@ -40,28 +40,28 @@ export default function BottomMenu({ screenHeight, active, anonymous }) {
                 </View>
                 :
                 <View style={{
-                    width: "100%", backgroundColor: theme.colors.primaryContainer, height: screenHeight / 13, position: 'absolute',
-                    bottom: 0, flexDirection: "row"
+                    width: "100%", backgroundColor: theme.colors.primaryContainer, height: screenHeight / 14, position: 'absolute',
+                    bottom: 5, flexDirection: "row"
                 }}>
-                    <View style={{ position: 'relative', flex: 1, paddingLeft: 20 }}>
+                    <View style={{ position: 'relative', flex: 1, paddingLeft: 20, justifyContent: "center" }}>
                         <IconButton icon={"leaf"} iconColor={leafColor} size={35}
                             onPress={() => {
-                                navigation.navigate("Home");
+                                navigation.navigate("Home", { reload: false, variance: active});
                             }} />
                     </View>
-                    <View style={{ position: 'relative', flex: 1 }}>
+                    <View style={{ position: 'relative', flex: 1, justifyContent: "center"  }}>
                         <IconButton icon={"magnify"} iconColor={magnifyColor} size={35}
                             onPress={() => {
                                 navigation.navigate("DiscoverPlants", { anonymous: false });
                             }} />
                     </View>
-                    <View style={{ position: 'relative', flex: 1 }}>
+                    <View style={{ position: 'relative', flex: 1, justifyContent: "center"  }}>
                         <IconButton icon={"calendar-month-outline"} iconColor={calendarColor} size={35}
                             onPress={() => {
                                 navigation.navigate("Tasks");
                             }} />
                     </View>
-                    <View style={{ position: 'relative', flex: 1 }}>
+                    <View style={{ position: 'relative', flex: 1, justifyContent: "center"  }}>
                         <IconButton icon={"account-outline"} iconColor={accountColor} size={35} onPress={() => {
                             navigation.navigate("Profile");
                         }} />

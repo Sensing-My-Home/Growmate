@@ -4,12 +4,12 @@ import React, {useState} from "react";
 import DropDown from "react-native-paper-dropdown";
 import {validCode} from "../../../service/AddSensorService";
 
-export default function SensorInfo({plants, divisions, setSensorName, setSensorCode, setSensorType, setOwnerID, sensorType, ownerID}){
+export default function SensorInfo({plants, divisions, setSensorName, setSensorCode, setSensorType, setOwnerID, sensorType, ownerID, codeIsValid, setCodeIsValid}){
     const theme = useTheme();
 
     const [showDivisionDropDown, setShowDivisionDropDown] = useState(false);
     const [showPlantDropDown, setShowPlantDropDown] = useState(false);
-    const [codeIsValid, setCodeIsValid] = useState(true);
+
     const validateCode = (code) => {
         if (validCode.test(code)){
             setCodeIsValid(true);
@@ -57,7 +57,10 @@ export default function SensorInfo({plants, divisions, setSensorName, setSensorC
                 </View>
                 <RadioButton value="Division"
                              status={sensorType === 0 ? 'checked' : 'unchecked'}
-                             onPress={() => setSensorType(0)}
+                             onPress={() => {
+                                 setSensorType(0);
+                                 setOwnerID(null);
+                             }}
                 />
                 <View style={{alignItems: "center", justifyContent: "center", marginLeft: 60, marginRight: 10}}>
                     <Text variant={"bodyMedium"} style={{ color: theme.colors.onBackground }}>
@@ -66,7 +69,10 @@ export default function SensorInfo({plants, divisions, setSensorName, setSensorC
                 </View>
                 <RadioButton value="Plant"
                              status={sensorType === 1 ? 'checked' : 'unchecked'}
-                             onPress={() => setSensorType(1)}
+                             onPress={() => {
+                                 setSensorType(1);
+                                 setOwnerID(null);
+                             }}
                 />
             </View>
 

@@ -2,7 +2,7 @@ import {View} from "react-native";
 import {Calendar} from "react-native-calendars"
 import {useTheme} from "react-native-paper";
 
-export default function TaskCalendar({taskDates, onDaySelect}){
+export default function TaskCalendar({taskDates, onDaySelect, updateYear}){
     const theme = useTheme();
     return(
         <View>
@@ -20,7 +20,7 @@ export default function TaskCalendar({taskDates, onDaySelect}){
                 // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
                 monthFormat={'MMMM yyyy'}
                 // Handler which gets executed when visible month changes in calendar. Default = undefined
-                onMonthChange={undefined}
+                onMonthChange={(date) => {updateYear(date.year);}}
                 arrowColor={'white'}
                 // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday
                 firstDay={1}

@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-175 done">
-      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-186 done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/components/SearchBarSpecies.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/components/SearchBarSpecies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/components/PlantItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/components/PlantItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/DiscoverNewPlantsSearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/DiscoverNewPlantsSearchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlusButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlusButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/CategoryScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/CategoryScreenService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SignUpScreen/SignUpScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SignUpScreen/SignUpScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SignUpScreenTwo/SignUpScreenTwo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SignUpScreenTwo/SignUpScreenTwo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +94,7 @@
       <workItem from="1683908967413" duration="1964000" />
       <workItem from="1684843943424" duration="3448000" />
       <workItem from="1684858184047" duration="3904000" />
+      <workItem from="1685096750713" duration="10308000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
@@ -340,7 +334,63 @@
       <option name="project" value="LOCAL" />
       <updated>1684854658484</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="GM-151 + GM-152 done done">
+      <created>1685101085009</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1685101085009</updated>
+    </task>
+    <task id="LOCAL-00036" summary="GM-153 done">
+      <created>1685102165102</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1685102165102</updated>
+    </task>
+    <task id="LOCAL-00037" summary="GM-180 done">
+      <created>1685103771220</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1685103771221</updated>
+    </task>
+    <task id="LOCAL-00038" summary="GM-181 done">
+      <created>1685103963520</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1685103963520</updated>
+    </task>
+    <task id="LOCAL-00039" summary="GM-183 done">
+      <created>1685105762817</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1685105762817</updated>
+    </task>
+    <task id="LOCAL-00040" summary="GM-184 done">
+      <created>1685105798170</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1685105798170</updated>
+    </task>
+    <task id="LOCAL-00041" summary="GM-185 and GM-188 done">
+      <created>1685107686945</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1685107686945</updated>
+    </task>
+    <task id="LOCAL-00042" summary="GM-186 done">
+      <created>1685108198099</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1685108198099</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -358,14 +408,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="GM-48 done" />
-    <MESSAGE value="GM-50 done" />
-    <MESSAGE value="minor design fixes from meeting talk" />
-    <MESSAGE value="fixed calendar locale of AddPlant" />
-    <MESSAGE value="added getPlants and getDivisionsAndAssociatedPlants services" />
-    <MESSAGE value="added SpeciesProfileService" />
-    <MESSAGE value="added CategoryScreenService and DiscoverPlantScreenService" />
-    <MESSAGE value="added TasksScreenService" />
     <MESSAGE value="AddDivisionScreen semi-completed" />
     <MESSAGE value="GM-42 done" />
     <MESSAGE value="plant tasks screen has calendar" />
@@ -383,6 +425,14 @@
     <MESSAGE value="GM-146 done" />
     <MESSAGE value="GM-175 service method" />
     <MESSAGE value="GM-175 done" />
-    <option name="LAST_COMMIT_MESSAGE" value="GM-175 done" />
+    <MESSAGE value="GM-151 + GM-152 done done" />
+    <MESSAGE value="GM-153 done" />
+    <MESSAGE value="GM-180 done" />
+    <MESSAGE value="GM-181 done" />
+    <MESSAGE value="GM-183 done" />
+    <MESSAGE value="GM-184 done" />
+    <MESSAGE value="GM-185 and GM-188 done" />
+    <MESSAGE value="GM-186 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-186 done" />
   </component>
 </project>

@@ -60,7 +60,7 @@ export default function CategoryScreen({ route }) {
 
   return (
     <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-      <AddPlantHeader text={name} />
+      <AddPlantHeader text={name} division={true}/>
       <FlatList
         data={paginatedSpecies}
         renderItem={renderPlantItem}

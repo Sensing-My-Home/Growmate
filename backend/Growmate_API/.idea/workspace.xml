@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="GM-139 done">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/assets/plant.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlantCardRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlantCardRow.js" afterDir="false" />
+    <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="GM-150 done">
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/SignUpScreen/SignUpScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/SignUpScreen/SignUpScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/SignUpScreenTwo/SignUpScreenTwo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/SignUpScreenTwo/SignUpScreenTwo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +63,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "3fa0d4944519e39b95ffd0ae9d8b4453",
+    "spring.configuration.checksum": "84da50b259d34210db8d1b654840f93f",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -140,8 +140,7 @@
       <workItem from="1684843946668" duration="2271000" />
       <workItem from="1684858401115" duration="303000" />
       <workItem from="1684864120017" duration="782000" />
-      <workItem from="1685022948008" duration="27000" />
-      <workItem from="1685030004982" duration="27000" />
+      <workItem from="1685096753941" duration="2982000" />
     </task>
     <task id="LOCAL-00001" summary="GM-139 done">
       <created>1684833820939</created>
@@ -150,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684833820939</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="GM-150 done">
+      <created>1685062442437</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685062442437</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,7 +164,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="GM-139 done" />
-    <option name="LAST_COMMIT_MESSAGE" value="GM-139 done" />
+    <MESSAGE value="GM-150 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-150 done" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
