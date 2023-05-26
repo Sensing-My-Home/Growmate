@@ -1,6 +1,5 @@
 import {Dimensions, View} from "react-native";
 import {useTheme} from "react-native-paper";
-import GreenBar from "../../components/GreenBar";
 import React, {useEffect, useState} from "react";
 import BottomMenu from "../../components/BottomMenu";
 import UserHeader from "./components/UserHeader";

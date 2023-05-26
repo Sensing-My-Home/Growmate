@@ -4,17 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="GM-139 done">
+    <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/components/BottomMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/components/BottomMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/AddDivisionScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddDivisionScreen/AddDivisionScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddPlantScreen/AddPlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddPlantScreen/AddPlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddPlantScreen/components/SearchBarSpecies.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddPlantScreen/components/SearchBarSpecies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/components/PlantItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/CategoryScreen/components/PlantItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/DiscoverPlantsScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/DiscoverNewPlantsSearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/DiscoverPlantsScreen/components/DiscoverNewPlantsSearchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddPlantScreen/components/AddPlantHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddPlantScreen/components/AddPlantHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AddSensorScreen/AddSensorScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AddSensorScreen/AddSensorScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/AssociatePlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/AssociatePlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/components/AddDivisionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/components/AddDivisionButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/components/AddSensorButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/components/AddSensorButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/components/AssociateDivision.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/components/AssociateDivision.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/components/AssociateSensor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/AssociatePlantScreen/components/AssociateSensor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/HomeScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlusButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/PlusButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/service/CategoryScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/service/CategoryScreenService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/SensorsTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/HomeScreen/components/SensorsTab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/LoginScreen/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/LoginScreen/LoginScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/PlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/components/PlantHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/components/PlantHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/ProfileScreen/ProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/ProfileScreen/ProfileScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/service/AssociatePlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/service/AssociatePlantScreenService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/service/ProfileScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/service/ProfileScreenService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

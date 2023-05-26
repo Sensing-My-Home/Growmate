@@ -186,7 +186,7 @@ export default function PlantScreen({ route }) {
     const handleDeletePlant = async () => {
         await deleteImage(userID, plantInfo.name);
         await deletePlant(userID, plantID, true);
-        navigation.dispatch(StackActions.replace('Home'));
+        navigation.navigate('Home', {reload: true, variance: plantID});
     }
 
     const [visibleChange, setVisibleChange] = useState(false);

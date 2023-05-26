@@ -10,7 +10,7 @@ import SensorDialog from "./SensorDIalog";
 import { userID } from "../../../user";
 import { deleteSensor as deleteSensorService, getSensorLastMeasurement, editSensor as editSensorService } from "../../../service/HomeScreenService";
 
-export default function SensorsTab({ userDivisions, sensors, userPlants }) {
+export default function SensorsTab({ userDivisions, sensors, userPlants, handleUpdate }) {
   const theme = useTheme();
   const screenHeight = Dimensions.get('screen').height;
   const screenWidth = Dimensions.get("screen").width;
@@ -87,11 +87,11 @@ export default function SensorsTab({ userDivisions, sensors, userPlants }) {
 
     let sensorType = sensor.type === "division" ? 0 : 1;
 
-    await deleteSensorService(userID, sensor.original_id, sensorType);
-
-    // remove sensor from list
-    const newSensors = sensorsList.filter((item) => item.original_id !== sensor.original_id);
-    setSensorsList(newSensors);
+    await deleteSensorService(userID, sensor.original_id, sensorType).then(() => {
+      handleUpdate();
+      const newSensors = sensorsList.filter((item) => item.original_id !== sensor.original_id);
+      setSensorsList(newSensors);
+    });
   }
 
   // Get selected sensor last measurement value

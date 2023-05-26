@@ -15,13 +15,26 @@ import SensorsTab from "./components/SensorsTab";
 import { getPlants, getDivisionsAndAssociatedPlants, getSensors } from "../../service/HomeScreenService";
 import {useNavigation} from "@react-navigation/native";
 
-export default function HomeScreen() {
+export default function HomeScreen({route}) {
+    const {reload, variance} = route.params || {reload: false, variance: ""};
     const [userPlants, setUserPlants] = useState([]);
     const [queriedUserPlants, setQueriedUserPlants] = useState([]);
     const [userDivisions, setUserDivisions] = useState([]);
     const [updateCount, setUpdateCount] = useState(0);
     const [sensors, setSensors] = useState(null);
     const navigation = useNavigation();
+
+    useEffect(() => {
+        if (reload) {
+            setUpdateCount(updateCount + 1);
+        }
+        if (variance.split("_")[0] === "division" ){
+            setSelectedTab(1);
+        }
+        else if (variance.split("_")[0] === "sensor" ){
+            setSelectedTab(2);
+        }
+    }, [variance])
 
     const handleUpdate = () => {
         setUpdateCount(updateCount + 1);
@@ -45,11 +58,10 @@ export default function HomeScreen() {
     useEffect(() => {
         getSensors(userID).then(
             (sensors) => {
-                console.log(sensors)
                 setSensors(sensors)
             }
         )
-    }, [])
+    }, [updateCount])
 
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
@@ -131,19 +143,20 @@ export default function HomeScreen() {
                         label="Sensors"
                     >
                         <View>
-                        { sensors === null ||  sensors.length === 0 &&
-                            <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
-                                              onPress={() => navigation.navigate("AddSensor")}
-                            >
-                                <View style={{flexDirection: "column"}}>
-                                    <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no sensors.</Text>
-                                    <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some sensors to get started!</Text>
+                            { sensors === null ||  sensors.length === 0 ?
+                                <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
+                                                  onPress={() => navigation.navigate("AddSensor")}
+                                >
+                                    <View style={{flexDirection: "column"}}>
+                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no sensors.</Text>
+                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some sensors to get started!</Text>
+                                    </View>
+                                </TouchableOpacity>
+                                :
+                                <View>
+                                    {userDivisions && userPlants && sensors && sensors.length !== 0 && <SensorsTab userDivisions={userDivisions} sensors={sensors} userPlants={userPlants} handleUpdate={handleUpdate} />}
                                 </View>
-                            </TouchableOpacity>
-                        }
-                        <View>
-                            {userDivisions.length > 0 && userPlants && sensors && sensors.length !== 0 && <SensorsTab userDivisions={userDivisions} sensors={sensors} userPlants={userPlants} />}
-                        </View>
+                            }
                         </View>
                     </TabScreen>
                 </Tabs>
@@ -173,23 +186,25 @@ export default function HomeScreen() {
                         </View>
                     </TabScreen>
                     <TabScreen label="Divisions">
-                        { userDivisions.length === 0 &&
-                            <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
-                                              onPress={() => navigation.navigate("AddDivision")}
-                            >
-                                <View style={{flexDirection: "column"}}>
-                                    <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no divisions.</Text>
-                                    <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some divisions to get started!</Text>
-                                </View>
-                            </TouchableOpacity>
-                        }
-                        <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate} handleScroll={handleScroll} scrollViewRef={scrollViewRef}/>
-                        { userDivisions.length > 2 &&
-                            <IconButton icon={"chevron-down"} iconColor={theme.colors.primary} size={35}
-                                        style={{margin: 0, alignSelf: "center"}}
-                                        onPress={handleScrollToBottom}
-                            />
-                        }
+                        <View>
+                            { userDivisions.length === 0 &&
+                                <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
+                                                  onPress={() => navigation.navigate("AddDivision")}
+                                >
+                                    <View style={{flexDirection: "column"}}>
+                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no divisions.</Text>
+                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some divisions to get started!</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            }
+                            <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate} handleScroll={handleScroll} scrollViewRef={scrollViewRef}/>
+                            { userDivisions.length > 2 &&
+                                <IconButton icon={"chevron-down"} iconColor={theme.colors.primary} size={35}
+                                            style={{margin: 0, alignSelf: "center"}}
+                                            onPress={handleScrollToBottom}
+                                />
+                            }
+                        </View>
                     </TabScreen>
                 </Tabs>
             }

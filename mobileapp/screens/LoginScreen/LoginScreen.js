@@ -43,7 +43,7 @@ export default function LoginScreen(){
                 setUserDateOfBirth(response.dateOfBirth);
                 setUserRating(response.rating);
                 setUserAddress(response.address);
-                navigation.navigate("Home");
+                navigation.navigate("Home", {reload: false, variance: email});
             }
             else {
                 setIncorrectCredentials(true);

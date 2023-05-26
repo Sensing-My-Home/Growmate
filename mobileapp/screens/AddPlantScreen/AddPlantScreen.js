@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { View, Dimensions } from "react-native";
 import BottomMenu from "../../components/BottomMenu";
 import AddPlantHeader from "./components/AddPlantHeader";
@@ -23,15 +23,35 @@ export default function AddPlantScreen({route}) {
     const [specieId, setSpecieId] = useState(specieID ? specieID : "");
     const [name, setName] = useState("");
 
+    useEffect(() => {
+        if (specieID !== "") {
+            setSpecieId(specieID);
+        }
+        else {
+            setSpecieId("");
+        }
+
+        if (scientificName !== "") {
+            setSpecie(scientificName);
+        }
+        else {
+            setSpecie("");
+        }
+
+        setImage(null);
+        setDate("");
+        setValidDate(false);
+        setName("");
+
+    }, [])
     const onPressNext = () => {
         navigation.navigate("AssociatePlant", {
             image: image,
             date: date,
             specie: specieId,
-            name: name,
+            name: name
         });
     }
-
 
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>

@@ -34,7 +34,7 @@ export default function AddSensorScreen(){
 
     const onPressNext = () => {
         createNewSensor(userID, sensorType, sensorName, sensorCode, ownerID).then(() =>
-            navigation.dispatch(StackActions.replace('Home'))
+            navigation.navigate("Home", {reload: true, variance: "sensor_" + sensorName+sensorCode})
         );
     }
 

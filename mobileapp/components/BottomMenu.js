@@ -46,7 +46,7 @@ export default function BottomMenu({ screenHeight, active, anonymous }) {
                     <View style={{ position: 'relative', flex: 1, paddingLeft: 20 }}>
                         <IconButton icon={"leaf"} iconColor={leafColor} size={35}
                             onPress={() => {
-                                navigation.navigate("Home");
+                                navigation.navigate("Home", { reload: false, variance: active});
                             }} />
                     </View>
                     <View style={{ position: 'relative', flex: 1 }}>

@@ -12,7 +12,8 @@ import {createNewDivision} from "../../service/AddDivisionService";
 import {userID} from "../../user";
 
 
-export default function AddDivisionScreen(){
+export default function AddDivisionScreen({route}){
+    const {destiny} = route.params;
     const screenHeight = Dimensions.get('screen').height;
     const navigation = useNavigation();
     const theme = useTheme()
@@ -20,14 +21,20 @@ export default function AddDivisionScreen(){
     const [divisionLuminosity, setDivisionLuminosity] = useState("");
 
     const onPressNext = () => {
-        createNewDivision(userID, divisionName, divisionLuminosity).then(() =>
-            navigation.dispatch(StackActions.replace('Home'))
+        createNewDivision(userID, divisionName, divisionLuminosity).then(() => {
+            if (destiny === "Home") {
+                navigation.navigate("Home", {reload: true, variance: "division_" + divisionName+divisionLuminosity})
+            }
+            else {
+                navigation.goBack();
+            }
+        }
         );
     }
 
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <AddPlantHeader text={"Add a Division to your home!"}/>
+            <AddPlantHeader text={"Add a Division to your home!"} division={destiny ? destiny : null}/>
             <AddDivisionDescription/>
             <DivisionInfo setName={setDivisionName} luminosityTarget={divisionLuminosity} setLuminosityTarget={setDivisionLuminosity}/>
             <NextButton text={"CREATE"} reverse={true} onPress={onPressNext}/>
