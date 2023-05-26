@@ -4,7 +4,7 @@ import BottomMenu from "../../components/BottomMenu";
 import SearchBar from "../../components/SearchBar";
 import WelcomeHeader from "./components/WelcomeHeader"
 import PlantCards from "./components/PlantCards";
-import {IconButton, Text, useTheme} from "react-native-paper";
+import {ActivityIndicator, IconButton, Text, useTheme} from "react-native-paper";
 import PlusButton from "./components/PlusButton";
 import { Tabs, TabScreen } from 'react-native-paper-tabs';
 import Divisions from "./components/Divisions";
@@ -40,25 +40,31 @@ export default function HomeScreen({route}) {
         setUpdateCount(updateCount + 1);
     }
 
+    const [loadingPlants, setLoadingPlants] = useState(true);
     useEffect( () => {
         getPlants(userID).then((plants) => {
             setUserPlants(plants);
             setQueriedUserPlants(plants);
+            setLoadingPlants(false);
         })
     }, [updateCount]);
 
+    const [loadingDivisions, setLoadingDivisions] = useState(true);
     useEffect( () => {
         getDivisionsAndAssociatedPlants(userID).then(
             (divisions) => {
                 setUserDivisions(divisions)
+                setLoadingDivisions(false);
             }
         );
     }, [updateCount]);
 
+    const [loadingSensors, setLoadingSensors] = useState(true);
     useEffect(() => {
         getSensors(userID).then(
             (sensors) => {
                 setSensors(sensors)
+                setLoadingSensors(false);
             }
         )
     }, [updateCount])
@@ -88,128 +94,206 @@ export default function HomeScreen({route}) {
         setScrollOffset(newOffset);
     };
 
-    return (
-        <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <View style={{ position: 'relative', zIndex: 1 }}>
-            <WelcomeHeader premium={userType === "PREMIUM"} name={userFirstName}/>
+    if (loadingPlants || loadingDivisions || loadingSensors) {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <ActivityIndicator size="large" />
             </View>
-            {userType === "PREMIUM" ?
-                <Tabs
-                    defaultIndex={0} // default = 0
-                    style={{ backgroundColor: '#fff' }} // works the same as AppBar in react-native-paper
-                    disableSwipe={true} // (default=false) disable swipe to left/right gestures
-                    onChangeIndex={(newIndex) => { setSelectedTab(newIndex) }}
-                >
-                    <TabScreen label="Inventory">
-                        <View>
-                            { userPlants.length > 0 &&
-                            <SearchBar filterPlants={filterPlants}/>
-                            }
-                            { userPlants.length === 0 &&
-                                <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
-                                                    onPress={() => navigation.navigate("AddPlant", {speciesID: null, scientificName: null})}
-                                >
-                                    <View style={{flexDirection: "column"}}>
-                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no plants in your inventory.</Text>
-                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some plants to get started!</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            }
-                            <PlantCards plants={queriedUserPlants}/>
-                        </View>
-                    </TabScreen>
-                    <TabScreen label="Divisions">
-                        <View>
-                            { userDivisions.length === 0 &&
-                                <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
-                                                  onPress={() => navigation.navigate("AddDivision")}
-                                >
-                                    <View style={{flexDirection: "column"}}>
-                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no divisions.</Text>
-                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some divisions to get started!</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            }
-                            <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate} handleScroll={handleScroll} scrollViewRef={scrollViewRef}/>
-                            { userDivisions.length > 2 &&
-                            <IconButton icon={"chevron-down"} iconColor={theme.colors.primary} size={35}
-                                        style={{margin: 0, alignSelf: "center"}}
-                                        onPress={handleScrollToBottom}
-                            />
-                            }
-                        </View>
-                    </TabScreen>
-                    <TabScreen
-                        label="Sensors"
+        );
+    }
+    else {
+        return (
+            <View style={{height: screenHeight, backgroundColor: theme.colors.background}}>
+                <View style={{position: 'relative', zIndex: 1}}>
+                    <WelcomeHeader premium={userType === "PREMIUM"} name={userFirstName}/>
+                </View>
+                {userType === "PREMIUM" ?
+                    <Tabs
+                        defaultIndex={0} // default = 0
+                        style={{backgroundColor: '#fff'}} // works the same as AppBar in react-native-paper
+                        disableSwipe={true} // (default=false) disable swipe to left/right gestures
+                        onChangeIndex={(newIndex) => {
+                            setSelectedTab(newIndex)
+                        }}
                     >
-                        <View>
-                            { sensors === null ||  sensors.length === 0 ?
-                                <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
-                                                  onPress={() => navigation.navigate("AddSensor")}
-                                >
-                                    <View style={{flexDirection: "column"}}>
-                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no sensors.</Text>
-                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some sensors to get started!</Text>
+                        <TabScreen label="Inventory">
+                            <View>
+                                {userPlants.length > 0 &&
+                                    <SearchBar filterPlants={filterPlants}/>
+                                }
+                                {userPlants.length === 0 &&
+                                    <TouchableOpacity
+                                        style={{width: "100%", justifyContent: "center", alignItems: "center"}}
+                                        onPress={() => navigation.navigate("AddPlant", {
+                                            speciesID: null,
+                                            scientificName: null
+                                        })}
+                                    >
+                                        <View style={{flexDirection: "column"}}>
+                                            <Text variant={"bodyMedium"} style={{
+                                                textAlign: "center",
+                                                marginTop: 200,
+                                                width: 250,
+                                                textAlignVertical: "center"
+                                            }}>You have no plants in your inventory.</Text>
+                                            <Text variant={"bodyMedium"} style={{
+                                                textAlign: "center",
+                                                marginTop: 5,
+                                                width: 250,
+                                                textAlignVertical: "center"
+                                            }}>Add some plants to get started!</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                }
+                                <PlantCards plants={queriedUserPlants}/>
+                            </View>
+                        </TabScreen>
+                        <TabScreen label="Divisions">
+                            <View>
+                                {userDivisions.length === 0 &&
+                                    <TouchableOpacity
+                                        style={{width: "100%", justifyContent: "center", alignItems: "center"}}
+                                        onPress={() => navigation.navigate("AddDivision")}
+                                    >
+                                        <View style={{flexDirection: "column"}}>
+                                            <Text variant={"bodyMedium"} style={{
+                                                textAlign: "center",
+                                                marginTop: 200,
+                                                width: 250,
+                                                textAlignVertical: "center"
+                                            }}>You have no divisions.</Text>
+                                            <Text variant={"bodyMedium"} style={{
+                                                textAlign: "center",
+                                                marginTop: 5,
+                                                width: 250,
+                                                textAlignVertical: "center"
+                                            }}>Add some divisions to get started!</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                }
+                                <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate}
+                                           handleScroll={handleScroll} scrollViewRef={scrollViewRef}/>
+                                {userDivisions.length > 2 &&
+                                    <IconButton icon={"chevron-down"} iconColor={theme.colors.primary} size={35}
+                                                style={{margin: 0, alignSelf: "center"}}
+                                                onPress={handleScrollToBottom}
+                                    />
+                                }
+                            </View>
+                        </TabScreen>
+                        <TabScreen
+                            label="Sensors"
+                        >
+                            <View>
+                                {sensors === null || sensors.length === 0 ?
+                                    <TouchableOpacity
+                                        style={{width: "100%", justifyContent: "center", alignItems: "center"}}
+                                        onPress={() => navigation.navigate("AddSensor")}
+                                    >
+                                        <View style={{flexDirection: "column"}}>
+                                            <Text variant={"bodyMedium"} style={{
+                                                textAlign: "center",
+                                                marginTop: 200,
+                                                width: 250,
+                                                textAlignVertical: "center"
+                                            }}>You have no sensors.</Text>
+                                            <Text variant={"bodyMedium"} style={{
+                                                textAlign: "center",
+                                                marginTop: 5,
+                                                width: 250,
+                                                textAlignVertical: "center"
+                                            }}>Add some sensors to get started!</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                    :
+                                    <View>
+                                        {userDivisions && userPlants && sensors && sensors.length !== 0 &&
+                                            <SensorsTab userDivisions={userDivisions} sensors={sensors}
+                                                        userPlants={userPlants} handleUpdate={handleUpdate}/>}
                                     </View>
-                                </TouchableOpacity>
-                                :
-                                <View>
-                                    {userDivisions && userPlants && sensors && sensors.length !== 0 && <SensorsTab userDivisions={userDivisions} sensors={sensors} userPlants={userPlants} handleUpdate={handleUpdate} />}
-                                </View>
-                            }
-                        </View>
-                    </TabScreen>
-                </Tabs>
-                :
-                <Tabs
-                    defaultIndex={0} // default = 0
-                    style={{ backgroundColor: '#fff' }} // works the same as AppBar in react-native-paper
-                    disableSwipe={true} // (default=false) disable swipe to left/right gestures
-                    onChangeIndex={(newIndex) => { setSelectedTab(newIndex) }}
-                >
-                    <TabScreen label="Inventory">
-                        <View>
-                            { userPlants.length > 0 &&
-                                <SearchBar filterPlants={filterPlants}/>
-                            }
-                            { userPlants.length === 0 &&
-                                <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
-                                                  onPress={() => navigation.navigate("AddPlant", {speciesID: null, scientificName: null})}
-                                >
-                                    <View style={{flexDirection: "column"}}>
-                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no plants in your inventory.</Text>
-                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some plants to get started!</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            }
-                            <PlantCards plants={queriedUserPlants}/>
-                        </View>
-                    </TabScreen>
-                    <TabScreen label="Divisions">
-                        <View>
-                            { userDivisions.length === 0 &&
-                                <TouchableOpacity style={{width: "100%", justifyContent: "center", alignItems: "center"}}
-                                                  onPress={() => navigation.navigate("AddDivision")}
-                                >
-                                    <View style={{flexDirection: "column"}}>
-                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 200, width: 250, textAlignVertical: "center"}}>You have no divisions.</Text>
-                                        <Text variant={"bodyMedium"} style={{textAlign: "center", marginTop: 5, width: 250, textAlignVertical: "center"}}>Add some divisions to get started!</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            }
-                            <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate} handleScroll={handleScroll} scrollViewRef={scrollViewRef}/>
-                            { userDivisions.length > 2 &&
-                                <IconButton icon={"chevron-down"} iconColor={theme.colors.primary} size={35}
-                                            style={{margin: 0, alignSelf: "center"}}
-                                            onPress={handleScrollToBottom}
-                                />
-                            }
-                        </View>
-                    </TabScreen>
-                </Tabs>
-            }
-            <PlusButton index={selectedTab} />
-            <BottomMenu screenHeight={screenHeight} active={"leaf"} />
-        </View>
-    )
+                                }
+                            </View>
+                        </TabScreen>
+                    </Tabs>
+                    :
+                    <Tabs
+                        defaultIndex={0} // default = 0
+                        style={{backgroundColor: '#fff'}} // works the same as AppBar in react-native-paper
+                        disableSwipe={true} // (default=false) disable swipe to left/right gestures
+                        onChangeIndex={(newIndex) => {
+                            setSelectedTab(newIndex)
+                        }}
+                    >
+                        <TabScreen label="Inventory">
+                            <View>
+                                {userPlants.length > 0 &&
+                                    <SearchBar filterPlants={filterPlants}/>
+                                }
+                                {userPlants.length === 0 &&
+                                    <TouchableOpacity
+                                        style={{width: "100%", justifyContent: "center", alignItems: "center"}}
+                                        onPress={() => navigation.navigate("AddPlant", {
+                                            speciesID: null,
+                                            scientificName: null
+                                        })}
+                                    >
+                                        <View style={{flexDirection: "column"}}>
+                                            <Text variant={"bodyMedium"} style={{
+                                                textAlign: "center",
+                                                marginTop: 200,
+                                                width: 250,
+                                                textAlignVertical: "center"
+                                            }}>You have no plants in your inventory.</Text>
+                                            <Text variant={"bodyMedium"} style={{
+                                                textAlign: "center",
+                                                marginTop: 5,
+                                                width: 250,
+                                                textAlignVertical: "center"
+                                            }}>Add some plants to get started!</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                }
+                                <PlantCards plants={queriedUserPlants}/>
+                            </View>
+                        </TabScreen>
+                        <TabScreen label="Divisions">
+                            <View>
+                                {userDivisions.length === 0 &&
+                                    <TouchableOpacity
+                                        style={{width: "100%", justifyContent: "center", alignItems: "center"}}
+                                        onPress={() => navigation.navigate("AddDivision")}
+                                    >
+                                        <View style={{flexDirection: "column"}}>
+                                            <Text variant={"bodyMedium"} style={{
+                                                textAlign: "center",
+                                                marginTop: 200,
+                                                width: 250,
+                                                textAlignVertical: "center"
+                                            }}>You have no divisions.</Text>
+                                            <Text variant={"bodyMedium"} style={{
+                                                textAlign: "center",
+                                                marginTop: 5,
+                                                width: 250,
+                                                textAlignVertical: "center"
+                                            }}>Add some divisions to get started!</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                }
+                                <Divisions divisions={userDivisions} plants={userPlants} handleUpdate={handleUpdate}
+                                           handleScroll={handleScroll} scrollViewRef={scrollViewRef}/>
+                                {userDivisions.length > 2 &&
+                                    <IconButton icon={"chevron-down"} iconColor={theme.colors.primary} size={35}
+                                                style={{margin: 0, alignSelf: "center"}}
+                                                onPress={handleScrollToBottom}
+                                    />
+                                }
+                            </View>
+                        </TabScreen>
+                    </Tabs>
+                }
+                <PlusButton index={selectedTab}/>
+                <BottomMenu screenHeight={screenHeight} active={"leaf"}/>
+            </View>
+        )
+    }
 }

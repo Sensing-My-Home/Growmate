@@ -1,8 +1,7 @@
 import {Dimensions, View} from "react-native";
-import GreenBar from "../../components/GreenBar";
 import BottomMenu from "../../components/BottomMenu";
 import React, {useEffect, useState} from "react";
-import {useTheme} from "react-native-paper";
+import {ActivityIndicator, useTheme} from "react-native-paper";
 import TasksHeader from "./components/TasksHeader";
 import Tasks from "./components/Tasks";
 import TaskCalendar from "./components/TaskCalendar";
@@ -19,6 +18,7 @@ export default function TasksScreen() {
     const [selected, setSelected] = useState(false);
     const [selectedDay, setSelectedDay] = useState(0);
     const [counter, setCounter] = useState(0);
+    const [loadingTasks, setLoadingTasks] = useState(true);
 
     useEffect( () => {
         getTodoTasks(userID).then((tasks) => {
@@ -65,6 +65,7 @@ export default function TasksScreen() {
                 setTodoTasks(todoTasks);
                 setTodoSelectedTasks(todoTasks);
             }
+            setLoadingTasks(false);
         });
     }, [counter]);
 
@@ -141,25 +142,35 @@ export default function TasksScreen() {
     }
     const hideChange = () => setVisibleChange(false);
 
-
-    
-    return (
-        <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <TasksHeader/>
-            <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect}/>
-            <Tasks tasks={todoSelectedTasks} selected={selected} maxHeight={220}
-                   setCounter={setCounter} counter={counter} setChange={setChange}
-                   userId={userID}
-            />
-            {selected &&
-                <GoBackButton onPress={goBack}/>
-            }
-            <TaskDialog hideChange={hideChange} visibleChange={visibleChange} taskName={taskName}
-                        taskDueDate={taskDueDate} taskMode={taskMode} taskFrequency={taskFrequency}
-                        setTaskMode={setTaskMode} setTaskDueDate={setTaskDueDate} setTaskFrequency={setTaskFrequency}
-                        taskID={taskID} userID={userID} initialTaskDueDate={initialTaskDueDate} initialTaskFrequency={initialTaskFrequency}
-                        initialTaskMode={initialTaskMode} setCounter={setCounter} counter={counter} plantID={plantID} taskType={taskType}/>
-            <BottomMenu screenHeight={screenHeight} active={"calendar"} />
-        </View>
-    )
+    if (loadingTasks) {
+        return (
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <ActivityIndicator size="large" color={theme.colors.primary}/>
+            </View>
+        )
+    }
+    else {
+        return (
+            <View style={{height: screenHeight, backgroundColor: theme.colors.background}}>
+                <TasksHeader/>
+                <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect}/>
+                <Tasks tasks={todoSelectedTasks} selected={selected} maxHeight={220}
+                       setCounter={setCounter} counter={counter} setChange={setChange}
+                       userId={userID}
+                />
+                {selected &&
+                    <GoBackButton onPress={goBack}/>
+                }
+                <TaskDialog hideChange={hideChange} visibleChange={visibleChange} taskName={taskName}
+                            taskDueDate={taskDueDate} taskMode={taskMode} taskFrequency={taskFrequency}
+                            setTaskMode={setTaskMode} setTaskDueDate={setTaskDueDate}
+                            setTaskFrequency={setTaskFrequency}
+                            taskID={taskID} userID={userID} initialTaskDueDate={initialTaskDueDate}
+                            initialTaskFrequency={initialTaskFrequency}
+                            initialTaskMode={initialTaskMode} setCounter={setCounter} counter={counter}
+                            plantID={plantID} taskType={taskType}/>
+                <BottomMenu screenHeight={screenHeight} active={"calendar"}/>
+            </View>
+        )
+    }
 }

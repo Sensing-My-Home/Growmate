@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Dimensions, ScrollView } from "react-native";
 import { Tabs, TabScreen } from 'react-native-paper-tabs';
 import { useTheme, ActivityIndicator } from "react-native-paper";
-import { useNavigation, StackActions } from '@react-navigation/native';
+import { useNavigation} from '@react-navigation/native';
 
 import BottomMenu from "../../components/BottomMenu";
 import PlantHeader from "./components/PlantHeader";
@@ -14,8 +14,6 @@ import SensorsCarousel from "./components/SensorsCarousel";
 import PlantStatus from "./components/PlantStatus";
 import SensorGraphStack from "./components/SensorGraphStack";
 import TaskCalendar from "../TasksScreen/components/TaskCalendar";
-import PlantSensorFlatList from "./components/PlantSensorsFlatList";
-
 //API functions
 import {
     getPlantInfo,

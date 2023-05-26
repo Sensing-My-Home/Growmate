@@ -21,11 +21,11 @@ export default function SpeciesInfo({info}){
     const optimalTemperature = () => {
         switch (info.optimalTemperature){
             case "COOL":
-                return "50ºF - 65ºF"
+                return "10ºC - 18ºC"
             case "AVERAGE":
-                return "65ºF - 75ºF"
+                return "18ºC - 24ºC"
             case "WARM":
-                return "75ºF - 85ºF"
+                return "24ºC - 30ºC"
         }
     }
 
@@ -170,13 +170,13 @@ export default function SpeciesInfo({info}){
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: "column", marginHorizontal: 30
+        flexDirection: "column", marginHorizontal: 35
     },
     infoRow: {
         flexDirection: "row", alignItems: "center", marginBottom: 8
     },
     info: {
-        flexDirection: "row", alignItems: "center", width: 190
+        flexDirection: "row", alignItems: "center", width: 175
     },
 
     infoText: {
