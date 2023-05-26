@@ -88,6 +88,7 @@ export default function PlantScreen({ route }) {
     }, [sensors])
 
     //Get Plant tasks
+    const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
     const [todoTasks, setTodoTasks] = useState([]);
     const [todoTaskDates, setTodoTaskDates] = useState({});
     const [todoSelectedTasks, setTodoSelectedTasks] = useState([]);
@@ -108,22 +109,28 @@ export default function PlantScreen({ route }) {
                 let year = date.getFullYear();
                 let name = rawTasks[r].name;
                 let id = rawTasks[r].id
-                todoTasks.push(
-                    {
-                        dateString: rawTasks[r].taskDate,
-                        weekday: weekday,
-                        day: day,
-                        month: month,
-                        year: year,
-                        tasks: [
-                            name
-                        ],
-                        id: id,
-                        taskType: rawTasks[r].taskType
-                    }
-                )
-                taskDates[rawTasks[r].taskDate] = { marked: true, dotColor: theme.colors.primary };
+                if (year === currentYear) {
+                    todoTasks.push(
+                        {
+                            date: date,
+                            dateString: rawTasks[r].taskDate,
+                            weekday: weekday,
+                            day: day,
+                            month: month,
+                            year: year,
+                            tasks: [
+                                name
+                            ],
+                            id: id,
+                            taskType: rawTasks[r].taskType
+                        }
+                    )
+                    taskDates[rawTasks[r].taskDate] = {marked: true, dotColor: theme.colors.primary};
+                }
             }
+
+            todoTasks.sort((a, b) => a.date - b.date);
+
             if (selected) {
                 setTodoTaskDates(taskDates);
                 setTodoTasks(todoTasks);
@@ -145,13 +152,10 @@ export default function PlantScreen({ route }) {
     const onDaySelect = (date, manualTodoTasks) => {
         if (manualTodoTasks) {
             setSelectedDay(date);
-            let chosenDay = date.day.toString();
-            let chosenMonth = new Date(date.dateString).toDateString().split(" ")[1];
-            let chosenYear = date.year.toString();
             let selectedTasks = [];
             for (let f = 0; f < manualTodoTasks.length; f++) {
                 let task = manualTodoTasks.at(f);
-                if (task.day.toString() === chosenDay && task.month === chosenMonth && task.year.toString() === chosenYear) {
+                if (date.dateString === task.dateString) {
                     selectedTasks.push(task);
                 }
             }
@@ -160,13 +164,10 @@ export default function PlantScreen({ route }) {
         }
         else {
             setSelectedDay(date);
-            let chosenDay = date.day.toString();
-            let chosenMonth = new Date(date.dateString).toDateString().split(" ")[1];
-            let chosenYear = date.year.toString();
             let selectedTasks = [];
             for (let f = 0; f < todoTasks.length; f++) {
                 let task = todoTasks.at(f);
-                if (task.day.toString() === chosenDay && task.month === chosenMonth && task.year.toString() === chosenYear) {
+                if (date.dateString === task.dateString) {
                     selectedTasks.push(task);
                 }
             }
@@ -279,7 +280,7 @@ export default function PlantScreen({ route }) {
                         </TabScreen>
                         <TabScreen label="Tasks " icon="pencil">
                             <View>
-                                <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect} />
+                                <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect} updateYear={setCurrentYear}/>
                                 <Tasks tasks={todoSelectedTasks} selected={selected} userId={userID} plantID={plantID} setCounter={setCounter} counter={counter} maxHeight={160} setChange={setChange} />
                                 {selected &&
                                     <GoBackButton onPress={goBack} />
