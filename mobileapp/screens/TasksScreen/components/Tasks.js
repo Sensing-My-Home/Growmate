@@ -12,6 +12,7 @@ export default  function Tasks({tasks, userId, plantID, setCounter, counter, max
                             key={index}
                             weekday={task.weekday}
                             day={task.day}
+                            month={task.month}
                             tasks = {task.tasks}
                             userId={userId}
                             plantId={plantID ? plantID : task.plantID}

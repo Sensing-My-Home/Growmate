@@ -1,6 +1,5 @@
 import {Dimensions, View} from "react-native";
-import {useTheme} from "react-native-paper";
-import GreenBar from "../../components/GreenBar";
+import {ActivityIndicator, useTheme} from "react-native-paper";
 import React, {useEffect, useState} from "react";
 import BottomMenu from "../../components/BottomMenu";
 import UserHeader from "./components/UserHeader";
@@ -32,9 +31,12 @@ export default function ProfileScreen(){
     const navigation = useNavigation();
     const [userStats, setUserStats] = useState({});
     const [tasksLog, setTasksLog] = useState([]);
+    const [loadingStats, setLoadingStats] = useState(true);
+    const [loadingLog, setLoadingLog] = useState(true);
+
     useEffect(() => {
-        getUserStats(userID).then((stats) => setUserStats(stats));
-        getTasksLog(userID).then((log) => setTasksLog(log));
+        getUserStats(userID).then((stats) => setUserStats(stats)).then(() => setLoadingStats(false));
+        getTasksLog(userID).then((log) => setTasksLog(log)).then(() => setLoadingLog(false));
     }, [])
 
     const [selected, setSelected] = useState("Details");
@@ -97,32 +99,46 @@ export default function ProfileScreen(){
         })
     }
 
-    return (
-        <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <UserHeader stats={userStats} name={name} logout={logout}/>
-            <ThinDivider/>
-            <ProfileButtons selected={selected} setSelected={setSelected}/>
-            {selected === "Details" &&
-                <ProfileDetails setNameIsValid={setNameIsValid} nameIsValid={nameIsValid}
-                                setAddressIsValid={setAddressIsValid} setDateOfBirthIsValid={setDateOfBirthIsValid}
-                                setEmailIsValid={setEmailIsValid} dateOfBirthIsValid={dateOfBirthIsValid}
-                                addressIsValid={addressIsValid} emailIsValid={emailIsValid}
-                                setUserName={setInitialName} setUserAddress={setInitialAddress} setUserEmail={setInitialEmail}
-                                setUserDateOfBirth={setInitialDateOfBirth} userAddress={initialAddress} userDateOfBirth={initialDateOfBirth}
-                                userName={initialName} userEmail={initialEmail} onSavePress={editProfileOnPress} />
-            }
-            {selected === "Tasks Log" &&
-                <TaskLog log={tasksLog}/>
-            }
-            {selected === "Password" &&
-                <ChangePassword passwordIsValid={newPasswordIsValid} setPasswordIsValid={setNewPasswordIsValid}
-                                oldPasswordIsValid={oldPasswordIsValid} setOldPasswordIsValid={setOldPasswordIsValid}
-                                setPassword={setNewPassword} confirmNewPasswordIsValid={confirmNewPasswordIsValid} newPassword={newPassword}
-                                setConfirmNewPasswordIsValid={setConfirmNewPasswordIsValid} setOldPassword={setOldPassword} oldPassword={oldPassword}
-                                onPress={onPressChangePassword} incorrectOldPassword={incorrectOldPassword}
-                />
-            }
-            <BottomMenu screenHeight={screenHeight} active={"account"}/>
-        </View>
-    )
+    if (loadingStats || loadingLog){
+        return (
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <ActivityIndicator size="large" color={theme.colors.primary}/>
+            </View>
+        )
+    }
+    else {
+        return (
+            <View style={{height: screenHeight, backgroundColor: theme.colors.background}}>
+                <UserHeader stats={userStats} name={name} logout={logout}/>
+                <ThinDivider/>
+                <ProfileButtons selected={selected} setSelected={setSelected}/>
+                {selected === "Details" &&
+                    <ProfileDetails setNameIsValid={setNameIsValid} nameIsValid={nameIsValid}
+                                    setAddressIsValid={setAddressIsValid} setDateOfBirthIsValid={setDateOfBirthIsValid}
+                                    setEmailIsValid={setEmailIsValid} dateOfBirthIsValid={dateOfBirthIsValid}
+                                    addressIsValid={addressIsValid} emailIsValid={emailIsValid}
+                                    setUserName={setInitialName} setUserAddress={setInitialAddress}
+                                    setUserEmail={setInitialEmail}
+                                    setUserDateOfBirth={setInitialDateOfBirth} userAddress={initialAddress}
+                                    userDateOfBirth={initialDateOfBirth}
+                                    userName={initialName} userEmail={initialEmail} onSavePress={editProfileOnPress}/>
+                }
+                {selected === "Tasks Log" &&
+                    <TaskLog log={tasksLog}/>
+                }
+                {selected === "Password" &&
+                    <ChangePassword passwordIsValid={newPasswordIsValid} setPasswordIsValid={setNewPasswordIsValid}
+                                    oldPasswordIsValid={oldPasswordIsValid}
+                                    setOldPasswordIsValid={setOldPasswordIsValid}
+                                    setPassword={setNewPassword} confirmNewPasswordIsValid={confirmNewPasswordIsValid}
+                                    newPassword={newPassword}
+                                    setConfirmNewPasswordIsValid={setConfirmNewPasswordIsValid}
+                                    setOldPassword={setOldPassword} oldPassword={oldPassword}
+                                    onPress={onPressChangePassword} incorrectOldPassword={incorrectOldPassword}
+                    />
+                }
+                <BottomMenu screenHeight={screenHeight} active={"account"}/>
+            </View>
+        )
+    }
 }

@@ -1,12 +1,12 @@
 import {Dimensions, View} from "react-native";
 import {useTheme} from "react-native-paper";
-import GreenBar from "../../components/GreenBar";
 import React, {useState} from "react";
 import LoginSignUpHeader from "../../components/LoginSignUpHeader";
 import SignUpMoreInfo from "./components/SignUpMoreInfo";
 import SignUpButton from "./components/SignUpButton";
 import {signUp} from "../../service/SignUpScreenService";
 import {useNavigation} from "@react-navigation/native";
+import {uploadImage} from "../../service/FirebaseService";
 
 
 export default function SignUpScreenTwo({route}){
@@ -23,7 +23,7 @@ export default function SignUpScreenTwo({route}){
     const [type, setType] = useState(false);
     const [experience, setExperience] = useState(0);
     const navigation = useNavigation();
-    const onSignupPress = () => {
+    const onSignupPress = async () => {
         let finalType;
         if (type === true) {
             finalType = "PREMIUM";
@@ -32,7 +32,9 @@ export default function SignUpScreenTwo({route}){
             finalType = "NON-PREMIUM";
         }
 
-        signUp(name, email, password, photo, dateOfBirth, experience, address, finalType).then(
+        const imageURL = await uploadImage(photo, email, name);
+
+        signUp(name, email, password, imageURL, dateOfBirth, experience, address, finalType).then(
             () => {navigation.navigate("Login")}
         );
 

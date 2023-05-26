@@ -1,8 +1,7 @@
 import {Dimensions, View} from "react-native";
-import GreenBar from "../../components/GreenBar";
 import BottomMenu from "../../components/BottomMenu";
 import React, {useEffect, useState} from "react";
-import {useTheme} from "react-native-paper";
+import {ActivityIndicator, useTheme} from "react-native-paper";
 import TasksHeader from "./components/TasksHeader";
 import Tasks from "./components/Tasks";
 import TaskCalendar from "./components/TaskCalendar";
@@ -19,6 +18,8 @@ export default function TasksScreen() {
     const [selected, setSelected] = useState(false);
     const [selectedDay, setSelectedDay] = useState(0);
     const [counter, setCounter] = useState(0);
+    const [loadingTasks, setLoadingTasks] = useState(true);
+    const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
     useEffect( () => {
         getTodoTasks(userID).then((tasks) => {
@@ -36,24 +37,29 @@ export default function TasksScreen() {
                     let year = date.getFullYear();
                     let name = rawTasks[pID][r].name;
                     let id = rawTasks[pID][r].id
-                    todoTasks.push(
-                        {
-                            dateString: rawTasks[pID][r].taskDate,
-                            weekday: weekday,
-                            day: day,
-                            month: month,
-                            year: year,
-                            tasks: [
-                                name
-                            ],
-                            id: id,
-                            taskType: rawTasks[pID][r].taskType,
-                            plantID: pID
-                        }
-                    )
-                    taskDates[rawTasks[pID][r].taskDate] = {marked: true, dotColor: theme.colors.primary};
+                    if (year === currentYear) {
+                        todoTasks.push(
+                            {
+                                date: date,
+                                dateString: rawTasks[pID][r].taskDate,
+                                weekday: weekday,
+                                day: day,
+                                month: month,
+                                year: year,
+                                tasks: [
+                                    name
+                                ],
+                                id: id,
+                                taskType: rawTasks[pID][r].taskType,
+                                plantID: pID
+                            }
+                        )
+                        taskDates[rawTasks[pID][r].taskDate] = {marked: true, dotColor: theme.colors.primary};
+                    }
                 }
             }
+
+            todoTasks.sort((a, b) => a.date - b.date);
 
             if (selected) {
                 setTodoTaskDates(taskDates);
@@ -65,8 +71,9 @@ export default function TasksScreen() {
                 setTodoTasks(todoTasks);
                 setTodoSelectedTasks(todoTasks);
             }
+            setLoadingTasks(false);
         });
-    }, [counter]);
+    }, [counter, currentYear]);
 
     const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme()
@@ -74,13 +81,10 @@ export default function TasksScreen() {
     const onDaySelect = (date, manualTodoTasks) => {
         if (manualTodoTasks){
             setSelectedDay(date);
-            let chosenDay = date.day.toString();
-            let chosenMonth = new Date(date.dateString).toDateString().split(" ")[1];
-            let chosenYear = date.year.toString();
             let selectedTasks = [];
             for (let f = 0; f < manualTodoTasks.length; f++) {
                 let task = manualTodoTasks.at(f);
-                if (task.day.toString() === chosenDay && task.month === chosenMonth && task.year.toString() === chosenYear){
+                if (date.dateString === task.dateString){
                     selectedTasks.push(task);
                 }
             }
@@ -89,13 +93,10 @@ export default function TasksScreen() {
         }
         else {
             setSelectedDay(date);
-            let chosenDay = date.day.toString();
-            let chosenMonth = new Date(date.dateString).toDateString().split(" ")[1];
-            let chosenYear = date.year.toString();
             let selectedTasks = [];
             for (let f = 0; f < todoTasks.length; f++) {
                 let task = todoTasks.at(f);
-                if (task.day.toString() === chosenDay && task.month === chosenMonth && task.year.toString() === chosenYear){
+                if (date.dateString === task.dateString){
                     selectedTasks.push(task);
                 }
             }
@@ -141,25 +142,35 @@ export default function TasksScreen() {
     }
     const hideChange = () => setVisibleChange(false);
 
-
-    
-    return (
-        <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <TasksHeader/>
-            <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect}/>
-            <Tasks tasks={todoSelectedTasks} selected={selected} maxHeight={220}
-                   setCounter={setCounter} counter={counter} setChange={setChange}
-                   userId={userID}
-            />
-            {selected &&
-                <GoBackButton onPress={goBack}/>
-            }
-            <TaskDialog hideChange={hideChange} visibleChange={visibleChange} taskName={taskName}
-                        taskDueDate={taskDueDate} taskMode={taskMode} taskFrequency={taskFrequency}
-                        setTaskMode={setTaskMode} setTaskDueDate={setTaskDueDate} setTaskFrequency={setTaskFrequency}
-                        taskID={taskID} userID={userID} initialTaskDueDate={initialTaskDueDate} initialTaskFrequency={initialTaskFrequency}
-                        initialTaskMode={initialTaskMode} setCounter={setCounter} counter={counter} plantID={plantID} taskType={taskType}/>
-            <BottomMenu screenHeight={screenHeight} active={"calendar"} />
-        </View>
-    )
+    if (loadingTasks) {
+        return (
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                <ActivityIndicator size="large" color={theme.colors.primary}/>
+            </View>
+        )
+    }
+    else {
+        return (
+            <View style={{height: screenHeight, backgroundColor: theme.colors.background}}>
+                <TasksHeader/>
+                <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect} updateYear={setCurrentYear}/>
+                <Tasks tasks={todoSelectedTasks} selected={selected} maxHeight={220}
+                       setCounter={setCounter} counter={counter} setChange={setChange}
+                       userId={userID}
+                />
+                {selected &&
+                    <GoBackButton onPress={goBack}/>
+                }
+                <TaskDialog hideChange={hideChange} visibleChange={visibleChange} taskName={taskName}
+                            taskDueDate={taskDueDate} taskMode={taskMode} taskFrequency={taskFrequency}
+                            setTaskMode={setTaskMode} setTaskDueDate={setTaskDueDate}
+                            setTaskFrequency={setTaskFrequency}
+                            taskID={taskID} userID={userID} initialTaskDueDate={initialTaskDueDate}
+                            initialTaskFrequency={initialTaskFrequency}
+                            initialTaskMode={initialTaskMode} setCounter={setCounter} counter={counter}
+                            plantID={plantID} taskType={taskType}/>
+                <BottomMenu screenHeight={screenHeight} active={"calendar"}/>
+            </View>
+        )
+    }
 }
