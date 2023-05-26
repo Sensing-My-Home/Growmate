@@ -4,7 +4,6 @@ import BottomMenu from "../../components/BottomMenu";
 import {useTheme} from "react-native-paper";
 import AddPlantHeader from "../AddPlantScreen/components/AddPlantHeader";
 import NextButton from "../AddPlantScreen/components/NextButton";
-import AssociateSensor from "./components/AssociateSensor";
 import AssociateDivision from "./components/AssociateDivision";
 import AddDivisionButton from "./components/AddDivisionButton";
 import {createNewPlant, getDivisions, getPlantSensors} from "../../service/AssociatePlantScreenService";
@@ -22,7 +21,6 @@ export default function AssociatePlantScreen({route}) {
     const [sensors, setSensors] = useState({});
     const [divisions, setDivisions] = useState([]);
 
-    const [showSensorDropDown, setShowSensorDropDown] = useState(false);
     const [chosenSensor, setChosenSensor] = useState(null);
 
     const [showDivisionDropDown, setShowDivisionDropDown] = useState(false);
@@ -59,12 +57,6 @@ export default function AssociatePlantScreen({route}) {
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
             <AddPlantHeader text={"Just a few more steps!"} division={"back"}/>
-            {userType === "PREMIUM" && Object.keys(sensors).length > 0 &&
-                <View>
-                    <AssociateSensor sensors={sensors} humidityProps={[showSensorDropDown, setShowSensorDropDown, chosenSensor, setChosenSensor]}/>
-                </View>
-
-            }
             <AssociateDivision divisions={divisions} divisionsProps={[showDivisionDropDown, setShowDivisionDropDown, chosenDivision, setChosenDivision ]} sensors={sensors}/>
             <AddDivisionButton/>
             <NextButton text={"CREATE"} reverse={true} page={"Home"} onPress={onPressNext}/>

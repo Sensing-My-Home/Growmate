@@ -7,25 +7,14 @@
     <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-149 done">
       <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/BottomMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/BottomMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/AddDivisionScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/AddDivisionScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/components/AddPlantHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/components/AddPlantHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/components/AssociateSensorsDialog.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddDivisionScreen/components/DivisionInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddDivisionScreen/components/DivisionInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/components/NextButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/components/NextButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/AddSensorScreen/AddSensorScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddSensorScreen/AddSensorScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/components/AddDivisionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AssociatePlantScreen/components/AddDivisionButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/components/AddSensorButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AssociatePlantScreen/components/AddSensorButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/components/AssociateDivision.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AssociatePlantScreen/components/AssociateDivision.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/components/AssociateSensor.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AssociatePlantScreen/components/AssociateSensor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlusButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlusButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/components/AssociateSensor.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/SensorsTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/SensorsTab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/LoginScreen/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LoginScreen/LoginScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/components/PlantHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/components/PlantHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/ProfileScreen/ProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProfileScreen/ProfileScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/ProfileScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/ProfileScreenService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +101,7 @@
       <workItem from="1683908967413" duration="1964000" />
       <workItem from="1684843943424" duration="3448000" />
       <workItem from="1684858184047" duration="3904000" />
+      <workItem from="1685096750713" duration="3864000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>

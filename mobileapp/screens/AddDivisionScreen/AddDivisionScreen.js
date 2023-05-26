@@ -1,7 +1,6 @@
 import {Dimensions, View} from "react-native";
-import {StackActions, useNavigation} from "@react-navigation/native";
+import {useNavigation} from "@react-navigation/native";
 import {useTheme} from "react-native-paper";
-import GreenBar from "../../components/GreenBar";
 import React, {useState} from "react";
 import AddPlantHeader from "../AddPlantScreen/components/AddPlantHeader";
 import BottomMenu from "../../components/BottomMenu";
@@ -37,7 +36,7 @@ export default function AddDivisionScreen({route}){
             <AddPlantHeader text={"Add a Division to your home!"} division={destiny ? destiny : null}/>
             <AddDivisionDescription/>
             <DivisionInfo setName={setDivisionName} luminosityTarget={divisionLuminosity} setLuminosityTarget={setDivisionLuminosity}/>
-            <NextButton text={"CREATE"} reverse={true} onPress={onPressNext}/>
+            <NextButton text={"CREATE"} reverse={true} onPress={onPressNext} disabled={!(divisionName.length > 0 && divisionLuminosity !== "")}/>
             <BottomMenu screenHeight={screenHeight} active={"leaf"} />
         </View>
     )

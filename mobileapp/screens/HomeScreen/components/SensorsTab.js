@@ -39,6 +39,7 @@ export default function SensorsTab({ userDivisions, sensors, userPlants, handleU
   }, [userDivisions, userPlants]);
 
   useEffect(() => {
+    setSensorsList(sensors);
     const filteredSensorsList = sensorsList.filter((sensor) => {
       if (sensorType === 'division') {
         if (division === "") {
@@ -54,10 +55,10 @@ export default function SensorsTab({ userDivisions, sensors, userPlants, handleU
         }
       }
       return true; // No filter applied for other sensor types
-    }, [sensorsList, sensorType, division, plant]);
+    }, [sensorsList, sensorType, division, plant, sensors]);
 
     setFilteredSensors(filteredSensorsList);
-  }, [sensorType, division, plant, sensorsList]);
+  }, [sensorType, division, plant, sensorsList, sensors]);
 
   const countSensors = filteredSensors.length;
 

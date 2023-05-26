@@ -10,13 +10,13 @@ export default function NextButton({text, reverse, onPress, disabled}){
 
                 {reverse ?
                     <View style={{width: 120, height: 35, borderRadius: 20,
-                        backgroundColor: theme.colors.background, flexDirection: "row",
-                        alignItems:"center", justifyContent: "center", borderWidth: 1, borderColor: theme.colors.primary
+                        backgroundColor: disabled ? theme.colors.outline : theme.colors.background, flexDirection: "row",
+                        alignItems:"center", justifyContent: "center", borderWidth: 1, borderColor: disabled ? theme.colors.outline : theme.colors.primary
                     }}>
-                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary, marginLeft: 25}}>
+                        <Text variant={"bodyMedium"} style={{color: disabled ? theme.colors.background : theme.colors.primary, marginLeft: 25}}>
                             {text}
                         </Text>
-                        <IconButton icon={"arrow-right-thin"} size={20} iconColor={theme.colors.primary} style={{marginLeft: 5}}/>
+                        <IconButton icon={"arrow-right-thin"} size={20} iconColor={disabled ? theme.colors.background : theme.colors.primary} style={{marginLeft: 5}}/>
                     </View>
                     :
                     <View style={{width: 120, height: 35, borderRadius: 20,

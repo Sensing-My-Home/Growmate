@@ -1,7 +1,6 @@
 import {Dimensions, View} from "react-native";
-import {StackActions, useNavigation} from "@react-navigation/native";
+import {useNavigation} from "@react-navigation/native";
 import {useTheme} from "react-native-paper";
-import GreenBar from "../../components/GreenBar";
 import React, {useEffect, useState} from "react";
 import AddPlantHeader from "../AddPlantScreen/components/AddPlantHeader";
 import BottomMenu from "../../components/BottomMenu";
