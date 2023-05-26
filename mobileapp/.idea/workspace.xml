@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-180 done">
-      <change beforePath="$PROJECT_DIR$/assets/aloe-vera-closeup.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/cacti.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/conifer.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/ferns.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/herbs.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/lavender.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/mint.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/moss.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/orchids.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/parsley.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCardRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCardRow.js" afterDir="false" />
+    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-181 done">
+      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/components/PlantSensorCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/components/PlantSensorCard.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +94,7 @@
       <workItem from="1683908967413" duration="1964000" />
       <workItem from="1684843943424" duration="3448000" />
       <workItem from="1684858184047" duration="3904000" />
-      <workItem from="1685096750713" duration="6664000" />
+      <workItem from="1685096750713" duration="7559000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
@@ -363,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685103771221</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="GM-181 done">
+      <created>1685103963520</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1685103963520</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,7 +380,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed calendar locale of AddPlant" />
     <MESSAGE value="added getPlants and getDivisionsAndAssociatedPlants services" />
     <MESSAGE value="added SpeciesProfileService" />
     <MESSAGE value="added CategoryScreenService and DiscoverPlantScreenService" />
@@ -406,6 +404,7 @@
     <MESSAGE value="GM-151 + GM-152 done done" />
     <MESSAGE value="GM-153 done" />
     <MESSAGE value="GM-180 done" />
-    <option name="LAST_COMMIT_MESSAGE" value="GM-180 done" />
+    <MESSAGE value="GM-181 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-181 done" />
   </component>
 </project>
