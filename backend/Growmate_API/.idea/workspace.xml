@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="GM-150 done">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/PlantScreen/PlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/TasksScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/components/DayTasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/components/DayTasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/components/TaskCalendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/components/TaskCalendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/components/Tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/TasksScreen/components/Tasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobileapp/components/BottomMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/components/BottomMenu.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
