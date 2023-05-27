@@ -1,29 +1,37 @@
+import React, { useState, useEffect } from 'react';
 import { View, Dimensions, FlatList } from "react-native";
 import PlantSensorCard from "./PlantSensorCard";
 
-export default function PlantSensorFlatList({sensors}) {
+export default function PlantSensorFlatList({ sensors }) {
     const screenWidht = Dimensions.get('screen').width;
 
-    const renderSensor = (sensor) => {
+    const [entries, setEntries] = useState([]);
+
+    useEffect(() => {
+        // Only set entries if the value in not "No data"
+        for (let i = 0; i < sensors.length; i++) {
+            if (sensors[i].value !== "No data") {
+                setEntries((prev) => [...prev, sensors[i]]);
+            }
+        }
+    }, []);
+
+    const renderItem = ({ item }) => {
         return (
-            <View style={{ width: screenWidht, alignItems: 'center' }}>
-                <PlantSensorCard
-                    type={sensor.type}
-                    value={sensor.value}
-                />
-            </View>
-        )
-    }
+            <PlantSensorCard
+                key={item.sensorCode}
+                sensor={item}
+            />
+        );
+    };
 
     return (
         <FlatList
             horizontal
             pagingEnabled
             contentContainerStyle={{ paddingBottom: 25 }}
-            data={sensors}
-            renderItem={({ item, index }) => {
-                return (renderSensor(item))
-            }}
+            data={entries}
+            renderItem={renderItem}
         />
     )
 }

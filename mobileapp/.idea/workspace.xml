@@ -4,28 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="added AddPlantScreenService and AssociatePlantScreenService">
-      <change beforePath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/Growmate_API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/fill_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../database/fill_tables.sql" afterDir="false" />
+    <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="GM-186 done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AssociatePlantScreen/AssociatePlantScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/CategoryScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CategoryScreen/components/PlantItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CategoryScreen/components/PlantItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/Categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/Categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/CategoryCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/DiscoverPlantsScreen/components/CategoryCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/ChangePlantDivisionDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/ChangePlantDivisionDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/DivisionRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/DivisionRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCardRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/PlantCardRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/RemovePlantDivisionDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/RemovePlantDivisionDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/components/WelcomeHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/components/WelcomeHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/components/PlantAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/components/PlantAvatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SpeciesProfileScreen/SpeciesProfileScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SpeciesProfileScreen/components/SpeciesAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SpeciesProfileScreen/components/SpeciesAvatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/TasksScreen/TasksScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/AssociatePlantScreenService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/HomeScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/HomeScreenService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SignUpScreen/SignUpScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SignUpScreen/SignUpScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SignUpScreenTwo/SignUpScreenTwo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SignUpScreenTwo/SignUpScreenTwo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,30 +51,16 @@
       <recent name="$PROJECT_DIR$/screens/AddPlantScreen/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/screens/ProfileScreen/components" />
       <recent name="$PROJECT_DIR$/aux" />
       <recent name="$PROJECT_DIR$/.images" />
       <recent name="$PROJECT_DIR$/assets" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="mobileapp" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="mobileapp" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="" />
+      <changelist id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="merged with backend" />
       <created>1679593266633</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -112,6 +80,21 @@
       <workItem from="1681065748109" duration="6636000" />
       <workItem from="1681123110281" duration="1632000" />
       <workItem from="1681132689704" duration="15431000" />
+      <workItem from="1681823338915" duration="4182000" />
+      <workItem from="1681898793897" duration="4928000" />
+      <workItem from="1682792656541" duration="2000" />
+      <workItem from="1683152180054" duration="1861000" />
+      <workItem from="1683157033429" duration="3816000" />
+      <workItem from="1683190047854" duration="6093000" />
+      <workItem from="1683216531818" duration="318000" />
+      <workItem from="1683620935559" duration="630000" />
+      <workItem from="1683743016163" duration="10790000" />
+      <workItem from="1683804101914" duration="3302000" />
+      <workItem from="1683889452528" duration="11368000" />
+      <workItem from="1683908967413" duration="1964000" />
+      <workItem from="1684843943424" duration="3448000" />
+      <workItem from="1684858184047" duration="3904000" />
+      <workItem from="1685096750713" duration="10308000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
@@ -232,30 +215,224 @@
       <option name="project" value="LOCAL" />
       <updated>1681139169580</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="AddDivisionScreen semi-completed">
+      <created>1681828537532</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1681828537532</updated>
+    </task>
+    <task id="LOCAL-00019" summary="plant tasks screen has calendar">
+      <created>1683622275151</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1683622275151</updated>
+    </task>
+    <task id="LOCAL-00020" summary="added AddPlantScreenService and AssociatePlantScreenService">
+      <created>1683793540279</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1683793540279</updated>
+    </task>
+    <task id="LOCAL-00021" summary="merged with backend">
+      <created>1683793635286</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1683793635286</updated>
+    </task>
+    <task id="LOCAL-00022" summary="GM-88 DONE">
+      <created>1683809011774</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1683809011774</updated>
+    </task>
+    <task id="LOCAL-00023" summary="GM-88 completely done">
+      <created>1683904038047</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1683904038047</updated>
+    </task>
+    <task id="LOCAL-00024" summary="GM-117 visual part done">
+      <created>1683920366440</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1683920366440</updated>
+    </task>
+    <task id="LOCAL-00025" summary="merged with backend">
+      <created>1683920494624</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1683920494624</updated>
+    </task>
+    <task id="LOCAL-00026" summary="GM-117 done">
+      <created>1683935896148</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1683935896148</updated>
+    </task>
+    <task id="LOCAL-00027" summary="GM-118 done">
+      <created>1684001483719</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1684001483719</updated>
+    </task>
+    <task id="LOCAL-00028" summary="merged with backend">
+      <created>1684102614586</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1684102614586</updated>
+    </task>
+    <task id="LOCAL-00029" summary="GM-138 fixed bug when division null">
+      <created>1684834933349</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1684834933349</updated>
+    </task>
+    <task id="LOCAL-00030" summary="GM-141 done">
+      <created>1684837028314</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1684837028314</updated>
+    </task>
+    <task id="LOCAL-00031" summary="GM-142 done">
+      <created>1684844909117</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1684844909117</updated>
+    </task>
+    <task id="LOCAL-00032" summary="GM-146 done">
+      <created>1684845794510</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1684845794510</updated>
+    </task>
+    <task id="LOCAL-00033" summary="GM-175 service method">
+      <created>1684853111607</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1684853111607</updated>
+    </task>
+    <task id="LOCAL-00034" summary="GM-175 done">
+      <created>1684854658484</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1684854658484</updated>
+    </task>
+    <task id="LOCAL-00035" summary="GM-151 + GM-152 done done">
+      <created>1685101085009</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1685101085009</updated>
+    </task>
+    <task id="LOCAL-00036" summary="GM-153 done">
+      <created>1685102165102</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1685102165102</updated>
+    </task>
+    <task id="LOCAL-00037" summary="GM-180 done">
+      <created>1685103771220</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1685103771221</updated>
+    </task>
+    <task id="LOCAL-00038" summary="GM-181 done">
+      <created>1685103963520</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1685103963520</updated>
+    </task>
+    <task id="LOCAL-00039" summary="GM-183 done">
+      <created>1685105762817</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1685105762817</updated>
+    </task>
+    <task id="LOCAL-00040" summary="GM-184 done">
+      <created>1685105798170</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1685105798170</updated>
+    </task>
+    <task id="LOCAL-00041" summary="GM-185 and GM-188 done">
+      <created>1685107686945</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1685107686945</updated>
+    </task>
+    <task id="LOCAL-00042" summary="GM-186 done">
+      <created>1685108198099</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1685108198099</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="GM-29 done init project + folder skeleton" />
-    <MESSAGE value="GM-30 HomeScreen done" />
-    <MESSAGE value="GM-37 HomeScreen &amp; Aba Divisions + Sensors Done" />
-    <MESSAGE value="GM-47 visual part of the screen is done" />
-    <MESSAGE value="GM-47 functional part done" />
-    <MESSAGE value="GM-51" />
-    <MESSAGE value="GM-40 plant details screen done" />
-    <MESSAGE value="GM-40 done" />
-    <MESSAGE value="small colors fix" />
-    <MESSAGE value="GM-48 done" />
-    <MESSAGE value="GM-50 done" />
-    <MESSAGE value="minor design fixes from meeting talk" />
-    <MESSAGE value="fixed calendar locale of AddPlant" />
-    <MESSAGE value="added getPlants and getDivisionsAndAssociatedPlants services" />
-    <MESSAGE value="added SpeciesProfileService" />
-    <MESSAGE value="added CategoryScreenService and DiscoverPlantScreenService" />
-    <MESSAGE value="added TasksScreenService" />
-    <option name="LAST_COMMIT_MESSAGE" value="added TasksScreenService" />
+    <MESSAGE value="AddDivisionScreen semi-completed" />
+    <MESSAGE value="GM-42 done" />
+    <MESSAGE value="plant tasks screen has calendar" />
+    <MESSAGE value="added AddPlantScreenService and AssociatePlantScreenService" />
+    <MESSAGE value="GM-88 DONE" />
+    <MESSAGE value="GM-88 completely done" />
+    <MESSAGE value="GM-117 visual part done" />
+    <MESSAGE value="GM-117 done" />
+    <MESSAGE value="GM-118 done" />
+    <MESSAGE value="merged with backend" />
+    <MESSAGE value="GM-126 done" />
+    <MESSAGE value="GM-138 fixed bug when division null" />
+    <MESSAGE value="GM-141 done" />
+    <MESSAGE value="GM-142 done" />
+    <MESSAGE value="GM-146 done" />
+    <MESSAGE value="GM-175 service method" />
+    <MESSAGE value="GM-175 done" />
+    <MESSAGE value="GM-151 + GM-152 done done" />
+    <MESSAGE value="GM-153 done" />
+    <MESSAGE value="GM-180 done" />
+    <MESSAGE value="GM-181 done" />
+    <MESSAGE value="GM-183 done" />
+    <MESSAGE value="GM-184 done" />
+    <MESSAGE value="GM-185 and GM-188 done" />
+    <MESSAGE value="GM-186 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="GM-186 done" />
   </component>
 </project>

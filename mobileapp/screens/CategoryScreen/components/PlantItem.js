@@ -4,7 +4,7 @@ import React from "react";
 import {useNavigation} from "@react-navigation/native";
 
 
-export default function PlantItem({name, image, difficulty}){
+export default function PlantItem({name, image, difficulty, anonymous, speciesID, scientificName}){
     const theme = useTheme();
     const navigation = useNavigation();
     const image_width = 70;
@@ -23,18 +23,27 @@ export default function PlantItem({name, image, difficulty}){
         }
     }
     return (
-        <View style={{marginTop: 20, marginHorizontal: 40, flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
+        <TouchableOpacity style={{marginTop: 20, marginHorizontal: 40, flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}
+                          onPress={() => {navigation.navigate("SpeciesProfile", {plantId: -1, specieID: speciesID, anonymous: anonymous})}}
+        >
             <Card.Cover source={ {uri: image}} style={{width: image_width, height: image_height, borderWidth: 1, borderColor: theme.colors.opaqueGrey}} />
             <View style={{flexDirection: "column"}}>
-                <Text variant={"bodyLarge"} style={{fontWeight: "800", marginBottom: 10, marginTop: 20, color: theme.colors.primary}}>{name}</Text>
+                <Text variant={"bodyLarge"} style={{fontWeight: "800", marginBottom: 10, marginTop: 20, color: theme.colors.primary, width: 120}}>{name}</Text>
                 <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Difficulty</Text>
                 <View style={{flexDirection: "row", alignItems: "center"}}>
                     {stars}
                 </View>
             </View>
+
             <TouchableOpacity onPress={() => {
-                navigation.navigate("AddPlant");
+                if (anonymous) {
+                    navigation.navigate("Login");
+                }
+                else {
+                    navigation.navigate("AddPlant", {speciesID: speciesID, scientificName: scientificName});
+                }
             }}>
+
             <View
                 style={{
                     borderRadius: 50,
@@ -49,6 +58,6 @@ export default function PlantItem({name, image, difficulty}){
                 <IconButton icon="plus" iconColor={theme.colors.background} size={24}/>
             </View>
             </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
     )
 }

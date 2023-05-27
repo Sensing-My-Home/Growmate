@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import pi.growmate.datamodel.division.Division;
-import pi.growmate.datamodel.division.DivisionSensor;
-import pi.growmate.datamodel.plant.PlantSensor;
+import pi.growmate.datamodel.sensors.DivisionSensor;
+import pi.growmate.datamodel.sensors.GenericSensor;
+import pi.growmate.datamodel.sensors.PlantSensor;
 import pi.growmate.datamodel.forum.Comment;
-import pi.growmate.datamodel.forum.JournalEntry;
+import pi.growmate.datamodel.plant.JournalEntry;
 import pi.growmate.datamodel.plant.Plant;
 
 import java.sql.Date;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="Utilizador")
+@Table(name="utilizador")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -42,6 +43,12 @@ public class User {
     @Column(name = "DOB")
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
+
+    @Column(name = "experience")
+    private Long exp;
+
+    @Column(name = "dead_plant_count")
+    private Long dead_plants;
 
     @Column
     private String address;
@@ -101,6 +108,16 @@ public class User {
     @JsonIgnore
     public List<DivisionSensor> getDivisionSensors() {
         return divisionSensors;
+    }
+
+    @JsonIgnore
+    public List<GenericSensor> getAllSensors(){
+        List<GenericSensor> allSensors = new ArrayList<>();
+
+        allSensors.addAll(plantSensors);
+        allSensors.addAll(divisionSensors);
+
+        return allSensors;
     }
 }
 

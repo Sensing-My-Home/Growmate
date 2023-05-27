@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import pi.growmate.datamodel.plant.Plant;
+import pi.growmate.datamodel.sensors.DivisionSensor;
 import pi.growmate.datamodel.species.LuminosityConverter;
 import pi.growmate.datamodel.species.OptimalLuminosity;
 import pi.growmate.datamodel.user.User;
