@@ -7,7 +7,7 @@ import NextButton from "../AddPlantScreen/components/NextButton";
 import AssociateDivision from "./components/AssociateDivision";
 import AddDivisionButton from "./components/AddDivisionButton";
 import {createNewPlant, getDivisions, getPlantSensors} from "../../service/AssociatePlantScreenService";
-import {useNavigation} from "@react-navigation/native";
+import {useFocusEffect, useNavigation} from "@react-navigation/native";
 import { uploadImage } from "../../service/FirebaseService";
 import {userID, userType} from "../../user";
 
@@ -26,6 +26,8 @@ export default function AssociatePlantScreen({route}) {
     const [showDivisionDropDown, setShowDivisionDropDown] = useState(false);
     const [chosenDivision, setChosenDivision] = useState(null);
 
+    const [loadAgain, setLoadAgain] = useState(0);
+
 
     useEffect(() => {
         if (userType === "PREMIUM") {
@@ -40,7 +42,13 @@ export default function AssociatePlantScreen({route}) {
             setDivisions(response);
         })
 
-    }, [])
+    }, [loadAgain])
+
+    useFocusEffect(
+        React.useCallback(() => {
+            setLoadAgain((prevLoadAgain) =>  prevLoadAgain + 1);
+        }, [])
+    );
 
     const onPressNext = async () => {
         const imageURL = await uploadImage(image, userID, name);

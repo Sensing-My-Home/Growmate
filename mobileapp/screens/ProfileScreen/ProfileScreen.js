@@ -85,6 +85,7 @@ export default function ProfileScreen(){
     const [confirmNewPasswordIsValid, setConfirmNewPasswordIsValid] = useState(true);
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
+    const [confirmNewPassword, setConfirmNewPassword] = useState("");
     const [incorrectOldPassword, setIncorrectOldPassword] = useState(false);
 
     const onPressChangePassword = (oldPassword, newPassword) => {
@@ -95,6 +96,12 @@ export default function ProfileScreen(){
             }
             else {
                 setIncorrectOldPassword(false);
+                setOldPassword("");
+                setNewPassword("");
+                setConfirmNewPassword("");
+                setConfirmNewPasswordIsValid(true);
+                setOldPasswordIsValid(true);
+                setNewPasswordIsValid(true);
             }
         })
     }
@@ -135,6 +142,7 @@ export default function ProfileScreen(){
                                     setConfirmNewPasswordIsValid={setConfirmNewPasswordIsValid}
                                     setOldPassword={setOldPassword} oldPassword={oldPassword}
                                     onPress={onPressChangePassword} incorrectOldPassword={incorrectOldPassword}
+                                    setConfirmNewPassword={setConfirmNewPassword} confirmNewPassword={confirmNewPassword}
                     />
                 }
                 <BottomMenu screenHeight={screenHeight} active={"account"}/>

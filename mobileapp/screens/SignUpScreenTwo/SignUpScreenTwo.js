@@ -32,7 +32,13 @@ export default function SignUpScreenTwo({route}){
             finalType = "NON-PREMIUM";
         }
 
-        const imageURL = await uploadImage(photo, email, name);
+        let imageURL;
+        if (photo !== null) {
+            imageURL = await uploadImage(photo, email, name);
+        }
+        else {
+            imageURL = null;
+        }
 
         signUp(name, email, password, imageURL, dateOfBirth, experience, address, finalType).then(
             () => {navigation.navigate("Login")}

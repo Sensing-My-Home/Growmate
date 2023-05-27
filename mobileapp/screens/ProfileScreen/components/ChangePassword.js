@@ -6,44 +6,44 @@ import React, {useState} from "react";
 export default function ChangePassword({setOldPasswordIsValid, setOldPassword, oldPasswordIsValid,
                                         setPasswordIsValid, setPassword, passwordIsValid,
                                         confirmNewPasswordIsValid, setConfirmNewPasswordIsValid,
-                                        newPassword, oldPassword, onPress, incorrectOldPassword}){
+                                        newPassword, oldPassword, onPress, incorrectOldPassword,
+                                        confirmNewPassword, setConfirmNewPassword}){
     const theme = useTheme();
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
     const [hideOldPassword, setHideOldPassword] = useState(true);
     const [hideNewPassword, setHideNewPassword] = useState(true);
     const [hideConfirmNewPassword, setHideConfirmNewPassword] = useState(true);
-    const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
 
 
     const oldPasswordValidate = (password) => {
         if (password.length > 0){
             setOldPasswordIsValid(true);
-            setOldPassword(password);
         }
         else {
             setOldPasswordIsValid(false);
         }
+        setOldPassword(password);
     }
 
     const passwordValidate = (password) => {
         if (passwordRegex.test(password)){
             setPasswordIsValid(true);
-            setPassword(password);
         }
         else {
             setPasswordIsValid(false);
         }
+        setPassword(password);
     }
 
     const confirmNewPasswordValidate = (reEnterPassword) => {
         if (reEnterPassword === newPassword && reEnterPassword!==""){
             setConfirmNewPasswordIsValid(true);
-            setConfirmNewPassword(reEnterPassword);
         }
         else {
             setConfirmNewPasswordIsValid(false);
         }
+        setConfirmNewPassword(reEnterPassword);
     }
     return (
         <View style={{justifyContent: "center", alignItems: "center", marginTop: 20}}>
@@ -56,6 +56,7 @@ export default function ChangePassword({setOldPasswordIsValid, setOldPassword, o
                            secureTextEntry={hideOldPassword}
                            right={<TextInput.Icon icon={hideOldPassword ? "eye" : "eye-off"} onPress={() => {setHideOldPassword(!hideOldPassword)}} forceTextInputFocus={false}/>}
                            onChangeText={text => oldPasswordValidate(text)}
+                           value={oldPassword}
 
                 />
                 {!oldPasswordIsValid &&
@@ -73,6 +74,7 @@ export default function ChangePassword({setOldPasswordIsValid, setOldPassword, o
                            secureTextEntry={hideNewPassword}
                            right={<TextInput.Icon icon={hideNewPassword ? "eye" : "eye-off"} onPress={() => {setHideNewPassword(!hideNewPassword)}} forceTextInputFocus={false}/>}
                            onChangeText={text => passwordValidate(text)}
+                           value={newPassword}
 
                 />
                 {!passwordIsValid &&
@@ -90,6 +92,7 @@ export default function ChangePassword({setOldPasswordIsValid, setOldPassword, o
                            secureTextEntry={hideConfirmNewPassword}
                            right={<TextInput.Icon icon={hideConfirmNewPassword ? "eye" : "eye-off"} onPress={() => {setHideConfirmNewPassword(!hideConfirmNewPassword)}} forceTextInputFocus={false}/>}
                            onChangeText={text => confirmNewPasswordValidate(text)}
+                           value={confirmNewPassword}
 
                 />
                 {!passwordIsValid &&
