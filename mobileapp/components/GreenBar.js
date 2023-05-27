@@ -1,15 +1,12 @@
+import {Dimensions, View} from "react-native";
 import React from "react";
-import { View } from "react-native";
 import { useTheme } from 'react-native-paper';
-import { StatusBar } from 'expo-status-bar';
 
 export default function GreenBar(){
+    const screenHeight = Dimensions.get('screen').height;
     const theme = useTheme();
 
     return (
-        <>
-            <StatusBar style="light" backgroundColor={theme.colors.primaryContainer}/>
-            <View style={{marginBottom: 25}}/>
-        </>
+        <View style={{height: screenHeight / 25, width: '100%', backgroundColor: theme.colors.primaryContainer}}></View>
     )
 }

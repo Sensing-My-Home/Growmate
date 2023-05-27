@@ -16,16 +16,7 @@ import DiscoverPlantsScreen from "./screens/DiscoverPlantsScreen/DiscoverPlantsS
 import CategoryScreen from "./screens/CategoryScreen/CategoryScreen";
 
 import { enGB, registerTranslation } from 'react-native-paper-dates'
-import AddDivisionScreen from "./screens/AddDivisionScreen/AddDivisionScreen";
-import AddSensorScreen from "./screens/AddSensorScreen/AddSensorScreen";
-import InitializerScreen from "./screens/InitializerScreen/InitializerScreen";
-import LoginScreen from "./screens/LoginScreen/LoginScreen";
-import SignUpScreen from "./screens/SignUpScreen/SignUpScreen";
-import SignUpScreenTwo from "./screens/SignUpScreenTwo/SignUpScreenTwo";
-import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
 registerTranslation('en-GB', enGB)
-
-import GreenBar from './components/GreenBar';
 
 
 const Stack = createNativeStackNavigator();
@@ -38,29 +29,12 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      <GreenBar />
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
             headerShown: false
           }}
         >
-          <Stack.Screen
-              name="Initializer"
-              component={InitializerScreen}
-          />
-          <Stack.Screen
-              name="SignUp"
-              component={SignUpScreen}
-          />
-          <Stack.Screen
-              name="SignUpTwo"
-              component={SignUpScreenTwo}
-          />
-          <Stack.Screen
-              name="Login"
-              component={LoginScreen}
-          />
           <Stack.Screen
             name="Home"
             component={gestureHandlerRootHOC(HomeScreen)}
@@ -93,16 +67,6 @@ export default function App() {
               name="Category"
               component={CategoryScreen}
           />
-          <Stack.Screen name="AddDivision"
-                        component={AddDivisionScreen}
-          />
-          <Stack.Screen name="AddSensor"
-                        component={AddSensorScreen}
-          />
-          <Stack.Screen name="Profile"
-                        component={ProfileScreen}
-          />
-
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

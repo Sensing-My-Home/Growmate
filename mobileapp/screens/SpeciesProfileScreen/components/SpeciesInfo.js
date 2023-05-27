@@ -17,68 +17,6 @@ export default function SpeciesInfo({info}){
             )
         }
     }
-
-    const optimalTemperature = () => {
-        switch (info.optimalTemperature){
-            case "COOL":
-                return "10ºC - 18ºC"
-            case "AVERAGE":
-                return "18ºC - 24ºC"
-            case "WARM":
-                return "24ºC - 30ºC"
-        }
-    }
-
-    const optimalLuminosity = () => {
-        switch (info.optimalLuminosity){
-            case "LOW":
-                return "Low-light areas (25 ft-c to 75 ft-c)"
-            case "MEDIUM":
-                return "Medium-light areas: 75 ft-c to 200 ft-c"
-            case "HIGH":
-                return "High-light areas: Over 200 ft-c, but not direct sun"
-            case "SUNNY":
-                return "High-light areas: Over 200 ft-c, but not direct sun"
-        }
-    }
-
-    const optimalHumidity = () => {
-        switch (info.optimalHumidity){
-            case "LOW":
-                return "5% to 24%"
-            case "MEDIUM":
-                return "25% to 49%"
-            case "HIGH":
-                return "50% or higher"
-        }
-    }
-
-    const seasonality = () => {
-        switch (info.season){
-            case "FALL":
-                return "Fall"
-            case "WINTER":
-                return "Winter"
-            case "SPRING":
-                return "Spring"
-            case "SUMMER":
-                return "Summer"
-        }
-    }
-
-    const wateringFrequency = () => {
-        switch (info.wateringFrequency){
-            case "INFREQUENT":
-                return "Soil mix can become moderately dry before re-watering"
-            case "AVERAGE":
-                return "Surface of soil mix should dry before re-watering"
-            case "FREQUENT":
-                return "Keep soil mix moist"
-
-        }
-    }
-
-
     return (
         <View style={styles.container}>
             <View style={styles.infoRow}>
@@ -86,7 +24,7 @@ export default function SpeciesInfo({info}){
                     <IconButton icon={"thermometer"}/>
                     <View style={styles.infoText}>
                         <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Opt. Temperature</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{optimalTemperature()}</Text>
+                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.optimalTemperature}</Text>
                     </View>
                 </View>
                 <View style={styles.infoRow}>
@@ -102,7 +40,7 @@ export default function SpeciesInfo({info}){
                     <IconButton icon={"white-balance-sunny"}/>
                     <View style={styles.infoText}>
                         <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Opt. Luminosity</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{optimalLuminosity()}</Text>
+                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.optimalLuminosity}</Text>
                     </View>
                 </View>
                 <View style={styles.info}>
@@ -120,14 +58,14 @@ export default function SpeciesInfo({info}){
                     <IconButton icon={"water-outline"}/>
                     <View style={styles.infoText}>
                         <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Opt. Humidity</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{optimalHumidity()}</Text>
+                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.optimalHumidity}</Text>
                     </View>
                 </View>
                 <View style={styles.info}>
                     <IconButton icon={"clock-outline"}/>
                     <View style={styles.infoText}>
                         <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Season</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{seasonality()}</Text>
+                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.season}</Text>
                     </View>
                 </View>
             </View>
@@ -136,7 +74,7 @@ export default function SpeciesInfo({info}){
                     <IconButton icon={"watering-can-outline"}/>
                     <View style={styles.infoText}>
                         <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Water freq.</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{wateringFrequency()}</Text>
+                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.wateringFrequency}</Text>
                     </View>
                 </View>
                 <View style={styles.info}>
@@ -147,22 +85,6 @@ export default function SpeciesInfo({info}){
                     </View>
                 </View>
             </View>
-            <View style={styles.infoRow}>
-                <View style={styles.info}>
-                    <IconButton icon={"flower"}/>
-                    <View style={styles.infoText}>
-                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Flowering</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.flowering ? "Yes" : "No"}</Text>
-                    </View>
-                </View>
-                <View style={styles.info}>
-                    <IconButton icon={"leaf-maple"}/>
-                    <View style={styles.infoText}>
-                        <Text variant={"bodyMedium"} style={{color: theme.colors.primary}}>Leaf Color</Text>
-                        <Text variant={"bodySmall"} style={{color: theme.colors.secondary}}>{info.leafColor}</Text>
-                    </View>
-                </View>
-            </View>
         </View>
 
     )
@@ -170,13 +92,13 @@ export default function SpeciesInfo({info}){
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: "column", marginHorizontal: 35
+        flexDirection: "column", marginHorizontal: 30
     },
     infoRow: {
         flexDirection: "row", alignItems: "center", marginBottom: 8
     },
     info: {
-        flexDirection: "row", alignItems: "center", width: 175
+        flexDirection: "row", alignItems: "center", width: 190
     },
 
     infoText: {

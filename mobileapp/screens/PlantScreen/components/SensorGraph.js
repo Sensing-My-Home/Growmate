@@ -32,6 +32,7 @@ export default function SensorGraph({ data }) {
                 height={screenHeigth/4}
                 chartConfig={chartConfig}
                 bezier
+                withInnerLines={false}
                 withShadow={false}
                 fromZero={true}
             />

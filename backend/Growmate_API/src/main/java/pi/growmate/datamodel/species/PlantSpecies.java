@@ -42,7 +42,7 @@ public class PlantSpecies {
     @Convert(converter = TemperatureConverter.class)
     private OptimalTemperature optimalTemperature;
 
-    @Convert(converter = LuminosityConverter.class)
+    @Enumerated(EnumType.ORDINAL)
     private OptimalLuminosity optimalLuminosity;
 
     @Convert(converter = HumidityConverter.class)

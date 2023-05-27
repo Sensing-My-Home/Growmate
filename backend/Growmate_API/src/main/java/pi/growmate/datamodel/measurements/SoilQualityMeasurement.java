@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pi.growmate.datamodel.sensors.PlantSensor;
+import pi.growmate.datamodel.plant.PlantSensor;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table

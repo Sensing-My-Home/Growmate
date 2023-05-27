@@ -72,7 +72,7 @@ CREATE SEQUENCE public.air_temperature_measurement_seq
 ALTER TABLE public.air_temperature_measurement_seq OWNER TO postgres;
 
 --
--- Name: comments; Type: TABLE; Schema: public; Owner: postgres
+-- Name: comment; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.comments (
@@ -88,7 +88,7 @@ CREATE TABLE public.comments (
 ALTER TABLE public.comments OWNER TO postgres;
 
 --
--- Name: comments_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: comment_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.comments_seq
@@ -307,7 +307,7 @@ CREATE TABLE public.plant_species (
     optimal_temperature integer,
     scientific_name character varying(255),
     season integer,
-    photo character varying(500),
+    photo character varying(255),
     usual_size double precision,
     watering_frequency integer,
     family_id bigint NOT NULL,
@@ -338,8 +338,8 @@ ALTER TABLE public.plant_species_seq OWNER TO postgres;
 CREATE TABLE public.reaction (
     reaction_date timestamp without time zone,
     type boolean,
-    user_id bigint NOT NULL,
-    comment_id bigint NOT NULL
+    comment_id bigint NOT NULL,
+    user_id bigint NOT NULL
 );
 
 
@@ -380,7 +380,6 @@ ALTER TABLE public.soil_quality_measurement_seq OWNER TO postgres;
 CREATE TABLE public.species_family (
     id bigint NOT NULL,
     name character varying(255) NOT NULL,
-    difficulty integer,
     opt_soil_mix integer,
     photo character varying(255)
 );
@@ -403,54 +402,29 @@ CREATE SEQUENCE public.species_family_seq
 ALTER TABLE public.species_family_seq OWNER TO postgres;
 
 --
--- Name: task_settings; Type: TABLE; Schema: public; Owner: postgres
+-- Name: task; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.task_settings (
+CREATE TABLE public.task (
     id bigint NOT NULL,
-    is_automatic boolean,
-    task_frequency integer,
-    task_type integer,
-    plant_id bigint
-);
-
-
-ALTER TABLE public.task_settings OWNER TO postgres;
-
---
--- Name: task_settings_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.task_settings_seq
-    START WITH 1
-    INCREMENT BY 50
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.task_settings_seq OWNER TO postgres;
-
---
--- Name: tasks_current; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.tasks_current (
-    id bigint NOT NULL,
+    description character varying(255) NOT NULL,
     name character varying(255) NOT NULL,
     task_date date,
     task_type integer,
-    plant_id bigint
+    plant_id bigint,
+    task_done BOOLEAN
 );
 
+ALTER TABLE public.task ALTER COLUMN task_done SET DEFAULT FALSE;
 
-ALTER TABLE public.tasks_current OWNER TO postgres;
+
+ALTER TABLE public.task OWNER TO postgres;
 
 --
--- Name: tasks_current_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: task_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.tasks_current_seq
+CREATE SEQUENCE public.task_seq
     START WITH 1
     INCREMENT BY 50
     NO MINVALUE
@@ -458,36 +432,7 @@ CREATE SEQUENCE public.tasks_current_seq
     CACHE 1;
 
 
-ALTER TABLE public.tasks_current_seq OWNER TO postgres;
-
---
--- Name: tasks_history; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.tasks_history (
-    id bigint NOT NULL,
-    task_date date,
-    name character varying(255) NOT NULL,
-    task_type integer,
-    plant_id bigint
-);
-
-
-ALTER TABLE public.tasks_history OWNER TO postgres;
-
---
--- Name: tasks_history_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.tasks_history_seq
-    START WITH 1
-    INCREMENT BY 50
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.tasks_history_seq OWNER TO postgres;
+ALTER TABLE public.task_seq OWNER TO postgres;
 
 --
 -- Name: utilizador; Type: TABLE; Schema: public; Owner: postgres
@@ -502,8 +447,6 @@ CREATE TABLE public.utilizador (
     password character varying(255) NOT NULL,
     profile_photo character varying(255),
     rating integer DEFAULT 3.0,
-    experience integer DEFAULT 1,
-    dead_plant_count integer DEFAULT 0,
     user_type integer
 );
 
@@ -539,7 +482,7 @@ SELECT pg_catalog.setval('public.air_temperature_measurement_seq', 1, false);
 
 
 --
--- Name: comments_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: comment_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.comments_seq', 1, false);
@@ -609,24 +552,10 @@ SELECT pg_catalog.setval('public.species_family_seq', 1, false);
 
 
 --
--- Name: task_settings_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: task_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.task_settings_seq', 1, false);
-
-
---
--- Name: tasks_current_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.tasks_current_seq', 1, false);
-
-
---
--- Name: tasks_history_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.tasks_history_seq', 1, false);
+SELECT pg_catalog.setval('public.task_seq', 1, false);
 
 
 --
@@ -653,11 +582,11 @@ ALTER TABLE ONLY public.air_temperature_measurement
 
 
 --
--- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: comment comment_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.comments
-    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT comment_pkey PRIMARY KEY (id);
 
 
 --
@@ -749,27 +678,11 @@ ALTER TABLE ONLY public.species_family
 
 
 --
--- Name: task_settings task_settings_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: task task_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.task_settings
-    ADD CONSTRAINT task_settings_pkey PRIMARY KEY (id);
-
-
---
--- Name: tasks_current tasks_current_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.tasks_current
-    ADD CONSTRAINT tasks_current_pkey PRIMARY KEY (id);
-
-
---
--- Name: tasks_history tasks_history_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.tasks_history
-    ADD CONSTRAINT tasks_history_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.task
+    ADD CONSTRAINT task_pkey PRIMARY KEY (id);
 
 
 --
@@ -797,14 +710,6 @@ ALTER TABLE ONLY public.air_temperature_measurement
 
 
 --
--- Name: tasks_history fk4mmjk9v9pmw39oa3ac192f1j6; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.tasks_history
-    ADD CONSTRAINT fk4mmjk9v9pmw39oa3ac192f1j6 FOREIGN KEY (plant_id) REFERENCES public.plant(id);
-
-
---
 -- Name: air_quality_measurement fk57swwrmull8tmmgwhw2w0s7ny; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -818,6 +723,14 @@ ALTER TABLE ONLY public.air_quality_measurement
 
 ALTER TABLE ONLY public.plant
     ADD CONSTRAINT fk5jd6laslwrgxjwa3l5otl9jkr FOREIGN KEY (species_id) REFERENCES public.plant_species(id);
+
+
+--
+-- Name: task fk6383pmmnxggdbb55w0w9755uu; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.task
+    ADD CONSTRAINT fk6383pmmnxggdbb55w0w9755uu FOREIGN KEY (plant_id) REFERENCES public.plant(id);
 
 
 --
@@ -869,14 +782,6 @@ ALTER TABLE ONLY public.disease_species
 
 
 --
--- Name: comments fkb124pbetndh4k3bdkm6ffljgf; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.comments
-    ADD CONSTRAINT fkb124pbetndh4k3bdkm6ffljgf FOREIGN KEY (plant_id) REFERENCES public.plant(id);
-
-
---
 -- Name: plant_sensor fkbrhn62f4x2gttruutny9w1kl8; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -885,19 +790,27 @@ ALTER TABLE ONLY public.plant_sensor
 
 
 --
--- Name: comments fkcqig4x1jaw7fs00n87kre1p32; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.comments
-    ADD CONSTRAINT fkcqig4x1jaw7fs00n87kre1p32 FOREIGN KEY (user_id) REFERENCES public.utilizador(id);
-
-
---
 -- Name: division_sensor fkdaja3tfjeo4bqfais627qxe3u; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.division_sensor
     ADD CONSTRAINT fkdaja3tfjeo4bqfais627qxe3u FOREIGN KEY (division_id) REFERENCES public.division(id);
+
+
+--
+-- Name: comment fkf1m5ypf6babiqbvd679v7oy2c; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT fkf1m5ypf6babiqbvd679v7oy2c FOREIGN KEY (plant_id) REFERENCES public.plant(id);
+
+
+--
+-- Name: comment fkf4vjea1lveykjhcv7v2ty51mn; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT fkf4vjea1lveykjhcv7v2ty51mn FOREIGN KEY (user_id) REFERENCES public.utilizador(id);
 
 
 --
@@ -933,14 +846,6 @@ ALTER TABLE ONLY public.plant
 
 
 --
--- Name: reaction fkj142hj7ks4vy4dmno04j5kuue; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.reaction
-    ADD CONSTRAINT fkj142hj7ks4vy4dmno04j5kuue FOREIGN KEY (comment_id) REFERENCES public.comments(id);
-
-
---
 -- Name: plant fkkfg428pcea4j36umlvtq913iv; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -949,27 +854,19 @@ ALTER TABLE ONLY public.plant
 
 
 --
--- Name: task_settings fkn3p6atn71ly33thnqst5ic1po; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.task_settings
-    ADD CONSTRAINT fkn3p6atn71ly33thnqst5ic1po FOREIGN KEY (plant_id) REFERENCES public.plant(id);
-
-
---
--- Name: tasks_current fkrr8o6mf2qjeqwtui7vo0ea0r9; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.tasks_current
-    ADD CONSTRAINT fkrr8o6mf2qjeqwtui7vo0ea0r9 FOREIGN KEY (plant_id) REFERENCES public.plant(id);
-
-
---
 -- Name: division_sensor fks07ef89lxgact4718geb85cr9; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.division_sensor
     ADD CONSTRAINT fks07ef89lxgact4718geb85cr9 FOREIGN KEY (user_id) REFERENCES public.utilizador(id);
+
+
+--
+-- Name: reaction fkskbqddo2ffvogxr3f22awp2wa; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.reaction
+    ADD CONSTRAINT fkskbqddo2ffvogxr3f22awp2wa FOREIGN KEY (comment_id) REFERENCES public.comments(id);
 
 
 --

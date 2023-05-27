@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pi.growmate.datamodel.sensors.DivisionSensor;
+import pi.growmate.datamodel.division.DivisionSensor;
 
 @Entity
 @Table

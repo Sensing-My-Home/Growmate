@@ -35,9 +35,3 @@ we have registered a log of all the react native modules installed.
 - react-native-vector-icons
 - react-native-community/blur 
 - depcheck -g
-
-## Build APK
-
-```
-eas build -p android --profile preview
-```

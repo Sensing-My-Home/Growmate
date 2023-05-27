@@ -8,6 +8,7 @@ public class TaskTypeConverter implements AttributeConverter<TaskType, Integer> 
         return switch (taskType) {
             case FERTILIZER -> 4;
             case CHECK_PLANT -> 3;
+            case MOVE_PLANT -> 2;
             case SOIL_CHANGE -> 1;
             case WATERING -> 0;
             default -> throw new IllegalArgumentException("Invalid task type: " + taskType);
@@ -19,6 +20,7 @@ public class TaskTypeConverter implements AttributeConverter<TaskType, Integer> 
         return switch (taskTypeInt) {
             case 0 -> TaskType.WATERING;
             case 1 -> TaskType.SOIL_CHANGE;
+            case 2 -> TaskType.MOVE_PLANT;
             case 3 -> TaskType.CHECK_PLANT;
             case 4 -> TaskType.FERTILIZER;
             default -> throw new IllegalArgumentException("Invalid task type integer: " + taskTypeInt);

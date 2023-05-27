@@ -22,10 +22,10 @@ export default function PlusButton({ index}) {
     }
     return (
         <TouchableOpacity onPress={() => {
-            navigation.navigate(page, {speciesID: null, scientificName: null, destiny: "Home"});
+            navigation.navigate("AddPlant");
         }} style={{
             position: 'absolute',
-            bottom: screenHeight/12 * 2,
+            bottom: screenHeight/13 * 2,
             right: screenWidth/12,
             borderRadius: 50,
             backgroundColor: theme.colors.primary,

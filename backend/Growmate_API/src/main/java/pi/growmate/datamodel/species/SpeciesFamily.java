@@ -29,9 +29,6 @@ public class SpeciesFamily {
     private Integer optSoilMix;
 
     @Column
-    private Integer difficulty;
-
-    @Column
     private String photo;
 
     @JsonIgnore

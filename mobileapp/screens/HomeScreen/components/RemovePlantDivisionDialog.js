@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { View, ScrollView } from 'react-native';
 import { Button, Dialog, Portal, Text, useTheme, Checkbox, Avatar, Searchbar } from 'react-native-paper';
 
-export default function RemovePlantDivision ({ visibleRemove, hideRemove, userPlants, divisionID, addPlant, deleteDivision }) {
+export default function RemovePlantDivision ({ visibleRemove, hideRemove, userPlants, divisionID, addPlant }) {
     const theme = useTheme();
 
     const [checks, setChecks] = useState([]);
@@ -23,8 +23,6 @@ export default function RemovePlantDivision ({ visibleRemove, hideRemove, userPl
         const checkedPlants = userPlants.filter((plant) => checks.includes(plant.id));
         addPlant(checkedPlants, divisionID);
     }
-
-
 
     return (
         <View>
@@ -61,12 +59,9 @@ export default function RemovePlantDivision ({ visibleRemove, hideRemove, userPl
                             </ScrollView>
                         </Dialog.ScrollArea>
                     </Dialog.Content>
-                    <Dialog.Actions style={{ flexDirection: "row", justifyContent: "space-between"}}>
-                        <Button onPress={deleteDivision} buttonColor={theme.colors.darkRed}  textColor={theme.colors.background}>Delete Division</Button>
-                        <View style={{ flexDirection: "row" }}>
-                            <Button onPress={hideRemove} buttonColor={theme.colors.outline} textColor={theme.colors.background} style={{marginRight: 10}}>Cancel</Button>
-                            <Button onPress={handleAddPlant} buttonColor={theme.colors.primary} textColor={theme.colors.background}>Remove</Button>
-                        </View>
+                    <Dialog.Actions>
+                        <Button onPress={hideRemove} buttonColor={theme.colors.darkRed} textColor={theme.colors.background}>Cancel</Button>
+                        <Button onPress={handleAddPlant} buttonColor={theme.colors.primary} textColor={theme.colors.background}>Remove</Button>
                     </Dialog.Actions>
                 </Dialog>
             </Portal>

@@ -1,7 +1,7 @@
 package pi.growmate.repositories.measurements;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pi.growmate.datamodel.sensors.DivisionSensor;
+import pi.growmate.datamodel.division.DivisionSensor;
 import pi.growmate.datamodel.measurements.AirQualityMeasurement;
 
 import java.time.LocalDateTime;
