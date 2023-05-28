@@ -36,9 +36,11 @@ public class CatalogueService {
     }
 
     public Set<PlantSpecies> findPlantSpeciesSearch(String query) {
-        List<PlantSpecies> byCommonName = plantSpeciesRepository.findAllByCommonNameContaining(query);
-        List<PlantSpecies> byScientificName =plantSpeciesRepository.findAllByScientificNameContaining(query);
+        String lowercaseQuery = query.toLowerCase();
 
+        List<PlantSpecies> byCommonName = plantSpeciesRepository.findAllByCommonNameContainingIgnoreCase(lowercaseQuery);
+        List<PlantSpecies> byScientificName = plantSpeciesRepository.findAllByScientificNameContainingIgnoreCase(lowercaseQuery);
+    
         return Stream.concat(byCommonName.stream(), byScientificName.stream()).collect(Collectors.toSet());
     }
 }
