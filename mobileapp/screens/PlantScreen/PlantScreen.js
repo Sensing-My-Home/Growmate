@@ -199,7 +199,7 @@ export default function PlantScreen({ route }) {
     const [initialTaskMode, setInitialTaskMode] = useState(true);
     const [initialTaskFrequency, setInitialTaskFrequency] = useState(0);
 
-    const setChange = (taskName, taskDueDate, taskType, taskID) => {
+    const setChange = (taskName, taskDueDate, taskType, plantID, taskID) => {
         setTaskName(taskName);
         setTaskDueDate(taskDueDate);
         setInitialTaskDueDate(taskDueDate);
@@ -316,7 +316,7 @@ export default function PlantScreen({ route }) {
                         </TabScreen>
                         <TabScreen label="Tasks " icon="pencil">
                             <View>
-                                <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect} />
+                                <TaskCalendar taskDates={todoTaskDates} onDaySelect={onDaySelect} updateYear={setCurrentYear} />
                                 <Tasks tasks={todoSelectedTasks} selected={selected} userId={userID} plantID={plantID} setCounter={setCounter} counter={counter} maxHeight={160} setChange={setChange} />
                                 {selected &&
                                     <GoBackButton onPress={goBack} />
@@ -331,6 +331,7 @@ export default function PlantScreen({ route }) {
                     setTaskMode={setTaskMode} setTaskDueDate={setTaskDueDate} setTaskFrequency={setTaskFrequency}
                     taskID={taskID} userID={userID} initialTaskDueDate={initialTaskDueDate} initialTaskFrequency={initialTaskFrequency}
                     initialTaskMode={initialTaskMode} setCounter={setCounter} counter={counter} plantID={plantID} taskType={taskType} />
+
                 <BottomMenu screenHeight={screenHeight} active={"leaf"} />
             </View>
         )
