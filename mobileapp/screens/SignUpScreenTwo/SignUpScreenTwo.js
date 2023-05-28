@@ -1,5 +1,5 @@
 import {Dimensions, View} from "react-native";
-import {useTheme} from "react-native-paper";
+import {Text, useTheme} from "react-native-paper";
 import React, {useState} from "react";
 import LoginSignUpHeader from "../../components/LoginSignUpHeader";
 import SignUpMoreInfo from "./components/SignUpMoreInfo";
@@ -22,6 +22,7 @@ export default function SignUpScreenTwo({route}){
     const [addressIsValid, setAddressIsValid] = useState(true);
     const [type, setType] = useState(false);
     const [experience, setExperience] = useState(0);
+    const [emailAlreadyExists, setEmailAlreadyExists] = useState(false);
     const navigation = useNavigation();
     const onSignupPress = async () => {
         let finalType;
@@ -41,7 +42,13 @@ export default function SignUpScreenTwo({route}){
         }
 
         signUp(name, email, password, imageURL, dateOfBirth, experience, address, finalType).then(
-            () => {navigation.navigate("Login")}
+            (success) => {
+                if (success === 1) {
+                    navigation.navigate("Login");
+                } else {
+                    setEmailAlreadyExists(true);
+                }
+            }
         );
 
     }
@@ -53,6 +60,7 @@ export default function SignUpScreenTwo({route}){
                             addressIsValid={addressIsValid} dateOfBirthIsValid={dateOfBirthIsValid} setAddress={setAddress}
                             setAddressIsValid={setAddressIsValid} setUserType={setType} userType={type} setDateOfBirthIsValid={setDateOfBirthIsValid}
                             setDate={setDateOfBirth} experience={experience} setExperience={setExperience}/>
+            <Text style={{color: theme.colors.error, alignSelf: "center", marginTop: 10}}>{emailAlreadyExists ? "Email already exists" : ""}</Text>
             <SignUpButton signup={onSignupPress} disabled={!(nameIsValid && dateOfBirthIsValid && addressIsValid) || name==="" || dateOfBirth==="" || address ===""}/>
         </View>
     )

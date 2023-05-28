@@ -13,25 +13,27 @@ import { useNavigation } from "@react-navigation/native";
 
 export default function AddPlantScreen({route}) {
     const screenHeight = Dimensions.get('screen').height;
-    const {specieID, scientificName} = route.params;
+    const {speciesID, scientificName} = route.params;
     const navigation = useNavigation();
     const theme = useTheme()
     const [image, setImage] = useState(null);
     const [date, setDate] = useState("")
     const [validDate, setValidDate] = useState(false);
     const [specie, setSpecie] = useState(scientificName ? scientificName : "");
-    const [specieId, setSpecieId] = useState(specieID ? specieID : "");
+    const [specieId, setSpecieId] = useState(speciesID ? speciesID : "");
     const [name, setName] = useState("");
+    const [goBack, setGoBack] = useState(false);
 
     useEffect(() => {
-        if (specieID !== "") {
-            setSpecieId(specieID);
+        if (speciesID !== null) {
+            setSpecieId(speciesID);
+            setGoBack(true);
         }
         else {
             setSpecieId("");
         }
 
-        if (scientificName !== "") {
+        if (scientificName !== null) {
             setSpecie(scientificName);
         }
         else {
@@ -55,7 +57,7 @@ export default function AddPlantScreen({route}) {
 
     return (
         <View style={{ height: screenHeight, backgroundColor: theme.colors.background }}>
-            <AddPlantHeader text={"Let us know the plant's details"} />
+            <AddPlantHeader text={"Let us know the plant's details"} division={goBack}/>
             <SearchBarSpecies inputValue={specie} setInputValue={setSpecie} setSpecieId={setSpecieId} />
             <AddPhoto image={image} setImage={setImage} plant={true}/>
             <AddPlantationDate inputDate={date} setInputDate={setDate} setValidDate={setValidDate}/>

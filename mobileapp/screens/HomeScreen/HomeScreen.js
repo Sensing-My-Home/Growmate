@@ -153,7 +153,7 @@ export default function HomeScreen({route}) {
                                 {userDivisions.length === 0 &&
                                     <TouchableOpacity
                                         style={{width: "100%", justifyContent: "center", alignItems: "center"}}
-                                        onPress={() => navigation.navigate("AddDivision")}
+                                        onPress={() => navigation.navigate("AddDivision", {destiny: "Home"})}
                                     >
                                         <View style={{flexDirection: "column"}}>
                                             <Text variant={"bodyMedium"} style={{
@@ -261,7 +261,7 @@ export default function HomeScreen({route}) {
                                 {userDivisions.length === 0 &&
                                     <TouchableOpacity
                                         style={{width: "100%", justifyContent: "center", alignItems: "center"}}
-                                        onPress={() => navigation.navigate("AddDivision")}
+                                        onPress={() => navigation.navigate("AddDivision", {destiny: "Home"})}
                                     >
                                         <View style={{flexDirection: "column"}}>
                                             <Text variant={"bodyMedium"} style={{

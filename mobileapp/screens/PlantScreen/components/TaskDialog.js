@@ -36,9 +36,6 @@ export default function TaskDialog({visibleChange, hideChange, taskName, taskDue
     }
 
     const saveSettings = () => {
-        if (initialTaskDueDate !== taskDueDate){
-            updateTaskDate(userID, taskID, taskDueDate);
-        }
 
         if (initialTaskMode !== taskMode){
             if (initialTaskFrequency.toString() !== taskFrequency.toString()){
@@ -53,6 +50,10 @@ export default function TaskDialog({visibleChange, hideChange, taskName, taskDue
             if (initialTaskFrequency.toString() !== taskFrequency.toString()){
                 updateTaskFrequency(userID, plantID, taskType, taskFrequency);
             }
+        }
+
+        if (initialTaskDueDate !== taskDueDate){
+            updateTaskDate(userID, taskID, taskDueDate);
         }
 
         setEditTask(false);

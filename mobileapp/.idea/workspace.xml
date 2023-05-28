@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="a035c83b-3a66-4177-8d08-1bf977c311c2" name="Changes" comment="minor fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AddPlantScreen/AddPlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/PlantScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/components/PlantHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/components/PlantHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/components/PlantInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/components/PlantInformation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/PlantScreen/components/TaskDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/PlantScreen/components/TaskDialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SignUpScreenTwo/SignUpScreenTwo.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SignUpScreenTwo/SignUpScreenTwo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/SignUpScreenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/SignUpScreenService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +101,8 @@
       <workItem from="1684843943424" duration="3448000" />
       <workItem from="1684858184047" duration="3904000" />
       <workItem from="1685096750713" duration="10308000" />
-      <workItem from="1685234751556" duration="2650000" />
+      <workItem from="1685234751556" duration="2980000" />
+      <workItem from="1685305638079" duration="6171000" />
     </task>
     <task id="LOCAL-00001" summary="GM-29 done init project + folder skeleton">
       <created>1679778003094</created>
@@ -397,7 +405,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685218759397</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="fixed bug">
+      <created>1685240824160</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1685240824160</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,7 +430,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="GM-42 done" />
     <MESSAGE value="plant tasks screen has calendar" />
     <MESSAGE value="added AddPlantScreenService and AssociatePlantScreenService" />
     <MESSAGE value="GM-88 DONE" />
@@ -439,6 +453,7 @@
     <MESSAGE value="GM-184 done" />
     <MESSAGE value="GM-185 and GM-188 done" />
     <MESSAGE value="GM-186 done" />
+    <MESSAGE value="fixed bug" />
     <MESSAGE value="minor fixes" />
     <option name="LAST_COMMIT_MESSAGE" value="minor fixes" />
   </component>

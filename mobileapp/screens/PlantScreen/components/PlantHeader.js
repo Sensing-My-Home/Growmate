@@ -15,7 +15,7 @@ export default function PlantHeader({ name }) {
                     size={35}
                     iconColor={theme.colors.primary}
                     onPress={() => {
-                        navigation.navigate('Home', {reload: false, variance: name});
+                        navigation.navigate('Home', {reload: true, variance: name + new Date().getTime()});
                     }}
                 />
             </View>

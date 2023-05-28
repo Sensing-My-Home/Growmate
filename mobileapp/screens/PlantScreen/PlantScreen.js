@@ -221,15 +221,13 @@ export default function PlantScreen({ route }) {
     // Handle Save information
     const handleSave = (plantName, plantationDate) => {
         // Set plantation date to java.sql.Date format
-        const date = new Date(plantationDate);
-        const sqlDate = date.toISOString().slice(0, 10);
 
-        updatePlantInfo(userID, plantID, plantName, sqlDate).then(
+        updatePlantInfo(userID, plantID, plantName, plantationDate).then(
             () => {
                 setPlantInfo({
                     ...plantInfo,
                     name: plantName,
-                    plantationDate: sqlDate
+                    plantationDate: plantationDate
                 });
                 hideChange();
             }
@@ -310,6 +308,7 @@ export default function PlantScreen({ route }) {
                                         plant={plantInfo}
                                         division={plantInfo.division}
                                         divisions={divisions}
+                                        handleSave={(plantName, plantationDate) => handleSave(plantName, plantationDate)}
                                     />
                                 </View>
                             </ScrollView>
