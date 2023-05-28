@@ -12,4 +12,6 @@ import java.util.List;
 public interface PlantSpeciesRepository extends JpaRepository<PlantSpecies, Long>{
     List<PlantSpecies> findAllByCommonNameContaining(String query);
     List<PlantSpecies> findAllByScientificNameContaining(String query);
+    List<PlantSpecies> findAllByCommonNameContainingIgnoreCase(String lowercaseQuery);
+    List<PlantSpecies> findAllByScientificNameContainingIgnoreCase(String lowercaseQuery);
 }
