@@ -3,7 +3,7 @@ import { Text, IconButton, useTheme } from "react-native-paper";
 import React from "react";
 import { useNavigation } from '@react-navigation/native';
 
-export default function AddPlantHeader({text}) {
+export default function AddPlantHeader({text, division}) {
     const navigation = useNavigation();
     const theme = useTheme();
 
@@ -15,7 +15,12 @@ export default function AddPlantHeader({text}) {
                     size={35}
                     iconColor={theme.colors.primary}
                     onPress={() => {
-                        navigation.goBack();
+                        if (division) {
+                            navigation.goBack();
+                        }
+                        else {
+                            navigation.navigate('Home', {reload: false, variance: ""});
+                        }
                     }}
                 />
             </View>

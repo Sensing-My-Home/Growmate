@@ -6,4 +6,6 @@ import pi.growmate.datamodel.user.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+    User findFirstByEmail(String email);
+    Boolean existsByEmail(String email);
 }
