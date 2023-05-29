@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b996e52-6ae5-451a-871b-8a09f47e8722" name="Changes" comment="GM-150 done">
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/SignUpScreen/SignUpScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/SignUpScreen/SignUpScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobileapp/screens/SignUpScreenTwo/SignUpScreenTwo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobileapp/screens/SignUpScreenTwo/SignUpScreenTwo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/PlantInventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pi/growmate/controllers/PlantInventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../database/fill_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../database/fill_tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +63,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "84da50b259d34210db8d1b654840f93f",
+    "spring.configuration.checksum": "3fa0d4944519e39b95ffd0ae9d8b4453",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -141,6 +141,7 @@
       <workItem from="1684858401115" duration="303000" />
       <workItem from="1684864120017" duration="782000" />
       <workItem from="1685096753941" duration="2982000" />
+      <workItem from="1685381072667" duration="465000" />
     </task>
     <task id="LOCAL-00001" summary="GM-139 done">
       <created>1684833820939</created>

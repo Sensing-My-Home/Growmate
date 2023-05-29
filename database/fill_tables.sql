@@ -20,7 +20,7 @@ SET row_security = off;
 -- Data for Name: utilizador; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.utilizador (id, address, dob, email, name, password, profile_photo, rating, experience, dead_plant_count, user_type) VALUES (1, NULL, NULL, 'admin@email.com', 'admin', 'password123', NULL, 3, 1, 0, 0);
+INSERT INTO public.utilizador (id, address, dob, email, name, password, profile_photo, rating, experience, dead_plant_count, user_type) VALUES (1, NULL, NULL, 'admin@email.com', 'admin', '$2a$10$3ScENDnVbvrmcpRA4jn0p.eXSmg2vSWJqLBIVcRz14bwo5lWniK82', NULL, 3, 1, 0, 0);
 INSERT INTO public.utilizador (id, address, dob, email, name, password, profile_photo, rating, experience, dead_plant_count, user_type) VALUES (3, '123 Main St', '1990-01-01', 'john.doe.poor@example.com', 'John Doe Poor', '$2a$10$3ScENDnVbvrmcpRA4jn0p.eXSmg2vSWJqLBIVcRz14bwo5lWniK82', NULL, 4, 1, 0, 1);
 INSERT INTO public.utilizador (id, address, dob, email, name, password, profile_photo, rating, experience, dead_plant_count, user_type) VALUES (4, 'Aveiro', '1996-12-21', 'test@mail.pt', 'Daniel Luís', '$2a$10$lKussOpCVyUHDoOS7UFzQuOOccevYg4ghux0L2JOESuLTpgoT5vgS', 'null', NULL, 2, 0, 1);
 INSERT INTO public.utilizador (id, address, dob, email, name, password, profile_photo, rating, experience, dead_plant_count, user_type) VALUES (26, 'rUA', '2020-02-02', 'and@gmail.com', 'RumoAo20', '$2a$10$OvLDV1PQf9OZcb/jlOmBc.4tIPVC6QGj6WC.mdfnsXA56nQx/ll.O', 'null', NULL, 2, 0, 2);
@@ -16517,9 +16517,9 @@ INSERT INTO public.plant_species (id, common_name, cycle, difficulty, flowering,
 --
 
 INSERT INTO public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id) VALUES (6, 'Orchid', 2, 'https://images.pexels.com/photos/7814295/pexels-photo-7814295.jpeg', '2022-03-15', 3, 3, 7);
-INSERT INTO public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id) VALUES (8, 'Juliana the Cactus', 2, 'https://cdn.pixabay.com/photo/2016/11/21/16/05/cacti-1846147_960_720.jpg', '2022-02-10', 4, 3, 5);
+INSERT INTO public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id) VALUES (8, 'Juliana the Cactus', 2, 'https://cdn.pixabay.com/photo/2016/11/21/16/05/cacti-1846147_960_720.jpg', '2022-02-10', 4, 3, 14);
 INSERT INTO public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id) VALUES (7, 'Beth', 2, 'https://cdn.pixabay.com/photo/2021/05/16/01/04/orchids-6256963_960_720.jpg', '2022-04-20', 4, 3, 4);
-INSERT INTO public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id) VALUES (4, 'Juliana the Cactus', 1, 'https://cdn.pixabay.com/photo/2016/11/21/16/05/cacti-1846147_960_720.jpg', '2022-02-10', 1, 2, 5);
+INSERT INTO public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id) VALUES (4, 'Juliana the Cactus', 1, 'https://cdn.pixabay.com/photo/2016/11/21/16/05/cacti-1846147_960_720.jpg', '2022-02-10', 1, 2, 14);
 INSERT INTO public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id) VALUES (33, 'Spicy ', 0, 'https://firebasestorage.googleapis.com/v0/b/growmate-59791.appspot.com/o/2Spicy ?alt=media', '2023-05-01', 2, 2, 105);
 INSERT INTO public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id) VALUES (29, 'Maiden', 2, 'https://firebasestorage.googleapis.com/v0/b/growmate-59791.appspot.com/o/12Maiden?alt=media', '2022-01-20', NULL, 12, 5);
 INSERT INTO public.plant (id, name, plant_condition, photo, plantation_date, division_id, user_id, species_id) VALUES (62, 'Francesinha ', 2, 'https://firebasestorage.googleapis.com/v0/b/growmate-59791.appspot.com/o/27Francesinha ?alt=media', '2023-05-29', 46, 27, 70);
@@ -24757,20 +24757,6 @@ INSERT INTO public.task_settings (id, is_automatic, task_frequency, task_type, p
 -- Data for Name: tasks_current; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (12, 'Change Orchid soil mix', '2023-06-13', 1, 6);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (13, 'Check Juliana''s condition ', '2023-06-15', 3, 8);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (17, 'Water Orchid', '2023-06-22', 0, 6);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (19, 'Water Juliana', '2023-06-15', 0, 8);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (14, 'Fertilize Anthony', '2023-06-22', 4, 5);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (15, 'Change Anthony soil mix', '2024-08-15', 1, 5);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (5, 'Fertilize Anthony', '2023-06-04', 4, 1);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (18, 'Water Beth', '2023-05-30', 0, 7);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (6, 'Change Anthony soil mix', '2024-08-15', 1, 1);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (2, 'Change Orchid soil mix', '2024-08-16', 1, 2);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (1, 'Water Anthony', CURRENT_DATE, 0, 1);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (9, 'Water Beth', '2023-05-31', 0, 3);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (11, 'Water Anthony', '2023-06-01', 0, 5);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (16, 'Check Anthony''s condition ', '2023-06-02', 3, 5);
 INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (185, 'Change Luso''s soil mix', '2024-03-23', 1, 50);
 INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (187, 'Fertilize Luso', '2023-07-09', 4, 50);
 INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (186, 'Check Luso''s condition', '2023-06-07', 3, 50);
@@ -24778,7 +24764,6 @@ INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALU
 INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (101, 'Change Maiden''s soil mix', '2024-03-21', 1, 29);
 INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (102, 'Check Maiden''s condition', '2023-06-05', 3, 29);
 INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (103, 'Fertilize Maiden', '2023-07-07', 4, 29);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (4, 'Check Juliana''s condition ', '2023-06-03', 3, 4);
 INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (184, 'Water Luso', '2023-05-31', 0, 50);
 INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (117, 'Change Spicy ''s soil mix', '2024-03-21', 1, 33);
 INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (118, 'Check Spicy ''s condition', '2023-06-02', 3, 33);
@@ -24811,13 +24796,39 @@ INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALU
 INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (157, 'Change Stephanie ''s soil mix', '2024-03-22', 1, 43);
 INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (158, 'Check Stephanie ''s condition', '2023-06-10', 3, 43);
 INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (159, 'Fertilize Stephanie ', '2023-07-08', 4, 43);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (8, 'Water Orchid', '2023-05-22', 0, 2);
 INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (116, 'Water Spicy ', '2023-06-02', 0, 33);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (10, 'Water Juliana', '2023-06-03', 0, 4);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (7, 'Check Anthony''s condition ', '2023-05-31', 3, 4);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (1000, 'Fertilize Orchid', '2023-06-22', 0, 2);
-INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (1001, 'Fertilize Orchid', '2023-06-20', 0, 6);
-
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (1, 'Water Anthony ', CURRENT_DATE, 0, 1);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (2, 'Water Orchid ', '2023-06-05', 0, 2);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (3, 'Water Beth ', CURRENT_DATE, 0, 3);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (4, 'Water Juliana ', '2023-06-10', 0, 4);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (5, 'Water Anthony ', CURRENT_DATE, 0, 5);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (6, 'Water Orchid ', '2023-06-05', 0, 6);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (7, 'Water Beth ', CURRENT_DATE, 0, 7);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (8, 'Water Juliana ', '2023-06-10', 0, 8);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (9, 'Change Anthony''s soil mix ', '2023-08-08', 1, 1);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (10, 'Change Orchid''s soil mix ', '2023-09-16', 1, 2);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (11, 'Change Beth''s soil mix ', '2023-07-05', 1, 3);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (12, 'Change Juliana''s soil mix ', '2023-10-10', 1, 4);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (13, 'Change Anthony''s soil mix ', '2023-08-08', 1, 5);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (14, 'Change Orchid''s soil mix ', '2023-09-16', 1, 6);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (15, 'Change Beth''s soil mix ', '2023-07-05', 1, 7);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (16, 'Change Juliana''s soil mix ', '2023-10-10', 1, 8);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (17, 'Fertilize Anthony ', '2023-06-15', 4, 1);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (18, 'Fertilize Orchid ', '2023-05-20', 4, 2);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (19, 'Fertilize Beth ', '2023-06-01', 4, 3);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (20, 'Fertilize Juliana ', '2023-06-03', 4, 4);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (21, 'Fertilize Anthony ', '2023-06-15', 4, 5);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (22, 'Fertilize Orchid ', '2023-05-20', 4, 6);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (23, 'Fertilize Beth ', '2023-06-01', 4, 7);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (24, 'Fertilize Juliana ', '2023-06-03', 4, 8);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (25, 'Check Anthony''s condition ', '2023-06-05', 3, 1);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (26, 'Check Orchid''s condition ', '2023-06-22', 3, 2);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (27, 'Check Beth''s condition ', '2023-06-11', 3, 3);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (28, 'Check Juliana''s condition ', '2023-06-12', 3, 4);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (29, 'Check Anthony''s condition ', '2023-06-05', 3, 5);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (30, 'Check Orchid''s condition ', '2023-06-22', 3, 6);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (31, 'Check Beth''s condition ', '2023-06-11', 3, 7);
+INSERT INTO public.tasks_current (id, name, task_date, task_type, plant_id) VALUES (32, 'Check Juliana''s condition ', '2023-06-12', 3, 8);
 
 --
 -- Data for Name: tasks_history; Type: TABLE DATA; Schema: public; Owner: postgres
