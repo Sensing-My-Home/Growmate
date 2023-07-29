@@ -54,7 +54,7 @@ As such, we developed the proof of concept for a mobile application with these c
 
 ## How to Run
 
-To tun the application locally, follow these steps:
+To run the application locally, follow these steps:
 
 - Setting up and running the API
     1. Clone the GrowMate’s repository.
