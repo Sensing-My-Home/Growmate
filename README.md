@@ -13,40 +13,40 @@ As such, we developed the proof of concept for a mobile application with these c
 
 ### User Registration and Login
 
-![Picture1.png](images/Picture1.png)
-![Picture2.png](images/Picture2.png)
+<image src="images/Picture1.png" alt="Picture1" height="500"/>
+<image src="images/Picture2.png" alt="Picture2" height="500"/>
 
 ### Plant Inventory 
 
-![Picture3.png](images/Picture3.png)
-![Picture4.png](images/Picture4.png)
+<image src="images/Picture3.png" alt="Picture4" height="500"/>
+<image src="images/Picture4.png" alt="Picture3" height="500"/>
 
 ### Divisions
 
-![Picture5.png](images/Picture5.jpg)
-![Picture6.png](images/Picture6.png)
+<image src="images/Picture5.jpg" alt="Picture5" height="500"/>
+<image src="images/Picture6.png" alt="Picture6" height="500"/>
 
 ### Sensors
 
-![Picture7.png](images/Picture7.png)
+<image src="images/Picture7.png" alt="Picture7" height="500"/>
 
 ### Tasks
 
-![Picture8.png](images/Picture8.png)
+<image src="images/Picture8.png" alt="Picture8" height="500"/>
 
 ### Plant Page
 
-![Picture9.png](images/Picture9.png)
-![Picture10.png](images/Picture10.png)
+<image src="images/Picture9.png" alt="Picture9" height="500"/>
+<image src="images/Picture10.png" alt="Picture10" height="500"/>
 
 ### Profile Page
 
-![Picture11.png](images/Picture11.png)
+<image src="images/Picture11.png" alt="Picture11" height="500"/>
 
 ### Discover New Plants
 
-![Picture12.png](images/Picture9.png)
-![Picture13.png](images/Picture10.png)
+<image src="images/Picture12.png" alt="Picture12" height="500"/>
+<image src="images/Picture13.png" alt="Picture13" height="500"/>
 
 ## Architecture 
 
