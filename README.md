@@ -9,6 +9,45 @@ Thus, we believe that an application that allows the management of indoor plants
 
 As such, we developed the proof of concept for a mobile application with these characteristics, with this report providing the description for the entire software development process, from the early inception and requirements gathering phase, to the code development and usability testing. Though not all of the functionalities and use cases we envisioned for the perfect plant care app were implemented, we believe this project serves as a very solid stepping stone for a reliable and interesting product. Usability tests conducted on the final product at the end of the implementation cycle validated the design of the application, as well as the good flow between the different components and screen of the pages, and the usefulness of the implemented features. Future work is recommended regarding the testing of the system, enrichment of the supporting plant catalogue, and implementation of additional features, such as pest and disease detection.
 
+## Functionalities
+
+### User Registration and Login
+
+![Picture1.png](images/Picture1.png)
+![Picture2.png](images/Picture2.png)
+
+### Plant Inventory 
+
+![Picture3.png](images/Picture3.png)
+![Picture4.png](images/Picture4.png)
+
+### Divisions
+
+![Picture5.png](images/Picture5.jpg)
+![Picture6.png](images/Picture6.png)
+
+### Sensors
+
+![Picture7.png](images/Picture7.png)
+
+### Tasks
+
+![Picture8.png](images/Picture8.png)
+
+### Plant Page
+
+![Picture9.png](images/Picture9.png)
+![Picture10.png](images/Picture10.png)
+
+### Profile Page
+
+![Picture11.png](images/Picture11.png)
+
+### Discover New Plants
+
+![Picture12.png](images/Picture9.png)
+![Picture13.png](images/Picture10.png)
+
 ## Architecture 
 
 ![architecture.png](images%2Farchitecture.png)
